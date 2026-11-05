@@ -1,0 +1,98 @@
+{
+  "name": "@forgeax/engine-render",
+  "version": "0.4.18",
+  "description": "Canonical ECS render schemas and renderer boundary.",
+  "private": false,
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./authoring": {
+      "types": "./dist/authoring.d.ts",
+      "import": "./dist/authoring.mjs"
+    },
+    "./internal": {
+      "types": "./dist/internal.d.ts",
+      "import": "./dist/internal.mjs"
+    },
+    "./internal/temporal": {
+      "types": "./dist/temporal/index.d.ts",
+      "import": "./dist/temporal/index.mjs"
+    },
+    "./package.json": "./package.json",
+    "./internal/construct-renderer": {
+      "types": "./dist/construct-renderer.d.ts",
+      "import": "./dist/construct-renderer.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "!src/**/__tests__/**",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "dependencies": {
+    "@forgeax/engine-assets-runtime": "0.4.18",
+    "@forgeax/engine-audio-webaudio": "0.4.18",
+    "@forgeax/engine-codec": "0.4.18",
+    "@forgeax/engine-ecs": "0.4.18",
+    "@forgeax/engine-geometry": "0.4.18",
+    "@forgeax/engine-graphics-extras": "0.4.18",
+    "@forgeax/engine-math": "0.4.18",
+    "@forgeax/engine-pack": "0.4.18",
+    "@forgeax/engine-plugin": "0.4.18",
+    "@forgeax/engine-profiler": "0.4.18",
+    "@forgeax/engine-render-graph": "0.4.18",
+    "@forgeax/engine-rhi": "0.4.18",
+    "@forgeax/engine-scene": "0.4.18",
+    "@forgeax/engine-shader": "0.4.18",
+    "@forgeax/engine-skinning": "0.4.18",
+    "@forgeax/engine-terrain": "0.4.18",
+    "@forgeax/engine-types": "0.4.18",
+    "@noble/hashes": "^2.2.0"
+  },
+  "forgeax": {
+    "metrics": {
+      "bundle-size": {
+        "enabled": true,
+        "path": "dist/index.mjs",
+        "compression": "gzip",
+        "expected": 10000
+      },
+      "fps": {
+        "enabled": false,
+        "reason": "render package has no host loop"
+      },
+      "bench": {
+        "enabled": true,
+        "reportPath": "bench-result.json",
+        "suite": "@forgeax/engine-render",
+        "baseline": {
+          "source": "inline",
+          "threshold": 15000000
+        }
+      },
+      "gate": {
+        "enabled": true,
+        "reason": "render boundary checks"
+      },
+      "spike-report": {
+        "enabled": false,
+        "reason": "not a spike package"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "bench": "vitest bench --run",
+    "bench:json": "FORGEAX_BENCH=fast vitest bench --run --outputJson bench-result.json"
+  }
+}

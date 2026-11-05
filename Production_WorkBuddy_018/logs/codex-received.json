@@ -1,0 +1,13 @@
+{
+  "producer": "WorkBuddy UI Claude-Opus-5.5",
+  "actualCompletion": "13:37 UI 已完成20m2s",
+  "sourceSha256": "284a0c66eaa5b158bf252f1c031e946db9e9b728e11ac16c297a02e2d51483db",
+  "glbSha256": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+  "formalImportSceneGuid": "01a19ac5-5ad3-745b-a280-3f341ab888de",
+  "codexIntegration": "Engine assets WB018_lizzie_badb10cd.glb + existing Pack, partial decoration only; native L13 reused. Optional global ambient suggestion not applied.",
+  "actualEngineEvidence": [
+    "Runtime_Integration_014/evidence/D059-final-entrance/entrance-1.png",
+    "Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-capture.json"
+  ],
+  "status": "Actually imported/rendered, no overall art/AAA acceptance claim"
+}

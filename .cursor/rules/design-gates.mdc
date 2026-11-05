@@ -1,0 +1,28 @@
+---
+description: Cyberpunk PDR full-scene design and evidence gates
+alwaysApply: true
+---
+
+# Required project context
+
+Read AGENTS.md, docs/DECISIONS.md, docs/PROGRESS.md and task-specific docs before acting.
+Current correction brief: Design/v2/BRIEF.md. Do not substitute a new engine or visual reference.
+Preserve frozen v1 spatial c708, 71 furniture instances, 9 cameras and all failed evidence.
+Seven geometry checks do not imply complete design acceptance.
+
+# Design before production
+
+Create executable lighting, fixture, PBR, original graphic and decoration sources before concepts.
+Use real Blender design geometry with frozen camera projection, ID/depth/wire guides.
+Do not invent architecture through image generation; preserve DCC renders if edits drift.
+Design checking models are allowed; production remains gated.
+Spatial consistency and visual style require separate independent reviews. Either failure blocks production.
+User design approval is also required before formal production.
+
+# Technical honesty
+
+Effective runtime profile permits at most 32 simultaneous native lights.
+Separate native lights, emissive surfaces, baked/approximate lighting and scheduled groups.
+SSR, local probes and actual shadows remain unpassed until new-scene engine evidence exists.
+Blender design renders and generated concepts are never engine output.
+Distinguish actual Cursor Gemini execution from Codex support agents; never fabricate receipts.

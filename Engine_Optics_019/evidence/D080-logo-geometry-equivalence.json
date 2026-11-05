@@ -1,0 +1,16 @@
+{
+  "sourceSHA": "ad0f56ac49b16ff59a1fee5d2d8b88d7a6ba2c497b1dfb1da5e9d384715b1391",
+  "activeSHA": "7643d787c82d89bd12707c3ed6bd1d173159f37a4403176606e123af14194e7c",
+  "exactMeshNodeAndBinaryData": true,
+  "engineEmissiveRGBBefore": [
+    1.4928616596925792,
+    0.2613370921614955,
+    0.046595689882322766
+  ],
+  "engineEmissiveRGBAfter": [
+    2.219118654727936,
+    0.3884740509092808,
+    0.06926386244595051
+  ],
+  "relativeEmission": 1.4864864864864864
+}

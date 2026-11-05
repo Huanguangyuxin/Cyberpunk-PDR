@@ -1,0 +1,97 @@
+{
+  "decision": "D066 / user chose mechanical wedge A",
+  "status": "actual 3D and Engine images delivered candidate; user visual approval pending",
+  "modelSource": "../Production_WorkBuddy_020/source/WB020_stage_led_wedge_A.blend",
+  "sourceSha256": "5868b5f1a28941b3469850fbd869e39d20f3f9b7e1fd57188d5f65540e5bac12",
+  "glbSha256": "9e8c27dd9b6791339e990123e3ecc112571f672941211a05801721b405612d3d",
+  "sceneGuid": "01a19bd9-8fb2-7515-9726-2d5c445b7815",
+  "buildManifestSha256": "5b807c72181aadb969756986bba8eb8470c9e48784b16e48201a2da4c4f26376",
+  "nativeRenderEntrySha256": "96fd111d79c02f3168832050f4036b43155e1df50307836cba35bd592c73dda0",
+  "materialCalibration": "A pink LED intensity3.5 ->10 only; original GLB and global exposure/Bloom unchanged",
+  "imageClassification": "actual ForgeaX Apple Metal3 WebGPU native hardware browser, not Blender or AI",
+  "evidence": {
+    "front": {
+      "receipt": "evidence/D066-A-HDR-front/stage-led-front-receipt.json",
+      "frames": [
+        294,
+        336
+      ],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "images": [
+        {
+          "file": "evidence/D066-A-HDR-front/stage-led-front-0.png",
+          "sha256": "78a2b088a75c68559a4b047f086cafe30ee88890721147369193b1ea22089da9"
+        },
+        {
+          "file": "evidence/D066-A-HDR-front/stage-led-front-1.png",
+          "sha256": "2b234ba9ddeab60011de49434828a852b27fd145907553e4b7729df29ade6953"
+        }
+      ]
+    },
+    "oblique": {
+      "receipt": "evidence/D066-A-HDR-oblique/stage-led-receipt.json",
+      "frames": [
+        248
+      ],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "images": [
+        {
+          "file": "evidence/D066-A-HDR-oblique/stage-led-0.png",
+          "sha256": "19f77778a71cb2aa750bb5386b5932e598835958e6dc731232f2285dff78c2b8"
+        }
+      ]
+    },
+    "stage": {
+      "receipt": "evidence/D066-A-HDR-stage/stage-receipt.json",
+      "frames": [
+        235,
+        275
+      ],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "images": [
+        {
+          "file": "evidence/D066-A-HDR-stage/stage-0.png",
+          "sha256": "b20c3a982c3248443f8a41ce09463eedf4600fd3cb9bada21d380af0ee2333ff"
+        },
+        {
+          "file": "evidence/D066-A-HDR-stage/stage-1.png",
+          "sha256": "2b786ad729929f7197b778ff83c59c3beff73f03e33e53e4f1bb027b762be85c"
+        }
+      ]
+    },
+    "bloom-off": {
+      "receipt": "evidence/D066-A-HDR-bloom-off/stage-led-front-receipt.json",
+      "frames": [
+        291
+      ],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "images": [
+        {
+          "file": "evidence/D066-A-HDR-bloom-off/stage-led-front-0.png",
+          "sha256": "e224c2b3ec5b194454e23d8251dc3924a750a39ad7038df1cb79c20821f64ec0"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Moving-head phase and mist time were not frozen across Bloom captures; not exact pixel AB",
+    "transparent shadows, grazing liquid highlight, arbitrary nested refraction and full caustics remain incomplete",
+    "not global no-flicker or independent art acceptance"
+  ],
+  "url": "http://localhost:53665/?view=stage",
+  "userBrowser": {
+    "tool": "CUA regular Chrome, selected foreground tab",
+    "url": "http://localhost:53665/?view=stage",
+    "state": "actual full stage and A wordmark visible; deliverable tab retained",
+    "observedHudFPS": 23,
+    "colliderBinding": "193/193 ready; binding only, not new route test",
+    "initialState": "new background tab displayed Loading/Still loading; selected and foreground reloaded once",
+    "startupReliability": "one foreground success, not universal background startup fix",
+    "evidence": "CUA DOM and screenshot retained inline in this chat, no local UI PNG claimed",
+    "inputRetested": false
+  }
+}

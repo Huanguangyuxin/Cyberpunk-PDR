@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_020/scripts/s60_build_wedge_A.py", line 233, in <module>
+    assert nm == 0 and v > 0, (o.name, nm, v)
+           ^^^^^^^^^^^^^^^^^
+AssertionError: ('WB020_STAGE_LED_WEDGE_LED', 2, 0.009804455607668867)
+
+Error: script failed, file: 'scripts/s60_build_wedge_A.py', exiting.
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

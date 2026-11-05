@@ -1,0 +1,281 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "WB020_STAGE_LED_CABINET",
+        "WB020_STAGE_LED_GLYPHS",
+        "WB020_STAGE_LED_PIXELS",
+        "WB020_STAGE_LED_ROOT"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "WB020_STAGE_LED_3f0a8f44.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_CABINET"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_GLYPHS"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_PIXELS"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:ME_WB020_STAGE_LED_CABINET": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-136d93899c99",
+          "slotName": "WB020_M_LED_BOARD",
+          "sourceKey": "material:WB020_M_LED_BOARD"
+        },
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-136e2d2eae2a",
+          "slotName": "WB020_M_STEEL_DARK",
+          "sourceKey": "material:WB020_M_STEEL_DARK"
+        },
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-136ff2370f28",
+          "slotName": "WB020_M_EDGE_LED",
+          "sourceKey": "material:WB020_M_EDGE_LED"
+        },
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-1370cba8b30e",
+          "slotName": "WB020_M_PSU_GREY",
+          "sourceKey": "material:WB020_M_PSU_GREY"
+        },
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-1371ac3be24a",
+          "slotName": "WB020_M_CABLE",
+          "sourceKey": "material:WB020_M_CABLE"
+        }
+      ]
+    },
+    "mesh:ME_WB020_STAGE_LED_GLYPHS": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-1372f9d6d31d",
+          "slotName": "WB020_M_GLYPH_DIFFUSER",
+          "sourceKey": "material:WB020_M_GLYPH_DIFFUSER"
+        },
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-1373c2c9259d",
+          "slotName": "WB020_M_RETURN_BLACK",
+          "sourceKey": "material:WB020_M_RETURN_BLACK"
+        }
+      ]
+    },
+    "mesh:ME_WB020_STAGE_LED_PIXELS": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19b79-fe91-7165-9aa5-137467a49c01",
+          "slotName": "WB020_M_LED_PIXEL",
+          "sourceKey": "material:WB020_M_LED_PIXEL"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19b79-fe90-7d96-be74-eea6bcbfd7e2",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_CABINET",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_CABINET"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-136b6459d76f",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_GLYPHS",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_GLYPHS"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-136cd41a4087",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_PIXELS",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_PIXELS"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-136d93899c99",
+      "kind": "material",
+      "name": "WB020_M_LED_BOARD",
+      "sourceIndex": 0,
+      "sourceKey": "material:WB020_M_LED_BOARD"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-136e2d2eae2a",
+      "kind": "material",
+      "name": "WB020_M_STEEL_DARK",
+      "sourceIndex": 1,
+      "sourceKey": "material:WB020_M_STEEL_DARK"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-136ff2370f28",
+      "kind": "material",
+      "name": "WB020_M_EDGE_LED",
+      "sourceIndex": 2,
+      "sourceKey": "material:WB020_M_EDGE_LED"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-1370cba8b30e",
+      "kind": "material",
+      "name": "WB020_M_PSU_GREY",
+      "sourceIndex": 3,
+      "sourceKey": "material:WB020_M_PSU_GREY"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-1371ac3be24a",
+      "kind": "material",
+      "name": "WB020_M_CABLE",
+      "sourceIndex": 4,
+      "sourceKey": "material:WB020_M_CABLE"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-1372f9d6d31d",
+      "kind": "material",
+      "name": "WB020_M_GLYPH_DIFFUSER",
+      "sourceIndex": 5,
+      "sourceKey": "material:WB020_M_GLYPH_DIFFUSER"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-1373c2c9259d",
+      "kind": "material",
+      "name": "WB020_M_RETURN_BLACK",
+      "sourceIndex": 6,
+      "sourceKey": "material:WB020_M_RETURN_BLACK"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-137467a49c01",
+      "kind": "material",
+      "name": "WB020_M_LED_PIXEL",
+      "sourceIndex": 7,
+      "sourceKey": "material:WB020_M_LED_PIXEL"
+    },
+    {
+      "guid": "01a19b79-fe91-7165-9aa5-13752abf79cd",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

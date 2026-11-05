@@ -1,0 +1,25 @@
+{
+ "n_images": 56,
+ "unpacked_with_path": [],
+ "occupancy": {
+  "front_band": [],
+  "deep_band": [
+   [
+    "MEP_DUCTS",
+    16
+   ]
+  ],
+  "north_flank_E": [
+   [
+    "MEP_TRAYS_WIRES_JBOX",
+    33
+   ]
+  ],
+  "north_flank_W": [
+   [
+    "MEP_TRAYS_WIRES_JBOX",
+    33
+   ]
+  ]
+ }
+}

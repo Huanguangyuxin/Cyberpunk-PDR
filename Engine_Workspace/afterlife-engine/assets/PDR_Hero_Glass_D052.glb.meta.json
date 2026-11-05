@@ -1,0 +1,320 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D052_GLASS_AMBER",
+        "D052_GLASS_CLEAR",
+        "D052_GLASS_COUPE",
+        "D052_GLASS_RED",
+        "D052_GLASS_TUMBLER"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_Hero_Glass_D052.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D052_GLASS_AMBER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D052_GLASS_CLEAR"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D052_GLASS_COUPE"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D052_GLASS_RED"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D052_GLASS_TUMBLER"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D052_GLASS_AMBER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19072-2965-797d-9284-3bef168abc85",
+          "slotName": "D052_CLEAR_PHYSICAL_GLASS",
+          "sourceKey": "material:D052_CLEAR_PHYSICAL_GLASS"
+        }
+      ]
+    },
+    "mesh:D052_GLASS_CLEAR": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19072-2965-797d-9284-3bef168abc85",
+          "slotName": "D052_CLEAR_PHYSICAL_GLASS",
+          "sourceKey": "material:D052_CLEAR_PHYSICAL_GLASS"
+        }
+      ]
+    },
+    "mesh:D052_GLASS_COUPE": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19072-2965-797d-9284-3bef168abc85",
+          "slotName": "D052_CLEAR_PHYSICAL_GLASS",
+          "sourceKey": "material:D052_CLEAR_PHYSICAL_GLASS"
+        }
+      ]
+    },
+    "mesh:D052_GLASS_RED": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19072-2965-797d-9284-3bef168abc85",
+          "slotName": "D052_CLEAR_PHYSICAL_GLASS",
+          "sourceKey": "material:D052_CLEAR_PHYSICAL_GLASS"
+        }
+      ]
+    },
+    "mesh:D052_GLASS_TUMBLER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19072-2965-797d-9284-3bef168abc85",
+          "slotName": "D052_CLEAR_PHYSICAL_GLASS",
+          "sourceKey": "material:D052_CLEAR_PHYSICAL_GLASS"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19072-2965-797d-9284-3beae95930bc",
+      "kind": "mesh",
+      "name": "D052_GLASS_AMBER",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D052_GLASS_AMBER"
+    },
+    {
+      "guid": "01a19072-2965-797d-9284-3beb445d93b5",
+      "kind": "mesh",
+      "name": "D052_GLASS_CLEAR",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D052_GLASS_CLEAR"
+    },
+    {
+      "guid": "01a19072-2965-797d-9284-3bec88871603",
+      "kind": "mesh",
+      "name": "D052_GLASS_COUPE",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:D052_GLASS_COUPE"
+    },
+    {
+      "guid": "01a19072-2965-797d-9284-3bedd366bfa0",
+      "kind": "mesh",
+      "name": "D052_GLASS_RED",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:D052_GLASS_RED"
+    },
+    {
+      "guid": "01a19072-2965-797d-9284-3bee013ae40b",
+      "kind": "mesh",
+      "name": "D052_GLASS_TUMBLER",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:D052_GLASS_TUMBLER"
+    },
+    {
+      "guid": "01a19072-2965-797d-9284-3bef168abc85",
+      "kind": "material",
+      "name": "D052_CLEAR_PHYSICAL_GLASS",
+      "sourceIndex": 0,
+      "sourceKey": "material:D052_CLEAR_PHYSICAL_GLASS"
+    },
+    {
+      "guid": "01a19072-2965-797d-9284-3bf0e07420c3",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

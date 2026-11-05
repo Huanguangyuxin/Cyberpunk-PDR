@@ -1,0 +1,30 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "source": "source/club-wb018-candidates.blend",
+ "source_sha256": "284a0c66eaa5b158bf252f1c031e946db9e9b728e11ac16c297a02e2d51483db",
+ "glb": "exports/WB018_lizzie_candidates.glb",
+ "bytes": 3963976,
+ "sha256": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+ "nodes": [
+  "WB018_BASE_LED_LINES",
+  "WB018_CEIL_BAND_FRONT",
+  "WB018_ROOF_LIGHT_BANDS_COOL",
+  "WB018_STAGE_FLANK_PANELS"
+ ],
+ "materials": [
+  "M18_BASE_LED_PINK",
+  "M_STEEL_EDGE",
+  "M_STEEL_BLACK",
+  "M18_BULKHEAD_DARK",
+  "M18_BAND_COOL",
+  "M18_BAND_COOL_DIM",
+  "M_CHROME",
+  "M_JBOX",
+  "M_RUBBER",
+  "M18_ACOUSTIC_WEAVE",
+  "M18_TALL_PANEL_PINK"
+ ],
+ "images": 10,
+ "lights": 0,
+ "axis": "glTF Y-up metres; Blender (x,y,z) -> glTF (x,z,-y); node TRS identity (geometry baked at world position)"
+}

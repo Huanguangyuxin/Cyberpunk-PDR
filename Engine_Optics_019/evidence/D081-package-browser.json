@@ -1,0 +1,33 @@
+{
+  "artifact": "Deliverables/Cyberpunk-PDR-D081.html",
+  "sha256": "66a6656d23a93163b6272cfda7f5a47d25fd60f1b9012d2f5baf2b024f133f29",
+  "url": "http://127.0.0.1:53862/Cyberpunk-PDR-D081.html?view=stage",
+  "browser": "desktop Chrome on this Mac, via loopback HTTP",
+  "initialAttempt": {
+    "status": "failed",
+    "code": "app-execution-deadline-exceeded",
+    "phase": "handshake",
+    "timeoutMs": 30000
+  },
+  "sameArtifactAfterReload": {
+    "status": "rendered",
+    "visible": "official plaque with coral halo",
+    "collisionsReady": "193/193",
+    "pointerLockObserved": true,
+    "entranceResetObserved": true,
+    "WInputSent": true,
+    "fpsHudSamples": [
+      24,
+      25,
+      26,
+      27,
+      28
+    ]
+  },
+  "subsequentReload": "rendered and HUD 193/193 ready",
+  "notCovered": [
+    "direct file open",
+    "other machines",
+    "formal performance benchmark"
+  ]
+}

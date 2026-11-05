@@ -1,0 +1,86 @@
+[
+  {
+    "name": "V4 Stage",
+    "min": [
+      -27.8,
+      0.2,
+      -13
+    ],
+    "max": [
+      -6,
+      11,
+      13
+    ],
+    "lightPrefix": "Spot_Back_0",
+    "nearest": [
+      -25,
+      9,
+      8
+    ],
+    "extinction": 0.0075,
+    "anisotropy": 0.25
+  },
+  {
+    "name": "V4 Dance",
+    "min": [
+      -17,
+      0.2,
+      -13
+    ],
+    "max": [
+      -5,
+      10,
+      13
+    ],
+    "lightPrefix": "Dance_RingSpot_1",
+    "nearest": [
+      -8,
+      9,
+      -4
+    ],
+    "extinction": 0.0055,
+    "anisotropy": 0.25
+  },
+  {
+    "name": "V4 Bar",
+    "min": [
+      -5,
+      0.2,
+      -12
+    ],
+    "max": [
+      26,
+      5.2,
+      12
+    ],
+    "lightPrefix": "BackBar_Glow",
+    "nearest": [
+      9.5,
+      3.2,
+      -10.4
+    ],
+    "extinction": 0.0026,
+    "anisotropy": 0.25
+  },
+  {
+    "name": "V4 Upper",
+    "min": [
+      10,
+      5.6,
+      -18
+    ],
+    "max": [
+      28,
+      11,
+      -10
+    ],
+    "lightPrefix": "Lounge_Warm",
+    "nearest": [
+      19,
+      10.5,
+      -14
+    ],
+    "extinction": 0.0038,
+    "anisotropy": 0.25
+  }
+]

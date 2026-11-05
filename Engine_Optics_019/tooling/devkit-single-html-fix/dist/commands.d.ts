@@ -1,0 +1,23 @@
+import type { PluginSourceInventory } from './build/plugin-assets.js';
+export { assetAddCommand, assetInspectCommand, assetListCommand, assetResolveCommand, assetVerifyCommand, } from './assets.js';
+export type { DoctorReport } from './bootstrap-commands.js';
+export { doctorCommand, initCommand, newCommand } from './bootstrap-commands.js';
+export { browserCaptureCommand } from './browser-capture.js';
+export { engineDoctorCommand, engineStatusCommand, engineUnlinkCommand, engineUseLocalCommand, } from './engine-binding.js';
+export { pluginCreateCommand, pluginInspectCommand, pluginRootCommand, } from './plugin-authoring.js';
+export { projectLintCommand } from './project/lint.js';
+export { createCliRhiDebugOperationContext } from './rhi-debug/cli-context.js';
+export type { ArtifactRef, CapturedRhiTape, ReplayBackendLease, RhiCaptureFrameValue, RhiDebugOperationContext, RhiDebugOperationDescriptor, RhiDebugOperationInput, RhiDebugOperationName, RhiDebugOperationOutput, RhiInspectInput, RhiInspectOutput, RhiSummaryInput, RhiSummaryOutput, } from './rhi-debug/operations.js';
+export { createRhiDebugOperationContext, discoverRhiDebugOperations, RHI_DEBUG_OPERATION_MANIFEST, recoverRhiDebugError, renderRhiDebugHelp, runRhiDebugOperation, } from './rhi-debug/operations.js';
+export { sdkInstallCommand } from './sdk-install.js';
+export { shaderCheckCommand } from './shader-check.js';
+export { skillInstallCommand, skillVerifyCommand } from './skill-install.js';
+import { type RhiDebugOperationContext, type RhiDebugOperationInput, type RhiDebugOperationName, type RhiDebugOperationOutput } from './rhi-debug/operations.js';
+import type { BuildOptions, CommandResult, PackageOptions, ProjectCommandOptions } from './types.js';
+export declare function runRhiDebugCommand(name: RhiDebugOperationName, input: RhiDebugOperationInput, context: RhiDebugOperationContext): Promise<CommandResult<RhiDebugOperationOutput>>;
+export declare function buildCommand(options?: BuildOptions, initialSources?: PluginSourceInventory): Promise<CommandResult<unknown>>;
+export declare function packageCommand(options?: PackageOptions): Promise<CommandResult<unknown>>;
+export declare function devCommand(options?: ProjectCommandOptions): Promise<CommandResult<unknown>>;
+export declare function previewCommand(options?: ProjectCommandOptions): Promise<CommandResult<unknown>>;
+export declare function testCommand(options?: ProjectCommandOptions): Promise<CommandResult<unknown>>;
+//# sourceMappingURL=commands.d.ts.map

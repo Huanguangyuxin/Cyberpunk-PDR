@@ -1,0 +1,24 @@
+00:00.305  blend            | Read blend: "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/source/club-wb018-candidates.blend"
+BlenderMCP addon registered
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+13:33:11 | INFO: Starting glTF 2.0 export
+13:33:11 | INFO: Extracting primitive: ME_WB018_BASE_LED_LINES
+13:33:11 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+13:33:11 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+13:33:11 | INFO: Primitives created: 3
+13:33:11 | INFO: Extracting primitive: ME_WB018_CEIL_BAND_FRONT
+13:33:11 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+13:33:11 | INFO: Primitives created: 7
+13:33:11 | INFO: Extracting primitive: ME_WB018_ROOF_LIGHT_BANDS_COOL
+13:33:11 | INFO: Primitives created: 5
+13:33:11 | INFO: Extracting primitive: ME_WB018_STAGE_FLANK_PANELS
+13:33:11 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+13:33:11 | INFO: Primitives created: 5
+13:33:11 | INFO: Finished glTF 2.0 export in 0.15675806999206543 s
+
+S30_OK badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022 ['WB018_BASE_LED_LINES', 'WB018_CEIL_BAND_FRONT', 'WB018_ROOF_LIGHT_BANDS_COOL', 'WB018_STAGE_FLANK_PANELS'] ['M18_BASE_LED_PINK', 'M_STEEL_EDGE', 'M_STEEL_BLACK', 'M18_BULKHEAD_DARK', 'M18_BAND_COOL', 'M18_BAND_COOL_DIM', 'M_CHROME', 'M_JBOX', 'M_RUBBER', 'M18_ACOUSTIC_WEAVE', 'M18_TALL_PANEL_PINK']
+BlenderMCP addon unregistered
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

@@ -1,0 +1,59 @@
+{
+  "status": "current design handoff, not 3D/Engine acceptance",
+  "image_author": "built-in image_gen",
+  "producer_requested": "WorkBuddy Claude-Opus-5.5",
+  "master": "00_MASTER_CURRENT.png",
+  "stool_count": 6,
+  "return_stool_count": 0,
+  "stool_style": "backless",
+  "no_kitchen": true,
+  "no_backstage": true,
+  "images": [
+    {
+      "path": "00_MASTER_CURRENT.png",
+      "sha256": "648480e6f19cfb19dd0e8d250e7c3c9996a9b50e93c0242d8daf6ef8b41168dd",
+      "bytes": 2670839
+    },
+    {
+      "path": "scenes/01_FRONT_BAR_CURRENT.png",
+      "sha256": "549b258fdef22b999a4b846cc1fae4db478264a4f90a94719a274247ed8dd4be",
+      "bytes": 2901596
+    },
+    {
+      "path": "scenes/02_DEEP_REVERSE_CURRENT.png",
+      "sha256": "e31e98599108f053fbf4d39cc864c6244a4c9e99a8e0ce5f585b9133c9721a00",
+      "bytes": 2881377
+    },
+    {
+      "path": "scenes/03_UPPER_GALLERY_CURRENT.png",
+      "sha256": "e566eb9ac6167239724a9fd2d6aa2c99747a366b7bdbd1500a64f147f744ac2a",
+      "bytes": 2755566
+    },
+    {
+      "path": "objects/01_BAR_AND_STOOL.png",
+      "sha256": "16ff6638c11b1b3007216ad95d365ec00c0ece9eba5f916cc8f8c5994152ec84",
+      "bytes": 2313053
+    },
+    {
+      "path": "objects/02_BOOTH_TABLE_PARTITION.png",
+      "sha256": "208af8623ebbcc3d8d18c68d23bc317241d5f330b4afb75d68612ee64508d7ff",
+      "bytes": 2583397
+    },
+    {
+      "path": "objects/03_CEILING_AND_WALL_LIGHTS.png",
+      "sha256": "85198bcdadb98b51155219adc1767cc09eb4d1a3c58801a8976a7fb7d889d99d",
+      "bytes": 2434799
+    },
+    {
+      "path": "objects/04_LED_AND_GRAPHIC_LIGHTS.png",
+      "sha256": "de9b19a76aff503c1ecab0c2ad4116a6ebb6cfe52a47624e641f9477c88cbd6d",
+      "bytes": 2223564
+    },
+    {
+      "path": "objects/05_BOTTLES_LIQUIDS_GLASSWARE.png",
+      "sha256": "46270ee318ba5a02f17a7373fa31fa1ef01c9a2a2e53614d29a9095fd1d3c9f4",
+      "bytes": 2308215
+    }
+  ],
+  "excluded": "all history, earlier v3-reprototype/R1/R2; never glob outside this manifest"
+}

@@ -1,0 +1,17 @@
+00:00.308  blend            | Read blend: "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/source/club-wb018-candidates.blend"
+00:13.886  render           | Saved: '/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/renders/after/CAM01_ENTRANCE_after.png'
+BlenderMCP addon registered
+RENDERED CAM01_ENTRANCE
+00:25.709  render           | Saved: '/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/renders/after/WB018_FRONT_UP_after.png'
+RENDERED WB018_FRONT_UP
+00:38.222  render           | Saved: '/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/renders/after/WB018_PYLON_BASE_after.png'
+RENDERED WB018_PYLON_BASE
+00:50.499  render           | Saved: '/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/renders/after/CAM04B_DEEP_UNDER_BRIDGE_after.png'
+RENDERED CAM04B_DEEP_UNDER_BRIDGE
+01:02.855  render           | Saved: '/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/renders/after/WB018_STAGE_FLANK_after.png'
+RENDERED WB018_STAGE_FLANK
+S20_OK after 5
+BlenderMCP addon unregistered
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

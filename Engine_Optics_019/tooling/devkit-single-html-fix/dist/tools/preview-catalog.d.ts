@@ -1,0 +1,7 @@
+import { type PreviewHost } from '@forgeax/engine-preview';
+import type { ToolContribution, ToolDescriptor } from '@forgeax/engine-tool-runtime';
+export declare const nativePreviewPlugins: readonly [readonly ["@forgeax/engine-preview/material", import("@forgeax/engine-preview").NativePreviewPlugin, ToolContribution<import("@forgeax/engine-preview").ResourcePreviewArgs, unknown>], readonly ["@forgeax/engine-preview/mesh", import("@forgeax/engine-preview").NativePreviewPlugin, ToolContribution<import("@forgeax/engine-preview").ResourcePreviewArgs, unknown>], readonly ["@forgeax/engine-preview/vfx", import("@forgeax/engine-preview").NativePreviewPlugin, ToolContribution<import("@forgeax/engine-preview").ResourcePreviewArgs, unknown>], readonly ["@forgeax/engine-preview/texture", import("@forgeax/engine-preview").NativePreviewPlugin, ToolContribution<import("@forgeax/engine-preview").ResourcePreviewArgs, unknown>]];
+export declare const nativePreviewTools: ToolContribution<unknown, unknown>[];
+export declare const nativePreviewDescriptors: readonly ToolDescriptor[];
+export declare function createNativePreviewPlugin(host: PreviewHost, name: string): import("@deepseek-ai/cordis").Plugin;
+//# sourceMappingURL=preview-catalog.d.ts.map

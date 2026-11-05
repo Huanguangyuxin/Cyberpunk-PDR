@@ -1,0 +1,1 @@
+{"version":3,"file":"runtime-pack-platform.d.ts","sourceRoot":"","sources":["../src/runtime-pack-platform.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,8BAA8B,CAAC;AAE3E,YAAY,EAAE,sBAAsB,EAAE,MAAM,8BAA8B,CAAC;AAE3E,OAAO,QAAQ,+BAA+B,CAAC;IAC7C,UAAU,gBAAgB;QACxB,wFAAwF;QACxF,QAAQ,CAAC,qBAAqB,CAAC,EAAE,sBAAsB,CAAC;KACzD;CACF"}

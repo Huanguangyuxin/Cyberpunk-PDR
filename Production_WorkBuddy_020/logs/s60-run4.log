@@ -1,0 +1,5 @@
+Info: Saved as "WB020_stage_led_wedge_A.blend"
+S60_OK 72d4833003979c50703ac903acc977b9778b42de03a8b8e1603b69285aee20eb {"WB020_STAGE_LED_WEDGE_BODY": {"tris": 1854, "material": "WB020_M_WEDGE_METAL"}, "WB020_STAGE_LED_WEDGE_LED": {"tris": 942, "material": "WB020_M_WEDGE_LED_PINK"}, "WB020_STAGE_LED_WEDGE_EDGE_CYAN": {"tris": 12, "material": "WB020_M_WEDGE_EDGE_CYAN"}, "WB020_STAGE_LED_WEDGE_CARRIER": {"tris": 552, "material": "WB020_M_WEDGE_CARRIER"}} skipped ['擎_pie', '擎_pie1'] cyan [('天_heng2', 0.137)] standoffs 16
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

@@ -1,0 +1,388 @@
+--- original/render-system-extract-tail.ts
++++ local019/render-system-extract-tail.ts
+@@ -1899,6 +1899,7 @@
+               }
+             : {}),
+           layer: layerVal,
++          ...(sortKey === undefined ? {} : {sortKey}),
+           ...(participationRead?.ok && participationRead.value.channels !== 0xffffffff
+             ? { shadowChannels: participationRead.value.channels }
+             : {}),
+--- original/render-system-extract.ts
++++ local019/render-system-extract.ts
+@@ -789,6 +789,8 @@
+   /** Instance animation UVs, composed with the accepted shared material only when drawn. */
+   readonly spriteRegion?: import('./sprite-region').SpriteRegion;
+   readonly layer?: number;
++  /** Local019: explicit transparent secondary key, otherwise view distance. */
++  readonly sortKey?: number;
+   /** Authored participation, independent of the current material Pass roster. */
+   readonly shadowCaster?: false;
+   /** Explicit non-drawing material pass preparation, independent of visibility. */
+--- original/pipeline/standard-post.ts
++++ local019/pipeline/standard-post.ts
+@@ -47,6 +47,7 @@
+   type TypedTemporalResolveTargets,
+ } from '../typed-render-graph-primitives';
+ import { renderExtentSize } from './render-extent';
++import { addTranslucencyVolumetricFogPasses } from './analytic-fog-pass';
+ import {
+   addAutoExposureExposurePass,
+   addAutoExposureGraphPasses,
+@@ -426,6 +427,7 @@
+   secondaryReactivity?: TemporalSecondaryReactivity,
+   coverage?: RenderPipelineTarget,
+   coverageDepth?: RenderPipelineTarget,
++  volumeInput?: Omit<Parameters<typeof addTranslucencyVolumetricFogPasses>[1], 'topology' | 'color' | 'depth'>,
+ ): Result<void, RenderPipelineBuildError> {
+   const clearOnly = topology.clearOnly === true;
+   if (clearOnly && surface.display === undefined) {
+@@ -591,6 +593,32 @@
+     postTemporal = history.currentTemporal;
+   }
+ 
++  // The volume already owns its density/radiance history. Its camera-to-depth
++  // integral has no surface motion vector, so feeding it into the surface TAA
++  // accumulates silhouette history as block-shaped shadows. Resolve surfaces
++  // first, then composite the independently temporal medium in linear HDR.
++  // Never blend into history.currentColor: that would reintroduce fog into the
++  // next frame's surface history. A separate graph-owned color keeps histories
++  // disjoint while preserving Bloom, exposure, tone mapping and scene depth.
++  if (!clearOnly && topology.volumetricFog?.enabled === true && volumeInput !== undefined) {
++    const volumeColor = target(context, 'post-temporal-volume-color', {
++      format: postInput.format as GPUTextureFormat,
++      size: topology.camera.antialias === 'taa' || topology.extent === undefined
++        ? 'surface' : renderExtentSize(topology.extent, 'internal'),
++      domain: 'linear-hdr',
++    });
++    if (!volumeColor.ok) return volumeColor;
++    const copied = addTypedOutputTransformPass(context.graph, postInput, volumeColor.value, {
++      name: 'volume-post-temporal-input', fragmentEntryPoint: 'fs_present', dither: false,
++    });
++    if (!copied.ok) return copied;
++    const volume = addTranslucencyVolumetricFogPasses(context.graph, {
++      ...volumeInput, topology, color: volumeColor.value, depth,
++    });
++    if (!volume.ok) return volume;
++    postInput = volumeColor.value;
++  }
++
+   // Meter the temporally resolved color before lens-domain filters. Motion
+   // Blur and Bloom must consume a single exposure decision for this frame;
+   // running the meter after either filter makes the measured luminance depend
+--- original/pipeline/standard-pipeline.ts
++++ local019/pipeline/standard-pipeline.ts
+@@ -37,6 +37,8 @@
+ import {
+   DEFERRED_PASS_SELECTOR,
+   FORWARD_PASS_SELECTOR,
++  REFRACTION_INNER_PASS_SELECTOR,
++  REFRACTION_OUTER_PASS_SELECTOR,
+   TRANSMISSION_BACK_PASS_SELECTOR,
+ } from '../systems/pass-selector';
+ import {
+@@ -62,7 +64,7 @@
+   type TemporalSecondaryReactivity,
+ } from '../typed-render-graph-primitives';
+ import { addTypedShadowPasses } from '../typed-shadow-passes';
+-import { addOpaqueFogPasses, addTranslucencyVolumetricFogPasses } from './analytic-fog-pass';
++import { addOpaqueFogPasses } from './analytic-fog-pass';
+ import { addGpuLateOcclusion, sceneViewImport } from './gpu-occlusion';
+ import { renderExtentSize } from './render-extent';
+ import {
+@@ -863,7 +865,7 @@
+       color: sceneOutput,
+       depth: depth.value,
+       ...receiver,
+-      selector: FORWARD_PASS_SELECTOR,
++      selector: REFRACTION_INNER_PASS_SELECTOR,
+       colorLoadOp: 'load',
+       depthLoadOp: 'load',
+       recordMode: 'translucent-before-transmission',
+@@ -925,7 +927,7 @@
+         name: 'transmission-forward',
+         color: sceneOutput,
+         depth: depth.value,
+-        selector: FORWARD_PASS_SELECTOR,
++        selector: sortedTransmission ? REFRACTION_INNER_PASS_SELECTOR : FORWARD_PASS_SELECTOR,
+         colorLoadOp: 'load',
+         depthLoadOp: 'load',
+         ...receiver,
+@@ -938,6 +940,26 @@
+         transmissionBackdrop: transmission.value.backdrop?.view,
+       });
+       if (!transmissionPass.ok) return transmissionPass;
++      // Opt-in local two-layer transport: outer glass samples the completed
++      // inner-liquid image. No application-owned target or second renderer.
++      if (sortedTransmission && transmissionDemand.needsBackPass === true) {
++        const outerBackdrop = addTransmissionBackdropPasses({
++          graph, name: 'transmission-outer-backdrop',
++          source: sceneOutput, demand: backdropDemand,
++          copySize: internalCopySize, surfaceSize: topology.surface,
++          encodeRoughMip: context.encodeTransmissionMip, includeConsumerPasses: false,
++        });
++        if (!outerBackdrop.ok) return outerBackdrop;
++        const outer = addTypedScenePass(graph, {
++          environment: atmosphere.value, name: 'transmission-outer-forward',
++          color: sceneOutput, depth: depth.value,
++          ...receiver, selector: REFRACTION_OUTER_PASS_SELECTOR,
++          colorLoadOp: 'load', depthLoadOp: 'load', passKind: 'forward',
++          recordMode: 'transmission', transparentDepthWrite: true,
++          transmissionBackdrop: outerBackdrop.value.backdrop?.view,
++        });
++        if (!outer.ok) return outer;
++      }
+     }
+     const transparentPass = sortedTransmission
+       ? ok(undefined)
+@@ -973,20 +995,8 @@
+     if (!transparentPass.ok) return transparentPass;
+   }
+ 
+-  // The local froxel volume composites after every translucent writer: its
+-  // per-pixel integral ends at opaque depth, so composited earlier each
+-  // blended surface behind the medium would cut its shape out of the haze.
+-  const volume = addTranslucencyVolumetricFogPasses(graph, {
+-    topology,
+-    atmosphere: atmosphere.value?.atmosphere,
+-    color: sceneOutput,
+-    depth: depth.value,
+-    directionalShadow: shadows.value.directional?.view,
+-    spotShadow: shadows.value.spot.view,
+-    clusterBuffers: buffers.value,
+-    cloudShadow: cloudShadow.value?.view,
+-  });
+-  if (!volume.ok) return volume;
++  // Local volume is composited by StandardPost after surface TAA; its own
++  // temporal history must not be accumulated with opaque surface motion.
+ 
+   // Generic post features consume the final deferred scene target after cloud
+   // and volume producers. Keep the same clustered, shadow, and SSAO reads that
+@@ -1017,6 +1027,13 @@
+     secondaryReactivity,
+     context.targetCoverage?.coverage,
+     context.targetCoverage?.depth,
++    {
++      atmosphere: atmosphere.value?.atmosphere,
++      directionalShadow: shadows.value.directional?.view,
++      spotShadow: shadows.value.spot.view,
++      clusterBuffers: buffers.value,
++      cloudShadow: cloudShadow.value?.view,
++    },
+   );
+   if (!post.ok) return post;
+   return ok(undefined);
+--- original/pipeline/standard-forward-lane.ts
++++ local019/pipeline/standard-forward-lane.ts
+@@ -22,7 +22,7 @@
+   importRenderPipelineSurface,
+   type RenderPipelineTarget,
+ } from '../render-pipeline';
+-import { FORWARD_PASS_SELECTOR, TRANSMISSION_BACK_PASS_SELECTOR } from '../systems/pass-selector';
++import { FORWARD_PASS_SELECTOR, TRANSMISSION_BACK_PASS_SELECTOR, REFRACTION_INNER_PASS_SELECTOR, REFRACTION_OUTER_PASS_SELECTOR } from '../systems/pass-selector';
+ import {
+   addStandardSceneDataPass,
+   aggregateTemporalDemand,
+@@ -459,7 +459,7 @@
+       depth: depth.value,
+       ...(msaa ? { resolve: sceneResolvedForLater } : {}),
+       ...receiver,
+-      selector: FORWARD_PASS_SELECTOR,
++      selector: REFRACTION_INNER_PASS_SELECTOR,
+       colorLoadOp: 'load',
+       depthLoadOp: 'load',
+       recordMode: 'translucent-before-transmission',
+@@ -529,7 +529,7 @@
+         depth: depth.value,
+         ...(msaa ? { resolve: sceneResolvedForLater } : {}),
+         ...receiver,
+-        selector: FORWARD_PASS_SELECTOR,
++        selector: sortedTransmission ? REFRACTION_INNER_PASS_SELECTOR : FORWARD_PASS_SELECTOR,
+         colorLoadOp: 'load',
+         depthLoadOp: 'load',
+         recordMode: sortedTransmission ? 'translucent' : 'transmission',
+@@ -540,6 +540,27 @@
+         transmissionBackdrop: transmission.value.backdrop?.view,
+       });
+       if (!transmissionPass.ok) return transmissionPass;
++      // Opt-in local two-layer transport: outer glass samples the completed
++      // inner-liquid image. No application-owned target or second renderer.
++      if (sortedTransmission && transmissionDemand.needsBackPass === true) {
++        const outerBackdrop = addTransmissionBackdropPasses({
++          graph, name: 'transmission-outer-backdrop',
++          source: sceneResolvedForLater, demand: backdropDemand,
++          copySize: internalCopySize, surfaceSize: topology.surface,
++          encodeRoughMip: context.encodeTransmissionMip, includeConsumerPasses: false,
++        });
++        if (!outerBackdrop.ok) return outerBackdrop;
++        const outer = addTypedScenePass(graph, {
++          environment: atmosphere.value, name: 'transmission-outer-forward',
++          color: sceneForLater, depth: depth.value,
++      ...(msaa ? { resolve: sceneResolvedForLater } : {}),
++          ...receiver, selector: REFRACTION_OUTER_PASS_SELECTOR,
++          colorLoadOp: 'load', depthLoadOp: 'load', passKind: 'forward',
++          recordMode: 'transmission', transparentDepthWrite: true,
++          transmissionBackdrop: outerBackdrop.value.backdrop?.view,
++        });
++        if (!outer.ok) return outer;
++      }
+     }
+   }
+   const transparentPass = sortedTransmission
+@@ -563,7 +584,7 @@
+ 
+   // The local froxel volume composites after every translucent writer (see
+   // addTranslucencyVolumetricFogPasses).
+-  const volume = addTranslucencyVolumetricFogPasses(graph, {
++  const volume = context.forwardOutput === undefined ? ok(undefined) : addTranslucencyVolumetricFogPasses(graph, {
+     topology,
+     color: sceneResolvedForLater,
+     depth: depth.value,
+@@ -621,6 +642,12 @@
+     undefined,
+     context.targetCoverage?.coverage,
+     context.targetCoverage?.depth,
++    {
++      directionalShadow: shadows.value.directional?.view,
++      spotShadow: shadows.value.spot.view,
++      clusterBuffers: clusterBuffers.value,
++      cloudShadow: cloudShadow.value?.view,
++    },
+   );
+   if (!post.ok) return post;
+   return ok(undefined);
+--- original/record/scene-pass-work.ts
++++ local019/record/scene-pass-work.ts
+@@ -214,6 +214,8 @@
+       if (accepted === undefined) throw new Error('Draw sorting requires its accepted material');
+       return {
+         transform: row.source.transform,
++        sortKey: row.source.sortKey,
++        localAabb: row.source.localAabb,
+         material: accepted.snapshot,
+         spriteRegion: row.source.spriteRegion,
+       };
+@@ -234,6 +236,7 @@
+       eye === undefined ? [] : [eye],
+       sortSources,
+       combinedTranslucency ||
++        request.recordMode === 'transmission' ||
+         request.recordMode === 'transparent' ||
+         request.recordMode === 'oit-residual',
+     );
+--- original/record/mesh-ssbo.ts
++++ local019/record/mesh-ssbo.ts
+@@ -671,6 +671,7 @@
+  * remains singleton so its geometry pass keeps one projection row per draw.
+  */
+ export interface FoldRenderableLike {
++  readonly sortKey?: number;
+   readonly transform: { readonly world: Float32Array };
+   readonly material: import('../render-system-extract').MaterialSnapshot;
+   readonly spriteRegion?: import('../sprite-region').SpriteRegion | undefined;
+@@ -890,6 +891,8 @@
+   renderableIndex: number,
+   renderables: readonly FoldRenderableLike[],
+ ): number {
++  const explicit = renderables[renderableIndex]?.sortKey;
++  if (explicit !== undefined && Number.isFinite(explicit)) return explicit;
+   const w = renderables[renderableIndex]?.transform.world;
+   if (w === undefined) return 0;
+   // mode 0 (LAYER_Z): sort-axis is Z, column 3 row 2 = world[14].
+--- original/components/sort-key.ts
++++ local019/components/sort-key.ts
+@@ -3,8 +3,7 @@
+ // Schema: 1 f32 column (value). Entity-level sort override read at extract
+ // time and carried on Points/Lines retained snapshots. The mesh transparent
+ // order owner, `TransparentSortCache` (systems/transparent-dispatch.ts),
+-// currently derives its secondary key from TransparentSortConfig.mode only
+-// and does not read SortKey.
++// consumes this override before its configured distance/layer formula.
+ //
+ // Like Layer, SortKey is a generic ECS renderer component — NOT a
+ // 2D-only special. 3D entities may also carry SortKey to bias their
+@@ -38,7 +37,7 @@
+  * magnitudes work but cross-layer biasing should usually go through
+  * `Layer` instead.
+  *
+- * Intended override priority (not yet consumed by `TransparentSortCache`):
++ * Override priority in the local019 mesh sort owner:
+  *
+  *   if (world.has(entity, SortKey)) {
+  *     sortValue = world.get(entity, SortKey).value;
+--- original/systems/transparent-dispatch.ts
++++ local019/systems/transparent-dispatch.ts
+@@ -14,6 +14,8 @@
+ export interface TransparentSortSource {
+   readonly transform: { readonly world: Float32Array };
+   readonly material?: MaterialSnapshot;
++  readonly sortKey?: number;
++  readonly localAabb?: Float32Array;
+ }
+ 
+ /**
+@@ -28,13 +30,18 @@
+   camera: CameraSnapshot | undefined,
+ ): number {
+   const renderable = renderables.at(entry.renderableIndex);
++  if (renderable?.sortKey !== undefined && Number.isFinite(renderable.sortKey)) return renderable.sortKey;
+   const w = renderable?.transform.world;
+   if (mode === TRANSPARENT_SORT_MODE_DISTANCE) {
+     if (w === undefined || camera === undefined) return 0;
+     const camPos = camera.position;
+-    const dx = (w[12] ?? 0) - (camPos[0] ?? 0);
+-    const dy = (w[13] ?? 0) - (camPos[1] ?? 0);
+-    const dz = (w[14] ?? 0) - (camPos[2] ?? 0);
++    // Imported assemblies may have their origin at the venue origin. Sort
++    // their actual bounds centre, preserving world-space parents/scale.
++    const a = renderable?.localAabb;
++    const x = a ? (a[0]+a[3])*.5 : 0, y = a ? (a[1]+a[4])*.5 : 0, z = a ? (a[2]+a[5])*.5 : 0;
++    const dx = w[0]*x+w[4]*y+w[8]*z+w[12] - (camPos[0] ?? 0);
++    const dy = w[1]*x+w[5]*y+w[9]*z+w[13] - (camPos[1] ?? 0);
++    const dz = w[2]*x+w[6]*y+w[10]*z+w[14] - (camPos[2] ?? 0);
+     return -(dx * dx + dy * dy + dz * dz);
+   }
+   const posY = w?.[13] ?? 0;
+@@ -118,10 +125,12 @@
+       keys[slot] = value;
+     }
+     const compare = (a: number, b: number): number => {
++      const da = dispatch.at(a) as DispatchEntry;
++      const db = dispatch.at(b) as DispatchEntry;
++      // Explicit display hierarchy applies in 3D distance mode too. The
++      // depth test remains enabled; layers never turn objects into HUD.
++      if (da.layer !== db.layer) return da.layer - db.layer;
+       if (mode !== TRANSPARENT_SORT_MODE_DISTANCE) {
+-        const da = dispatch.at(a) as DispatchEntry;
+-        const db = dispatch.at(b) as DispatchEntry;
+-        if (da.layer !== db.layer) return da.layer - db.layer;
+         const va = keys[a] as number;
+         const vb = keys[b] as number;
+         if (va < vb) return -1;
+--- original/systems/pass-selector.ts
++++ local019/systems/pass-selector.ts
+@@ -11,6 +11,15 @@
+ // mutable aliases. Only these exact identities bypass raw selector observation.
+ export const FORWARD_PASS_SELECTOR = Object.freeze({
+   LightMode: Object.freeze(['Forward'] as const),
++});
++/** Local optics extension: untagged passes keep the original inner stage. */
++export const REFRACTION_INNER_PASS_SELECTOR = Object.freeze({
++  LightMode: Object.freeze(['Forward'] as const),
++  RefractionLayer: Object.freeze(['0'] as const),
++});
++export const REFRACTION_OUTER_PASS_SELECTOR = Object.freeze({
++  LightMode: Object.freeze(['Forward'] as const),
++  RefractionLayer: Object.freeze(['1'] as const),
+ });
+ /** Separate transmission backs read the opaque backdrop before the front copy. */
+ export const TRANSMISSION_BACK_PASS_SELECTOR = Object.freeze({
+@@ -52,7 +61,7 @@
+   // Public/custom selectors retain eager getter/throw ordering. In particular,
+   // Object.keys plus short-circuit reads is not equivalent to Object.entries.
+   for (const [key, allowedValues] of Object.entries(selector)) {
+-    const passValue = tags[key];
++    const passValue = tags[key] ?? (key === 'RefractionLayer' ? '0' : undefined);
+     if (passValue === undefined) return false;
+     if ((allowedValues as readonly string[]).length === 0) return false;
+     if (!(allowedValues as readonly string[]).includes(passValue)) return false;

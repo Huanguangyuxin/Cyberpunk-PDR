@@ -1,0 +1,11 @@
+Template Disposition
+- Runtime/controller code: ADAPT — retain native FPS, replace V4 spawn and colliders.
+- Player character and animation: KEEP — invisible first-person capsule; no people added.
+- Scene entities and composition: REPLACE — user WorkBuddy V4 source.
+- Meshes and materials: REPLACE — V4 mesh batches and portable baked procedural maps.
+- Lighting and environment: ADAPT — V4 light positions, Engine intensity conversion and native local fog.
+- UI and copy: KEEP — existing English controls.
+- Template tests: REWRITE — V4 navigation and stair geometry.
+- Residual template identifiers allowed at delivery: existing afterlife plugin namespaces and GUIDs for compatibility.
+Source: /Users/arkliang/WorkBuddy/2026-10-27-19-13-32/cyberpunk_bar/cyberpunk_bar_v4.blend
+Original source and V3 untouched. Engine stays 0.4.18. No publication.

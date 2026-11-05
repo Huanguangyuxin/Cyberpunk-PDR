@@ -1,0 +1,25 @@
+Delivery scope: local playable scene in pinned ForgeaX Engine 0.4.18, not Studio, no publication.
+
+Template Disposition
+- Runtime/controller code: ADAPT — retain working WASD/mouse/physics lifecycle; replace spawn, camera, collision layout and area labels for V3.
+- Player character and animation: KEEP — invisible first-person capsule; static Blender figures are scale references, not NPCs.
+- Scene entities and composition: REPLACE — import approved Lizzie V3 40x28m two-storey layout.
+- Meshes and materials: REPLACE — Blender V3 geometry, portable baked PBR inputs and material batches; source .blend remains separate.
+- Lighting and environment: ADAPT — use V3 imported local lights and new native fog bounds and neon circuit bindings.
+- UI and copy: ADAPT — retain pointer lock/keyboard interaction; identify V3 zones in runtime projection.
+- Template tests: REWRITE — retain input, density and flicker tests; replace obsolete annex/old-layout route tests with V3 route, stage and stair checks.
+- Residual template identifiers allowed at delivery: internal project/pack/plugin GUIDs and afterlife namespace preserve existing runtime identity.
+
+Need: imported scene, material closure and stable GUID loading.
+Use: native glTF importer, sidecar authority and existing scene Pack.
+Proof: asset import/verify, typecheck/tests, actual browser screenshot and runtime asset load.
+
+Need: walk the room, stage and upper gallery.
+Use: existing Rapier CharacterController and updated native cuboid collision author source.
+Proof: route checks plus actual running input, collision/height observation and reload.
+
+Need: visible neon and haze.
+Use: imported punctual lights, native VolumetricFog and existing neon plugin with V3 circuit names.
+Proof: actual browser pixels and live renderer/projection evidence.
+
+Defer: engine upgrade, publication, NPC behavior, full Blender Cycles parity and material-by-material artistic refinement.

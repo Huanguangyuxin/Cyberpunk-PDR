@@ -1,0 +1,335 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "PDR_Official_ForgeAX_Dark_Optical_Backing",
+        "PDR_Official_ForgeAX_Enclosure",
+        "PDR_Official_ForgeAX_Orange_Face",
+        "PDR_Official_ForgeAX_Wall_Mount_1",
+        "PDR_Official_ForgeAX_Wall_Mount_2",
+        "PDR_Official_ForgeAX_Root"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_FORGEAX_OFFICIAL_D080.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Cube.001"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Cube.002"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:PDR_Official_ForgeAX_Orange_Face"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Cube.003"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Cube.004"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:Cube.001": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19fd2-3fe1-706c-8d9f-456929f38fd1",
+          "slotName": "D077_Logo_Negative_Space",
+          "sourceKey": "material:D077_Logo_Negative_Space"
+        }
+      ]
+    },
+    "mesh:Cube.002": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19fd2-3fe1-706c-8d9f-456a2cdbfe33",
+          "slotName": "D077_Logo_Anodized_Frame",
+          "sourceKey": "material:D077_Logo_Anodized_Frame"
+        }
+      ]
+    },
+    "mesh:Cube.003": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19fd2-3fe1-706c-8d9f-456a2cdbfe33",
+          "slotName": "D077_Logo_Anodized_Frame",
+          "sourceKey": "material:D077_Logo_Anodized_Frame"
+        }
+      ]
+    },
+    "mesh:Cube.004": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19fd2-3fe1-706c-8d9f-456a2cdbfe33",
+          "slotName": "D077_Logo_Anodized_Frame",
+          "sourceKey": "material:D077_Logo_Anodized_Frame"
+        }
+      ]
+    },
+    "mesh:PDR_Official_ForgeAX_Orange_Face": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19fd2-3fe1-706c-8d9f-456bb977b20c",
+          "slotName": "D077_Official_ForgeAX_E8692C",
+          "sourceKey": "material:D077_Official_ForgeAX_E8692C"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19fd2-3fe0-7963-a927-eeb687091025",
+      "kind": "mesh",
+      "name": "Cube.001",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:Cube.001"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-45658f809f5f",
+      "kind": "mesh",
+      "name": "Cube.002",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:Cube.002"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-45668af0980c",
+      "kind": "mesh",
+      "name": "PDR_Official_ForgeAX_Orange_Face",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:PDR_Official_ForgeAX_Orange_Face"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-45679b393d06",
+      "kind": "mesh",
+      "name": "Cube.003",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:Cube.003"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-4568e1d4264a",
+      "kind": "mesh",
+      "name": "Cube.004",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:Cube.004"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-456929f38fd1",
+      "kind": "material",
+      "name": "D077_Logo_Negative_Space",
+      "sourceIndex": 0,
+      "sourceKey": "material:D077_Logo_Negative_Space"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-456a2cdbfe33",
+      "kind": "material",
+      "name": "D077_Logo_Anodized_Frame",
+      "sourceIndex": 1,
+      "sourceKey": "material:D077_Logo_Anodized_Frame"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-456bb977b20c",
+      "kind": "material",
+      "name": "D077_Official_ForgeAX_E8692C",
+      "sourceIndex": 2,
+      "sourceKey": "material:D077_Official_ForgeAX_E8692C"
+    },
+    {
+      "guid": "01a19fd2-3fe1-706c-8d9f-456c597a27b3",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

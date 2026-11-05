@@ -1,0 +1,21 @@
+00:00.488  blend            | Read blend: "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_020/source/WB020_stage_led_wedge_A.blend"
+BlenderMCP addon registered
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+18:34:50 | INFO: Starting glTF 2.0 export
+18:34:50 | INFO: Extracting primitive: ME_WB020_STAGE_LED_WEDGE_BODY
+18:34:50 | INFO: Primitives created: 1
+18:34:50 | INFO: Extracting primitive: ME_WB020_STAGE_LED_WEDGE_CARRIER.001
+18:34:50 | INFO: Primitives created: 1
+18:34:50 | INFO: Extracting primitive: ME_WB020_STAGE_LED_WEDGE_EDGE_CYAN
+18:34:50 | INFO: Primitives created: 1
+18:34:50 | INFO: Extracting primitive: ME_WB020_STAGE_LED_WEDGE_LED
+18:34:50 | INFO: Primitives created: 1
+18:34:50 | INFO: Finished glTF 2.0 export in 0.01886892318725586 s
+
+S30_OK 9e8c27dd9b6791339e990123e3ecc112571f672941211a05801721b405612d3d ['KHR_materials_emissive_strength'] 3158 ['WB020_STAGE_LED_WEDGE_BODY', 'WB020_STAGE_LED_WEDGE_CARRIER', 'WB020_STAGE_LED_WEDGE_EDGE_CYAN', 'WB020_STAGE_LED_WEDGE_LED', 'WB020_STAGE_LED_ROOT']
+{"WB020_M_WEDGE_METAL": {"emissiveFactor": null, "emissive_strength": null, "doubleSided": false, "baseColor": [0.054999999701976776, 0.052000001072883606, 0.06199999898672104, 1], "metal": 0.8999999761581421, "rough": 0.3199999928474426}, "WB020_M_WEDGE_CARRIER": {"emissiveFactor": null, "emissive_strength": null, "doubleSided": false, "baseColor": [0.03500000014901161, 0.035999998450279236, 0.03999999910593033, 1], "metal": 0.800000011920929, "rough": 0.44999998807907104}, "WB020_M_WEDGE_EDGE_CYAN": {"emissiveFactor": [0.05000000074505806, 0.7200000286102295, 1], "emissive_strength": 4, "doubleSided": false, "baseColor": [0.44999998807907104, 0.8500000238418579, 1, 1], "metal": 0, "rough": 0.3499999940395355}, "WB020_M_WEDGE_LED_PINK": {"emissiveFactor": [1, 0.05999999865889549, 0.6200000047683716], "emissive_strength": 3.5, "doubleSided": false, "baseColor": [0.4000000059604645, 0.029999999329447746, 0.30000001192092896, 1], "metal": 0, "rough": 0.4000000059604645}}
+BlenderMCP addon unregistered
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

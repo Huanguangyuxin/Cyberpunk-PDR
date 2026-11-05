@@ -1,0 +1,250 @@
+{
+  "preview": "http://localhost:53665/?view=stage",
+  "build": "032e5e66200f5955e6c4eb3e6e80fb5ea6e30bd0958a8df2f9f4d268cc18b771",
+  "rollbackBuild": "b22b9acef68d7b4f22c340703f550dd9c9e27b8d9e3f821c5584bef2863223d1",
+  "rollbackPath": "history/D081-before-plaque-glow/dist",
+  "shader": "632f519b9dcd1d28fe1a5a8a5b2f3eccf7667216f896ccab4811bcfad332adba",
+  "frames": {
+    "stage": {
+      "url": "http://localhost:53673/?view=stage",
+      "frame": 238,
+      "png": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Optics_019/evidence/D081-coral-stage/stage-0.png",
+      "sha256": "656c1868010a37b32d16ae5515f897959488f73197d89c77f65f24637d84e143"
+    },
+    "bloom-off": {
+      "url": "http://localhost:53673/?view=stage&renderDebug=bloom-off",
+      "frame": 242,
+      "png": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Optics_019/evidence/D081-coral-bloom-off/stage-0.png",
+      "sha256": "74121b035d4a4e391e898f94af0176c998f54e33538070225e6ed63ec4eaeafa"
+    },
+    "stage-angle": {
+      "url": "http://localhost:53673/?view=stage-led",
+      "frame": 208,
+      "png": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Optics_019/evidence/D081-coral-stage-angle/stage-led-0.png",
+      "sha256": "6ce11a0e242bf6325b660afc0c69e709ce1bd7a138d46f756d7e5f7ed53b0aea"
+    }
+  },
+  "rois": {
+    "face": [
+      710,
+      385,
+      884,
+      394
+    ],
+    "leftHalo": [
+      672,
+      409,
+      683,
+      555
+    ],
+    "rightHalo": [
+      917,
+      409,
+      928,
+      555
+    ],
+    "leftWall": [
+      615,
+      420,
+      651,
+      590
+    ],
+    "rightWall": [
+      950,
+      420,
+      979,
+      590
+    ]
+  },
+  "measurements": {
+    "stage": {
+      "face": {
+        "meanDisplayLumaLinear": 0.7862172363766455,
+        "medianRGB": [
+          255,
+          225,
+          181
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftHalo": {
+        "meanDisplayLumaLinear": 0.13162460112416463,
+        "medianRGB": [
+          174,
+          59,
+          65
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightHalo": {
+        "meanDisplayLumaLinear": 0.15398132156965225,
+        "medianRGB": [
+          176,
+          75,
+          90
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftWall": {
+        "meanDisplayLumaLinear": 0.04925327152859492,
+        "medianRGB": [
+          103,
+          36,
+          59
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightWall": {
+        "meanDisplayLumaLinear": 0.04958949965678671,
+        "medianRGB": [
+          100,
+          40,
+          54
+        ],
+        "nearWhitePercent": 0.0
+      }
+    },
+    "bloom-off": {
+      "face": {
+        "meanDisplayLumaLinear": 0.7668997978630058,
+        "medianRGB": [
+          255,
+          222,
+          175
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftHalo": {
+        "meanDisplayLumaLinear": 0.0525639377941221,
+        "medianRGB": [
+          98,
+          42,
+          57
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightHalo": {
+        "meanDisplayLumaLinear": 0.07354714415818718,
+        "medianRGB": [
+          105,
+          61,
+          84
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftWall": {
+        "meanDisplayLumaLinear": 0.03335925541454258,
+        "medianRGB": [
+          74,
+          33,
+          58
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightWall": {
+        "meanDisplayLumaLinear": 0.03349964037308151,
+        "medianRGB": [
+          70,
+          36,
+          52
+        ],
+        "nearWhitePercent": 0.0
+      }
+    },
+    "before": {
+      "face": {
+        "meanDisplayLumaLinear": 0.5547497226843937,
+        "medianRGB": [
+          255,
+          179,
+          115
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftHalo": {
+        "meanDisplayLumaLinear": 0.02760481189801875,
+        "medianRGB": [
+          68,
+          28,
+          51
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightHalo": {
+        "meanDisplayLumaLinear": 0.038075262013271424,
+        "medianRGB": [
+          72,
+          41,
+          66
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftWall": {
+        "meanDisplayLumaLinear": 0.031570136633716724,
+        "medianRGB": [
+          67,
+          29,
+          59
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightWall": {
+        "meanDisplayLumaLinear": 0.03125767319436037,
+        "medianRGB": [
+          63,
+          33,
+          53
+        ],
+        "nearWhitePercent": 0.0
+      }
+    },
+    "firstGlow": {
+      "face": {
+        "meanDisplayLumaLinear": 0.8705826719666698,
+        "medianRGB": [
+          255,
+          238,
+          204
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftHalo": {
+        "meanDisplayLumaLinear": 0.16772114534374843,
+        "medianRGB": [
+          180,
+          80,
+          80
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightHalo": {
+        "meanDisplayLumaLinear": 0.18933373292017847,
+        "medianRGB": [
+          181,
+          92,
+          102
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "leftWall": {
+        "meanDisplayLumaLinear": 0.061736514907418855,
+        "medianRGB": [
+          112,
+          46,
+          71
+        ],
+        "nearWhitePercent": 0.0
+      },
+      "rightWall": {
+        "meanDisplayLumaLinear": 0.062249726673738424,
+        "medianRGB": [
+          108,
+          49,
+          67
+        ],
+        "nearWhitePercent": 0.0
+      }
+    }
+  },
+  "measurementLimit": "Fixed view/exposure, with moving heads and mist phase unlocked. These are rendered pixel observations, not source photometry."
+}

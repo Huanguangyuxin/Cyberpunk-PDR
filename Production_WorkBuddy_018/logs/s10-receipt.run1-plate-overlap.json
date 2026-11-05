@@ -1,0 +1,269 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "blender": "5.2.3 LTS",
+ "source_in": "source/baseline/club-wb015-upper-final_0de38371.blend",
+ "source_in_sha256": "0de38371e5ee37c73a27234b1a3a8e24055d90b2af105d3d9acd67a1a78ccad6",
+ "objects": {
+  "WB018_CEIL_BAND_FRONT": "G1 front hall chamfered double cool band on dark bulkhead raft z6.55-7.0, Z-fold band z6.78; rods ray-anchored to roof beams/slab",
+  "WB018_ROOF_LIGHT_BANDS_COOL": "replace-in-place candidate for FIX_ROOF_LIGHT_BANDS (identical geometry); lavender diffusers -> cool white",
+  "WB018_BASE_LED_LINES": "G2 pink base LED channels: 4 pylons x4 faces + 18 column collars (0.40 sq inside existing 0.44 plates), z<=0.11",
+  "WB018_STAGE_FLANK_PANELS": "G3 north-wall stage flanks x+-6.92..8.24, z0.25-6.25: original acoustic weave modules 0.6 m tile + 2 tall pink light boxes per side; avoids tray J-boxes at x+-6.45..6.75"
+ },
+ "checks": {
+  "front_rods": [
+   {
+    "xy": [
+     3.975,
+     4.6
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -3.975,
+     4.6
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     3.975,
+     7.2
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -3.975,
+     7.2
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     3.975,
+     9.8
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -3.975,
+     9.8
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     3.975,
+     12.4
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -3.975,
+     12.4
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     3.975,
+     15.0
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -3.975,
+     15.0
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -1.2,
+     2.725
+    ],
+    "z": [
+     7.0,
+     8.2
+    ],
+    "anchor": "ARCH_ROOF_BEAMS"
+   },
+   {
+    "xy": [
+     -1.2,
+     17.025
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     1.2,
+     2.725
+    ],
+    "z": [
+     7.0,
+     8.2
+    ],
+    "anchor": "ARCH_ROOF_BEAMS"
+   },
+   {
+    "xy": [
+     1.2,
+     17.025
+    ],
+    "z": [
+     7.0,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     -2.0,
+     6.2
+    ],
+    "skipped": "no clear structural anchor above (service in the way)"
+   },
+   {
+    "xy": [
+     1.4,
+     7.0
+    ],
+    "z": [
+     6.88,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   },
+   {
+    "xy": [
+     2.2,
+     8.8
+    ],
+    "z": [
+     6.88,
+     8.6
+    ],
+    "anchor": "ARCH_ROOF_SLAB"
+   }
+  ],
+  "base_line_count": 88,
+  "triangle_overlaps_with_existing": {
+   "WB018_CEIL_BAND_FRONT": [
+    [
+     "ARCH_ROOF_BEAMS",
+     24
+    ],
+    [
+     "ARCH_ROOF_SLAB",
+     168
+    ],
+    [
+     "MEP_TRANSVERSE_SERVICES",
+     40
+    ]
+   ],
+   "WB018_BASE_LED_LINES": [
+    [
+     "ARCH_COLUMNS",
+     552
+    ],
+    [
+     "ARCH_COLUMNS_WB015",
+     181
+    ],
+    [
+     "ARCH_PYLONS",
+     64
+    ]
+   ],
+   "WB018_STAGE_FLANK_PANELS": []
+  },
+  "front_raft_lowest_z": 6.524,
+  "note": "G2 collars/lines stay within existing pylon skirts (+8 mm) and 0.44 column plates; G3 is 0.17 m proud of the north wall behind the stage flank (no walkway); G1 is above 6.5 m"
+ },
+ "hidden_in_candidate_copy": [
+  "FIX_ROOF_LIGHT_BANDS"
+ ],
+ "dcc_light_change": {
+  "L13_CEIL_L_02": {
+   "before": {
+    "pos": [
+     3.0,
+     8.5,
+     7.28000020980835
+    ],
+    "color": [
+     0.7200000286102295,
+     0.6200000047683716,
+     1.0
+    ],
+    "W": 950.0
+   },
+   "after": {
+    "pos": [
+     1.6,
+     10.2,
+     6.45
+    ],
+    "aim": "straight down",
+    "color": [
+     0.7,
+     0.84,
+     1.0
+    ],
+    "W": 950.0
+   }
+  }
+ },
+ "output": "source/club-wb018-candidates.blend",
+ "output_sha256": "eefa2b905d6b26b52d2bac8233f2a620990552b031e6db92551c0d0c06b6b8ab"
+}

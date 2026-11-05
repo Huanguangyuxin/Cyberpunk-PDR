@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_020/scripts/s66_glb_check.py", line 16, in <module>
+    P = acc(pr['attributes']['POSITION']); N = acc(pr['attributes']['NORMAL']); UV = acc(pr['attributes']['TEXCOORD_0']); TG = acc(pr['attributes']['TANGENT']); I = acc(pr['indices']).astype(int).reshape(-1, 3)
+                                                                                                                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'TANGENT'

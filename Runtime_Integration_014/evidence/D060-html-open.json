@@ -1,0 +1,28 @@
+{
+  "html": {
+    "path": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Deliverables/Cyberpunk-PDR.html",
+    "bytes": 143631358,
+    "sha256": "0b51d84398b697f3f6163a3b31b1e6be53813a93595338b2cce58e2e7ba82a2e"
+  },
+  "distManifestSha256": "db03b29dd8b5f0ac54299d35a9c4f825c5b18177678aa6064f87d73fa50101b3",
+  "embeddedAssets": 152,
+  "sourceIdentity": "All9D059 author source SHA unchanged after official packaging",
+  "actualBrowser": "Google Chrome via CUA, tab325910903",
+  "url": "http://127.0.0.1:53861/Cyberpunk-PDR.html",
+  "actions": [
+    "Selected native Chrome tab and raised window",
+    "Clicked actual enter-scene button once"
+  ],
+  "observed": {
+    "sceneVisible": true,
+    "loadingVisible": false,
+    "fatalVisible": false,
+    "fpsDisplayed": 33,
+    "collisionBinding": "193/193 ready"
+  },
+  "status": "Exact new HTML actually rendered over loopback HTTP; no new input/route regression",
+  "notClaimed": [
+    "Direct file:// startup",
+    "Full nested optics or independent final art acceptance"
+  ]
+}

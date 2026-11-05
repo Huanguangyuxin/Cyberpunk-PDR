@@ -1,0 +1,19 @@
+{
+  "id": "afterlife-engine",
+  "name": "Cyberpunk PDR - Optics019 local engine extension",
+  "schemaVersion": "3.0.0",
+  "roots": {
+    "engine": "eba7fdae-a1c8-5e0c-bf15-eec5e3817a29",
+    "frontend": "4324f55b-d8bd-5e7b-a161-308f7656a06b"
+  },
+  "assetRoots": [
+    "assets/pdr-newlayout.pack.ts",
+    "assets/pdr-navigation.ui.html.meta.json",
+    "assets/Club_Upper_WB015_bcf6514f.glb.meta.json",
+    "assets/PDR_Fluids_D050_e14010f1.glb.meta.json",
+    "assets/PDR_Fixtures_D051.glb.meta.json",
+    "assets/PDR_Hero_Glass_D052.glb.meta.json",
+    "assets/WB018_lizzie_badb10cd.glb.meta.json",
+    "assets/PDR_FORGEAX_OFFICIAL_D080.glb.meta.json"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "status": "candidate, NOT applied to Engine; Codex integrates serially; native count stays 32, no light added",
+ "units": "Engine: candela, metres, linear RGB, half-angle degrees, glTF Y-up (Blender (x,y,z) -> glTF (x,z,-y))",
+ "changes": [
+  {
+   "light": "L13_CEIL_L_02",
+   "type": "spot",
+   "current": {
+    "position_gltf": [
+     3.0,
+     7.28,
+     -8.5
+    ],
+    "intensity": 1100,
+    "range": 24,
+    "innerConeDeg": 36,
+    "outerConeDeg": 62,
+    "color": [
+     0.4,
+     0.13,
+     1.0
+    ],
+    "source": "pdr-newlayout-lighting.ts n<=14 + CEIL_L odd colour"
+   },
+   "proposed": {
+    "position_gltf": [
+     1.6,
+     6.45,
+     -10.2
+    ],
+    "direction": [
+     0,
+     -1,
+     0
+    ],
+    "intensity": 1100,
+    "range": 24,
+    "innerConeDeg": 36,
+    "outerConeDeg": 62,
+    "color": [
+     0.7,
+     0.84,
+     1.0
+    ]
+   },
+   "why": "R11/R12 + video 02:24/03:18: the large cool-white folded bands are the top light source. Moving L13 just under the new WB018_CEIL_BAND_FRONT raft (inside its open centre, under CEIL_L_02) makes that visible band the real source of the floor light it implies; violet->cool white matches the reference. Apply after tuneNewLayout (that function re-colours CEIL_L lights by name)."
+  },
+  {
+   "param": "pdr-newlayout.pack.ts artAmbient",
+   "current": [
+    0.46,
+    0.16,
+    0.65
+   ],
+   "proposed": [
+    0.22,
+    0.26,
+    0.52
+   ],
+   "optional": true,
+   "why": "TASK lists full-venue pink ambient as a defect; the D057 Engine frame shows a uniformly pink-tinted floor. Proposed colour keeps Rec.709 luminance (.259 -> .270) and only shifts hue to the cold blue-dark base; pink then comes from fixtures/lines. Not exposure. Codex decides; not visible in DCC (Blender world is near black)."
+  },
+  {
+   "emissive": "FIX_ROOF_LIGHT_BANDS diffusers (M_BAND_LAV, M_BAND_VOID)",
+   "current": "lavender emission (0.55,0.50,1.0)/(0.45,0.55,1.0)",
+   "proposed": "M18_BAND_COOL emission (0.70,0.86,1.0) via the WB018_ROOF_LIGHT_BANDS_COOL replacement node",
+   "why": "same reference; DCC A/B shows only a small difference because both read near-white after tone mapping - low priority"
+  }
+ ],
+ "engine_note": "Emissive bands/lines/boxes do not illuminate neighbours in the Engine (no GI); in the Blender renders they do (Cycles). Only L13 carries real light for G1. G2/G3 rely on existing L18 portal pink and stage wash L22-L27."
+}

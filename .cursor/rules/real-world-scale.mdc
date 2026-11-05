@@ -1,0 +1,17 @@
+---
+description: Cyberpunk 全场米制人体尺度与第一人称资产验收
+alwaysApply: true
+---
+
+# 真实尺度
+
+先读 AGENTS.md、docs/DECISIONS.md、docs/SCALE_STANDARD.md 与最新 PROGRESS。
+- 1Unit=1m；Blender METRIC scale_length=1，Z-up；ForgeaX/glTF Y-up 映射 (x,z,-y)，只转换一次。
+- 站人真实 1.75m，站眼 1.64m、坐眼 1.20m，相对局部脚底楼面；坐姿使用同尺寸肢段，禁止压扁模型。
+- 尺度镜头 16:9，HFOV75°、VFOV46.6921257°，固定曝光/距离/投影做前后对比。
+- 分别记录座高、桌高、背高、外包围、父链缩放和 Engine 实际世界尺寸，不能以总高推断座高。
+- 禁止统一放大；不得为截图改变建筑或冻结实例位置。建筑改动须单列并复核梯、动线、九机位。
+- 每件资产提供本地/世界 bbox、单位、原点、Transform、类别目标及导出/运行证据；根缩放应为1，例外注明。
+- 用 1m 立方体和 1.75m 人体验证 DCC→GLB→Engine，未知项写未验证。
+- 人体/标尺必须可隐藏；不得以 AI 图、DCC 图或 CSV 代替引擎运行。
+- 改动登记覆盖清单，保留前版、同机位实图及回滚入口。

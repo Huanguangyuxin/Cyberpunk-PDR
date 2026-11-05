@@ -1,0 +1,99 @@
+{
+ "receipt": "WB018 delivery receipt",
+ "written_at": "2026-11-02T13:36:23+08:00",
+ "producer": "WorkBuddy Claude-Opus-5.5",
+ "key": {
+  "candidates_blend": "284a0c66eaa5b158bf252f1c031e946db9e9b728e11ac16c297a02e2d51483db",
+  "selected_glb": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+  "baseline_copy_0de38371": "0de38371e5ee37c73a27234b1a3a8e24055d90b2af105d3d9acd67a1a78ccad6"
+ },
+ "failures_kept": [
+  {
+   "run": "s10 run1",
+   "what": "beam-clamp plates at y2.7 overlapped MEP_TRANSVERSE_SERVICES (40 tris); added service-clearance test",
+   "evidence": "logs/s10-run1.log, logs/s10-receipt.run1-plate-overlap.json"
+  },
+  {
+   "run": "r1 eecde3b1",
+   "what": "front strips too thin (read as lines); tall pink boxes clipped to white",
+   "evidence": "source/history/*_r1_*, renders/after_r1_eecde3b1"
+  },
+  {
+   "run": "r2 e6418d5e",
+   "what": "tall boxes still pink-white (pale base + emission 1.8)",
+   "evidence": "source/history/*_r2_*, renders/after_r2_e6418d5e"
+  },
+  {
+   "run": "texture v1",
+   "what": "slats too wide/bright vs reference (overwritten after view; generator params changed in s05)",
+   "evidence": "not kept as file"
+  }
+ ],
+ "files_sha256": {
+  "README.md": "e13d4e92a4a4462044c1b48aad9554969c42570a6f49ede45814857265f2f7b4",
+  "TASK.md": "8214e9bed09146d0fa6a0278437f6a7b43202980243dbfce5e7b0666f73aa6c7",
+  "design/acoustic_weave.svg": "6e15fb77311b5b0d0aff18c0081d3a33e14bb0f17d53df978a02c115028795c4",
+  "design/integration-map.json": "e75502f04eef1c92801c063b396e30eeaa2d19e2923e2b91a45eb6447d3c3c7d",
+  "design/light-param-candidate.json": "97e61aa1c0fa6e197b4a4fce981d7e8e72fc7afd2eb6af02f77be94beb736ef2",
+  "exports/WB018_lizzie_candidates.glb": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+  "handoff/read-only-input-sha256.json": "2b0a9c58e52174b2dda164e73edb83815aafa0446783f80badf1f9b0a0c96578",
+  "logs/dispatch-ui-receipt.json": "8d3f2d71cc1ad76850fbd3b044d5b2f06cff8647414078671acfba31afd3d95f",
+  "logs/read-receipt-wb018.json": "9d3b3657e840a48b892151c9a3bb0b1d9c4b3333f8bd2f2a0c640dba05b8a160",
+  "logs/s01-probe.json": "64ff228a3c1aa8b2bdcbc76dbe77377b45437d819ea2351774c3e25bfb5a025f",
+  "logs/s01-probe.log": "eeef92c1a7b9a1ca9cf06594ce8c5ca6e40c8ad5de26dfe991c5cee047d2de66",
+  "logs/s05-textures.json": "654282fabdbbd18dd3b33cec2ddbe437a13c27caec1374727ec0082935db8781",
+  "logs/s10-receipt.json": "6a4ce7b2ee1053739bbbf0119abb17fb9c05a5d0e338d24658c1c5f1a9cab611",
+  "logs/s10-receipt.r1-eecde3b1.json": "b228c2af763a25424bcd0df2ad9c42a9d049311c1a1d7d8d3eb97e94b4b23e50",
+  "logs/s10-receipt.r2-e6418d5e.json": "4ce840beaa9d499fb93b3a86c4df0f5d1a6a7358015d22f532b819854ded8a6f",
+  "logs/s10-receipt.run1-plate-overlap.json": "5fab437b1dbba2c8a276e3e850cf423933260b83d30406bf1e0ffc8394b625ac",
+  "logs/s10-run1.log": "d843c7b96e9062d05c77e94a417efb6cac01f47b1576e7f7ef068b637a89e9c4",
+  "logs/s10-run2.log": "2ccf20303f87137a61f707345ffe0e467b555b136853c5470ce6195235ca8c92",
+  "logs/s10-run3.log": "5f330788720d866da54cb881f0bbfe9f0168795803ef64aae0c13b2680958ea9",
+  "logs/s10-run4.log": "6946b4f2c8dc5e11f82adaff3ce57aaefec820f04a9211236d21b3d1ba9a719f",
+  "logs/s20-after.log": "c7fbf88ce3f24b90404c40d66468d3cfa147fa4da62bbc32f59d9aa3abf52cd9",
+  "logs/s20-before.log": "ef965cb9acc240836ea111536cd07c35dbb18d5a8f9b9f858c9c3b6c5f18e1fb",
+  "logs/s30-export-receipt.json": "7bea2690b84be9e87f4410ce0730547f515602c09922d0639a539aa2f16889ec",
+  "logs/s30-export.log": "81b8ba2b72cba0121748ef765ba1150efd42f2ea8cd2f722de88045b191316dc",
+  "renders/WB018_before_after_sheet.png": "47b3a7c4a0d19bd6b0cbd6098656f2ae65c6bf003972f6534b87d4520dba3c44",
+  "renders/after/CAM01_ENTRANCE_after.png": "7d27da90b807e370b05e96708f21144db9ca092b728fad37cf4988e8bd21deae",
+  "renders/after/CAM04B_DEEP_UNDER_BRIDGE_after.png": "19ffed4929ca57aefd841d7956990e9cad12f921423cd7e66fe31bbbb8f29e3f",
+  "renders/after/WB018_FRONT_UP_after.png": "0c92c8dd4ba0d2c0f38482410c887c32e2426494005c588a6a0d9faa8d3201c2",
+  "renders/after/WB018_PYLON_BASE_after.png": "cd8c19620353865869e2f8de397a040694cee82b37ea27d81477fe2f25cfcf92",
+  "renders/after/WB018_STAGE_FLANK_after.png": "57d9ccdebe45829e119eca2e91cbb06fb0389e14052a387897db2e0788b2aa3e",
+  "renders/after/render-receipt-after.json": "47572254b9d4cba788fe44232578cf587962fb2a20e5a9d001b5f98d0eca47fd",
+  "renders/after_r1_eecde3b1/CAM01_ENTRANCE_after.png": "894d5bd43e6ce68b591e3eba7f8bab8ea29eeac65f7ad843468b52b9d2067629",
+  "renders/after_r1_eecde3b1/CAM04B_DEEP_UNDER_BRIDGE_after.png": "8e948efc8b569f061a5cc7404a940aefed6dc87263e7cbf2aac16fba77ae5d57",
+  "renders/after_r1_eecde3b1/WB018_FRONT_UP_after.png": "9f6c5c5b46aabda48286899b4a41f034780039bb37cd637156a3cf54fa47edc9",
+  "renders/after_r1_eecde3b1/WB018_PYLON_BASE_after.png": "ae842b77535aea80f8a3394112452c3875a8ac6d2860971fed94b2aff245c2e9",
+  "renders/after_r1_eecde3b1/WB018_STAGE_FLANK_after.png": "00409aafa5b81a6e4da56aadadd57a859120ccaa671ec903082c2f4cf607fef4",
+  "renders/after_r1_eecde3b1/render-receipt-after.json": "f85b762fb484a1201a9679edd9ac95c0e0e1a11fc2c13dda4c9271b561be7076",
+  "renders/after_r2_e6418d5e/CAM01_ENTRANCE_after.png": "64dd9c3fba2fde58e06870e2c68cf1fc0b893756b13ca42182865f1894a7eb93",
+  "renders/after_r2_e6418d5e/CAM04B_DEEP_UNDER_BRIDGE_after.png": "11762871d84b7a91d14097ed8a4b8ebc4ce0317801d29524da1d792c2aa91a15",
+  "renders/after_r2_e6418d5e/WB018_FRONT_UP_after.png": "84423d2a94b9bdfde2b13037d8efcd4b0cd7e454172492b3fb0c10f3eb7182a1",
+  "renders/after_r2_e6418d5e/WB018_PYLON_BASE_after.png": "95d8f310912dc10adc794807f51963c212c74ea88fab78d4c43bd45e9bc270f7",
+  "renders/after_r2_e6418d5e/WB018_STAGE_FLANK_after.png": "5f67b77b4695a6eac8c749c24f0dfae008d47118f1bc2edda30d50f47a71c4af",
+  "renders/after_r2_e6418d5e/render-receipt-after.json": "235bbf0764d0645b3943ebdec2cf373e5bfaa629b30103ef3f15600238bd8bca",
+  "renders/before/CAM01_ENTRANCE_before.png": "fda20f8594179f4ef8d15b5fd6e2e72a931a2cba4f8166a8c769959def0d38ff",
+  "renders/before/CAM04B_DEEP_UNDER_BRIDGE_before.png": "db0219a24a38a7864cc29122983404685baf10f8e3780860a5828aea92ff4cce",
+  "renders/before/WB018_FRONT_UP_before.png": "860c2aaae046d798fd99a554b7e226b22e037549d78fc2cf68734eabfe824d50",
+  "renders/before/WB018_PYLON_BASE_before.png": "472d0e48f623349e6912b31ff7ac18644a18e6709a7d65bb3b59aa7164bf68f6",
+  "renders/before/WB018_STAGE_FLANK_before.png": "1409c994f2897e907b3ed05c9b0d3fee660bed6efd5730573ead0f9a9b997cd2",
+  "renders/before/render-receipt-before.json": "2128b6075077e4fa88a974d3fc62e409d26ebe3c0acac8d82a2c3f1b25d256b1",
+  "scripts/lib/wb011_blender.py": "967bd7ff9774e67dbda2dde7afa02dadca09b7e264619da4cfb9514eea559058",
+  "scripts/s01_probe.py": "b5518176f470bf236ff773644fa5c0fc559bf2fd5be5fe2d8aa66d566feddc2f",
+  "scripts/s05_textures.py": "f05ab41c7ddc5ef5cb99ee4f48b5fbb85a05eee1100430d8c7d49336680af9b2",
+  "scripts/s10_candidates.py": "a08b635b21ba2f3466d8ce5ca84bdae92de5170166a70c71f943c0bba9e3b272",
+  "scripts/s20_render.py": "20cd7cd39552de769396be573f3bc7e2925ea6a0f69a78c63ccbc9705ea501ff",
+  "scripts/s30_export.py": "235c20e4714f79d424d4a59c1cca1983527366d56f5811bb277e61d931e01863",
+  "source/club-wb018-candidates.blend": "284a0c66eaa5b158bf252f1c031e946db9e9b728e11ac16c297a02e2d51483db",
+  "source/club-wb018-candidates.blend1": "eefa2b905d6b26b52d2bac8233f2a620990552b031e6db92551c0d0c06b6b8ab",
+  "textures/M18_ACOUSTIC_WEAVE_color.png": "2558110a766ddc88aacefeb182a225c3bffcafa004414202a53b6f1a8280046a",
+  "textures/M18_ACOUSTIC_WEAVE_normal.png": "d0d505a6c2a00de847204e635bed200118833cda9b87524c02bc92aa214f7a3b",
+  "textures/M18_ACOUSTIC_WEAVE_orm.png": "51b64d83de5557df6ce9525038a90a78a7dba007af90b85f9ee74f759c99ff59"
+ },
+ "history_sha256": {
+  "source/history/club-wb018-candidates_r2_e6418d5e.blend": "e6418d5e8a8864f1cc455fca3356aaad14979d404778018b0590d4dca6923b3f",
+  "source/history/club-wb018-candidates_r1_eecde3b1.blend": "eecde3b175c0a165fc91af784625f79f3872ba882b207e7951fb48d72286fe68"
+ },
+ "status": "producer self-check only; DCC renders not Engine; awaiting Codex serial integration"
+}

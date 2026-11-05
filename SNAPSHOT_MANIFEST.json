@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "snapshot": "Cyberpunk-PDR-2026-11-02",
+  "update": "D094",
+  "engine": "ForgeaX0.4.18 + isolated local native extension",
+  "previousUploadedCommit": "46e8cee601f4baeda1f547d6743460c05a726a92",
+  "deliveryState": "Packaged D094; hardware WebGPU multi-view verification (entrance, stairs, chairs, gallery, stage, upper-vip)",
+  "htmlSha256": "a27a9dbc373745ed09e16db2cc31cae762f6a560e7d33c363b6f19ca9a903ff6",
+  "distManifestSha256": "c1c002f6c2e1cb0f19a54ed46e783017eae6d8eeb849a701f4fdec9ab9889529",
+  "sourceMapping": {
+    "Engine_Workspace/afterlife-engine": "Engine_Optics_019/game"
+  },
+  "filesCopiedByteForByteThisUpdate": [
+    {
+      "path": "Deliverables/Cyberpunk-PDR.html",
+      "source": "Deliverables/Cyberpunk-PDR-D094.html",
+      "bytes": 145381690,
+      "sha256": "a27a9dbc373745ed09e16db2cc31cae762f6a560e7d33c363b6f19ca9a903ff6"
+    },
+    {
+      "path": "Deliverables/Cyberpunk-PDR.html.sha256",
+      "source": "Deliverables/Cyberpunk-PDR.html.sha256",
+      "bytes": 85,
+      "sha256": "2a9ce83e9c5d41e7a9266db43871645d1286fb3807a593e83b4acbc7d9a1be53"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-dance-floor-mist.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-dance-floor-mist.ts",
+      "bytes": 8577,
+      "sha256": "34a47452de4a3e29e264db76a8ff1bbbfc75291730c50fe06c9b02f5c978d577"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-display-hierarchy.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-display-hierarchy.ts",
+      "bytes": 65730,
+      "sha256": "4a1c941fdfbbfa0c63d6bbbbbcf6101f8491a9384aad5b745c59a5ade1cb2879"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-forgeax-brand-lighting.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-forgeax-brand-lighting.ts",
+      "bytes": 19746,
+      "sha256": "17b005684d4a9ffbb0f662e4833f077eacba36fb5fe97ae657709a7c5b71b129"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-newlayout.pack.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-newlayout.pack.ts",
+      "bytes": 49491,
+      "sha256": "675a99e47114b831cbb99ce1bd3964ba7169082ff9cda90ea5817939430bcc04"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-plant-repair.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-plant-repair.ts",
+      "bytes": 13675,
+      "sha256": "7034cc567423422d9da99113769bd8228c7571c5bcd71ad4921dede1bf576e8f"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-post-profile-wb017.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-post-profile-wb017.ts",
+      "bytes": 11378,
+      "sha256": "e2a4a862e3fecc9d549b321967881e73109fab5c86d39f765d47ae37f92aff64"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-spray-density.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-spray-density.ts",
+      "bytes": 3959,
+      "sha256": "f7170247f8ac0104e7e991952e2acd29d9beaabd461f8b1a148e1f3e223c773a"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-stage-mist.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-stage-mist.ts",
+      "bytes": 6564,
+      "sha256": "95659e0ac4b46f57d0f7a5c49ceb7e28bddedcb4237a7ddafa414139a358e91c"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-water-droplets.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-water-droplets.ts",
+      "bytes": 6375,
+      "sha256": "e5caa6d5c7b73e55f84966de3eb4cc25532eabf097f3461f8ef72f255ff06f54"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/pdr-wet-floor.ts",
+      "source": "Engine_Optics_019/game/assets/pdr-wet-floor.ts",
+      "bytes": 12994,
+      "sha256": "6811d1d6cdb5e5e2ffb4b4a71f2a41026a2a907da49e57578cca4cc82d6e61de"
+    },
+    {
+      "path": "Engine_Workspace/afterlife-engine/assets/__tests__/pdr-plant-repair.test.ts",
+      "source": "Engine_Optics_019/game/assets/__tests__/pdr-plant-repair.test.ts",
+      "bytes": 4744,
+      "sha256": "b34823125e87016fd47536baabe06aa034e1a353f0a0b6d44705b67d5acd1510"
+    },
+    {
+      "path": "Engine_Optics_019/SDK_Overrides/engine-shader/src/taa-resolve.wgsl",
+      "source": "Engine_Optics_019/sdk/engine/node_modules/@forgeax/engine-shader/src/taa-resolve.wgsl",
+      "bytes": 26843,
+      "sha256": "46171a999119e291a9fd28100d23199a163a233148e5971709f33848bba228a1"
+    },
+    {
+      "path": "Engine_Optics_019/SDK_OVERRIDES.json",
+      "source": "Engine_Optics_019/SDK_OVERRIDES.json",
+      "bytes": 10317,
+      "sha256": "612b775cba672e4e9826fd9fc268adb15dca133c4bbb46e04d0e3fdddd48daa2"
+    },
+    {
+      "path": "Engine_Optics_019/evidence/D094-v3-entrance/entrance-1.png",
+      "source": "Engine_Optics_019/evidence/D094-v3-entrance/entrance-1.png",
+      "bytes": 1669453,
+      "sha256": "00d31546b5d6a76c045899de6ffc2657fa66e2a2eae283b591480501192cdb31"
+    },
+    {
+      "path": "Engine_Optics_019/evidence/D094-v3-stairs/stairs-1.png",
+      "source": "Engine_Optics_019/evidence/D094-v3-stairs/stairs-1.png",
+      "bytes": 1618821,
+      "sha256": "5dfeedc321e4fb23ce4dee9ff0f0617ec0f215e733b7b34d78b790ff2fa1b8a5"
+    },
+    {
+      "path": "Engine_Optics_019/evidence/D094-v2-chairs/chairs-1.png",
+      "source": "Engine_Optics_019/evidence/D094-v2-chairs/chairs-1.png",
+      "bytes": 1773324,
+      "sha256": "0ff077871a43394e54539308f73034eee09da99373ad3e315d63136683fd01d1"
+    },
+    {
+      "path": "Engine_Optics_019/evidence/D094-v2-gallery/gallery-1.png",
+      "source": "Engine_Optics_019/evidence/D094-v2-gallery/gallery-1.png",
+      "bytes": 1692530,
+      "sha256": "2eded08902f320d50b013ff5af296b0bcf65a03d76b8857a37830987e6353aa5"
+    },
+    {
+      "path": "Engine_Optics_019/evidence/D094-v2-stage/stage-1.png",
+      "source": "Engine_Optics_019/evidence/D094-v2-stage/stage-1.png",
+      "bytes": 1719675,
+      "sha256": "3e44c8df6fa7a0e29e489017acb7dd5b964f2f547fd1389e52726005c4aebfc4"
+    },
+    {
+      "path": "Engine_Optics_019/evidence/D094-v2-upper-vip/upper-vip-1.png",
+      "source": "Engine_Optics_019/evidence/D094-v2-upper-vip/upper-vip-1.png",
+      "bytes": 1494004,
+      "sha256": "6c66bb5f1d20f7b4077a732a092561981f61542b88cc493b5ff1c3faffd2368b"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "source": "docs/DECISIONS.md",
+      "bytes": 94461,
+      "sha256": "e960bd1da072c1f88c21f095eab8eb2e585186f26cee27116f5ec4e886af42e4"
+    },
+    {
+      "path": "docs/PROGRESS.md",
+      "source": "docs/PROGRESS.md",
+      "bytes": 171247,
+      "sha256": "e2afe8359882ede01b9cce996b31cff47825897fa94f8894e872676601bb5027"
+    }
+  ]
+}

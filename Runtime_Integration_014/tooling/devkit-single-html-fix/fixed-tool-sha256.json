@@ -1,0 +1,8 @@
+{
+  "purpose": "D057 click-to-start and private payload nodes; original SDK and scene unchanged",
+  "files": {
+    "single-html.fixed.ts": "f5cfc55fe7f19513c3b97873e8496b8671d3d4810b826781e408064614819c1a",
+    "dist/index.mjs": "ae0342d9be033619869f94603509d74a32b4c4d861a574f67ea7b05929d3e99f",
+    "dist/commands-DABHGFZM.mjs": "73407d86207774bbe32d5b2b2738fbac543f1bb0f4c84e5bfe2583a206235151"
+  }
+}

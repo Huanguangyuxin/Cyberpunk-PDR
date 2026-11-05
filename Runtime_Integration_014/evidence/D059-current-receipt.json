@@ -1,0 +1,184 @@
+{
+  "scope": "D059 actual liquid/material and selected WB018 art iteration; not overall final acceptance",
+  "recordedAt": "2026-11-02T14:42:01.468667+08:00",
+  "engine": "ForgeaX0.4.18",
+  "url": "http://localhost:53664/",
+  "buildManifestSha256": "3ec38e2b24a867867b7ecc48c6fd68ba5e105297d75638150681976145f91f7d",
+  "authorSourceSha256": {
+    "forge.json": "9a443462e3189458d628ae2231a1076fe41bf27730221502a29b9ba7ba41d29c",
+    "assets/pdr-liquid-optical-materials.ts": "20c9d31bc42b604a78060a2b686c8adffcb05c95a887a24bf4805081a692dc53",
+    "assets/pdr-liquid-motion.ts": "f32009575b4b7726918f140323dfb1193cae1519a688baef834cc8cce940e320",
+    "assets/pdr-newlayout.pack.ts": "b887cf2ff2a72b8868de16cbb52b5d704f9f365d037178426c86a9639bb8b4e2",
+    "assets/pdr-newlayout-lighting.ts": "e1582316d7a14f799feea4d6e711ed9919572903717a6b49e59ce19517255946",
+    "assets/pdr-navigation-status.ts": "7fd9d1e442dcb06ebdac8864208e6b8056b714af8e3dfdd1eabc918bbcfa5cb8",
+    "assets/pdr-navigation-hud.ts": "5a2d32383e89316d37be37b0cbd755bb604fc5e3da19f69365f2e4baaa9e3fa0",
+    "assets/WB018_lizzie_badb10cd.glb": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+    "assets/WB018_lizzie_badb10cd.glb.meta.json": "5aa725406cd216132baa820dc8e382954204563f81ced91176487eb21adcdfdb"
+  },
+  "captures": {
+    "D059-canopy-reflection": {
+      "receipt": "Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-capture.json",
+      "receiptSha256": "a4b804410f95d286ee393224da8f8239bed608cfe882080807d8ee1c4fe26de4",
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "frames": [
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-0.png",
+          "sha256": "sha256:73df63af2e409d1ab4ee8e1c1410d175bf5a4caa0cee8350cb598ceb990ca820",
+          "engineFrame": 5
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-1.png",
+          "sha256": "sha256:fd1fba6b1ba46dd37e788de6c5f7cf1293dd9d8096db998ed670ba4c07258e04",
+          "engineFrame": 14
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-2.png",
+          "sha256": "sha256:ea83cd985c89182b70b88f0580bc9ff203b88ac2a30d94dba6a613253abfc5af",
+          "engineFrame": 25
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-3.png",
+          "sha256": "sha256:e3844cefd9c55f3df8d62248f3ae4aa8cd36b2c48dc12e5e07ba9f595037363b",
+          "engineFrame": 39
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-4.png",
+          "sha256": "sha256:aa299623261b25b5393bd427f593d1b11bfead28c4ead71d834fa4dee683bc94",
+          "engineFrame": 53
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-5.png",
+          "sha256": "sha256:ce2ad522e7018702c4a05616d95a7e46fec027ebecfb8823b9605048404710a1",
+          "engineFrame": 69
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-6.png",
+          "sha256": "sha256:c0b45fbad6bc51c3484fd17a76091272d8bc348deba5d7071883558bebb0c9cd",
+          "engineFrame": 84
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-7.png",
+          "sha256": "sha256:9e937244a10a49af0886e7e6d6472f95d4671d0d9bb3c6f466ed7d3e5b4e01a8",
+          "engineFrame": 100
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-8.png",
+          "sha256": "sha256:2b4350311e7549cd176503d179637111eac116e33bd23c60f454daed169140a6",
+          "engineFrame": 113
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-9.png",
+          "sha256": "sha256:e32c9af124b73e64383b325f036a0cc03151abc38ad188c0f60b678dbe00af87",
+          "engineFrame": 127
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-10.png",
+          "sha256": "sha256:07ae66da76ea6d001b5ad5c846bea4436c9e831cb81a95444b6504deebdb19b1",
+          "engineFrame": 142
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-11.png",
+          "sha256": "sha256:dd293b94db26aa1e5f527946109c4c4014cf63469a2eb8a28c816df5f771d497",
+          "engineFrame": 158
+        }
+      ]
+    },
+    "D059-final-transparent": {
+      "receipt": "Runtime_Integration_014/evidence/D059-final-transparent/liquid-top-capture.json",
+      "receiptSha256": "ed88cbf83077a774388f24f218e077881028ad6bcf0e4a0c2d6a474f3578630e",
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "frames": [
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-final-transparent/liquid-top-0.png",
+          "sha256": "sha256:0b76de781821f14e0eb6cafe31ce4fb121dbaba8294320019f13f03242bb5416",
+          "engineFrame": 122
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-final-transparent/liquid-top-1.png",
+          "sha256": "sha256:766ea7f7e4f693fce89a884031c7f31f9cf689a81c6e7b4f75cc9aa307a2b142",
+          "engineFrame": 140
+        }
+      ]
+    },
+    "D059-final-entrance": {
+      "receipt": "Runtime_Integration_014/evidence/D059-final-entrance/entrance-capture.json",
+      "receiptSha256": "81767704cf76c313cc93351c514c72b80ffcbe3981de52258067e329c9b368f8",
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "frames": [
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-final-entrance/entrance-0.png",
+          "sha256": "sha256:36f748d09087ff51573b81125a1306855ae57489eaca9168cd172df416f9c779",
+          "engineFrame": 161
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-final-entrance/entrance-1.png",
+          "sha256": "sha256:12bed0d723c5771ac1746a07bee633e8c1e95a60c6b2af76d989a6899c3d6bda",
+          "engineFrame": 183
+        }
+      ]
+    },
+    "D059-final-stage": {
+      "receipt": "Runtime_Integration_014/evidence/D059-final-stage/stage-capture.json",
+      "receiptSha256": "9a33b4ae021000bb28847f878e3ed801278e78e284f46eb1a6bb9e34b27fbaef",
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "frames": [
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-final-stage/stage-0.png",
+          "sha256": "sha256:8c098093965132dd3a1d30a3e9331df5cefe79e462a282ee8e5ba0c2dc944968",
+          "engineFrame": 384
+        },
+        {
+          "file": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/evidence/D059-final-stage/stage-1.png",
+          "sha256": "sha256:3bf5aa6507c3f929ed078f8196b9030929ceb6e678e7c1b44aa1dfe1ab8f7d32",
+          "engineFrame": 410
+        }
+      ]
+    }
+  },
+  "workbuddy": {
+    "producer": "WorkBuddy UI Claude-Opus-5.5",
+    "actualCompletion": "13:37 UI 已完成20m2s",
+    "sourceSha256": "284a0c66eaa5b158bf252f1c031e946db9e9b728e11ac16c297a02e2d51483db",
+    "glbSha256": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+    "formalImportSceneGuid": "01a19ac5-5ad3-745b-a280-3f341ab888de",
+    "codexIntegration": "Engine assets WB018_lizzie_badb10cd.glb + existing Pack, partial decoration only; native L13 reused. Optional global ambient suggestion not applied.",
+    "actualEngineEvidence": [
+      "Runtime_Integration_014/evidence/D059-final-entrance/entrance-1.png",
+      "Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-light-capture.json"
+    ],
+    "status": "Actually imported/rendered, no overall art/AAA acceptance claim"
+  },
+  "nativePointSpotLimit": 32,
+  "limits": [
+    "No new AB/regression/independent-review loop",
+    "Static-dist host has no dev RHI tape; no new RHI replay claimed",
+    "Constrained mesh liquid waves; not CFD, complete nested refraction or caustics",
+    "Headless hardware submitted frame observations, not full performance benchmark",
+    "Desktop HTML and UGit remain D057 snapshot"
+  ],
+  "motionGif": {
+    "file": "Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-real-timed-samples.gif",
+    "sha256": "f1ac0932cef68c7bbbe09a305e155c74875a01b95264e43712abcabf48e19e98",
+    "realSamplesOnly": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "originalSamplingTiming": true,
+    "interpolated": false
+  },
+  "userBrowser": {
+    "receipt": "Runtime_Integration_014/evidence/D059-user-browser-open/foreground-result.json",
+    "initialFailure": "Runtime_Integration_014/evidence/D059-user-browser-open/initial-background-failure.txt",
+    "actualForegroundRendered": true,
+    "displayedFPS": 25
+  },
+  "remainingVisualIssue": "At the reflected lamp direction the coupe highlight can still cover a broad pale/pink region; normal-angle transmission is visible. Do not call all view-dependent white glare resolved or full liquid optics accepted."
+}

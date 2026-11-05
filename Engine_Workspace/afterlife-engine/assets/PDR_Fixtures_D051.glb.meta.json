@@ -1,0 +1,358 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D051_CAFE_CHAIR",
+        "D051_LIGHT_HEAD",
+        "D051_LIGHT_MOUNT",
+        "D051_LIGHT_YOKE"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_Fixtures_D051.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D051_CAFE_CHAIR"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D051_LIGHT_HEAD"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D051_LIGHT_MOUNT"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D051_LIGHT_YOKE"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D051_CAFE_CHAIR": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc0e4594b81",
+          "slotName": "D051_OXBLOOD_VINYL",
+          "sourceKey": "material:D051_OXBLOOD_VINYL"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc182e4f754",
+          "slotName": "D051_PAINTED_STEEL",
+          "sourceKey": "material:D051_PAINTED_STEEL"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc26d336694",
+          "slotName": "D051_RUBBER",
+          "sourceKey": "material:D051_RUBBER"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc3692d1ccc",
+          "slotName": "D051_EXPOSED_STEEL",
+          "sourceKey": "material:D051_EXPOSED_STEEL"
+        }
+      ]
+    },
+    "mesh:D051_LIGHT_HEAD": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc49a4e628f",
+          "slotName": "D051_HEAD_ABS",
+          "sourceKey": "material:D051_HEAD_ABS"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc26d336694",
+          "slotName": "D051_RUBBER",
+          "sourceKey": "material:D051_RUBBER"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc182e4f754",
+          "slotName": "D051_PAINTED_STEEL",
+          "sourceKey": "material:D051_PAINTED_STEEL"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc5c3efc7f0",
+          "slotName": "D051_OPTICAL_APERTURE",
+          "sourceKey": "material:D051_OPTICAL_APERTURE"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc3692d1ccc",
+          "slotName": "D051_EXPOSED_STEEL",
+          "sourceKey": "material:D051_EXPOSED_STEEL"
+        }
+      ]
+    },
+    "mesh:D051_LIGHT_MOUNT": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc49a4e628f",
+          "slotName": "D051_HEAD_ABS",
+          "sourceKey": "material:D051_HEAD_ABS"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc182e4f754",
+          "slotName": "D051_PAINTED_STEEL",
+          "sourceKey": "material:D051_PAINTED_STEEL"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc3692d1ccc",
+          "slotName": "D051_EXPOSED_STEEL",
+          "sourceKey": "material:D051_EXPOSED_STEEL"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc26d336694",
+          "slotName": "D051_RUBBER",
+          "sourceKey": "material:D051_RUBBER"
+        }
+      ]
+    },
+    "mesh:D051_LIGHT_YOKE": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc182e4f754",
+          "slotName": "D051_PAINTED_STEEL",
+          "sourceKey": "material:D051_PAINTED_STEEL"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc49a4e628f",
+          "slotName": "D051_HEAD_ABS",
+          "sourceKey": "material:D051_HEAD_ABS"
+        },
+        {
+          "defaultMaterialGuid": "01a19043-06fe-7abd-bee2-3bc3692d1ccc",
+          "slotName": "D051_EXPOSED_STEEL",
+          "sourceKey": "material:D051_EXPOSED_STEEL"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bbc7a1d954a",
+      "kind": "mesh",
+      "name": "D051_CAFE_CHAIR",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D051_CAFE_CHAIR"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bbdc32f9c5c",
+      "kind": "mesh",
+      "name": "D051_LIGHT_HEAD",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D051_LIGHT_HEAD"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bbe2acfb9a9",
+      "kind": "mesh",
+      "name": "D051_LIGHT_MOUNT",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:D051_LIGHT_MOUNT"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bbf12acefd4",
+      "kind": "mesh",
+      "name": "D051_LIGHT_YOKE",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:D051_LIGHT_YOKE"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc0e4594b81",
+      "kind": "material",
+      "name": "D051_OXBLOOD_VINYL",
+      "sourceIndex": 0,
+      "sourceKey": "material:D051_OXBLOOD_VINYL"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc182e4f754",
+      "kind": "material",
+      "name": "D051_PAINTED_STEEL",
+      "sourceIndex": 1,
+      "sourceKey": "material:D051_PAINTED_STEEL"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc26d336694",
+      "kind": "material",
+      "name": "D051_RUBBER",
+      "sourceIndex": 2,
+      "sourceKey": "material:D051_RUBBER"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc3692d1ccc",
+      "kind": "material",
+      "name": "D051_EXPOSED_STEEL",
+      "sourceIndex": 3,
+      "sourceKey": "material:D051_EXPOSED_STEEL"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc49a4e628f",
+      "kind": "material",
+      "name": "D051_HEAD_ABS",
+      "sourceIndex": 4,
+      "sourceKey": "material:D051_HEAD_ABS"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc5c3efc7f0",
+      "kind": "material",
+      "name": "D051_OPTICAL_APERTURE",
+      "sourceIndex": 5,
+      "sourceKey": "material:D051_OPTICAL_APERTURE"
+    },
+    {
+      "guid": "01a19043-06fe-7abd-bee2-3bc65dd0d343",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

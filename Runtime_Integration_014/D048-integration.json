@@ -1,0 +1,2378 @@
+{
+  "author": "Codex D048 selective integration, not a validation report",
+  "base_sha": "c4f5dc68fc189b1cb43ca847dfabb942fe6fd94318b2b9349ea0459bdc8b758c",
+  "wb_source_sha": "5276384493fb247bbd51bde2d0ea524406ca00f5b66176f627c5aee180d3b965",
+  "output": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Workspace/afterlife-engine/assets/Club_Upper_WB015_bcf6514f.glb",
+  "sha256": "bcf6514f4651839ea20ec9022897be81ca7e05c394ea22302e8fcf9eb7e39f78",
+  "bytes": 74275732,
+  "selection": [
+    {
+      "source": "R8",
+      "name": "ARCH_COLUMNS"
+    },
+    {
+      "source": "R8",
+      "name": "ARCH_DANCE_FLOOR"
+    },
+    {
+      "source": "R8",
+      "name": "ARCH_FLOOR_INLAY"
+    },
+    {
+      "source": "R8",
+      "name": "ARCH_FLOOR_PATCHES"
+    },
+    {
+      "source": "R8",
+      "name": "ARCH_FLOOR_SLAB"
+    },
+    {
+      "source": "R8",
+      "name": "ARCH_PYLONS"
+    },
+    {
+      "source": "R8",
+      "name": "ARCH_SKIRTING"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_BACK_BAR"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_CANOPY"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_COUNTER_L"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_POS_AND_MATS"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_STOOL_01"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_STOOL_02"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_STOOL_03"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_STOOL_04"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_STOOL_05"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_STOOL_06"
+    },
+    {
+      "source": "R8",
+      "name": "BAR_WORK_SURFACE"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DE1"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DE2"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DE3"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DE4"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DE5"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DW1"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DW2"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DW3"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DW4"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_DW5"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_F11"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_F12"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_F13"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_F21"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_F22"
+    },
+    {
+      "source": "R8",
+      "name": "BOOTH_F23"
+    },
+    {
+      "source": "R8",
+      "name": "CAM01_ENTRANCE"
+    },
+    {
+      "source": "R8",
+      "name": "CAM02_BAR"
+    },
+    {
+      "source": "R8",
+      "name": "CAM03_BOOTHS"
+    },
+    {
+      "source": "R8",
+      "name": "CAM04_DEEP_FORWARD"
+    },
+    {
+      "source": "R8",
+      "name": "CAM04B_DEEP_UNDER_BRIDGE"
+    },
+    {
+      "source": "R8",
+      "name": "CAM05_DEEP_REVERSE"
+    },
+    {
+      "source": "R8",
+      "name": "CAM08_BOTTLES"
+    },
+    {
+      "source": "R8",
+      "name": "CAM09_CUTAWAY"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_BIG_POSTERS_PANELS"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_COMPOSED_WALLS"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_ENTRANCE_DOORS"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_01"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_02"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_03"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_04"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_05"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_06"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_07"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_08"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_09"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_10"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_11"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_14"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_15"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_SCREEN_1_1"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_SCREEN_1_2"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_SCREEN_2_1"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_SCREEN_2_2"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_SCREEN_3_1"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_PLANT_SCREEN_3_2"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_POSTERS"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_STICKERS"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_WALL_COLLAGE"
+    },
+    {
+      "source": "R8",
+      "name": "DECOR_WALL_HISTORY_RACEWAYS"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE1_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE1_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE2_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE2_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE3_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE3_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE4_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE4_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE5_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DE5_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW1_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW1_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW2_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW2_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW3_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW3_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW4_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW4_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW5_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_DW5_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F11_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F11_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F12_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F12_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F13_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F13_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F21_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F21_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F22_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F22_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F23_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_BOOTH_F23_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_COUNTER_1"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_COUNTER_2"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_COUNTER_COUPE_1"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_COUNTER_COUPE_3"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_COUNTER_TUMBLER_2"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_COUNTER_TUMBLER_4"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HERO_1_NIGHT_STATIC"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HERO_2_CRIMSON_PULSE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HERO_3_CLEAR_CUT"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HERO_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HERO_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_01_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_02_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_E1_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_E2_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_E3_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_E4_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_W1_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_W2_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_HTABLE_W3_COUPE"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_RTABLE_E1_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_RTABLE_E2_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_RTABLE_E3_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_RTABLE_W1_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_RTABLE_W2_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_RTABLE_W3_TUMBLER"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_000"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_001"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_002"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_003"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_004"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_005"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_006"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_007"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_008"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_009"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_010"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_011"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_012"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_013"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_014"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_015"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_016"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_017"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_018"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_019"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_020"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_021"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_022"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_023"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_024"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_025"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_026"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_027"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_028"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_029"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_030"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_031"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_032"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_033"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_034"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_035"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_036"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_037"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_038"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_039"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_040"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_041"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_042"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_043"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_044"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_045"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_046"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_047"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_048"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_049"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_050"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_051"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_052"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_053"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_054"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_055"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_056"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_057"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_058"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_059"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_060"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_061"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_062"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_063"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_064"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_065"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_066"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_067"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_068"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_069"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_070"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_071"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_072"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_073"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF1_074"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_075"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_076"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_077"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_078"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_079"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_080"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_081"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_082"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_083"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_084"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_085"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_086"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_087"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_088"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_089"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_090"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_091"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_092"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_093"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_094"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_095"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_096"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_097"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_098"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_099"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_100"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_101"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_102"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_103"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_104"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_105"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_106"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_107"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_108"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_109"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_110"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_111"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_112"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_113"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_114"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_115"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_116"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_117"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_118"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_119"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_120"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_121"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_122"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_123"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_124"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_125"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_126"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_127"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_128"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_129"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_130"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_131"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_132"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_133"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_134"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_135"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_136"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_137"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_138"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_139"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_140"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_141"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_142"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_143"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_144"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_145"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_146"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_147"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_148"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_149"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_150"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_151"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_152"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF2_153"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_154"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_155"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_156"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_157"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_158"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_159"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_160"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_161"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_162"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_163"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_164"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_165"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_166"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_167"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_168"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_169"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_170"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_171"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_172"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_173"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_174"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_175"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_176"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_177"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_178"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_179"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_180"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_181"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_182"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_183"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_184"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_185"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_186"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_187"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_188"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_189"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_190"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_191"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_192"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_193"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_194"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_195"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_196"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_197"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_198"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_199"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_200"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_201"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_202"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_203"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_204"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_205"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_206"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_207"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_208"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_209"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_210"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_211"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_212"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_213"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_214"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_215"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_216"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_217"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_218"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_219"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_220"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_221"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_222"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_223"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_224"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_225"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_226"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_227"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_228"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_229"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_230"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_231"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_232"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_233"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_234"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_235"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_236"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_237"
+    },
+    {
+      "source": "R8",
+      "name": "DRINK_SHELF3_238"
+    },
+    {
+      "source": "R8",
+      "name": "ENTRY_POST_E"
+    },
+    {
+      "source": "R8",
+      "name": "ENTRY_POST_W"
+    },
+    {
+      "source": "R8",
+      "name": "FIX_SIDE_LIGHT_BARS_SCONCES"
+    },
+    {
+      "source": "R8",
+      "name": "FIX_SOFFIT_PENDANTS"
+    },
+    {
+      "source": "R8",
+      "name": "FIX_UPLIGHT_E"
+    },
+    {
+      "source": "R8",
+      "name": "FIX_UPLIGHT_W"
+    },
+    {
+      "source": "R8",
+      "name": "FURN_AISLE_SCREENS"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_01"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_02"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_E1"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_E2"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_E3"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_E4"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_W1"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_W2"
+    },
+    {
+      "source": "R8",
+      "name": "HTABLE_W3"
+    },
+    {
+      "source": "R8",
+      "name": "L01_BAR_CANOPY"
+    },
+    {
+      "source": "R8",
+      "name": "L02_BAR_CANOPY"
+    },
+    {
+      "source": "R8",
+      "name": "L03_BAR_CANOPY"
+    },
+    {
+      "source": "R8",
+      "name": "L04_BACKBAR_S"
+    },
+    {
+      "source": "R8",
+      "name": "L05_BACKBAR_N"
+    },
+    {
+      "source": "R8",
+      "name": "L06_LAMP_BOOTH_F11"
+    },
+    {
+      "source": "R8",
+      "name": "L07_LAMP_BOOTH_F12"
+    },
+    {
+      "source": "R8",
+      "name": "L08_LAMP_BOOTH_F13"
+    },
+    {
+      "source": "R8",
+      "name": "L09_LAMP_BOOTH_F21"
+    },
+    {
+      "source": "R8",
+      "name": "L10_LAMP_BOOTH_F22"
+    },
+    {
+      "source": "R8",
+      "name": "L11_LAMP_BOOTH_F23"
+    },
+    {
+      "source": "R8",
+      "name": "L18_PORTAL"
+    },
+    {
+      "source": "R8",
+      "name": "L22_STAGE_HEAD_1"
+    },
+    {
+      "source": "R8",
+      "name": "L23_STAGE_HEAD_2"
+    },
+    {
+      "source": "R8",
+      "name": "L24_STAGE_HEAD_3"
+    },
+    {
+      "source": "R8",
+      "name": "L25_STAGE_HEAD_4"
+    },
+    {
+      "source": "R8",
+      "name": "L26_STAGE_HEAD_5"
+    },
+    {
+      "source": "R8",
+      "name": "L27_STAGE_HEAD_6"
+    },
+    {
+      "source": "R8",
+      "name": "L29_DEEP_W"
+    },
+    {
+      "source": "R8",
+      "name": "L30_DEEP_E"
+    },
+    {
+      "source": "R8",
+      "name": "L31_GAL_W"
+    },
+    {
+      "source": "R8",
+      "name": "L32_GAL_E"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E1_CHAIR_1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E1_CHAIR_2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E1_CHAIR_3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E2_CHAIR_1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E2_CHAIR_2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E2_CHAIR_3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E3_CHAIR_1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E3_CHAIR_2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_E3_CHAIR_3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W1_CHAIR_1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W1_CHAIR_2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W1_CHAIR_3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W2_CHAIR_1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W2_CHAIR_2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W2_CHAIR_3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W3"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W3_CHAIR_1"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W3_CHAIR_2"
+    },
+    {
+      "source": "R8",
+      "name": "RTABLE_W3_CHAIR_3"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_COCKTAIL_01"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_EYE_01"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_LIPS_01"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_LIPS_02"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_NOSIGNAL"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_TICKER"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_WOMAN_01"
+    },
+    {
+      "source": "R8",
+      "name": "SIGN_WOMAN_02"
+    },
+    {
+      "source": "R8",
+      "name": "SPK_E"
+    },
+    {
+      "source": "R8",
+      "name": "SPK_W"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MONITOR_1"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MONITOR_2"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MOVING_HEAD_1"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MOVING_HEAD_2"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MOVING_HEAD_3"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MOVING_HEAD_4"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MOVING_HEAD_5"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_MOVING_HEAD_6"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_PLATFORM_DJ"
+    },
+    {
+      "source": "R8",
+      "name": "STAGE_TRUSS"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_PYLON_E1"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_PYLON_E2"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_PYLON_W2"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_W1"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_W2"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_W3"
+    },
+    {
+      "source": "R8",
+      "name": "WPANEL_W4"
+    },
+    {
+      "source": "R8",
+      "name": "FP_STAND_BAR"
+    },
+    {
+      "source": "R8",
+      "name": "FP_SIT_BOOTH"
+    },
+    {
+      "source": "R8",
+      "name": "THIRD_BAR"
+    },
+    {
+      "source": "R8",
+      "name": "THIRD_BOOTH"
+    },
+    {
+      "source": "R8",
+      "name": "FP_AISLE"
+    },
+    {
+      "source": "R8",
+      "name": "FP_STAIR_BOTTOM"
+    },
+    {
+      "source": "R8",
+      "name": "FP_STAIR_MID"
+    },
+    {
+      "source": "R8",
+      "name": "FP_STAIR_UPPER"
+    },
+    {
+      "source": "R8",
+      "name": "FP_SIT_TABLE_DETAIL"
+    },
+    {
+      "source": "R8",
+      "name": "FP_GALLERY_EXIT"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_COLUMNS_WB015"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_DECK_BEAMS_FASCIA"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_ROOF_BEAMS"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_ROOF_SLAB"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_UPPER_DECK"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_WALL_SOUTH"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "ARCH_WALLS_WEN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UE1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UE2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UE3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UE4"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UW1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UW2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UW3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "BOOTH_UW4"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM06_GALLERY_WEST"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM07_GALLERY_EAST"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM10_GAL_W_CORRIDOR"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM11_GAL_E_CORRIDOR"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM16_STAIR_LANDING_E"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM16_STAIR_LANDING_W"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM17_STAIR_DOWN_E"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM17_STAIR_DOWN_W"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E1_DOORIN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E1_IN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E1_OUT"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E1_REV"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E1_SHOW"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E2_DOORIN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E2_IN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E2_OUT"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E2_REV"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_E2_SHOW"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W1_DOORIN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W1_IN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W1_OUT"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W1_REV"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W1_SHOW"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W2_DOORIN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W2_IN"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W2_OUT"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W2_REV"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CAM_VIP_W2_SHOW"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CEIL_L_01"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CEIL_L_02"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CEIL_L_03"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CEIL_L_04"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CEIL_L_05"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "CEIL_L_06"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DECOR_PLANT_12"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DECOR_PLANT_13"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE1_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE1_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE2_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE2_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE3_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE3_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE4_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UE4_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW1_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW1_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW2_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW2_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW3_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW3_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW4_COUPE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "DRINK_BOOTH_UW4_TUMBLER"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "FIX_ROOF_LIGHT_BANDS"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L12_CEIL_L_01"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L13_CEIL_L_02"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L14_CEIL_L_03"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L16_VIP_W1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L17_VIP_E1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L19_CEIL_L_04"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L20_CEIL_L_05"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L21_CEIL_L_06"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L31_VIP_W2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "L32_VIP_E2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "LA_E"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "LA_W"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_DUCTS"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_NET_C"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_NET_F"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_NET_M"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_PIPES"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_TRANSVERSE_SERVICES"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "MEP_TRAYS_WIRES_JBOX"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "RAIL_BRIDGE_NORTH"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "RAIL_DECK_SOUTH"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "RAIL_GAL_E"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "RAIL_GAL_W"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "STAIR_E"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "STAIR_E_GLASS"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "STAIR_W"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "STAIR_W_GLASS"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E1_DOOR_LEAF"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E1_LOUNGE_CHAIR_1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E1_LOUNGE_CHAIR_2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E1_LOUNGE_CHAIR_3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E1_LOUNGE_TABLE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E1_SHELL"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E2_DOOR_LEAF"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E2_LOUNGE_CHAIR_1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E2_LOUNGE_CHAIR_2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E2_LOUNGE_CHAIR_3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E2_LOUNGE_TABLE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_E2_SHELL"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W1_DOOR_LEAF"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W1_LOUNGE_CHAIR_1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W1_LOUNGE_CHAIR_2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W1_LOUNGE_CHAIR_3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W1_LOUNGE_TABLE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W1_SHELL"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W2_DOOR_LEAF"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W2_LOUNGE_CHAIR_1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W2_LOUNGE_CHAIR_2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W2_LOUNGE_CHAIR_3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W2_LOUNGE_TABLE"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "VIP_W2_SHELL"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "WPANEL_UE1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "WPANEL_UE2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "WPANEL_UE3"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "WPANEL_UW1"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "WPANEL_UW2"
+    },
+    {
+      "source": "WB015-r4",
+      "name": "WPANEL_UW3"
+    }
+  ],
+  "native_lights": 32,
+  "collision_names": 193,
+  "user_requested_no_more_tests": true,
+  "old_source_retained": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Runtime_Integration_014/rollback/D048-before/old-runtime-model",
+  "new_upper_acceptance": "not claimed; user explicitly requested direct replacement",
+  "scene_guid": "01a18cc0-f159-7553-a50c-527de6f6d645",
+  "meta": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Workspace/afterlife-engine/assets/Club_Upper_WB015_bcf6514f.glb.meta.json",
+  "import_note": "Fresh external-source asset identity via official asset import; WB over-range specularColorFactor 1.1 clamped to glTF maximum 1.0 in integration copy; originals retained.",
+  "url": "http://127.0.0.1:50893/",
+  "revision": "cf16774e-c795-4191-a345-984c2d0c3926",
+  "status": "imported and running; no additional acceptance tests",
+  "screenshot": "evidence/D048-upper-corridor.png"
+}

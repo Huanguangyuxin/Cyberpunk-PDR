@@ -1,0 +1,23 @@
+// Targeted regression for the actual native selector used by both graph lanes.
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+const root=dirname(fileURLToPath(import.meta.url));
+const req=createRequire(resolve(root,'sdk/engine/package.json'));
+const source=await readFile(resolve(root,'sdk/engine/node_modules/@forgeax/engine-render/src/systems/pass-selector.ts'),'utf8');
+const {code}=await req('esbuild').transform(source,{loader:'ts',format:'esm',target:'es2022'});
+await mkdir(resolve(root,'evidence'),{recursive:true});
+const target=resolve(root,'evidence/native-selector.mjs');await writeFile(target,code);
+const {matchPass,REFRACTION_INNER_PASS_SELECTOR:I,REFRACTION_OUTER_PASS_SELECTOR:O,FORWARD_PASS_SELECTOR:F}=await import(pathToFileURL(target));
+const ordinary={LightMode:'Forward'},inner={LightMode:'Forward',RefractionLayer:'0'},outer={LightMode:'Forward',RefractionLayer:'1'},shadow={LightMode:'ShadowCaster'};
+assert.equal(matchPass(ordinary,I),true,'Legacy untagged transmission remains in the original inner stage');
+assert.equal(matchPass(ordinary,O),false,'Legacy draws must not be duplicated in the outer stage');
+assert.equal(matchPass(inner,I),true);
+assert.equal(matchPass(outer,I),false,'Outer glass must not erase the liquid before the new backdrop');
+assert.equal(matchPass(outer,O),true,'Outer glass is drawn only after the second native copy');
+assert.equal(matchPass(shadow,I),false);assert.equal(matchPass(shadow,O),false);
+assert.equal(matchPass(outer,F),true,'Existing material dispatch must still recognize Forward passes');
+await writeFile(resolve(root,'evidence/layer-routing-check.json'),JSON.stringify({ok:true,assertions:8,subject:'Actual native pass-selector source, not GPU pixels',legacyUntaggedPreserved:true,outerNotDuplicated:true},null,2));
+console.log('Native layer routing:8assertions passed; GPU/appearance remains separate.');

@@ -1,0 +1,29 @@
+**/node_modules/
+**/.forgeax/
+**/.forgeax-debug/
+**/.assetlib/
+**/dist/
+**/release/
+**/__pycache__/
+**/.DS_Store
+**/.env
+**/.env.*
+
+# Vendored SystemJS distribution is an intentional licensed source dependency.
+!/Runtime_Integration_014/tooling/devkit-single-html-fix/vendor/package/dist/
+!/Runtime_Integration_014/tooling/devkit-single-html-fix/vendor/package/dist/**
+
+# Preserve authored project rules, not generated agent discovery mounts.
+!/.cursor/
+!/.cursor/rules/
+!/.cursor/rules/**
+
+# Licensed CLI outputs needed to reproduce this source-SDK single-HTML export.
+!/Engine_Optics_019/tooling/devkit-single-html-fix/dist/
+!/Engine_Optics_019/tooling/devkit-single-html-fix/dist/**
+!/Engine_Optics_019/tooling/devkit-single-html-fix/vendor/package/dist/
+!/Engine_Optics_019/tooling/devkit-single-html-fix/vendor/package/dist/**
+
+# Exact prebuilt local Render overrides are part of this authorized release.
+!/Engine_Optics_019/SDK_Overrides/engine-render/dist/
+!/Engine_Optics_019/SDK_Overrides/engine-render/dist/**

@@ -1,0 +1,56 @@
+{
+ "receipt": "WB018 read receipt",
+ "written_at": "2026-11-02T13:35:42+08:00",
+ "producer": {
+  "app": "WorkBuddy",
+  "model_display_name": "Claude-Opus-5.5 (UI name)"
+ },
+ "decisions_read": [
+  "D-059",
+  "D-058",
+  "D-057",
+  "D-056",
+  "D-055",
+  "D-054"
+ ],
+ "sha256": {
+  "AGENTS.md": "821f040c53fdb7b01032adb388af8dd70e1d3e717689f5fa922b07e3c9643c51",
+  "docs/DECISIONS.md": "746ae55ca9a0b00a2e4e7d1ca6fa9b946a165c4aa6e0f18efe569b76f479b1c2",
+  "docs/PROGRESS.md": "3accc2fc503e687e1284eb6e481c53c31cf857890cfe79426dd80781af5749f1",
+  "docs/ART_DIRECTION.md": "c3d065db7b363d7318bc3ff7eaa8836d622e2f8ae301765f018dcda94dabb547",
+  "docs/SCALE_STANDARD.md": "688c13900a1759937e31b64741d0e4c6814bb12da83951e2edd80a7fac1e41c3",
+  "Production_WorkBuddy_018/TASK.md": "8214e9bed09146d0fa6a0278437f6a7b43202980243dbfce5e7b0666f73aa6c7",
+  "Production_WorkBuddy_018/handoff/read-only-input-sha256.json": "2b0a9c58e52174b2dda164e73edb83815aafa0446783f80badf1f9b0a0c96578",
+  "Engine_Workspace/afterlife-engine/AGENTS.md": "5ce5315abf2c758a0a3bcbd81be8290e68d82a2cbb36e603051584dad33d1c45",
+  "Engine_Workspace/afterlife-engine/README.md": "5012919acfd1f4ef6198158a0e7d96b6d6eefe1905b7b6ac03a8cc2860b68711",
+  "Engine_Workspace/afterlife-engine/skills/forgeax-engine-render-pipeline/SKILL.md": "4ba8d0f754c788ed7f709c2ee099c728704e1ca61f551b721aa5eec95d5a0256",
+  "Engine_Workspace/afterlife-engine/assets/pdr-newlayout-lighting.ts": "014bdb10be361e2cb6a4622fc2f4ef1e9de37ab4e87b3a8c4dd8e69949986128",
+  "Engine_Workspace/afterlife-engine/assets/pdr-newlayout.pack.ts": "a02ddc0b743975439ed10d1ec7f6f225339504cb0611d059162eefafa1ca261a",
+  "Engine_Workspace/afterlife-engine/assets/Club_Upper_WB015_bcf6514f.glb": "bcf6514f4651839ea20ec9022897be81ca7e05c394ea22302e8fcf9eb7e39f78",
+  "Production_WorkBuddy_015/source/club-workbuddy015-upper-final.blend": "0de38371e5ee37c73a27234b1a3a8e24055d90b2af105d3d9acd67a1a78ccad6",
+  "Production_WorkBuddy_015/design/venue.json": "22382d6a7bcf4939ae3b6f051a5748c870daa463c80884053ed5d44ef6987c64",
+  "References/REFERENCE_LIBRARY.md": "ecae1393e2daae0a43fd1c9eeae5068c70edfda0f276ce9fddd9f88dab0a7a45",
+  "References/manifest.json": "74655701b1a68adfbb41a2101753dcd7c3f0e76485aa46a5ba708f65b160fe2a",
+  "References/video_BV15r4y1N7ge/OBSERVATIONS.md": "e9f7f9724a7a531a903d1933d014124e7dbdf8bae6e8a2f73b591fb88cb72257",
+  "References/video_BV15r4y1N7ge/01-28-browser.png": "c43b0cbd8565447fdd8e18d1d97bdd35ffa219eb66de22952497a8e7b40cac5a",
+  "References/video_BV15r4y1N7ge/01-58-browser.png": "8e70e8f234ff95e89f43771714e73e816201c2f341593ef9f072529a6b3b35c0",
+  "References/video_BV15r4y1N7ge/bar-browser.png": "c4de334bf7cda277320d5a5b0e9d2b1f0b95bd6c7d67e9667d526a824bcbb640",
+  "Runtime_Integration_014/evidence/D057-browser-open/click-start-running.png": "4f5530ebf8bcd80dba95dc3be370ece81fbe40ee4d2355bd3f3c0c47b898023c"
+ },
+ "reference_images_actually_viewed": {
+  "References/images/R11.jpg": "main hall from gallery: folded/7-shaped cool white band frames on dark soffit, pink plinth lines on seating steps, tall red panels, weave panels right",
+  "References/images/R12.jpg": "main hall low: chamfered cool-white bands framing dark ceiling boxes, pink stage-base line lighting floor, paired tall red panels on truss, black/white weave acoustic panels",
+  "Engine docs/references/BV15r4y1N7ge/frames (16 sampled: 00m00s..04m30s every 18 s)": "01m12s/01m30s pink base lines + weave walls; 02m24s/02m42s/03m18s chamfered cool ceiling bands; 04m30s weave panel close",
+  "Runtime_Integration_014/evidence/D057-browser-open/click-start-running.png": "current Engine: thin straight white tubes on ceiling, floor uniformly pink-tinted, no weave/acoustic walls, no base lines on pylons"
+ },
+ "reference_images_sha256": {
+  "References/images/R11.jpg": "ecef1bf0accfe44600cdadd95c2ee943cb31742923c5424ca32b1286fcc4c440",
+  "References/images/R12.jpg": "0c8ff24d05896cc47974b217d6898d3174a2f0ce60af7200abb2fbb2e47eaef7"
+ },
+ "reference_problem": "References/video_BV15r4y1N7ge/01-28-browser.png is a Bilibili login-modal screenshot covering the video (no usable venue content); used Engine/docs/references/BV15r4y1N7ge/frames instead. No online browsing was needed.",
+ "baseline_used": {
+  "dcc": "Production_WorkBuddy_015/source/club-workbuddy015-upper-final.blend 0de38371 (copied to 018/source/baseline)",
+  "runtime_glb": "Engine assets Club_Upper_WB015_bcf6514f.glb (read-only, light names taken from it)"
+ },
+ "write_scope": "Production_WorkBuddy_018 only; no Engine start/build/HMR, no edits to Engine/014/016/015/017/References/UGit; isolated Blender 5.2.3 CLI only"
+}

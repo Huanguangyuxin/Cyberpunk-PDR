@@ -1,0 +1,224 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "kind": "Blender DCC render, NOT ForgeaX Engine",
+ "source": "source/club-wb018-candidates.blend",
+ "source_sha256": "eecde3b175c0a165fc91af784625f79f3872ba882b207e7951fb48d72286fe68",
+ "renderer": "Blender 5.2.3 LTS Cycles Metal 96spp adaptive .02 OIDN 1600x900 AgX MHC exposure 1.45, no haze, no extra lights",
+ "renders": [
+  {
+   "camera": "CAM01_ENTRANCE",
+   "pos": [
+    0.0,
+    1.1,
+    1.64
+   ],
+   "aim": [
+    1.2,
+    20.0,
+    2.0
+   ],
+   "hfov_deg": 75,
+   "matrix_world": [
+    [
+     0.99799,
+     -0.001204,
+     -0.063353,
+     0.0
+    ],
+    [
+     -0.063364,
+     -0.018968,
+     -0.99781,
+     1.1
+    ],
+    [
+     -0.0,
+     0.999819,
+     -0.019006,
+     1.64
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "file": "renders/after/CAM01_ENTRANCE_after.png",
+   "sha256": "894d5bd43e6ce68b591e3eba7f8bab8ea29eeac65f7ad843468b52b9d2067629",
+   "seconds": 13.6
+  },
+  {
+   "camera": "WB018_FRONT_UP",
+   "pos": [
+    1.0,
+    3.0,
+    1.64
+   ],
+   "aim": [
+    0.4,
+    12.5,
+    6.3
+   ],
+   "hfov_deg": 75,
+   "matrix_world": [
+    [
+     0.998011,
+     0.027715,
+     0.056612,
+     1.0
+    ],
+    [
+     0.063032,
+     -0.438816,
+     -0.896363,
+     3.0
+    ],
+    [
+     0.0,
+     0.898149,
+     -0.43969,
+     1.64
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "file": "renders/after/WB018_FRONT_UP_after.png",
+   "sha256": "9f6c5c5b46aabda48286899b4a41f034780039bb37cd637156a3cf54fa47edc9",
+   "seconds": 12.0
+  },
+  {
+   "camera": "WB018_PYLON_BASE",
+   "pos": [
+    -1.6,
+    15.8,
+    1.64
+   ],
+   "aim": [
+    -5.2,
+    21.0,
+    0.35
+   ],
+   "hfov_deg": 60,
+   "matrix_world": [
+    [
+     0.822192,
+     -0.113758,
+     0.557727,
+     -1.6
+    ],
+    [
+     0.56921,
+     0.164317,
+     -0.805605,
+     15.8
+    ],
+    [
+     0.0,
+     0.979826,
+     0.199852,
+     1.64
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "file": "renders/after/WB018_PYLON_BASE_after.png",
+   "sha256": "ae842b77535aea80f8a3394112452c3875a8ac6d2860971fed94b2aff245c2e9",
+   "seconds": 12.5
+  },
+  {
+   "camera": "CAM04B_DEEP_UNDER_BRIDGE",
+   "pos": [
+    0.0,
+    24.2,
+    1.64
+   ],
+   "aim": [
+    0.0,
+    44.0,
+    2.7
+   ],
+   "hfov_deg": 75,
+   "matrix_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.053459,
+     -0.99857,
+     24.200001
+    ],
+    [
+     0.0,
+     0.99857,
+     -0.053459,
+     1.64
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "file": "renders/after/CAM04B_DEEP_UNDER_BRIDGE_after.png",
+   "sha256": "8e948efc8b569f061a5cc7404a940aefed6dc87263e7cbf2aac16fba77ae5d57",
+   "seconds": 12.6
+  },
+  {
+   "camera": "WB018_STAGE_FLANK",
+   "pos": [
+    2.2,
+    32.6,
+    1.64
+   ],
+   "aim": [
+    7.4,
+    44.0,
+    3.3
+   ],
+   "hfov_deg": 70,
+   "matrix_world": [
+    [
+     0.909819,
+     -0.054505,
+     -0.41141,
+     2.2
+    ],
+    [
+     -0.415005,
+     -0.119491,
+     -0.901938,
+     32.599998
+    ],
+    [
+     0.0,
+     0.991338,
+     -0.131335,
+     1.64
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "file": "renders/after/WB018_STAGE_FLANK_after.png",
+   "sha256": "00409aafa5b81a6e4da56aadadd57a859120ccaa671ec903082c2f4cf607fef4",
+   "seconds": 12.6
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+{
+  "base": {
+    "baseVersion": "ForgeaX0.4.18",
+    "originalSdk": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Workspace/afterlife-engine/node_modules/.pnpm/@forgeax+engine@0.4.18/node_modules/@forgeax/engine",
+    "isolatedSdk": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Optics_019/sdk/engine",
+    "originalGame": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Workspace/afterlife-engine",
+    "isolatedGame": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Optics_019/game",
+    "authorization": "User explicit: \u5141\u8bb8\u5728\u72ec\u7acb\u526f\u672c\u4e2d\u6269\u5c55\u5f15\u64ce, 2026-11-02",
+    "currentD061StillExperimental": true,
+    "lkgArchiveCommit": "2cb2e09bca237f6ab8f9e224e20efe3e36854749",
+    "sdkRenderEntrySha256": "906e402e3a7559a3904fc7339612db8f6c0aa2e4bb53c5564aba7bb94829a635"
+  },
+  "changed": [
+    {
+      "file": "render-system-extract-tail.ts",
+      "originalSha256": "1be7e533c81aca9e426566f0a5cc7177c1a09590c6807bbc4b2e5854bfa671f8",
+      "localSha256": "381fd1d65462d5dac9cc2e31d0da7c29eb3ebbca666f5e7758839b91429f9d4d"
+    },
+    {
+      "file": "render-system-extract.ts",
+      "originalSha256": "957873515f0084ed2b59b9efb38b77bcf963052433ca6e8794e5864b214f5cde",
+      "localSha256": "4e31158c6b8bdf6ad31501e3c248e61a7052e9bb5fd46b08d032457fe472c6a2"
+    },
+    {
+      "file": "pipeline/standard-post.ts",
+      "originalSha256": "69f2b1bec1a0b1d2ba017bb7a3f72baabc4cd79dc4bb4ebd7efe4edd2e321b98",
+      "localSha256": "7c9673e8923eafde5f11d51c76111ea24006509ddd28255380e026758dcc0955"
+    },
+    {
+      "file": "pipeline/standard-pipeline.ts",
+      "originalSha256": "605e1cf0678fb0c5ae946367e2c4a0f301e153645115ea26a99a995b9abc0ff2",
+      "localSha256": "d44ab0657edc5402d4272596d313ec1c55be1789cbb9fd1a722b5bcc1924d070"
+    },
+    {
+      "file": "pipeline/standard-forward-lane.ts",
+      "originalSha256": "f96955148224b83d02912cbf0a0c3179e2e4d4b790f934618ed8f26c8f61e808",
+      "localSha256": "f7981a10e365ad966230826a33a027f92a307a7992cf6cc6033b0b62c1f1f474"
+    },
+    {
+      "file": "record/scene-pass-work.ts",
+      "originalSha256": "6d705a83c1a463c287e06967aefa0e49242551cea4976e2c50a297377b7091cf",
+      "localSha256": "9282fd9adb4501b5586e1f0f576f09a5ede2adf5e055992366bfae51ac414ff0"
+    },
+    {
+      "file": "record/mesh-ssbo.ts",
+      "originalSha256": "4b805b976516e4b0d9f6fc74950ce774eae8e3fca99a7e0bdb6b7936c5d3d0a8",
+      "localSha256": "499a875c741d32f29102efe7e0304e7f28f82cfa9b7a1a55a80fa6da7691ea4a"
+    },
+    {
+      "file": "components/sort-key.ts",
+      "originalSha256": "b294e3db642870c6a846fa45bc1495393460b8eac8bf2e4baffede46a9171813",
+      "localSha256": "ed5e5941b6985281a91d27a16d55a5dbac41b08309412b1c138505cb9eb6a2ca"
+    },
+    {
+      "file": "systems/transparent-dispatch.ts",
+      "originalSha256": "62a729118e32ebcdfe67ca44d6e353ef959d61f8a864b9183bed722b9eaa4e52",
+      "localSha256": "a863aef679a9cb3a4ff28c962a7a5383984b7317a5a4bf6a5de813c9a9897d7c"
+    },
+    {
+      "file": "systems/pass-selector.ts",
+      "originalSha256": "2cabcf7829336e5a0d0bb7a12451b59bb71727afc5dd641104f48830b6fe4275",
+      "localSha256": "3f1f8d715a35579509354b0545abe8e9b662af261668f75bafcfdbad5766d567"
+    }
+  ]
+}

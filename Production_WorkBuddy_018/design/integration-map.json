@@ -1,0 +1,59 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "glb": "exports/WB018_lizzie_candidates.glb",
+ "glb_sha256": "badb10cd1fe331a738b02e0e50a5f6b692a030a163571dcfba743ed1ca12c022",
+ "source_blend": "source/club-wb018-candidates.blend",
+ "source_blend_sha256": "284a0c66eaa5b158bf252f1c031e946db9e9b728e11ac16c297a02e2d51483db",
+ "add_nodes": {
+  "WB018_CEIL_BAND_FRONT": {
+   "gap": "G1 ceiling",
+   "refs": [
+    "R11",
+    "R12",
+    "frames 02m24s 02m42s 03m18s"
+   ],
+   "where": "front hall, Blender x+-4.3 y2.4-17.6 z6.53-7.0 (+rods to 8.2/8.6); glTF y6.53-8.6, z -2.4..-17.6",
+   "collision": "none needed (>6.5 m)"
+  },
+  "WB018_BASE_LED_LINES": {
+   "gap": "G2 base lines",
+   "refs": [
+    "R11",
+    "R12",
+    "frames 01m12s 01m30s"
+   ],
+   "where": "4 bridge pylons (skirt faces, z.05-.075, +8 mm) + 18 column collars 0.40 sq z.02-.11 inside existing 0.44 plates",
+   "collision": "existing pylon/column colliders already cover it"
+  },
+  "WB018_STAGE_FLANK_PANELS": {
+   "gap": "G3 walls",
+   "refs": [
+    "R12",
+    "R11",
+    "frames 01m12s 04m30s"
+   ],
+   "where": "north wall x+-6.92..8.24, Blender y43.83-44 (glTF z -43.83..-44), z.20-6.30",
+   "collision": "optional thin box 1.32 x 0.17 x 6.1 per side; behind stage flank, not on a route"
+  }
+ },
+ "replace_nodes": {
+  "FIX_ROOF_LIGHT_BANDS": "hide; WB018_ROOF_LIGHT_BANDS_COOL is the identical mesh with cool diffusers"
+ },
+ "materials_new": [
+  "M18_BULKHEAD_DARK",
+  "M18_BAND_COOL",
+  "M18_BAND_COOL_DIM",
+  "M18_BASE_LED_PINK",
+  "M18_TALL_PANEL_PINK",
+  "M18_ACOUSTIC_WEAVE (+3 textures)"
+ ],
+ "materials_reused_by_name": [
+  "M_STEEL_BLACK",
+  "M_STEEL_EDGE",
+  "M_CHROME",
+  "M_JBOX",
+  "M_RUBBER"
+ ],
+ "rollback": "remove the 4 WB018_* nodes, unhide FIX_ROOF_LIGHT_BANDS, restore L13 current values and artAmbient current value above. No existing node/mesh/material/collider is modified by this package.",
+ "unchanged": "layout, upper floor/VIP/stairs/glass guards, 6 stools, 18 chairs, 32 native lights (count), exposure, post profile, liquids/glassware, first-person/collision, dry front hall/wet deep hall"
+}

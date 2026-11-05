@@ -1,0 +1,227 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "blender": "5.2.3 LTS",
+ "decision": "D-066",
+ "glyph_source": "design/wordmark/tiangong_A_wedge.svg",
+ "glyph_source_sha256": "271710071f4a9b85b79ff42b79616b59557c1f1b288cee5cfa4ca608d5267932",
+ "strokes_per_char": {
+  "天": 5,
+  "工": 3,
+  "引": 7,
+  "擎": 18
+ },
+ "bevel_applied": {
+  "天": "per-stroke 2 mm perimeter bevel before union",
+  "工": "per-stroke 2 mm perimeter bevel before union",
+  "引": "per-stroke 2 mm perimeter bevel before union",
+  "擎": "per-stroke 2 mm perimeter bevel before union"
+ },
+ "led_core_mode": {
+  "天_heng1": "channel17",
+  "天_heng2": "core36",
+  "天_pie_stem": "core36",
+  "天_pie_blade": "core36",
+  "天_na_blade": "core36",
+  "工_heng_top": "core36",
+  "工_shu": "core36",
+  "工_heng_bottom": "core36",
+  "引_gong_top": "core36",
+  "引_gong_mid": "channel17",
+  "引_gong_left": "core36",
+  "引_gong_low": "core36",
+  "引_gong_down": "core36",
+  "引_gong_hook": "core36",
+  "引_shu": "core36",
+  "擎_cao_h": "channel17",
+  "擎_cao_v1": "channel17",
+  "擎_cao_v2": "channel17",
+  "擎_bao_pie": "none",
+  "擎_bao_hengzhe": "channel17",
+  "擎_kou_t": "channel17",
+  "擎_kou_b": "channel17",
+  "擎_kou_l": "channel17",
+  "擎_kou_r": "channel17",
+  "擎_pu_pie1": "none",
+  "擎_pu_heng": "channel17",
+  "擎_pu_pie2": "channel17",
+  "擎_pu_na": "core36",
+  "擎_shou_pie": "channel17",
+  "擎_shou_h1": "channel17",
+  "擎_shou_h2": "core36",
+  "擎_shou_shu": "core36",
+  "擎_shou_gou": "core36"
+ },
+ "submm_weld_fixes": [
+  {
+   "char": "引",
+   "edges": 2
+  },
+  {
+   "char": "擎",
+   "edges": 1
+  }
+ ],
+ "per_char": {
+  "天": {
+   "body_non_manifold_edges": 0,
+   "body_volume_m3": 0.020709,
+   "led_non_manifold_edges": 0,
+   "led_volume_m3": 0.001723,
+   "body_faces": 105,
+   "led_faces": 76
+  },
+  "工": {
+   "body_non_manifold_edges": 0,
+   "body_volume_m3": 0.018265,
+   "led_non_manifold_edges": 0,
+   "led_volume_m3": 0.001512,
+   "body_faces": 88,
+   "led_faces": 68
+  },
+  "引": {
+   "body_non_manifold_edges": 0,
+   "body_volume_m3": 0.020514,
+   "led_non_manifold_edges": 0,
+   "led_volume_m3": 0.001583,
+   "body_faces": 115,
+   "led_faces": 128
+  },
+  "擎": {
+   "body_non_manifold_edges": 0,
+   "body_volume_m3": 0.024348,
+   "led_non_manifold_edges": 0,
+   "led_volume_m3": 0.001682,
+   "body_faces": 391,
+   "led_faces": 340
+  }
+ },
+ "strokes_without_led_channel": [
+  "擎_bao_pie",
+  "擎_pu_pie1"
+ ],
+ "cyan_strips": [
+  [
+   "天_heng2",
+   0.137
+  ],
+  [
+   "天_na_blade",
+   0.191
+  ],
+  [
+   "工_heng_bottom",
+   0.318
+  ],
+  [
+   "引_gong_hook",
+   0.177
+  ]
+ ],
+ "standoffs": 16,
+ "merged_checks": {
+  "WB020_STAGE_LED_WEDGE_BODY": {
+   "non_manifold_edges": 0,
+   "volume_m3": 0.083836
+  },
+  "WB020_STAGE_LED_WEDGE_LED": {
+   "non_manifold_edges": 0,
+   "volume_m3": 0.0065
+  },
+  "WB020_STAGE_LED_WEDGE_EDGE_CYAN": {
+   "non_manifold_edges": 0,
+   "volume_m3": 4.9e-05
+  }
+ },
+ "objects": {
+  "WB020_STAGE_LED_WEDGE_BODY": {
+   "tris": 1946,
+   "material": "WB020_M_WEDGE_METAL"
+  },
+  "WB020_STAGE_LED_WEDGE_LED": {
+   "tris": 612,
+   "material": "WB020_M_WEDGE_LED_PINK"
+  },
+  "WB020_STAGE_LED_WEDGE_EDGE_CYAN": {
+   "tris": 48,
+   "material": "WB020_M_WEDGE_EDGE_CYAN"
+  },
+  "WB020_STAGE_LED_WEDGE_CARRIER": {
+   "tris": 552,
+   "material": "WB020_M_WEDGE_CARRIER"
+  }
+ },
+ "tris_total": 3158,
+ "letters_bbox_world_blender": {
+  "x": [
+   -2.6642,
+   2.6642
+  ],
+  "y": [
+   43.725,
+   43.775
+  ],
+  "z": [
+   3.4526,
+   4.6274
+  ]
+ },
+ "layers_y_world": {
+  "letter_front_rim": 43.725,
+  "channel_floor": 43.733,
+  "led_front": 43.729,
+  "led_back_embedded": 43.737,
+  "letter_back": 43.775,
+  "cyan_strip": [
+   43.738,
+   43.748
+  ],
+  "rail_front": 43.78,
+  "rail_back": 43.83,
+  "driver_back": 43.874,
+  "vertical_bars_front_existing": 43.89
+ },
+ "bevel_m": 0.002,
+ "channel": {
+  "inset_m": "0.035 core (fallback 0.016)",
+  "depth_m": 0.007999999999995566,
+  "led_inset_m": "0.036 core (fallback 0.017)",
+  "led_recess_m": 0.004
+ },
+ "emission": {
+  "WB020_M_WEDGE_LED_PINK": [
+   [
+    1.0,
+    0.06,
+    0.62
+   ],
+   3.5
+  ],
+  "WB020_M_WEDGE_EDGE_CYAN": [
+   [
+    0.05,
+    0.72,
+    1.0
+   ],
+   4.0
+  ],
+  "metal": "none",
+  "note": "HDR emissive only; no halo geometry/texture"
+ },
+ "pbr": {
+  "WB020_M_WEDGE_METAL": {
+   "base": [
+    0.055,
+    0.052,
+    0.062
+   ],
+   "metallic": 0.9,
+   "rough": 0.32
+  },
+  "WB020_M_WEDGE_CARRIER": {
+   "metallic": 0.8,
+   "rough": 0.45
+  }
+ },
+ "output": "source/WB020_stage_led_wedge_A.blend",
+ "output_sha256": "5868b5f1a28941b3469850fbd869e39d20f3f9b7e1fd57188d5f65540e5bac12"
+}

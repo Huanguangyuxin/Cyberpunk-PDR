@@ -1,0 +1,5 @@
+WB020_STAGE_LED_WEDGE_BODY {'bad_normal': 0, 'bad_tangent_len': 1, 'bad_ortho': 0, 'bad_w': 0, 'uv_degenerate_tris': 0, 'tris': 2150, 'open_or_multi_edges': 0, 'signed_volume_m3': 0.083836}
+WB020_STAGE_LED_WEDGE_CARRIER {'bad_normal': 0, 'bad_tangent_len': 0, 'bad_ortho': 0, 'bad_w': 0, 'uv_degenerate_tris': 0, 'tris': 552, 'open_or_multi_edges': 0, 'signed_volume_m3': 0.039837}
+WB020_STAGE_LED_WEDGE_EDGE_CYAN {'bad_normal': 0, 'bad_tangent_len': 0, 'bad_ortho': 0, 'bad_w': 0, 'uv_degenerate_tris': 0, 'tris': 48, 'open_or_multi_edges': 0, 'signed_volume_m3': 4.9e-05}
+WB020_STAGE_LED_WEDGE_LED {'bad_normal': 0, 'bad_tangent_len': 0, 'bad_ortho': 0, 'bad_w': 0, 'uv_degenerate_tris': 0, 'tris': 612, 'open_or_multi_edges': 0, 'signed_volume_m3': 0.0065}
+SHARED_PLANES []

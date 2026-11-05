@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-28",
+  "scope": "documentation only",
+  "result": "passed",
+  "checks": [
+    "seven nonempty UTF-8 Markdown files",
+    "five required docs present",
+    "local Markdown links resolve",
+    "critical constraint strings present",
+    "W1-W6 provenance labels present",
+    "manual review of seven recorded conflicts"
+  ],
+  "not_validated": [
+    "Cursor Gemini",
+    "Blender connection",
+    "engine execution",
+    "historical assets",
+    "production rollback"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 654,
+      "sha256": "7b8aec47362fb4694413de0cc56ad6ccbca6c1b52af4214308b73b80588e3687"
+    },
+    {
+      "path": "Cyberpunk/AGENTS.md",
+      "bytes": 5381,
+      "sha256": "c105c71e5503cd2039188198328259b65fda21d0d7d7ab802a35fda715315080"
+    },
+    {
+      "path": "Cyberpunk/docs/ART_DIRECTION.md",
+      "bytes": 6828,
+      "sha256": "a7c55b1bb7c1166576b82f8c20bb593c6c4311ab66afcdef3d282ee78e1cb33b"
+    },
+    {
+      "path": "Cyberpunk/docs/DECISIONS.md",
+      "bytes": 3875,
+      "sha256": "8df7d5d6ee2acce8a4a57ca7cc8de9aca15e6b2edc0370ebe9cdad1c08fb8e0f"
+    },
+    {
+      "path": "Cyberpunk/docs/METHODOLOGY.md",
+      "bytes": 13689,
+      "sha256": "11991f72dacbd214f374c1984eee4f7ef72b6138207e255183d71758040cfdf3"
+    },
+    {
+      "path": "Cyberpunk/docs/PRODUCTION_PLAN.md",
+      "bytes": 6854,
+      "sha256": "5b4b18ca658c4cb669693d4e0d69c4828074b78b85531738772febc396b28184"
+    },
+    {
+      "path": "Cyberpunk/docs/PROGRESS.md",
+      "bytes": 3821,
+      "sha256": "1ac9974ce1bbff2288db87df8642aef8af97105a8e52d70ec46233077b53a7d2"
+    }
+  ]
+}

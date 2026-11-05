@@ -1,0 +1,484 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "WB018_BASE_LED_LINES",
+        "WB018_CEIL_BAND_FRONT",
+        "WB018_ROOF_LIGHT_BANDS_COOL",
+        "WB018_STAGE_FLANK_PANELS"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "WB018_lizzie_badb10cd.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB018_BASE_LED_LINES"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB018_CEIL_BAND_FRONT"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB018_ROOF_LIGHT_BANDS_COOL"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB018_STAGE_FLANK_PANELS"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:ME_WB018_BASE_LED_LINES": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f29a932c9a4",
+          "slotName": "M18_BASE_LED_PINK",
+          "sourceKey": "material:M18_BASE_LED_PINK"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2a6e7fce47",
+          "slotName": "M_STEEL_EDGE",
+          "sourceKey": "material:M_STEEL_EDGE"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2b1acc2a5a",
+          "slotName": "M_STEEL_BLACK",
+          "sourceKey": "material:M_STEEL_BLACK"
+        }
+      ]
+    },
+    "mesh:ME_WB018_CEIL_BAND_FRONT": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2c4c600576",
+          "slotName": "M18_BULKHEAD_DARK",
+          "sourceKey": "material:M18_BULKHEAD_DARK"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2dc0430845",
+          "slotName": "M18_BAND_COOL",
+          "sourceKey": "material:M18_BAND_COOL"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2b1acc2a5a",
+          "slotName": "M_STEEL_BLACK",
+          "sourceKey": "material:M_STEEL_BLACK"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2ec1edaad6",
+          "slotName": "M18_BAND_COOL_DIM",
+          "sourceKey": "material:M18_BAND_COOL_DIM"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2f6532bf2e",
+          "slotName": "M_CHROME",
+          "sourceKey": "material:M_CHROME"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f30b01be464",
+          "slotName": "M_JBOX",
+          "sourceKey": "material:M_JBOX"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f317f1340aa",
+          "slotName": "M_RUBBER",
+          "sourceKey": "material:M_RUBBER"
+        }
+      ]
+    },
+    "mesh:ME_WB018_ROOF_LIGHT_BANDS_COOL": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2a6e7fce47",
+          "slotName": "M_STEEL_EDGE",
+          "sourceKey": "material:M_STEEL_EDGE"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2b1acc2a5a",
+          "slotName": "M_STEEL_BLACK",
+          "sourceKey": "material:M_STEEL_BLACK"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2dc0430845",
+          "slotName": "M18_BAND_COOL",
+          "sourceKey": "material:M18_BAND_COOL"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2f6532bf2e",
+          "slotName": "M_CHROME",
+          "sourceKey": "material:M_CHROME"
+        }
+      ]
+    },
+    "mesh:ME_WB018_STAGE_FLANK_PANELS": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2a6e7fce47",
+          "slotName": "M_STEEL_EDGE",
+          "sourceKey": "material:M_STEEL_EDGE"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f2b1acc2a5a",
+          "slotName": "M_STEEL_BLACK",
+          "sourceKey": "material:M_STEEL_BLACK"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f32803b0026",
+          "slotName": "M18_ACOUSTIC_WEAVE",
+          "sourceKey": "material:M18_ACOUSTIC_WEAVE"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f334b9703b2",
+          "slotName": "M18_TALL_PANEL_PINK",
+          "sourceKey": "material:M18_TALL_PANEL_PINK"
+        },
+        {
+          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f317f1340aa",
+          "slotName": "M_RUBBER",
+          "sourceKey": "material:M_RUBBER"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f25a3fa7d64",
+      "kind": "mesh",
+      "name": "ME_WB018_BASE_LED_LINES",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:ME_WB018_BASE_LED_LINES"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f26bd8d6cf2",
+      "kind": "mesh",
+      "name": "ME_WB018_CEIL_BAND_FRONT",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:ME_WB018_CEIL_BAND_FRONT"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f27fc799a07",
+      "kind": "mesh",
+      "name": "ME_WB018_ROOF_LIGHT_BANDS_COOL",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:ME_WB018_ROOF_LIGHT_BANDS_COOL"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f28291be67b",
+      "kind": "mesh",
+      "name": "ME_WB018_STAGE_FLANK_PANELS",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:ME_WB018_STAGE_FLANK_PANELS"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f29a932c9a4",
+      "kind": "material",
+      "name": "M18_BASE_LED_PINK",
+      "sourceIndex": 0,
+      "sourceKey": "material:M18_BASE_LED_PINK"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f2a6e7fce47",
+      "kind": "material",
+      "name": "M_STEEL_EDGE",
+      "sourceIndex": 1,
+      "sourceKey": "material:M_STEEL_EDGE"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f2b1acc2a5a",
+      "kind": "material",
+      "name": "M_STEEL_BLACK",
+      "sourceIndex": 2,
+      "sourceKey": "material:M_STEEL_BLACK"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f2c4c600576",
+      "kind": "material",
+      "name": "M18_BULKHEAD_DARK",
+      "sourceIndex": 3,
+      "sourceKey": "material:M18_BULKHEAD_DARK"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f2dc0430845",
+      "kind": "material",
+      "name": "M18_BAND_COOL",
+      "sourceIndex": 4,
+      "sourceKey": "material:M18_BAND_COOL"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f2ec1edaad6",
+      "kind": "material",
+      "name": "M18_BAND_COOL_DIM",
+      "sourceIndex": 5,
+      "sourceKey": "material:M18_BAND_COOL_DIM"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f2f6532bf2e",
+      "kind": "material",
+      "name": "M_CHROME",
+      "sourceIndex": 6,
+      "sourceKey": "material:M_CHROME"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f30b01be464",
+      "kind": "material",
+      "name": "M_JBOX",
+      "sourceIndex": 7,
+      "sourceKey": "material:M_JBOX"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f317f1340aa",
+      "kind": "material",
+      "name": "M_RUBBER",
+      "sourceIndex": 8,
+      "sourceKey": "material:M_RUBBER"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f32803b0026",
+      "kind": "material",
+      "name": "M18_ACOUSTIC_WEAVE",
+      "sourceIndex": 9,
+      "sourceKey": "material:M18_ACOUSTIC_WEAVE"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f334b9703b2",
+      "kind": "material",
+      "name": "M18_TALL_PANEL_PINK",
+      "sourceIndex": 10,
+      "sourceKey": "material:M18_TALL_PANEL_PINK"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f341ab888de",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f35f5e6aee4",
+      "kind": "texture",
+      "name": "M_STEEL_EDGE_normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:M_STEEL_EDGE_normal"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f36c9246e30",
+      "kind": "texture",
+      "name": "M_STEEL_EDGE_orm",
+      "sourceIndex": 1,
+      "sourceKey": "texture:M_STEEL_EDGE_orm"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f37e6148bbb",
+      "kind": "texture",
+      "name": "M_STEEL_EDGE_color",
+      "sourceIndex": 2,
+      "sourceKey": "texture:M_STEEL_EDGE_color"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f38190c7c69",
+      "kind": "texture",
+      "name": "M_STEEL_BLACK_normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:M_STEEL_BLACK_normal"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f39db1beb60",
+      "kind": "texture",
+      "name": "M_STEEL_BLACK_orm",
+      "sourceIndex": 4,
+      "sourceKey": "texture:M_STEEL_BLACK_orm"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f3abe54d88d",
+      "kind": "texture",
+      "name": "M_STEEL_BLACK_color",
+      "sourceIndex": 5,
+      "sourceKey": "texture:M_STEEL_BLACK_color"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f3b8bc65ec2",
+      "kind": "texture",
+      "name": "M_CHROME_orm",
+      "sourceIndex": 6,
+      "sourceKey": "texture:M_CHROME_orm"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f3cffafeca4",
+      "kind": "texture",
+      "name": "M18_ACOUSTIC_WEAVE_normal",
+      "sourceIndex": 7,
+      "sourceKey": "texture:M18_ACOUSTIC_WEAVE_normal"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f3dc2a6b5d2",
+      "kind": "texture",
+      "name": "M18_ACOUSTIC_WEAVE_orm",
+      "sourceIndex": 8,
+      "sourceKey": "texture:M18_ACOUSTIC_WEAVE_orm"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f3e949dce8d",
+      "kind": "texture",
+      "name": "M18_ACOUSTIC_WEAVE_color",
+      "sourceIndex": 9,
+      "sourceKey": "texture:M18_ACOUSTIC_WEAVE_color"
+    },
+    {
+      "guid": "01a19ac5-5ad3-745b-a280-3f3fd8fa7d72",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+ "glb": "exports/WB020_STAGE_LED_WEDGE_A.glb",
+ "sha256": "9e8c27dd9b6791339e990123e3ecc112571f672941211a05801721b405612d3d",
+ "objects": {
+  "WB020_STAGE_LED_WEDGE_BODY": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 1946,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 0.083836
+  },
+  "WB020_STAGE_LED_WEDGE_CARRIER": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 552,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 0.039837
+  },
+  "WB020_STAGE_LED_WEDGE_EDGE_CYAN": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 48,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 4.9e-05
+  },
+  "WB020_STAGE_LED_WEDGE_LED": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 612,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 0.0065
+  }
+ },
+ "z_planes": {
+  "WB020_STAGE_LED_WEDGE_BODY": [
+   [
+    -0.065,
+    -1
+   ],
+   [
+    -0.023,
+    1
+   ],
+   [
+    -0.015,
+    1
+   ]
+  ],
+  "WB020_STAGE_LED_WEDGE_CARRIER": [
+   [
+    -0.288,
+    -1
+   ],
+   [
+    -0.284,
+    -1
+   ],
+   [
+    -0.282,
+    1
+   ],
+   [
+    -0.164,
+    -1
+   ],
+   [
+    -0.135,
+    -1
+   ],
+   [
+    -0.131,
+    -1
+   ],
+   [
+    -0.12,
+    -1
+   ],
+   [
+    -0.119,
+    1
+   ],
+   [
+    -0.108,
+    -1
+   ],
+   [
+    -0.103,
+    -1
+   ],
+   [
+    -0.101,
+    -1
+   ],
+   [
+    -0.099,
+    -1
+   ],
+   [
+    -0.091,
+    1
+   ],
+   [
+    -0.089,
+    1
+   ],
+   [
+    -0.087,
+    1
+   ],
+   [
+    -0.085,
+    1
+   ],
+   [
+    -0.082,
+    1
+   ],
+   [
+    -0.08,
+    1
+   ],
+   [
+    -0.073,
+    -1
+   ],
+   [
+    -0.07,
+    1
+   ],
+   [
+    -0.062,
+    1
+   ],
+   [
+    -0.055,
+    1
+   ]
+  ],
+  "WB020_STAGE_LED_WEDGE_EDGE_CYAN": [
+   [
+    -0.038,
+    -1
+   ],
+   [
+    -0.028,
+    1
+   ]
+  ],
+  "WB020_STAGE_LED_WEDGE_LED": [
+   [
+    -0.027,
+    -1
+   ],
+   [
+    -0.019,
+    1
+   ]
+  ]
+ },
+ "shared_same_direction_z_planes_between_objects": []
+}

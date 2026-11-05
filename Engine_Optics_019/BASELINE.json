@@ -1,0 +1,11 @@
+{
+  "baseVersion": "ForgeaX0.4.18",
+  "originalSdk": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Workspace/afterlife-engine/node_modules/.pnpm/@forgeax+engine@0.4.18/node_modules/@forgeax/engine",
+  "isolatedSdk": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Optics_019/sdk/engine",
+  "originalGame": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Workspace/afterlife-engine",
+  "isolatedGame": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Optics_019/game",
+  "authorization": "User explicit: 允许在独立副本中扩展引擎, 2026-11-02",
+  "currentD061StillExperimental": true,
+  "lkgArchiveCommit": "2cb2e09bca237f6ab8f9e224e20efe3e36854749",
+  "sdkRenderEntrySha256": "906e402e3a7559a3904fc7339612db8f6c0aa2e4bb53c5564aba7bb94829a635"
+}

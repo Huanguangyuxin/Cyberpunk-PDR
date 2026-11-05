@@ -1,0 +1,13 @@
+{
+  "buildManifestSha256": "abd442dc4735eccf1ae8038d6af414699f219571aba1467f480932965f652e61",
+  "shaderManifestSha256": "632f519b9dcd1d28fe1a5a8a5b2f3eccf7667216f896ccab4811bcfad332adba",
+  "actualPublishedTaa": [
+    {
+      "hash": "72669fba",
+      "sourceDigest": "6486279336f39e11cc3946d7ee603ead72eb3c41077f1c374b1f0c2eb0aaab01",
+      "newShadingReactivity": true,
+      "hasReceiverDepthGate": true,
+      "hasCurrentSupportGate": true
+    }
+  ]
+}

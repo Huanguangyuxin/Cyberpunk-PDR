@@ -1,0 +1,36 @@
+{
+  "classification": "Unmodified actual ForgeaX renders; no AI scene images or retouch",
+  "sourceBuildD059": "3ec38e2b24a867867b7ecc48c6fd68ba5e105297d75638150681976145f91f7d",
+  "items": [
+    {
+      "file": "01-main-hall.png",
+      "original": "Runtime_Integration_014/evidence/D059-final-entrance/entrance-1.png",
+      "sha256": "12bed0d723c5771ac1746a07bee633e8c1e95a60c6b2af76d989a6899c3d6bda",
+      "caption": "D059：二楼/通透玻璃与前厅折线宽灯带；前厅保持干燥少雾。"
+    },
+    {
+      "file": "02-stage-fog-reflections.png",
+      "original": "Runtime_Integration_014/evidence/D059-final-stage/stage-1.png",
+      "sha256": "3bf5aa6507c3f929ed078f8196b9030929ceb6e678e7c1b44aa1dfe1ab8f7d32",
+      "caption": "D059：真实悬挂旋转Spot灯、受光体积雾、湿地反射，以及WB018舞台侧编织板/竖灯箱。"
+    },
+    {
+      "file": "03-table-chairs.png",
+      "original": "Runtime_Integration_014/evidence/D052-built/chairs-1.png",
+      "sha256": "e05f368bc17de14d7fb6b8e617f5df18e643677d51e4c8624f8d9edb4146ffa1",
+      "caption": "D052历史阶段实图：18把普通桌椅真网格更新并朝向桌心；该图不是D059新截图。"
+    },
+    {
+      "file": "04-liquid-transparency.png",
+      "original": "Runtime_Integration_014/evidence/D059-final-transparent/liquid-top-1.png",
+      "sha256": "766ea7f7e4f693fce89a884031c7f31f9cf689a81c6e7b4f75cc9aa307a2b142",
+      "caption": "D059：清玻璃/液体透出杯底与冰，保液深吸收染色；强镜面角仍有过宽浅粉高光。"
+    },
+    {
+      "file": "05-liquid-motion.gif",
+      "original": "Runtime_Integration_014/evidence/D059-canopy-reflection/liquid-real-timed-samples.gif",
+      "sha256": "f1ac0932cef68c7bbbe09a305e155c74875a01b95264e43712abcabf48e19e98",
+      "caption": "D059：6张实际引擎采样按原时差播放，无插帧；真实网格波面与原生高光运动，不是CFD或连续高帧录屏。"
+    }
+  ]
+}

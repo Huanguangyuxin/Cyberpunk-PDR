@@ -1,0 +1,143 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "decision": "D-066",
+ "glyph_authority": {
+  "svg": "design/wordmark/tiangong_A_wedge.svg",
+  "sha256": "271710071f4a9b85b79ff42b79616b59557c1f1b288cee5cfa4ca608d5267932"
+ },
+ "asset_glb": "exports/WB020_STAGE_LED_WEDGE_A.glb",
+ "asset_glb_sha256": "9e8c27dd9b6791339e990123e3ecc112571f672941211a05801721b405612d3d",
+ "source_blend": "source/WB020_stage_led_wedge_A.blend",
+ "source_blend_sha256": "5868b5f1a28941b3469850fbd869e39d20f3f9b7e1fd57188d5f65540e5bac12",
+ "root": {
+  "node": "WB020_STAGE_LED_ROOT",
+  "glTF_translation": [
+   0.0,
+   4.04,
+   -43.71
+  ],
+  "rotation": "none",
+  "faces": "+Z toward dance floor (same as r1)"
+ },
+ "nodes": {
+  "WB020_STAGE_LED_WEDGE_BODY": "4 closed dark-metal letter solids (per-char exact union of the A strokes, 50 mm deep, 2 mm perimeter bevel, LED channel cut 8 mm)",
+  "WB020_STAGE_LED_WEDGE_LED": "pink-violet diffusers recessed 4 mm in the channels (36 mm in from stroke edges; 17 mm on narrow strokes; 2 tiny 擎 strokes metal only)",
+  "WB020_STAGE_LED_WEDGE_EDGE_CYAN": "4 thin cyan side-edge strips on downward baseline edges (天 x2, 工, 引)",
+  "WB020_STAGE_LED_WEDGE_CARRIER": "2 dark rails behind the letters, 16 standoffs, hangers to the r1 fixing points (lower arms x+-2.0, upper L-arms x+-0.8/+-2.2, wall plates), safety rods x+-1.5 to 8.594, 2 drivers"
+ },
+ "replaces": "whole r1/r3 sign (old bright rectangular cabinet, Heiti glyphs/pixels, r3 art nodes) - remove previous WB020_STAGE_LED_* import and import this GLB at the same root",
+ "letters_bbox_world_blender": {
+  "x": [
+   -2.6642,
+   2.6642
+  ],
+  "y": [
+   43.725,
+   43.775
+  ],
+  "z": [
+   3.4526,
+   4.6274
+  ]
+ },
+ "layers_y_world": {
+  "letter_front_rim": 43.725,
+  "channel_floor": 43.733,
+  "led_front": 43.729,
+  "led_back_embedded": 43.737,
+  "letter_back": 43.775,
+  "cyan_strip": [
+   43.738,
+   43.748
+  ],
+  "rail_front": 43.78,
+  "rail_back": 43.83,
+  "driver_back": 43.874,
+  "vertical_bars_front_existing": 43.89
+ },
+ "materials": {
+  "WB020_M_WEDGE_METAL": {
+   "emissiveFactor": null,
+   "emissive_strength": null,
+   "metal": 0.8999999761581421,
+   "rough": 0.3199999928474426,
+   "doubleSided": false
+  },
+  "WB020_M_WEDGE_CARRIER": {
+   "emissiveFactor": null,
+   "emissive_strength": null,
+   "metal": 0.800000011920929,
+   "rough": 0.44999998807907104,
+   "doubleSided": false
+  },
+  "WB020_M_WEDGE_EDGE_CYAN": {
+   "emissiveFactor": [
+    0.05000000074505806,
+    0.7200000286102295,
+    1
+   ],
+   "emissive_strength": 4,
+   "metal": 0,
+   "rough": 0.3499999940395355,
+   "doubleSided": false
+  },
+  "WB020_M_WEDGE_LED_PINK": {
+   "emissiveFactor": [
+    1,
+    0.05999999865889549,
+    0.6200000047683716
+   ],
+   "emissive_strength": 3.5,
+   "metal": 0,
+   "rough": 0.4000000059604645,
+   "doubleSided": false
+  }
+ },
+ "triangles": 3158,
+ "glb_check": {
+  "WB020_STAGE_LED_WEDGE_BODY": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 1946,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 0.083836
+  },
+  "WB020_STAGE_LED_WEDGE_CARRIER": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 552,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 0.039837
+  },
+  "WB020_STAGE_LED_WEDGE_EDGE_CYAN": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 48,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 4.9e-05
+  },
+  "WB020_STAGE_LED_WEDGE_LED": {
+   "bad_normal": 0,
+   "bad_tangent_len": 0,
+   "bad_ortho": 0,
+   "bad_w": 0,
+   "uv_degenerate_tris": 0,
+   "tris": 612,
+   "open_or_multi_edges": 0,
+   "signed_volume_m3": 0.0065
+  }
+ },
+ "shared_same_direction_z_planes_between_objects": [],
+ "clearance_dcc": "0 triangle overlaps with the stage context; nearest DJ desk 0.115 m (letters), carrier plates 2 mm off wall/slab as r1; carrier 50+ mm in front of the vertical bars (rail back 43.83 / driver back 43.874 vs bars 43.89)",
+ "not_changed": "no native lights, exposure, building, stage, upper floor, furniture; 32 lights unchanged; no halo geometry/texture (Bloom by Codex)",
+ "rollback": "re-import r1 GLB 3f0a8f44 (history/r1-original) or remove the root"
+}

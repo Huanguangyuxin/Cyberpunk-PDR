@@ -1,0 +1,15 @@
+{
+  "decision": "D066",
+  "userChoice": "A mechanical wedge",
+  "outlineSha256": "271710071f4a9b85b79ff42b79616b59557c1f1b288cee5cfa4ca608d5267932",
+  "actualTask": "Original WorkBuddy conversation",
+  "modelDisplay": "Claude-Opus-5.5",
+  "sent": true,
+  "actualUi": [
+    "processed1s thinking",
+    "Stop button"
+  ],
+  "writeScope": "020 only",
+  "taskFile": "USER_CHANGE_04_BUILD_WEDGE_A.md",
+  "completed": false
+}

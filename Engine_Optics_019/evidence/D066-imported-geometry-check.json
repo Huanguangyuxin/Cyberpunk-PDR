@@ -1,0 +1,29 @@
+{
+  "author": "Codex: direct binary accessor read on exact imported GLB; not maker receipt or visual acceptance",
+  "sha256": "9e8c27dd9b6791339e990123e3ecc112571f672941211a05801721b405612d3d",
+  "triangles": 3158,
+  "primitives": [
+    {
+      "mesh": "ME_WB020_STAGE_LED_WEDGE_BODY",
+      "triangles": 1946,
+      "normal_tangent_uv_finite_and_unit": true
+    },
+    {
+      "mesh": "ME_WB020_STAGE_LED_WEDGE_CARRIER.001",
+      "triangles": 552,
+      "normal_tangent_uv_finite_and_unit": true
+    },
+    {
+      "mesh": "ME_WB020_STAGE_LED_WEDGE_EDGE_CYAN",
+      "triangles": 48,
+      "normal_tangent_uv_finite_and_unit": true
+    },
+    {
+      "mesh": "ME_WB020_STAGE_LED_WEDGE_LED",
+      "triangles": 612,
+      "normal_tangent_uv_finite_and_unit": true
+    }
+  ],
+  "lights": 0,
+  "ok": true
+}

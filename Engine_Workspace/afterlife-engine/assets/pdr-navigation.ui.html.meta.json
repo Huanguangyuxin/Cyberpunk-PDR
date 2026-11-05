@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "external-asset-package",
+  "importer": "ui",
+  "source": "pdr-navigation.ui.html",
+  "importSettings": {},
+  "subAssets": [
+    {
+      "guid": "01cf39db-5c41-4350-ba15-165fa6f1705e",
+      "sourceIndex": 0,
+      "sourceKey": "ui/navigation",
+      "kind": "ui"
+    }
+  ]
+}

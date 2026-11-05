@@ -1,0 +1,217 @@
+{
+  "baseVersion": "0.4.18",
+  "classification": "User-authorized local extension; not official SDK release",
+  "protectedOriginalSdkAtCapture": "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Engine_Workspace/afterlife-engine/node_modules/.pnpm/@forgeax+engine@0.4.18/node_modules/@forgeax/engine",
+  "files": [
+    {
+      "path": "node_modules/@forgeax/engine-render/src/render-system-extract-tail.ts",
+      "stored": "SDK_Overrides/engine-render/src/render-system-extract-tail.ts",
+      "bytes": 100439,
+      "sha256": "381fd1d65462d5dac9cc2e31d0da7c29eb3ebbca666f5e7758839b91429f9d4d",
+      "originalSha256": "1be7e533c81aca9e426566f0a5cc7177c1a09590c6807bbc4b2e5854bfa671f8"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/render-system-extract.ts",
+      "stored": "SDK_Overrides/engine-render/src/render-system-extract.ts",
+      "bytes": 164223,
+      "sha256": "4e31158c6b8bdf6ad31501e3c248e61a7052e9bb5fd46b08d032457fe472c6a2",
+      "originalSha256": "957873515f0084ed2b59b9efb38b77bcf963052433ca6e8794e5864b214f5cde"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/pipeline/standard-post.ts",
+      "stored": "SDK_Overrides/engine-render/src/pipeline/standard-post.ts",
+      "bytes": 41117,
+      "sha256": "7c9673e8923eafde5f11d51c76111ea24006509ddd28255380e026758dcc0955",
+      "originalSha256": "69f2b1bec1a0b1d2ba017bb7a3f72baabc4cd79dc4bb4ebd7efe4edd2e321b98"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/pipeline/standard-pipeline.ts",
+      "stored": "SDK_Overrides/engine-render/src/pipeline/standard-pipeline.ts",
+      "bytes": 43564,
+      "sha256": "d44ab0657edc5402d4272596d313ec1c55be1789cbb9fd1a722b5bcc1924d070",
+      "originalSha256": "605e1cf0678fb0c5ae946367e2c4a0f301e153645115ea26a99a995b9abc0ff2"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/pipeline/standard-forward-lane.ts",
+      "stored": "SDK_Overrides/engine-render/src/pipeline/standard-forward-lane.ts",
+      "bytes": 24853,
+      "sha256": "f7981a10e365ad966230826a33a027f92a307a7992cf6cc6033b0b62c1f1f474",
+      "originalSha256": "f96955148224b83d02912cbf0a0c3179e2e4d4b790f934618ed8f26c8f61e808"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/record/scene-pass-work.ts",
+      "stored": "SDK_Overrides/engine-render/src/record/scene-pass-work.ts",
+      "bytes": 13918,
+      "sha256": "9282fd9adb4501b5586e1f0f576f09a5ede2adf5e055992366bfae51ac414ff0",
+      "originalSha256": "6d705a83c1a463c287e06967aefa0e49242551cea4976e2c50a297377b7091cf"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/record/mesh-ssbo.ts",
+      "stored": "SDK_Overrides/engine-render/src/record/mesh-ssbo.ts",
+      "bytes": 46748,
+      "sha256": "499a875c741d32f29102efe7e0304e7f28f82cfa9b7a1a55a80fa6da7691ea4a",
+      "originalSha256": "4b805b976516e4b0d9f6fc74950ce774eae8e3fca99a7e0bdb6b7936c5d3d0a8"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/components/sort-key.ts",
+      "stored": "SDK_Overrides/engine-render/src/components/sort-key.ts",
+      "bytes": 3268,
+      "sha256": "ed5e5941b6985281a91d27a16d55a5dbac41b08309412b1c138505cb9eb6a2ca",
+      "originalSha256": "b294e3db642870c6a846fa45bc1495393460b8eac8bf2e4baffede46a9171813"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/systems/transparent-dispatch.ts",
+      "stored": "SDK_Overrides/engine-render/src/systems/transparent-dispatch.ts",
+      "bytes": 7151,
+      "sha256": "a863aef679a9cb3a4ff28c962a7a5383984b7317a5a4bf6a5de813c9a9897d7c",
+      "originalSha256": "62a729118e32ebcdfe67ca44d6e353ef959d61f8a864b9183bed722b9eaa4e52"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/src/systems/pass-selector.ts",
+      "stored": "SDK_Overrides/engine-render/src/systems/pass-selector.ts",
+      "bytes": 3912,
+      "sha256": "3f1f8d715a35579509354b0545abe8e9b662af261668f75bafcfdbad5766d567",
+      "originalSha256": "2cabcf7829336e5a0d0bb7a12451b59bb71727afc5dd641104f48830b6fe4275"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-shader/src/taa-resolve.wgsl",
+      "stored": "SDK_Overrides/engine-shader/src/taa-resolve.wgsl",
+      "bytes": 26843,
+      "sha256": "46171a999119e291a9fd28100d23199a163a233148e5971709f33848bba228a1",
+      "originalSha256": "a0e73f4db08372a053f00ca67311ff6875e34a4bc94c9b5ae723af4b2809a5d0"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/index.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/index.mjs",
+      "bytes": 103388,
+      "sha256": "96fd111d79c02f3168832050f4036b43155e1df50307836cba35bd592c73dda0",
+      "originalSha256": "906e402e3a7559a3904fc7339612db8f6c0aa2e4bb53c5564aba7bb94829a635"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/authoring.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/authoring.mjs",
+      "bytes": 1676,
+      "sha256": "c4353d1fe141bf4662b3a62b3e1958c0ab682e48101a786a0a6a103794dcdd31",
+      "originalSha256": "1708ac6bdb4dc110ef54ebf3711e0166d1b4dde938f3d5d5228856f4cbd54c63"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/internal.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/internal.mjs",
+      "bytes": 42207,
+      "sha256": "c55c3ac9e405ed89e789b027f02fd5e26c7a1ca579e6a2cc4dffe4c476d55081",
+      "originalSha256": "cb9f477518658aba76f7cb7e2f13b52971ace25b79d19c92279d5f1e005b71e4"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-XZHQWBNV.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-XZHQWBNV.mjs",
+      "bytes": 2144,
+      "sha256": "75392e33d8c9c18a929f59943541951b03007d5a0d6dbf018ee8be522ef5fe0c",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/temporal/index.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/temporal/index.mjs",
+      "bytes": 1688,
+      "sha256": "bfe7880fd4f5e650206c9e186f96285ff6a89a84b14bd81fb179d5c9b228dbac",
+      "originalSha256": "03946e20ef4c40dc20187aadd09597c72c5538f4d85b3d11413a014f80d52eee"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-3XNCWRYC.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-3XNCWRYC.mjs",
+      "bytes": 13769,
+      "sha256": "6b75518ec45d11cf12a1c160b9248296e4cf36170e6de553bbb65b40badcc42a",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/construct-renderer.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/construct-renderer.mjs",
+      "bytes": 2273849,
+      "sha256": "e65a1d06553ff1f910bcbf34e310f18cafaa412286a7c210872bab5959e94b1f",
+      "originalSha256": "7b87344b4ae2b5918d6756dc19b7a00d26edb30d04e807a7bd4e49d439bfc5af"
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-QMNLXPE2.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-QMNLXPE2.mjs",
+      "bytes": 185768,
+      "sha256": "94a5bbeebb1178745c71a0c34b75c820848f22ff595d63be0b149a4f0a13e8c2",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-Q2KXQNQT.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-Q2KXQNQT.mjs",
+      "bytes": 465942,
+      "sha256": "7a39ca97657b5d8917760e03b9a2c96718560e3f308636fc1a368324f394917c",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-BYYRQEH4.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-BYYRQEH4.mjs",
+      "bytes": 72870,
+      "sha256": "62cd3c2d555d1d01ca6633ad16520fc0839bea95a2b3880e58f4c5ff2cfc276f",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-NYKYJCUN.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-NYKYJCUN.mjs",
+      "bytes": 368202,
+      "sha256": "cf60fe035cc1d6eb0d336749d94f28225674af21f56b6ab7ceef5af7f0c86ece",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-5JZNU5U3.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-5JZNU5U3.mjs",
+      "bytes": 351865,
+      "sha256": "afdfb992044e03f2439cf0ca43ee2a472e4f980896bfaa72c06d5aacbffd5682",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-TI3O7TOU.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-TI3O7TOU.mjs",
+      "bytes": 16634,
+      "sha256": "c574539316ffd6cbb0eb3f374ba3c1846623643d0e158e545d51417c0ab10b2c",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-MVY4ZZCX.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-MVY4ZZCX.mjs",
+      "bytes": 18184,
+      "sha256": "5496b076c95fafb70e1f02d8734c0872b238d0af71b4ca46d84f4271423d95e6",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-QWUJDQND.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-QWUJDQND.mjs",
+      "bytes": 4561,
+      "sha256": "4a1612b7a592085b80d7a90371787bd75372187fb71847996f9e786b6783227e",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-COM64KIQ.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-COM64KIQ.mjs",
+      "bytes": 5717,
+      "sha256": "75f135ef4df1896ed9dd6d9cffff0a0411678ce447821bca1ce4bfc0a8aa8611",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-JWVQREUV.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-JWVQREUV.mjs",
+      "bytes": 1258226,
+      "sha256": "541d945b500351e17a8d6f5f8acab09610b406dd452cffa47097b93a4606aae7",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-6Y4WOKOE.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-6Y4WOKOE.mjs",
+      "bytes": 1704,
+      "sha256": "7a3505600f318a7e555f43ece73d677e37aec39350c9e471b81bc28437dca16b",
+      "originalSha256": null
+    },
+    {
+      "path": "node_modules/@forgeax/engine-render/dist/chunk-XAU6MWMX.mjs",
+      "stored": "SDK_Overrides/engine-render/dist/chunk-XAU6MWMX.mjs",
+      "bytes": 441960,
+      "sha256": "4d91b8201c6426b8f9181e5f360afa1cfdc2f334ce3df3ff795bb0285ec3aa65",
+      "originalSha256": null
+    }
+  ]
+}

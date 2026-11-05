@@ -1,0 +1,128 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "source": "source/WB020_stage_led_wedge_A.blend",
+ "source_sha256": "5868b5f1a28941b3469850fbd869e39d20f3f9b7e1fd57188d5f65540e5bac12",
+ "glb": "exports/WB020_STAGE_LED_WEDGE_A.glb",
+ "bytes": 303124,
+ "sha256": "9e8c27dd9b6791339e990123e3ecc112571f672941211a05801721b405612d3d",
+ "extensionsUsed": [
+  "KHR_materials_emissive_strength"
+ ],
+ "nodes": [
+  {
+   "name": "WB020_STAGE_LED_WEDGE_BODY",
+   "translation": null,
+   "rotation": null,
+   "children": []
+  },
+  {
+   "name": "WB020_STAGE_LED_WEDGE_CARRIER",
+   "translation": null,
+   "rotation": null,
+   "children": []
+  },
+  {
+   "name": "WB020_STAGE_LED_WEDGE_EDGE_CYAN",
+   "translation": null,
+   "rotation": null,
+   "children": []
+  },
+  {
+   "name": "WB020_STAGE_LED_WEDGE_LED",
+   "translation": null,
+   "rotation": null,
+   "children": []
+  },
+  {
+   "name": "WB020_STAGE_LED_ROOT",
+   "translation": [
+    0,
+    4.039999961853027,
+    -43.709999084472656
+   ],
+   "rotation": null,
+   "children": [
+    "WB020_STAGE_LED_WEDGE_BODY",
+    "WB020_STAGE_LED_WEDGE_CARRIER",
+    "WB020_STAGE_LED_WEDGE_EDGE_CYAN",
+    "WB020_STAGE_LED_WEDGE_LED"
+   ]
+  }
+ ],
+ "materials": {
+  "WB020_M_WEDGE_METAL": {
+   "emissiveFactor": null,
+   "emissive_strength": null,
+   "doubleSided": false,
+   "baseColor": [
+    0.054999999701976776,
+    0.052000001072883606,
+    0.06199999898672104,
+    1
+   ],
+   "metal": 0.8999999761581421,
+   "rough": 0.3199999928474426
+  },
+  "WB020_M_WEDGE_CARRIER": {
+   "emissiveFactor": null,
+   "emissive_strength": null,
+   "doubleSided": false,
+   "baseColor": [
+    0.03500000014901161,
+    0.035999998450279236,
+    0.03999999910593033,
+    1
+   ],
+   "metal": 0.800000011920929,
+   "rough": 0.44999998807907104
+  },
+  "WB020_M_WEDGE_EDGE_CYAN": {
+   "emissiveFactor": [
+    0.05000000074505806,
+    0.7200000286102295,
+    1
+   ],
+   "emissive_strength": 4,
+   "doubleSided": false,
+   "baseColor": [
+    0.44999998807907104,
+    0.8500000238418579,
+    1,
+    1
+   ],
+   "metal": 0,
+   "rough": 0.3499999940395355
+  },
+  "WB020_M_WEDGE_LED_PINK": {
+   "emissiveFactor": [
+    1,
+    0.05999999865889549,
+    0.6200000047683716
+   ],
+   "emissive_strength": 3.5,
+   "doubleSided": false,
+   "baseColor": [
+    0.4000000059604645,
+    0.029999999329447746,
+    0.30000001192092896,
+    1
+   ],
+   "metal": 0,
+   "rough": 0.4000000059604645
+  }
+ },
+ "triangles": 3158,
+ "mesh_local_bbox_gltf": [
+  [
+   -2.700000047683716,
+   -0.6800000667572021,
+   -0.28800201416015625
+  ],
+  [
+   2.700000047683716,
+   4.557999610900879,
+   -0.0149993896484375
+  ]
+ ],
+ "lights": 0
+}

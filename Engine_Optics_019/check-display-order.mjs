@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';import {createRequire}from'node:module';import{readFile,writeFile}from'node:fs/promises';
+const req=createRequire(import.meta.url),{transform}=req('./sdk/engine/node_modules/esbuild');
+const source=await readFile('sdk/engine/node_modules/@forgeax/engine-render/src/systems/transparent-dispatch.ts','utf8');
+let{code}=await transform(source,{loader:'ts',format:'esm'});code=code.replace(/import[^;]+;/g,'');code='const RenderQueue={Transparent:3000};const TRANSPARENT_SORT_MODE_DISTANCE=3,TRANSPARENT_SORT_MODE_LAYER_Y=1,TRANSPARENT_SORT_MODE_LAYER_YZ=2,TRANSPARENT_SORT_MODE_LAYER_Z=0;\n'+code;
+await writeFile('evidence/display-sort-subject.mjs',code);const{TransparentSortCache}=await import('./evidence/display-sort-subject.mjs');
+const world={transparentSort:{mode:3,yzAlpha:1}},camera=[{position:[0,0,0]}];
+const rows=[1,2,3,4].map((z,i)=>({transform:{world:new Float32Array([1,0,0,0,0,1,0,0,0,0,1,0,0,0,z,1])}}));rows.at=Array.prototype.at;
+const entries=rows.map((_,i)=>({renderableIndex:i,entityIndex:i,queue:3000,layer:0,materialHandle:i}));
+const cache=new TransparentSortCache(),ids=d=>d.map(x=>x.entityIndex);let checks=0;const eq=(a,b)=>{assert.deepEqual(a,b);checks++};
+eq(ids(cache.sort(entries,world,camera,rows)),[3,2,1,0]);
+entries[0].layer=10;eq(ids(cache.sort(entries,world,camera,rows)),[3,2,1,0]);entries[3].layer=20;eq(ids(cache.sort(entries,world,camera,rows)),[2,1,0,3]);
+entries.forEach(e=>e.layer=0);rows[0].sortKey=-100;eq(ids(cache.sort(entries,world,camera,rows)),[0,3,2,1]);
+rows[0].sortKey=undefined;rows[0].localAabb=new Float32Array([0,0,8,0,0,10]);eq(ids(cache.sort(entries,world,camera,rows)),[0,3,2,1]);
+rows[0].localAabb=undefined;const ordered=cache.sort(entries,world,camera,rows);eq(ids(ordered),[3,2,1,0]);assert.equal(cache.sort(entries,world,camera,rows),ordered);checks++;
+entries[1].queue=2000;eq(ids(cache.sort(entries,world,camera,rows)),[3,1,2,0]);
+rows.forEach(r=>r.transform.world[14]=0);entries.forEach(e=>e.queue=3000);eq(ids(cache.sort(entries,world,camera,rows)),[0,1,2,3]);
+await writeFile('evidence/D063-display-order-check.json',JSON.stringify({ok:true,checks,subject:'Actual local native TransparentSortCache TS; mocked data carriers, not GPU pixels',cases:['3D far-to-near','Layer primary in distance mode','SortKey override','actual transformed geometry bounds centre','stable cache reuse','opaque dispatch slot preserved','equal-key stability']},null,2));console.log('Display sort',checks,'checks passed');

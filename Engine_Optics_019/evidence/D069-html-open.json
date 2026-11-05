@@ -1,0 +1,38 @@
+{
+  "html": {
+    "path": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Deliverables/Cyberpunk-PDR.html",
+    "bytes": 145356710,
+    "sha256": "7377cf9c131b7d108d2ce79dd912718c747dcf4ef709aee673bfbd1c20fa3138"
+  },
+  "distManifestSha256": "410fbf76a9a7a06e24fef19df7aa84ac5e17f5435751a0fb2cd03a91300ca97d",
+  "url": "http://127.0.0.1:53861/Cyberpunk-PDR.html",
+  "browser": "Actual desktop Chrome, macOS; foreground enter button",
+  "observed": {
+    "sceneVisible": true,
+    "fpsSamples": [
+      23,
+      24
+    ],
+    "collidersReady": "193/193",
+    "loadingOverlayHidden": true,
+    "keyboardReadyAfterCanvasClick": true,
+    "forwardInputChangesView": true,
+    "spaceInputSent": true,
+    "fullJumpLandingRouteRetested": false,
+    "reloadAndReenterSceneVisible": true,
+    "consoleWarningsOrErrorsAfterInputReload": [
+      "app-pointer-lock-failed: WrongDocumentError; observed after input/reload; startup before input had no warnings. Retrying current canvas via native click."
+    ],
+    "pointerLockAfterReloadCurrentCanvasClick": "\u9f20\u6807\u5df2\u9501\u5b9a",
+    "pointerLockWarningStatus": "Two historical warnings appeared around prior input/reload; fresh native click on reloaded canvas succeeded. No global error-free input claim.",
+    "reloadFpsSamples": [
+      24,
+      27,
+      26
+    ],
+    "startupConsoleWarningsOrErrors": []
+  },
+  "evidence": "Actual CUA DOM and screenshots retained inline in this chat; no local UI PNG claimed",
+  "scope": "Local loopback HTTP working-candidate check, not HTTPS deployment/file-direct/clean-machine acceptance",
+  "sourceShaderVerified": "632f519b9dcd1d28fe1a5a8a5b2f3eccf7667216f896ccab4811bcfad332adba"
+}

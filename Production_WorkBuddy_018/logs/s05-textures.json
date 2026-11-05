@@ -1,0 +1,19 @@
+{
+ "author": "WorkBuddy Claude-Opus-5.5",
+ "tile_m": 0.6,
+ "convention": "colour sRGB; normal OpenGL +Y; ORM R=AO G=rough B=metal",
+ "files": [
+  {
+   "file": "textures/M18_ACOUSTIC_WEAVE_color.png",
+   "sha256": "2558110a766ddc88aacefeb182a225c3bffcafa004414202a53b6f1a8280046a"
+  },
+  {
+   "file": "textures/M18_ACOUSTIC_WEAVE_normal.png",
+   "sha256": "d0d505a6c2a00de847204e635bed200118833cda9b87524c02bc92aa214f7a3b"
+  },
+  {
+   "file": "textures/M18_ACOUSTIC_WEAVE_orm.png",
+   "sha256": "51b64d83de5557df6ce9525038a90a78a7dba007af90b85f9ee74f759c99ff59"
+  }
+ ]
+}

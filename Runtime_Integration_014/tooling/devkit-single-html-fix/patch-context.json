@@ -1,0 +1,8 @@
+{
+  "packageSource": "/Users/arkliang/Documents/ChatGPT/chatGPT\u5de5\u4f5c\u6587\u4ef6\u5939/Cyberpunk/Engine_Workspace/afterlife-engine/node_modules/.pnpm/@forgeax+engine@0.4.18/node_modules/@forgeax/engine/node_modules/@forgeax/engine-devkit",
+  "sourceSha256": "43a4a03ce736e7d57cbd1604cbb937aec65f444d23e331f5394065a6c789c0b0",
+  "scope": "isolated copy of original DevKit packaging tool only; original SDK/store/game runtime untouched",
+  "tmpdir": "/var/folders/97/nchg5bsx5nldk136lb3rt5dc0000gn/T",
+  "realTmpdir": "/private/var/folders/97/nchg5bsx5nldk136lb3rt5dc0000gn/T",
+  "reason": "Vite canonicalizes /var to /private/var; graph namespace detection on noncanonical root misses raw dependency fallback"
+}

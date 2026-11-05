@@ -1,0 +1,412 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D050_LIQ_AMBER",
+        "D050_LIQ_CLEAR",
+        "D050_LIQ_COUPE",
+        "D050_LIQ_RED",
+        "D050_LIQ_TUMBLER",
+        "D050_WATER_DROP"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_Fluids_D050_e14010f1.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D050_LIQ_AMBER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D050_LIQ_CLEAR"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D050_LIQ_COUPE"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D050_LIQ_RED"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D050_LIQ_TUMBLER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D050_WATER_DROP"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D050_LIQ_AMBER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f4564edd55",
+          "slotName": "D050_SOURCE_AMBER",
+          "sourceKey": "material:D050_SOURCE_AMBER"
+        }
+      ]
+    },
+    "mesh:D050_LIQ_CLEAR": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f5228d91e1",
+          "slotName": "D050_SOURCE_CLEAR",
+          "sourceKey": "material:D050_SOURCE_CLEAR"
+        }
+      ]
+    },
+    "mesh:D050_LIQ_COUPE": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f64af2661b",
+          "slotName": "D050_SOURCE_COUPE",
+          "sourceKey": "material:D050_SOURCE_COUPE"
+        }
+      ]
+    },
+    "mesh:D050_LIQ_RED": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f7fbf763b4",
+          "slotName": "D050_SOURCE_RED",
+          "sourceKey": "material:D050_SOURCE_RED"
+        }
+      ]
+    },
+    "mesh:D050_LIQ_TUMBLER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f8dff1b385",
+          "slotName": "D050_SOURCE_TUMBLER",
+          "sourceKey": "material:D050_SOURCE_TUMBLER"
+        }
+      ]
+    },
+    "mesh:D050_WATER_DROP": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f9a6875966",
+          "slotName": "D050_WATER",
+          "sourceKey": "material:D050_WATER"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19004-fd33-7799-af85-7f526edf0b11",
+      "kind": "mesh",
+      "name": "D050_LIQ_AMBER",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D050_LIQ_AMBER"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9ef090e01ff",
+      "kind": "mesh",
+      "name": "D050_LIQ_CLEAR",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D050_LIQ_CLEAR"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f0e787a828",
+      "kind": "mesh",
+      "name": "D050_LIQ_COUPE",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:D050_LIQ_COUPE"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f116fd16e7",
+      "kind": "mesh",
+      "name": "D050_LIQ_RED",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:D050_LIQ_RED"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f2485cabaf",
+      "kind": "mesh",
+      "name": "D050_LIQ_TUMBLER",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:D050_LIQ_TUMBLER"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f3e3b1b075",
+      "kind": "mesh",
+      "name": "D050_WATER_DROP",
+      "sourceIndex": 5,
+      "sourceKey": "mesh:D050_WATER_DROP"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f4564edd55",
+      "kind": "material",
+      "name": "D050_SOURCE_AMBER",
+      "sourceIndex": 0,
+      "sourceKey": "material:D050_SOURCE_AMBER"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f5228d91e1",
+      "kind": "material",
+      "name": "D050_SOURCE_CLEAR",
+      "sourceIndex": 1,
+      "sourceKey": "material:D050_SOURCE_CLEAR"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f64af2661b",
+      "kind": "material",
+      "name": "D050_SOURCE_COUPE",
+      "sourceIndex": 2,
+      "sourceKey": "material:D050_SOURCE_COUPE"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f7fbf763b4",
+      "kind": "material",
+      "name": "D050_SOURCE_RED",
+      "sourceIndex": 3,
+      "sourceKey": "material:D050_SOURCE_RED"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f8dff1b385",
+      "kind": "material",
+      "name": "D050_SOURCE_TUMBLER",
+      "sourceIndex": 4,
+      "sourceKey": "material:D050_SOURCE_TUMBLER"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9f9a6875966",
+      "kind": "material",
+      "name": "D050_WATER",
+      "sourceIndex": 5,
+      "sourceKey": "material:D050_WATER"
+    },
+    {
+      "guid": "01a19004-fd34-74bc-a0d4-c9fad6794590",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

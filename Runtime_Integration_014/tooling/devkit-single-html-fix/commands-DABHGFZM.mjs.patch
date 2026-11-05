@@ -1,0 +1,472 @@
+--- official/dist/commands-DABHGFZM.mjs
++++ isolated-fix/dist/commands-DABHGFZM.mjs
+@@ -1,4 +1,6 @@
+ #!/usr/bin/env node
++import {gzipSync as _singleHtmlGzip} from "node:zlib";
++import {createHash as _singleHtmlDigest} from "node:crypto";
+ import { inspectRunDependencyClosure } from './chunk-OMR3CVHO.mjs';
+ export { pluginCreateCommand, pluginInspectCommand, pluginRootCommand } from './chunk-4BG4YKZZ.mjs';
+ export { createCliRhiDebugOperationContext } from './chunk-IB3GZHDT.mjs';
+@@ -680,6 +682,13 @@
+       const destination = resolve(graphRoot, namespace, relativePath);
+       await mkdir(dirname(destination), { recursive: true });
+       await writeFile(destination, artifact.bytes);
++      // Worker/URL assets are resolved directly by Vite, before import hooks.
++      // Mirror raw files as staging-only aliases, without publishing a second graph.
++      if (namespace === "raw" && !artifactIndex.generated.has(relativePath)) {
++        const alias = resolve(graphRoot, "generated", relativePath);
++        await mkdir(dirname(alias), {recursive:true});
++        await (await import("node:fs/promises")).link(destination, alias);
++      }
+     }
+     const candidateNamespace = staticGraphNamespace(candidate.path);
+     const candidatePath = staticGraphCanonicalPath(candidate.path);
+@@ -688,6 +697,7 @@
+       await build({
+         configFile: false,
+         root: graphRoot,
++        worker: {format: "es", rolldownOptions: {output: {codeSplitting: false, entryFileNames: `${candidateNamespace}/assets/[name]-[hash].mjs`, chunkFileNames: `${candidateNamespace}/assets/[name]-[hash].mjs`, assetFileNames: `${candidateNamespace}/assets/[name]-[hash][extname]`}}},
+         base: "./",
+         logLevel: "error",
+         plugins: [
+@@ -814,99 +824,74 @@
+   };
+   return plugin;
+ }
++"use strict";
+ async function bundleSingleHtmlEntry(distRootInput, indexHtml, projectRoot) {
+-  const distRoot = resolve(distRootInput);
+-  const selected = collectEntrySource(indexHtml);
+-  if (!selected.ok) return selected;
+-  const source = selected.value;
+-  const entryPath = normalizePath(source);
+-  const temporaryRoot = await mkdtemp(resolve(tmpdir(), "forgeax-single-html-bundle-"));
+-  try {
+-    let inputPath;
+-    if (entryPath !== void 0) {
+-      const candidate = resolve(distRoot, entryPath);
+-      try {
+-        const candidateInfo = await stat(candidate);
+-        if (candidateInfo.isFile()) inputPath = candidate;
+-      } catch {
+-      }
+-    }
+-    if (inputPath === void 0) {
+-      inputPath = resolve(temporaryRoot, "inline-entry.mjs");
+-      await writeFile(inputPath, source, "utf8");
+-    }
+-    const outputRoot = resolve(temporaryRoot, "dist");
+-    const resolver = projectRoot === void 0 ? void 0 : await createEngineWorkspaceResolverForProject(projectRoot);
+-    await build({
+-      configFile: false,
+-      root: distRoot,
+-      base: "./",
+-      logLevel: "error",
+-      plugins: [singleHtmlBundlePlugin(), ...resolver === void 0 ? [] : [resolver]],
+-      experimental: {
+-        renderBuiltUrl: (filename) => `forgeax-resource:///${GENERATED_PREFIX}${filename}`
+-      },
+-      build: {
+-        outDir: outputRoot,
+-        emptyOutDir: true,
+-        target: "esnext",
+-        minify: false,
+-        sourcemap: false,
+-        assetsInlineLimit: 0,
+-        modulePreload: false,
+-        rolldownOptions: {
+-          input: inputPath,
+-          output: {
+-            codeSplitting: false,
+-            entryFileNames: "entry.mjs",
+-            chunkFileNames: "assets/[name]-[hash].mjs",
+-            assetFileNames: "assets/[name]-[hash][extname]"
+-          },
+-          experimental: { nativeMagicString: true }
++    const selected = collectEntrySource(indexHtml);
++    if (!selected.ok)
++        return selected;
++    const entryPath = normalizePath(selected.value);
++    if (entryPath !== undefined) {
++        try {
++            if ((await stat(resolve(distRootInput, entryPath))).isFile())
++                return { ok: true, value: { entrySource: 'await globalThis.__forgeaxReady; await globalThis.__forgeaxImport(' + JSON.stringify(entryPath) + ');', artifacts: [] } };
+         }
+-      }
++        catch { }
++    }
++    const path = GENERATED_PREFIX + 'inline-entry.mjs';
++    return { ok: true, value: { entrySource: 'await globalThis.__forgeaxReady; await globalThis.__forgeaxImport(' + JSON.stringify(path) + ');', artifacts: [{ path, mediaType: 'text/javascript', bytes: Buffer.from(selected.value) }] } };
++}
++
++const _singleHtmlSystemSource = "/* SystemJS 6.15.1 — MIT License\r\n-----------\r\n\r\nCopyright (C) 2013-2022 Guy Bedford\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n */\n/*!\r\n * SJS 6.15.1\r\n */\r\n!function(){function e(e,t){return(t||\"\")+\" (SystemJS https://github.com/systemjs/systemjs/blob/main/docs/errors.md#\"+e+\")\"}function t(e,t){if(-1!==e.indexOf(\"\\\\\")&&(e=e.replace(S,\"/\")),\"/\"===e[0]&&\"/\"===e[1])return t.slice(0,t.indexOf(\":\")+1)+e;if(\".\"===e[0]&&(\"/\"===e[1]||\".\"===e[1]&&(\"/\"===e[2]||2===e.length&&(e+=\"/\"))||1===e.length&&(e+=\"/\"))||\"/\"===e[0]){var r,n=t.slice(0,t.indexOf(\":\")+1);if(r=\"/\"===t[n.length+1]?\"file:\"!==n?(r=t.slice(n.length+2)).slice(r.indexOf(\"/\")+1):t.slice(8):t.slice(n.length+(\"/\"===t[n.length])),\"/\"===e[0])return t.slice(0,t.length-r.length-1)+e;for(var i=r.slice(0,r.lastIndexOf(\"/\")+1)+e,o=[],s=-1,c=0;c<i.length;c++)-1!==s?\"/\"===i[c]&&(o.push(i.slice(s,c+1)),s=-1):\".\"===i[c]?\".\"!==i[c+1]||\"/\"!==i[c+2]&&c+2!==i.length?\"/\"===i[c+1]||c+1===i.length?c+=1:s=c:(o.pop(),c+=2):s=c;return-1!==s&&o.push(i.slice(s)),t.slice(0,t.length-r.length)+o.join(\"\")}}function r(e,r){return t(e,r)||(-1!==e.indexOf(\":\")?e:t(\"./\"+e,r))}function n(e,r,n,i,o){for(var s in e){var f=t(s,n)||s,a=e[s];if(\"string\"==typeof a){var l=u(i,t(a,n)||a,o);l?r[f]=l:c(\"W1\",s,a)}}}function i(e,t,i){var o;for(o in e.imports&&n(e.imports,i.imports,t,i,null),e.scopes||{}){var s=r(o,t);n(e.scopes[o],i.scopes[s]||(i.scopes[s]={}),t,i,s)}for(o in e.depcache||{})i.depcache[r(o,t)]=e.depcache[o];for(o in e.integrity||{})i.integrity[r(o,t)]=e.integrity[o]}function o(e,t){if(t[e])return e;var r=e.length;do{var n=e.slice(0,r+1);if(n in t)return n}while(-1!==(r=e.lastIndexOf(\"/\",r-1)))}function s(e,t){var r=o(e,t);if(r){var n=t[r];if(null===n)return;if(!(e.length>r.length&&\"/\"!==n[n.length-1]))return n+e.slice(r.length);c(\"W2\",r,n)}}function c(t,r,n){console.warn(e(t,[n,r].join(\", \")))}function u(e,t,r){for(var n=e.scopes,i=r&&o(r,n);i;){var c=s(t,n[i]);if(c)return c;i=o(i.slice(0,i.lastIndexOf(\"/\")),n)}return s(t,e.imports)||-1!==t.indexOf(\":\")&&t}function f(){this[b]={}}function a(t,r,n,i){var o=t[b][r];if(o)return o;var s=[],c=Object.create(null);j&&Object.defineProperty(c,j,{value:\"Module\"});var u=Promise.resolve().then((function(){return t.instantiate(r,n,i)})).then((function(n){if(!n)throw Error(e(2,r));var i=n[1]((function(e,t){o.h=!0;var r=!1;if(\"string\"==typeof e)e in c&&c[e]===t||(c[e]=t,r=!0);else{for(var n in e)t=e[n],n in c&&c[n]===t||(c[n]=t,r=!0);e&&e.__esModule&&(c.__esModule=e.__esModule)}if(r)for(var i=0;i<s.length;i++){var u=s[i];u&&u(c)}return t}),2===n[1].length?{import:function(e,n){return t.import(e,r,n)},meta:t.createContext(r)}:void 0);return o.e=i.execute||function(){},[n[0],i.setters||[],n[2]||[]]}),(function(e){throw o.e=null,o.er=e,e})),f=u.then((function(e){return Promise.all(e[0].map((function(n,i){var o=e[1][i],s=e[2][i];return Promise.resolve(t.resolve(n,r)).then((function(e){var n=a(t,e,r,s);return Promise.resolve(n.I).then((function(){return o&&(n.i.push(o),!n.h&&n.I||o(n.n)),n}))}))}))).then((function(e){o.d=e}))}));return o=t[b][r]={id:r,i:s,n:c,m:i,I:u,L:f,h:!1,d:void 0,e:void 0,er:void 0,E:void 0,C:void 0,p:void 0}}function l(e,t,r,n){if(!n[t.id])return n[t.id]=!0,Promise.resolve(t.L).then((function(){return t.p&&null!==t.p.e||(t.p=r),Promise.all(t.d.map((function(t){return l(e,t,r,n)})))})).catch((function(e){if(t.er)throw e;throw t.e=null,e}))}function h(e,t){return t.C=l(e,t,t,{}).then((function(){return d(e,t,{})})).then((function(){return t.n}))}function d(e,t,r){function n(){try{var e=o.call(I);if(e)return e=e.then((function(){t.C=t.n,t.E=null}),(function(e){throw t.er=e,t.E=null,e})),t.E=e;t.C=t.n,t.L=t.I=void 0}catch(r){throw t.er=r,r}}if(!r[t.id]){if(r[t.id]=!0,!t.e){if(t.er)throw t.er;return t.E?t.E:void 0}var i,o=t.e;return t.e=null,t.d.forEach((function(n){try{var o=d(e,n,r);o&&(i=i||[]).push(o)}catch(s){throw t.er=s,s}})),i?Promise.all(i).then(n):n()}}function v(){[].forEach.call(document.querySelectorAll(\"script\"),(function(t){if(!t.sp)if(\"systemjs-module\"===t.type){if(t.sp=!0,!t.src)return;System.import(\"import:\"===t.src.slice(0,7)?t.src.slice(7):r(t.src,p)).catch((function(e){if(e.message.indexOf(\"https://github.com/systemjs/systemjs/blob/main/docs/errors.md#3\")>-1){var r=document.createEvent(\"Event\");r.initEvent(\"error\",!1,!1),t.dispatchEvent(r)}return Promise.reject(e)}))}else if(\"systemjs-importmap\"===t.type){t.sp=!0;var n=t.src?(System.fetch||fetch)(t.src,{integrity:t.integrity,priority:t.fetchPriority,passThrough:!0}).then((function(e){if(!e.ok)throw Error(e.status);return e.text()})).catch((function(r){return r.message=e(\"W4\",t.src)+\"\\n\"+r.message,console.warn(r),\"function\"==typeof t.onerror&&t.onerror(),\"{}\"})):t.innerHTML;M=M.then((function(){return n})).then((function(r){!function(t,r,n){var o={};try{o=JSON.parse(r)}catch(s){console.warn(Error(e(\"W5\")))}i(o,n,t)}(R,r,t.src||p)}))}}))}var p,m=\"undefined\"!=typeof Symbol,g=\"undefined\"!=typeof self,y=\"undefined\"!=typeof document,E=g?self:global;if(y){var w=document.querySelector(\"base[href]\");w&&(p=w.href)}if(!p&&\"undefined\"!=typeof location){var O=(p=location.href.split(\"#\")[0].split(\"?\")[0]).lastIndexOf(\"/\");-1!==O&&(p=p.slice(0,O+1))}var x,S=/\\\\/g,j=m&&Symbol.toStringTag,b=m?Symbol():\"@\",P=f.prototype;P.import=function(e,t,r){var n=this;return t&&\"object\"==typeof t&&(r=t,t=void 0),Promise.resolve(n.prepareImport()).then((function(){return n.resolve(e,t,r)})).then((function(e){var t=a(n,e,void 0,r);return t.C||h(n,t)}))},P.createContext=function(e){var t=this;return{url:e,resolve:function(r,n){return Promise.resolve(t.resolve(r,n||e))}}},P.register=function(e,t,r){x=[e,t,r]},P.getRegister=function(){var e=x;return x=void 0,e};var I=Object.freeze(Object.create(null));E.System=new f;var L,C,M=Promise.resolve(),R={imports:{},scopes:{},depcache:{},integrity:{}},T=y;if(P.prepareImport=function(e){return(T||e)&&(v(),T=!1),M},P.getImportMap=function(){return JSON.parse(JSON.stringify(R))},y&&(v(),window.addEventListener(\"DOMContentLoaded\",v)),P.addImportMap=function(e,t){i(e,t||p,R)},y){window.addEventListener(\"error\",(function(e){J=e.filename,W=e.error}));var _=location.origin}P.createScript=function(e){var t=document.createElement(\"script\");t.async=!0,e.indexOf(_+\"/\")&&(t.crossOrigin=\"anonymous\");var r=R.integrity[e];return r&&(t.integrity=r),t.src=e,t};var J,W,q={},N=P.register;P.register=function(e,t){if(y&&\"loading\"===document.readyState&&\"string\"!=typeof e){var r=document.querySelectorAll(\"script[src]\"),n=r[r.length-1];if(n){L=e;var i=this;C=setTimeout((function(){q[n.src]=[e,t],i.import(n.src)}))}}else L=void 0;return N.call(this,e,t)},P.instantiate=function(t,r){var n=q[t];if(n)return delete q[t],n;var i=this;return Promise.resolve(P.createScript(t)).then((function(n){return new Promise((function(o,s){n.addEventListener(\"error\",(function(){s(Error(e(3,[t,r].join(\", \"))))})),n.addEventListener(\"load\",(function(){if(document.head.removeChild(n),J===t)s(W);else{var e=i.getRegister(t);e&&e[0]===L&&clearTimeout(C),o(e)}})),document.head.appendChild(n)}))}))},P.shouldFetch=function(){return!1},\"undefined\"!=typeof fetch&&(P.fetch=fetch);var k=P.instantiate,A=/^(text|application)\\/(x-)?javascript(;|$)/;P.instantiate=function(t,r,n){var i=this;return this.shouldFetch(t,r,n)?this.fetch(t,{credentials:\"same-origin\",integrity:R.integrity[t],meta:n}).then((function(n){if(!n.ok)throw Error(e(7,[n.status,n.statusText,t,r].join(\", \")));var o=n.headers.get(\"content-type\");if(!o||!A.test(o))throw Error(e(4,o));return n.text().then((function(e){return e.indexOf(\"//# sourceURL=\")<0&&(e+=\"\\n//# sourceURL=\"+t),(0,eval)(e),i.getRegister(t)}))})):k.apply(this,arguments)},P.resolve=function(r,n){return u(R,t(r,n=n||p)||r,n)||function(t,r){throw Error(e(8,[t,r].join(\", \")))}(r,n)};var F=P.instantiate;P.instantiate=function(e,t,r){var n=R.depcache[e];if(n)for(var i=0;i<n.length;i++)a(this,this.resolve(n[i],e),e);return F.call(this,e,t,r)},g&&\"function\"==typeof importScripts&&(P.instantiate=function(e){var t=this;return Promise.resolve().then((function(){return importScripts(e),t.getRegister(e)}))})}();\r\n//# sourceMappingURL=s.min.js.map\r\n";
++"use strict";
++"use strict";
++function registerSingleHtmlModules(resources) {
++    return resources.map(resource => {
++        if (!/\.(?:m?js|cjs)$/i.test(resource.path))
++            return resource;
++        const input = Buffer.from(resource.bytes).toString('utf8');
++        const forwardImportedExports = context => file => {
++            const imports = new Map();
++            for (const node of file.statements) {
++                if (!ts.isImportDeclaration(node) || !ts.isStringLiteral(node.moduleSpecifier))
++                    continue;
++                const clause = node.importClause;
++                if (!clause)
++                    continue;
++                if (clause.name)
++                    imports.set(clause.name.text, { from: node.moduleSpecifier.text, name: 'default' });
++                if (clause.namedBindings && ts.isNamedImports(clause.namedBindings))
++                    for (const item of clause.namedBindings.elements)
++                        imports.set(item.name.text, { from: node.moduleSpecifier.text, name: (item.propertyName ?? item.name).text });
++            }
++            const statements = [];
++            for (const node of file.statements) {
++                if (!ts.isExportDeclaration(node) || node.moduleSpecifier || !node.exportClause || !ts.isNamedExports(node.exportClause)) {
++                    statements.push(node);
++                    continue;
++                }
++                const locals = [];
++                for (const item of node.exportClause.elements) {
++                    const binding = imports.get((item.propertyName ?? item.name).text);
++                    if (!binding) {
++                        locals.push(item);
++                        continue;
++                    }
++                    statements.push(context.factory.createExportDeclaration(undefined, false, context.factory.createNamedExports([context.factory.createExportSpecifier(false, context.factory.createIdentifier(binding.name), item.name)]), context.factory.createStringLiteral(binding.from)));
++                }
++                if (locals.length)
++                    statements.push(context.factory.updateExportDeclaration(node, node.modifiers, false, context.factory.createNamedExports(locals), undefined));
++            }
++            return context.factory.updateSourceFile(file, statements);
++        };
++        const result = ts.transpileModule(input, { fileName: resource.path, compilerOptions: { module: ts.ModuleKind.System, target: ts.ScriptTarget.ESNext, moduleDetection: ts.ModuleDetectionKind.Force, ignoreDeprecations: "6.0", sourceMap: false, removeComments: false }, transformers: { before: [forwardImportedExports] }, reportDiagnostics: true });
++        const errors = result.diagnostics?.filter(d => d.category === ts.DiagnosticCategory.Error) ?? [];
++        if (errors.length)
++            throw new Error('single-html module conversion failed: ' + resource.path + ' ' + errors.map(d => ts.flattenDiagnosticMessageText(d.messageText, ' ')).join('; '));
++        return { ...resource, bytes: Buffer.from(result.outputText), mediaType: 'text/javascript' };
+     });
+-    const paths = (await filesUnder(outputRoot)).map(
+-      (path) => relative(outputRoot, path).split(sep).join("/")
+-    );
+-    const entry = paths.find((path) => path === "entry.mjs");
+-    if (entry === void 0) {
+-      return errorResult(
+-        "single-html-bundle-entry-missing",
+-        "Vite to emit exactly one entry.mjs",
+-        "Inspect the production entry and the single-html bundler output.",
+-        { outputRoot, paths }
+-      );
+-    }
+-    const generatedPaths = paths.filter((path) => path !== entry);
+-    const artifacts = [];
+-    for (const path of generatedPaths) {
+-      const bytes = await readFile(resolve(outputRoot, path));
+-      artifacts.push({
+-        path: `${GENERATED_PREFIX}${path}`,
+-        bytes,
+-        mediaType: mediaType(path)
+-      });
+-    }
+-    const entryBytes = await readFile(resolve(outputRoot, entry));
+-    return {
+-      ok: true,
+-      value: {
+-        entrySource: entryBytes.toString("utf8"),
+-        artifacts
+-      }
+-    };
+-  } catch (cause) {
+-    return toErrorResult(
+-      cause,
+-      "single-html-bundle-failed",
+-      "the production module entry to converge into one executable bundle",
+-      "Repair the production entry or inspect the Vite/Rolldown diagnostic before packaging."
+-    );
+-  } finally {
+-    await rm(temporaryRoot, { recursive: true, force: true });
+-  }
+-}
++}
++
++
+ function workerBootstrapSource() {
+   const runtime = workerRuntimeSource();
+   return `const __forgeaxQueuedMessages=[];
+@@ -923,8 +908,9 @@
+ const __forgeaxStart=async(init)=>{const runtime=(${runtime});await runtime(init,__forgeaxRequestResource,__forgeaxForwardRequest,__forgeaxForwardTelemetry);__forgeaxWorkerReady=true;for(const event of __forgeaxQueuedMessages.splice(0))__forgeaxReplay(event);};
+ globalThis.addEventListener('message',(event)=>{const response=event.data?.__forgeaxResourceResponse;if(response!==undefined){if(__forgeaxHandleResponse(response))event.stopImmediatePropagation?.();return;}const init=event.data?.__forgeaxWorkerInit;if(init!==undefined){event.stopImmediatePropagation?.();if(!__forgeaxWorkerStarted){__forgeaxWorkerStarted=true;void __forgeaxStart(init);}return;}if(!__forgeaxWorkerReady){event.stopImmediatePropagation?.();__forgeaxQueuedMessages.push({data:event.data,ports:[...event.ports],origin:event.origin,lastEventId:event.lastEventId});}}, {capture:true});`;
+ }
++"use strict";
+ function workerRuntimeSource() {
+-  return `(async (init, requestResource, forwardRequest, forwardTelemetry) => {
++    return `(async (init, requestResource, forwardRequest, forwardTelemetry) => {
+ globalThis.process??={env:{},versions:{node:'0.0.0'},platform:'browser',argv:[]};
+ const nativeURL=globalThis.URL;
+ const nativeFetch=globalThis.fetch?.bind(globalThis);
+@@ -932,9 +918,10 @@
+ const nativeWorker=globalThis.Worker;
+ const sourcePath=String(init.sourcePath??'');
+ const bootstrapURL=String(init.bootstrapURL??'');
++const sourceOrigin=String(init.sourceOrigin??'');
+ const normalize=(value)=>{try{return decodeURIComponent(String(value).split(/[?#]/,1)[0]).replaceAll('\\\\','/').replace(/^\\/+/, '');}catch{return undefined;}};
+ const withoutBundle=(value)=>String(value).replace(/^__forgeax-bundle\\//,'');
+-const resolveInput=(value)=>{try{const raw=String(value);if(raw.startsWith('__forgeax-bundle/'))return {kind:'resource',path:withoutBundle(raw),url:new nativeURL('forgeax-resource:///'+withoutBundle(raw))};const url=value instanceof nativeURL?value:new nativeURL(raw,'https://forgeax.invalid/'+sourcePath);if(url.protocol==='data:'||url.protocol==='blob:')return {kind:'native',url};if((url.protocol==='http:'||url.protocol==='https:')&&/^[a-z][a-z0-9+.-]*:/i.test(raw))return {kind:'external',url};const path=normalize(url.pathname);return path===undefined?{kind:'missing',url}:{kind:'resource',path:withoutBundle(path),url};}catch{return {kind:'missing'};}};
++const resolveInput=(value)=>{try{const raw=String(value);if(raw.startsWith('__forgeax-bundle/'))return {kind:'resource',path:withoutBundle(raw),url:new nativeURL('forgeax-resource:///'+withoutBundle(raw))};const url=value instanceof nativeURL?value:new nativeURL(raw,'https://forgeax.invalid/'+sourcePath);if(url.protocol==='data:'||url.protocol==='blob:')return {kind:'native',url};if((url.protocol==='http:'||url.protocol==='https:')&&/^[a-z][a-z0-9+.-]*:/i.test(raw)&&url.origin!==sourceOrigin)return {kind:'external',url};const path=normalize(url.pathname);return path===undefined?{kind:'missing',url}:{kind:'resource',path:withoutBundle(path),url};}catch{return {kind:'missing'};}};
+ const resourceURL=(value)=>{try{const url=new nativeURL(String(value),'https://forgeax.invalid/'+sourcePath);if(url.protocol!=='http:'&&url.protocol!=='https:')return url;const path=normalize(url.pathname);return path===undefined?url:new nativeURL('forgeax-resource:///'+withoutBundle(path));}catch{return new nativeURL(String(value),'https://forgeax.invalid/'+sourcePath);}};
+ class ForgeaxURL extends nativeURL{constructor(input,base){if(base!==undefined&&/^(?:blob:|data:)/i.test(String(base))&&!/^[a-z][a-z0-9+.-]*:/i.test(String(input))){super(resourceURL(input));return;}super(input,base);}}
+ globalThis.URL=ForgeaxURL;
+@@ -943,18 +930,25 @@
+ const noteExternal=(kind,specifier)=>{try{nativePostMessage?.({__forgeaxExternalRequest:{kind,specifier:String(specifier)}});}catch{}};
+ const load=async(value,kind)=>{const resolved=resolveInput(value);if(resolved.kind==='native')return {native:true,url:resolved.url};if(resolved.kind==='external'){noteExternal(kind,value);throw new TypeError('forgeax single-html external resource blocked');}if(resolved.kind!=='resource'){note(kind,value);throw new TypeError('forgeax single-html worker resource miss');}const result=await requestResource(resolved.path,kind);if(result?.ok!==true){note(kind,value);throw new TypeError('forgeax single-html worker resource miss');}noteHit();return {native:false,path:resolved.path,data:new Uint8Array(result.data),mime:result.mime??'application/octet-stream'};};
+ if(typeof nativeFetch==='function')globalThis.fetch=(input,init)=>load(input,'fetch').then((value)=>value.native?nativeFetch(value.url,init):new Response(value.data,{status:200,headers:{'Content-Type':value.mime}}));
+-const importURLs=new Map();
+-globalThis.__forgeaxImport=async(value)=>{const loaded=await load(value,'import');if(loaded.native)return import(loaded.url);let url=importURLs.get(loaded.path);if(url===undefined){url=nativeURL.createObjectURL(new Blob([loaded.data],{type:loaded.mime||'text/javascript'}));importURLs.set(loaded.path,url);}return import(url);};
++const resourcePaths=init.resourcePaths??[];
++const canonical=(path)=>{const normalized=withoutBundle(path);const exact=resourcePaths.find(p=>p===path||withoutBundle(p)===normalized);if(exact!==undefined)return exact;const suffix=resourcePaths.filter(p=>normalized.endsWith('/'+withoutBundle(p)));if(suffix.length===1)return suffix[0];const name=normalized.slice(normalized.lastIndexOf('/')+1);const matches=resourcePaths.filter(p=>p.slice(p.lastIndexOf('/')+1)===name);if(matches.length===1)return matches[0];throw new TypeError('single-html unresolved module '+path);};
++(0,eval)(${JSON.stringify(_singleHtmlSystemSource)});
++const modules=globalThis.System;
++modules.resolve=(value,parent)=>{const raw=String(value);const url=new nativeURL(raw,parent||'forgeax-resource:///'+sourcePath);const resolved=resolveInput(url);if(resolved.kind!=='resource')throw new TypeError('single-html external module blocked '+raw);return 'forgeax-resource:///'+canonical(resolved.path);};
++modules.instantiate=async(id)=>{const loaded=await load(id,'import');(0,eval)(new TextDecoder().decode(loaded.data));const registration=modules.getRegister();if(!registration)throw new TypeError('single-html module did not register '+id);return registration;};
++globalThis.__forgeaxImport=(value)=>modules.import(String(value),'forgeax-resource:///'+sourcePath);
+ let childToken=0;
+ const attachWorker=(worker)=>{const token=String(++childToken);worker.addEventListener('message',(event)=>{const request=event.data?.__forgeaxResourceRequest;if(request!==undefined){forwardRequest(request,worker,token);event.stopImmediatePropagation?.();return;}if(event.data?.__forgeaxResourceMiss||event.data?.__forgeaxResourceHit||event.data?.__forgeaxExternalRequest){forwardTelemetry(event.data);event.stopImmediatePropagation?.();return;}},{capture:true});return worker;};
+ const nativeWorkerURL=(input)=>{try{const url=input instanceof nativeURL?input:new nativeURL(String(input),'https://forgeax.invalid/'+sourcePath);return /^(?:blob:|data:)$/i.test(url.protocol);}catch{return false;}};
+-if(typeof nativeWorker==='function')globalThis.Worker=class extends nativeWorker{constructor(input,options){if(nativeWorkerURL(input)){super(input,options);return;}const resolved=resolveInput(input);if(resolved.kind!=='resource'){if(resolved.kind==='external')noteExternal('worker',input);else note('worker',input);throw new TypeError('forgeax single-html worker resource miss');}super(bootstrapURL,options);attachWorker(this);this.postMessage({__forgeaxWorkerInit:{sourcePath:resolved.path,bootstrapURL}});}};
+-const source=await load(sourcePath,'worker');const sourceURL=nativeURL.createObjectURL(new Blob([source.data],{type:source.mime||'text/javascript'}));try{await import(sourceURL);}finally{nativeURL.revokeObjectURL(sourceURL);}
++if(typeof nativeWorker==='function')globalThis.Worker=class extends nativeWorker{constructor(input,options){if(nativeWorkerURL(input)){super(input,options);return;}const resolved=resolveInput(input);if(resolved.kind!=='resource'){if(resolved.kind==='external')noteExternal('worker',input);else note('worker',input);throw new TypeError('forgeax single-html worker resource miss');}super(bootstrapURL,options);attachWorker(this);this.postMessage({__forgeaxWorkerInit:{sourcePath:canonical(resolved.path),bootstrapURL,sourceOrigin,resourcePaths}});}};
++await modules.import('forgeax-resource:///'+canonical(sourcePath));
+ })`;
+ }
++
++"use strict";
+ function runtimeBootstrap() {
+-  const bootstrapSource = workerBootstrapSource();
+-  return `(() => {
++    const bootstrapSource = workerBootstrapSource();
++    return `(() => {
+   globalThis.process ??= { env: {}, versions: { node: '0.0.0' }, platform: 'browser', argv: [] };
+   const nativeURL = globalThis.URL;
+   const nativeFetch = globalThis.fetch?.bind(globalThis);
+@@ -962,7 +956,24 @@
+   const assetManifest = JSON.parse((assetManifestNode?.textContent || '[]').trim());
+   const assetDataNodes = [...document.querySelectorAll('script[data-forgeax-asset-index]')];
+   const entries = assetManifest.map((entry) => ({ ...entry, node: assetDataNodes[entry.index] })).filter((entry) => entry.node !== undefined);
+-  const decode = (entry) => { const binary = atob(entry.node.textContent || ''); const bytes = new Uint8Array(binary.length); for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index); return bytes; };
++  // Retain nodes privately so immutable embedded resources no longer bloat the live DOM.
++  for (const node of assetDataNodes) node.remove();
++  assetManifestNode?.remove();
++  // Require a real foreground user action before starting the bounded Engine startup.
++  globalThis.__forgeaxReady = new Promise((resolve) => {
++    const status=document.getElementById('forgeax-loading-status');
++    const spinner=document.getElementById('forgeax-loading-spinner');
++    const content=document.getElementById('forgeax-loading-content') || document.body;
++    if(status)status.textContent='完整场景已内置，请点击下方按钮进入';
++    if(spinner)spinner.style.display='none';
++    const button=document.createElement('button');
++    button.id='forgeax-single-html-start'; button.type='button'; button.textContent='进入场景';
++    button.style.cssText='border:1px solid #ed8de1;border-radius:8px;padding:12px 30px;background:#361a41;color:#fff;font:600 17px system-ui;cursor:pointer';
++    button.addEventListener('click',()=>{button.disabled=true;button.remove();if(status)status.textContent='正在加载完整场景，请保持此页面在前台…';if(spinner)spinner.style.display='';resolve();},{once:true});
++    content.appendChild(button);
++  });
++  const decodedPayloads = new Map();
++  const decode = async (entry) => { let pending = decodedPayloads.get(entry.index); if (pending === undefined) { pending = (async () => { const binary = atob(entry.node.textContent || ''); const bytes = new Uint8Array(binary.length); for (let index = 0; index < binary.length; index += 1) bytes[index] = binary.charCodeAt(index); if (entry.encoding !== 'gzip') return bytes; if (typeof DecompressionStream !== 'function') throw new TypeError('This offline game requires a browser with gzip decompression support.'); return new Uint8Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()); })(); decodedPayloads.set(entry.index, pending); } return (await pending).slice(); };
+   const normalize = (value) => { try { return decodeURIComponent(String(value).split(/[?#]/, 1)[0]).replaceAll('\\\\', '/').replace(/^\\/+/, ''); } catch { return undefined; } };
+   const withoutBundle = (value) => String(value).replace(/^__forgeax-bundle\\//, '');
+   const lookup = (input) => { let url; try { url = input instanceof nativeURL ? input : new nativeURL(String(input), document.baseURI); } catch { return undefined; } if (url.protocol === 'data:' || url.protocol === 'blob:') return undefined; const path = normalize(url.pathname); if (path === undefined) return undefined; const normalized = withoutBundle(path); const exact = entries.find((entry) => entry.path === path || withoutBundle(entry.path) === normalized); if (exact !== undefined) return exact; const suffix = entries.filter((entry) => normalized.endsWith('/' + withoutBundle(entry.path))); if (suffix.length === 1) return suffix[0]; const name = normalized.slice(normalized.lastIndexOf('/') + 1); const matches = entries.filter((entry) => withoutBundle(entry.path).slice(withoutBundle(entry.path).lastIndexOf('/') + 1) === name); return matches.length === 1 ? matches[0] : undefined; };
+@@ -971,28 +982,31 @@
+   let resourceHits = 0;
+   const noteMiss = (kind, specifier) => { resourceMisses.push({ kind, specifier: String(specifier), realm: 'main' }); };
+   const noteExternal = (kind, specifier) => { externalRequests.push({ kind, specifier: String(specifier), realm: 'main' }); };
+-  const response = (entry) => { resourceHits += 1; return new Response(decode(entry), { status: 200, headers: { 'Content-Type': entry.mime } }); };
++  const response = async (entry) => { resourceHits += 1; return new Response(await decode(entry), { status: 200, headers: { 'Content-Type': entry.mime } }); };
+   const ownedBlobUrls = new Set();
+-  const makeBlobUrl = (entry) => { const url = nativeURL.createObjectURL(new Blob([decode(entry)], { type: entry.mime })); ownedBlobUrls.add(url); return url; };
++  const makeBlobUrl = async (entry) => { const url = nativeURL.createObjectURL(new Blob([await decode(entry)], { type: entry.mime })); ownedBlobUrls.add(url); return url; };
+   const dataUrl = (source) => { const bytes = new TextEncoder().encode(source); let binary = ''; for (const byte of bytes) binary += String.fromCharCode(byte); return 'data:text/javascript;base64,' + btoa(binary); };
+   const workerBootstrapSource = ${JSON.stringify(bootstrapSource)};
+   const workerBootstrapUrl = dataUrl(workerBootstrapSource);
+-  const importUrls = new Map();
+-  const forgeaxImport = async (specifier) => { const entry = lookup(specifier); if (entry === undefined) { const text = String(specifier); if (/^(?:https?:)/i.test(text)) noteExternal('import', text); else noteMiss('import', text); throw new TypeError('forgeax single-html resource miss'); } let url = importUrls.get(entry.path); if (url === undefined) { url = makeBlobUrl(entry); importUrls.set(entry.path, url); } resourceHits += 1; return import(url); };
+-  globalThis.__forgeaxImport = forgeaxImport;
++  (0,eval)(${JSON.stringify(_singleHtmlSystemSource)});
++  const modules=globalThis.System;
++  modules.resolve=(specifier,parent)=>{const url=new nativeURL(String(specifier),parent||document.baseURI);const entry=lookup(url);if(entry===undefined){noteMiss('import',specifier);throw new TypeError('single-html module missing '+specifier);}return 'forgeax-resource:///'+entry.path;};
++  modules.instantiate=async(id)=>{const entry=lookup(id);if(entry===undefined)throw new TypeError('single-html module missing '+id);resourceHits+=1;(0,eval)(new TextDecoder().decode(await decode(entry)));const registration=modules.getRegister();if(!registration)throw new TypeError('single-html module did not register '+id);return registration;};
++  globalThis.__forgeaxImport=(specifier)=>modules.import(String(specifier),document.baseURI);
+   const external = (input) => { try { const url = input instanceof nativeURL ? input : new nativeURL(String(input), document.baseURI); return url.protocol === 'http:' || url.protocol === 'https:'; } catch { return false; } };
+   if (typeof nativeFetch === 'function') globalThis.fetch = (input, init) => { const entry = lookup(input); if (entry !== undefined) return Promise.resolve(response(entry)); if (/^(?:data:|blob:)/i.test(String(input))) return nativeFetch(input, init); if (external(input)) { noteExternal('fetch', input); return Promise.reject(new TypeError('forgeax single-html blocked an external request')); } noteMiss('fetch', input); return Promise.reject(new TypeError('forgeax single-html resource miss')); };
+-  const sendResource = (worker, request) => { const entry = lookup(request.path); if (entry === undefined) { worker.postMessage({ __forgeaxResourceResponse: { requestId: String(request.requestId), ok: false } }); return; } try { const data = decode(entry); worker.postMessage({ __forgeaxResourceResponse: { requestId: String(request.requestId), ok: true, mime: entry.mime, data: data.buffer } }, [data.buffer]); } catch { worker.postMessage({ __forgeaxResourceResponse: { requestId: String(request.requestId), ok: false } }); } };
++  const sendResource = async (worker, request) => { const entry = lookup(request.path); if (entry === undefined) { worker.postMessage({ __forgeaxResourceResponse: { requestId: String(request.requestId), ok: false } }); return; } try { const data = await decode(entry); worker.postMessage({ __forgeaxResourceResponse: { requestId: String(request.requestId), ok: true, mime: entry.mime, data: data.buffer } }, [data.buffer]); } catch { worker.postMessage({ __forgeaxResourceResponse: { requestId: String(request.requestId), ok: false } }); } };
+   const nativeWorker = globalThis.Worker;
+   const nativeWorkerURL = (input) => { try { const url = input instanceof nativeURL ? input : new nativeURL(String(input), document.baseURI); return /^(?:blob:|data:)$/i.test(url.protocol); } catch { return false; } };
+   const attachWorker = (worker) => { worker.addEventListener('message', (event) => { const request = event.data?.__forgeaxResourceRequest; if (request !== undefined) { sendResource(worker, request); event.stopImmediatePropagation?.(); return; } const miss = event.data?.__forgeaxResourceMiss; if (miss !== undefined) { resourceMisses.push({ ...miss, realm: 'worker' }); event.stopImmediatePropagation?.(); return; } const externalRequest = event.data?.__forgeaxExternalRequest; if (externalRequest !== undefined) { externalRequests.push({ ...externalRequest, realm: 'worker' }); event.stopImmediatePropagation?.(); return; } const hit = event.data?.__forgeaxResourceHit; if (typeof hit === 'number' && Number.isFinite(hit)) { resourceHits += hit; event.stopImmediatePropagation?.(); } }, { capture: true }); return worker; };
+-  if (typeof nativeWorker === 'function') globalThis.Worker = class extends nativeWorker { constructor(input, options) { if (nativeWorkerURL(input)) { super(input, options); return; } const entry = lookup(input); if (entry === undefined) { const text = String(input); if (external(input)) noteExternal('worker', text); else noteMiss('worker', text); throw new TypeError('forgeax single-html worker resource miss'); } super(workerBootstrapUrl, options); attachWorker(this); this.postMessage({ __forgeaxWorkerInit: { sourcePath: entry.path, bootstrapURL: workerBootstrapUrl } }); } };
++  if (typeof nativeWorker === 'function') globalThis.Worker = class extends nativeWorker { constructor(input, options) { if (nativeWorkerURL(input)) { super(input, options); return; } const entry = lookup(input); if (entry === undefined) { const text = String(input); if (external(input)) noteExternal('worker', text); else noteMiss('worker', text); throw new TypeError('forgeax single-html worker resource miss'); } super(workerBootstrapUrl, options); attachWorker(this); this.postMessage({ __forgeaxWorkerInit: { sourcePath: entry.path, bootstrapURL: workerBootstrapUrl, sourceOrigin: document.location.origin, resourcePaths: entries.map(e=>e.path) } }); } };
+   const witness = () => ({ ready: document.documentElement.dataset.forgeaxSingleHtmlReady === 'true', resourceHits, resourceMisses: resourceMisses.slice(), externalRequests: externalRequests.slice() });
+   globalThis.__forgeaxSingleHtml = { lookup, entries: entries.map(({ path, mime }) => ({ path, mime })), witness };
+   globalThis.addEventListener('pagehide', () => { for (const url of ownedBlobUrls) nativeURL.revokeObjectURL(url); ownedBlobUrls.clear(); }, { once: true });
+   document.documentElement.dataset.forgeaxSingleHtmlReady = 'true';
+ })();`;
+ }
++
+ function distResources(distRoot, manifest) {
+   const rows = [
+     ...manifest.artifacts,
+@@ -1100,17 +1114,16 @@
+   const orderedResources = [...resources.values()].sort(
+     (left, right) => left.path.localeCompare(right.path)
+   );
+-  const assetManifestSource = JSON.stringify(
+-    orderedResources.map((resource, index) => ({
+-      path: resource.path,
+-      mime: resource.mediaType,
+-      index
+-    }))
+-  );
++  const payloads = [];
++  const payloadIndices = new Map();
++  const assetManifestSource = JSON.stringify(orderedResources.map((resource) => {
++    const digest = _singleHtmlDigest("sha256").update(resource.bytes).digest("hex");
++    let index = payloadIndices.get(digest);
++    if (index === undefined) { index = payloads.length; payloadIndices.set(digest,index); payloads.push(_singleHtmlGzip(resource.bytes,{level:6})); }
++    return {path:resource.path,mime:resource.mediaType,index,encoding:"gzip"};
++  }));
+   const assetManifestNode = `<script type="application/json" id="forgeax-asset-payload" data-forgeax-asset-payload>${safeScriptText(assetManifestSource)}</script>`;
+-  const assetDataNodes = orderedResources.map(
+-    (resource, index) => `<script type="application/octet-stream" data-forgeax-asset-index="${index}">${Buffer.from(resource.bytes).toString("base64")}</script>`
+-  ).join("");
++  const assetDataNodes = payloads.map((bytes,index) => `<script type="application/octet-stream" data-forgeax-asset-index="${index}">${Buffer.from(bytes).toString("base64")}</script>`).join("");
+   const assetNode = `${assetManifestNode}${assetDataNodes}`;
+   const bootstrap = `<script type="application/javascript">${safeScriptText(runtimeBootstrap())}</script>`;
+   const entry = `<script type="module">${safeScriptText(bundle.entrySource)}</script>`;
+@@ -1119,69 +1132,66 @@
+   const html = withResources.includes("</body>") ? withResources.replace(/<\/body>/i, () => `${body}</body>`) : `${withResources}${body}`;
+   return { ok: true, value: { html, embeddedAssets: resources.size } };
+ }
++"use strict";
+ async function writeSingleHtml(options) {
+-  const distRoot = resolve(options.distRoot);
+-  const output = resolve(options.output);
+-  const checksumPath = `${output}.sha256`;
+-  const temporary = `${output}.partial-${process.pid}`;
+-  const temporaryChecksum = `${checksumPath}.partial-${process.pid}`;
+-  let staticGraphRoot;
+-  try {
+-    staticGraphRoot = await mkdtemp(resolve(tmpdir(), "forgeax-single-html-static-"));
+-    const indexHtml = await readFile(resolve(distRoot, "index.html"), "utf8");
+-    const resources = await distResources(distRoot, options.manifest);
+-    const closed = await closeStaticJavaScriptGraphs(staticGraphRoot, [
+-      ...resources,
+-      ...options.bundle.artifacts
+-    ]);
+-    if (!closed.ok) return closed;
+-    const built = buildHtml(indexHtml, closed.value, {
+-      entrySource: options.bundle.entrySource,
+-      artifacts: []
+-    });
+-    if (!built.ok) return built;
+-    const bytes = Buffer.from(built.value.html, "utf8");
+-    const sha256 = hashBytes(bytes);
+-    const manifestBytes = await readFile(resolve(distRoot, "forgeax-dist.json"));
+-    await mkdir(dirname(output), { recursive: true });
+-    await writeFile(temporary, bytes);
+-    await writeFile(temporaryChecksum, `${sha256}  ${basename(output)}
+-`, "utf8");
+-    await rename(temporaryChecksum, checksumPath);
+-    await rename(temporary, output);
+-    return {
+-      ok: true,
+-      value: {
+-        schemaVersion: "1.0.0",
+-        format: SINGLE_HTML_FORMAT,
+-        target: "file",
+-        project: options.manifest.project,
+-        base: options.manifest.base,
+-        html: { path: output, bytes: bytes.byteLength, sha256 },
+-        checksumPath,
+-        distManifestSha256: hashBytes(manifestBytes),
+-        embeddedAssets: built.value.embeddedAssets,
+-        run: {
+-          local: pathToFileURL(output).href,
+-          shared: "send the HTML file and open it in a desktop Chrome with WebGPU support"
+-        }
+-      }
+-    };
+-  } catch (cause) {
+-    return toErrorResult(
+-      cause,
+-      "single-html-write-failed",
+-      "the single HTML candidate and adjacent SHA-256 to be written atomically",
+-      "Repair the dist closure or output directory, then retry packaging."
+-    );
+-  } finally {
+-    await Promise.all([
+-      rm(temporary, { force: true }),
+-      rm(temporaryChecksum, { force: true }),
+-      ...staticGraphRoot === void 0 ? [] : [rm(staticGraphRoot, { recursive: true, force: true })]
+-    ]);
+-  }
+-}
++    const distRoot = resolve(options.distRoot);
++    const output = resolve(options.output);
++    const checksumPath = `${output}.sha256`;
++    const temporary = `${output}.partial-${process.pid}`;
++    const temporaryChecksum = `${checksumPath}.partial-${process.pid}`;
++    let staticGraphRoot;
++    try {
++        staticGraphRoot = await (await import('node:fs/promises')).realpath(await mkdtemp(resolve(tmpdir(), 'forgeax-single-html-static-')));
++        const indexHtml = await readFile(resolve(distRoot, 'index.html'), 'utf8');
++        const resources = await distResources(distRoot, options.manifest);
++        const registered = registerSingleHtmlModules([...resources, ...options.bundle.artifacts]);
++        const built = buildHtml(indexHtml, registered, {
++            entrySource: options.bundle.entrySource,
++            artifacts: [],
++        });
++        if (!built.ok)
++            return built;
++        const bytes = Buffer.from(built.value.html, 'utf8');
++        const sha256 = hashBytes(bytes);
++        const manifestBytes = await readFile(resolve(distRoot, 'forgeax-dist.json'));
++        await mkdir(dirname(output), { recursive: true });
++        await writeFile(temporary, bytes);
++        await writeFile(temporaryChecksum, `${sha256}  ${basename(output)}\n`, 'utf8');
++        await rename(temporaryChecksum, checksumPath);
++        await rename(temporary, output);
++        return {
++            ok: true,
++            value: {
++                schemaVersion: '1.0.0',
++                format: SINGLE_HTML_FORMAT,
++                target: 'file',
++                project: options.manifest.project,
++                base: options.manifest.base,
++                html: { path: output, bytes: bytes.byteLength, sha256 },
++                checksumPath,
++                distManifestSha256: hashBytes(manifestBytes),
++                embeddedAssets: built.value.embeddedAssets,
++                run: {
++                    local: pathToFileURL(output).href,
++                    shared: 'send the HTML file and open it in a desktop Chrome with WebGPU support',
++                },
++            },
++        };
++    }
++    catch (cause) {
++        return toErrorResult(cause, 'single-html-write-failed', 'the single HTML candidate and adjacent SHA-256 to be written atomically', 'Repair the dist closure or output directory, then retry packaging.');
++    }
++    finally {
++        await Promise.all([
++            rm(temporary, { force: true }),
++            rm(temporaryChecksum, { force: true }),
++            ...(staticGraphRoot === undefined
++                ? []
++                : [rm(staticGraphRoot, { recursive: true, force: true })]),
++        ]);
++    }
++}
++
+ function packageFormatError(format) {
+   return errorResult(
+     "package-format-unsupported",

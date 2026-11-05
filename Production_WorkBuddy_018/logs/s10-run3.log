@@ -1,0 +1,11 @@
+00:00.312  blend            | Read blend: "/Users/arkliang/Documents/ChatGPT/chatGPT工作文件夹/Cyberpunk/Production_WorkBuddy_018/source/baseline/club-wb015-upper-final_0de38371.blend"
+BlenderMCP addon registered
+Info: Packed 3 file(s)
+Info: Saved as "club-wb018-candidates.blend"
+OVERLAPS {"WB018_CEIL_BAND_FRONT": [["ARCH_ROOF_SLAB", 180]], "WB018_BASE_LED_LINES": [["ARCH_COLUMNS", 552], ["ARCH_COLUMNS_WB015", 181], ["ARCH_PYLONS", 64]], "WB018_STAGE_FLANK_PANELS": []}
+RODS 15 / 17
+S10_OK e6418d5e8a8864f1cc455fca3356aaad14979d404778018b0590d4dca6923b3f
+BlenderMCP addon unregistered
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit
