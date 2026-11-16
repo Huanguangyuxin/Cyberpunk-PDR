@@ -1,5 +1,5 @@
 import {describe, expect, it} from 'vitest';
-import type {MeshAsset} from '@forgeax/engine/types';
+import type {AssetHandle, MeshAsset} from '@forgeax/engine/types';
 import {buildRepairedPlantMesh} from '../pdr-plant-repair';
 
 function createSyntheticPlantTemplate(): MeshAsset {
@@ -59,19 +59,19 @@ function createSyntheticPlantTemplate(): MeshAsset {
 
   return {
     kind: 'mesh',
-    vertices: new Uint8Array(totalVerts * 48),
+    vertices: new Float32Array(totalVerts * 12),
     attributes: {position: pos, normal: norm, uv, tangent: tan},
     indices,
     aabb: new Float32Array([-0.712, 0, -0.885, 1.052, 1.269, 0.625]),
     submeshes: [
-      {materialSlot: 0, indexOffset: 0, indexCount: 768},
-      {materialSlot: 1, indexOffset: 768, indexCount: 288},
-      {materialSlot: 2, indexOffset: 1056, indexCount: 2280},
+      {materialSlot: 0, indexOffset: 0, indexCount: 768, vertexCount: 288, topology: 'triangle-list'},
+      {materialSlot: 1, indexOffset: 768, indexCount: 288, vertexCount: 72, topology: 'triangle-list'},
+      {materialSlot: 2, indexOffset: 1056, indexCount: 2280, vertexCount: 836, topology: 'triangle-list'},
     ],
     materialSlots: [
-      {slotName: 'M_POT', defaultMaterial: 1},
-      {slotName: 'M_SOIL', defaultMaterial: 2},
-      {slotName: 'M_PLANT_LEAF', defaultMaterial: 3},
+      {slotName: 'M_POT', defaultMaterial: 1 as unknown as AssetHandle<'material'>},
+      {slotName: 'M_SOIL', defaultMaterial: 2 as unknown as AssetHandle<'material'>},
+      {slotName: 'M_PLANT_LEAF', defaultMaterial: 3 as unknown as AssetHandle<'material'>},
     ],
   };
 }

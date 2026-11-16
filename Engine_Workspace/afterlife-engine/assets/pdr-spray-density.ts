@@ -4,8 +4,8 @@
  */
 import {eased,unit,publicAirMask} from './pdr-atmosphere-domain';
 export const SPRAY_SHAPE=[36,40,64] as const;
-export const SPRAY_MIN=[-8.5,-.2,-42] as const;
-export const SPRAY_MAX=[8.5,4.25,-23.5] as const;
+export const SPRAY_MIN=[-8.5,-.2,-42.5] as const;
+export const SPRAY_MAX=[8.5,5.20,-23.5] as const;
 function hash3(x:number,y:number,z:number){let h=Math.imul(x,374761393)^Math.imul(y,668265263)^Math.imul(z,2147483647);h=Math.imul(h^(h>>>13),1274126177);return ((h^(h>>>16))>>>0)/4294967295;}
 function mix(a:number,b:number,t:number){return a+(b-a)*t;}
 function noise3(x:number,y:number,z:number){
@@ -44,17 +44,19 @@ export function sprayDensity(t:number,side:number){
   }
  }
  for(let z=0;z<D;z++)for(let y=0;y<H;y++)for(let x=0;x<W;x++){
-  const i=x+W*(y+H*z);if(field[i]<=.003)continue;
+  const i=x+W*(y+H*z);
   const X=SPRAY_MIN[0]+(x+.5)/W*(SPRAY_MAX[0]-SPRAY_MIN[0]),Y=SPRAY_MIN[1]+(y+.5)/H*(SPRAY_MAX[1]-SPRAY_MIN[1]),Z=SPRAY_MIN[2]+(z+.5)/D*(SPRAY_MAX[2]-SPRAY_MIN[2]);
-  // Shared 3D advected noise field (matching pdr-dance-floor-mist.ts) so the spray puffs are 100% volumetric cloud eddies
+  // Shared 3D advected noise field (matching pdr-dance-floor-mist.ts) so the spray puffs and moving-head stage beams scatter through continuous volumetric mist
+  const stageBeamHaze=.44*eased(-42.4,-40.2,Z)*(1-eased(-33.5,-28.0,Z))*(1-eased(5.8,8.0,Math.abs(X)))*(1-eased(4.85,5.18,Y));
+  if(field[i]<=.003&&stageBeamHaze<=.003)continue;
   const u=X-.68*T+1.4*Math.sin(.31*Z-.24*T)+.65*Math.sin(.6*Y+.24*Z+.31*T);
   const v=Z-.88*T+1.15*Math.sin(.43*X+.34*Y-.29*T);
   const w=Y-.24*T+.8*Math.sin(.57*X+.22*Z-.46*T);
   const broad=noise3(u*.48,w*.48,v*.48),fine=noise3(u*1.05+13,w*1.05-7,v*1.05+3);
   const cloud=eased(.32,.72,.77*broad+.23*fine);
   const mod=.38+.62*cloud;
-  const vertical=1-eased(2.1,3.55,Y);
-  out[i]=Math.round(255*unit(field[i]*mod*publicAirMask(X,Z)*vertical));
+  const vertical=1-eased(3.2,5.05,Y);
+  out[i]=Math.round(255*unit((field[i]*mod*vertical+stageBeamHaze*(.65+.35*cloud))*publicAirMask(X,Z)));
  }
  return out;
 }

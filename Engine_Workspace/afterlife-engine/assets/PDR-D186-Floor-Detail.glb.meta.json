@@ -1,0 +1,204 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D186_Floor_Basalt",
+        "D186_Floor_Ceramic"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR-D186-Floor-Detail.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D186_Floor_Basalt"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D186_Floor_Ceramic"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D186_Floor_Basalt": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e1aa-9c13-78a7-bb8e-2619b4daec31",
+          "slotName": "D186_Floor_Basalt",
+          "sourceKey": "material:D186_Floor_Basalt"
+        }
+      ]
+    },
+    "mesh:D186_Floor_Ceramic": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e1aa-9c13-78a7-bb8e-261aad81c96d",
+          "slotName": "D186_Floor_Ceramic",
+          "sourceKey": "material:D186_Floor_Ceramic"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1e1aa-9c12-7bd1-90f2-e9169be4f9ac",
+      "kind": "mesh",
+      "name": "D186_Floor_Basalt",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D186_Floor_Basalt"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-2618913307f9",
+      "kind": "mesh",
+      "name": "D186_Floor_Ceramic",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D186_Floor_Ceramic"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-2619b4daec31",
+      "kind": "material",
+      "name": "D186_Floor_Basalt",
+      "sourceIndex": 0,
+      "sourceKey": "material:D186_Floor_Basalt"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-261aad81c96d",
+      "kind": "material",
+      "name": "D186_Floor_Ceramic",
+      "sourceIndex": 1,
+      "sourceKey": "material:D186_Floor_Ceramic"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-261b8b4dce5a",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-261c76b9bab9",
+      "kind": "texture",
+      "name": "D178_F1_BasaltAntiSlipTile_normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:D178_F1_BasaltAntiSlipTile_normal"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-261d5582e74a",
+      "kind": "texture",
+      "name": "D178_F1_BasaltAntiSlipTile_orm",
+      "sourceIndex": 1,
+      "sourceKey": "texture:D178_F1_BasaltAntiSlipTile_orm"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-261eb716bd16",
+      "kind": "texture",
+      "name": "Basalt_Base",
+      "sourceIndex": 2,
+      "sourceKey": "texture:Basalt_Base"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-261f45993af8",
+      "kind": "texture",
+      "name": "D178_F2_BlackTechCeramic_normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:D178_F2_BlackTechCeramic_normal"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-2620d7a130ac",
+      "kind": "texture",
+      "name": "Ceramic_ORM",
+      "sourceIndex": 4,
+      "sourceKey": "texture:Ceramic_ORM"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-2621d3b104c2",
+      "kind": "texture",
+      "name": "Ceramic_Base",
+      "sourceIndex": 5,
+      "sourceKey": "texture:Ceramic_Base"
+    },
+    {
+      "guid": "01a1e1aa-9c13-78a7-bb8e-26220ccb2b02",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

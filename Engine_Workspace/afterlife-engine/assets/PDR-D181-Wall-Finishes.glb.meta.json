@@ -1,0 +1,192 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D181_W2_SatinGraphiteTile",
+        "D181_W3_PlainPlumLacquer"
+      ],
+      "unsupportedExtensions": []
+    },
+    "compressionMode": "auto",
+    "mipmap": true
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR-D181-Wall-Finishes.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D181_W2_SatinGraphiteTile"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D181_W3_PlainPlumLacquer"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D181_W2_SatinGraphiteTile": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e111-cbad-7225-8995-f9a5cb21b7a7",
+          "slotName": "D181_W2_SatinGraphiteTile",
+          "sourceKey": "material:D181_W2_SatinGraphiteTile"
+        }
+      ]
+    },
+    "mesh:D181_W3_PlainPlumLacquer": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e111-cbad-7225-8995-f9a67355ce33",
+          "slotName": "D181_W3_PlainPlumLacquer",
+          "sourceKey": "material:D181_W3_PlainPlumLacquer"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1e111-cbac-73d0-979e-02e288989bb5",
+      "kind": "mesh",
+      "name": "D181_W2_SatinGraphiteTile",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D181_W2_SatinGraphiteTile"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9a4830d102e",
+      "kind": "mesh",
+      "name": "D181_W3_PlainPlumLacquer",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D181_W3_PlainPlumLacquer"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9a5cb21b7a7",
+      "kind": "material",
+      "name": "D181_W2_SatinGraphiteTile",
+      "sourceIndex": 0,
+      "sourceKey": "material:D181_W2_SatinGraphiteTile"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9a67355ce33",
+      "kind": "material",
+      "name": "D181_W3_PlainPlumLacquer",
+      "sourceIndex": 1,
+      "sourceKey": "material:D181_W3_PlainPlumLacquer"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9a72d070145",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9a82e7bbad2",
+      "kind": "texture",
+      "name": "D178_W2_TealBlackGlazedTile_normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:D178_W2_TealBlackGlazedTile_normal"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9a9436c4cce",
+      "kind": "texture",
+      "name": "D181_satin_tile_orm",
+      "sourceIndex": 1,
+      "sourceKey": "texture:D181_satin_tile_orm"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9aa1797b48d",
+      "kind": "texture",
+      "name": "D178_W2_TealBlackGlazedTile_base",
+      "sourceIndex": 2,
+      "sourceKey": "texture:D178_W2_TealBlackGlazedTile_base"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9abf52f4a51",
+      "kind": "texture",
+      "name": "D178_T1_DarkBrushedSteel_normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:D178_T1_DarkBrushedSteel_normal"
+    },
+    {
+      "guid": "01a1e111-cbad-7225-8995-f9acd6cb3bf1",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

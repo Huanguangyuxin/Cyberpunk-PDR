@@ -1,0 +1,285 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "WB020_STAGE_LED_HEADLINE_BODY",
+        "WB020_STAGE_LED_HEADLINE_CARRIER",
+        "WB020_STAGE_LED_HEADLINE_EDGE_CYAN",
+        "WB020_STAGE_LED_HEADLINE_LED",
+        "WB020_STAGE_LED_ROOT"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_STAGE_LED_HEADLINE_QING_D072.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_CARRIER.001"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_EDGE_CYAN"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_LED"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:ME_WB020_STAGE_LED_HEADLINE_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f3e-4a80-71c3-92f2-db84da9e05a7",
+          "slotName": "WB020_M_HEAD_METAL",
+          "sourceKey": "material:WB020_M_HEAD_METAL"
+        }
+      ]
+    },
+    "mesh:ME_WB020_STAGE_LED_HEADLINE_CARRIER.001": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f3e-4a80-71c3-92f2-db8520770cfb",
+          "slotName": "WB020_M_HEAD_CARRIER",
+          "sourceKey": "material:WB020_M_HEAD_CARRIER"
+        }
+      ]
+    },
+    "mesh:ME_WB020_STAGE_LED_HEADLINE_EDGE_CYAN": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f3e-4a80-71c3-92f2-db868d0a7412",
+          "slotName": "WB020_M_HEAD_EDGE_CYAN",
+          "sourceKey": "material:WB020_M_HEAD_EDGE_CYAN"
+        }
+      ]
+    },
+    "mesh:ME_WB020_STAGE_LED_HEADLINE_LED": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f3e-4a80-71c3-92f2-db87154eee63",
+          "slotName": "WB020_M_HEAD_LED_PINK",
+          "sourceKey": "material:WB020_M_HEAD_LED_PINK"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db80ab528a6c",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_HEADLINE_BODY",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_BODY"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db816263df42",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_HEADLINE_CARRIER.001",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_CARRIER.001"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db82aa8363cb",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_HEADLINE_EDGE_CYAN",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_EDGE_CYAN"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db83026a1d11",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_HEADLINE_LED",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_LED"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db84da9e05a7",
+      "kind": "material",
+      "name": "WB020_M_HEAD_METAL",
+      "sourceIndex": 0,
+      "sourceKey": "material:WB020_M_HEAD_METAL"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db8520770cfb",
+      "kind": "material",
+      "name": "WB020_M_HEAD_CARRIER",
+      "sourceIndex": 1,
+      "sourceKey": "material:WB020_M_HEAD_CARRIER"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db868d0a7412",
+      "kind": "material",
+      "name": "WB020_M_HEAD_EDGE_CYAN",
+      "sourceIndex": 2,
+      "sourceKey": "material:WB020_M_HEAD_EDGE_CYAN"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db87154eee63",
+      "kind": "material",
+      "name": "WB020_M_HEAD_LED_PINK",
+      "sourceIndex": 3,
+      "sourceKey": "material:WB020_M_HEAD_LED_PINK"
+    },
+    {
+      "guid": "01a19f3e-4a80-71c3-92f2-db88644d21e5",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

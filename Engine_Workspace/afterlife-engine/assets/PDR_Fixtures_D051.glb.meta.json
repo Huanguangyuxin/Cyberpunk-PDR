@@ -10,7 +10,9 @@
         "D051_LIGHT_YOKE"
       ],
       "unsupportedExtensions": []
-    }
+    },
+    "compressionMode": "auto",
+    "mipmap": true
   },
   "importer": "gltf",
   "kind": "external-asset-package",
@@ -353,6 +355,76 @@
       "name": "Scene",
       "sourceIndex": 0,
       "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fcc7c4b597d",
+      "kind": "texture",
+      "name": "D109_D051_OXBLOOD_VINYL_normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:D109_D051_OXBLOOD_VINYL_normal"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fcda881bdb2",
+      "kind": "texture",
+      "name": "D109_D051_OXBLOOD_VINYL_orm",
+      "sourceIndex": 1,
+      "sourceKey": "texture:D109_D051_OXBLOOD_VINYL_orm"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fce278ec9ec",
+      "kind": "texture",
+      "name": "D109_D051_OXBLOOD_VINYL_basecolor",
+      "sourceIndex": 2,
+      "sourceKey": "texture:D109_D051_OXBLOOD_VINYL_basecolor"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fcfda4506d9",
+      "kind": "texture",
+      "name": "D109_D051_PAINTED_STEEL_normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:D109_D051_PAINTED_STEEL_normal"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fd0801891bf",
+      "kind": "texture",
+      "name": "D109_D051_PAINTED_STEEL_orm",
+      "sourceIndex": 4,
+      "sourceKey": "texture:D109_D051_PAINTED_STEEL_orm"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fd113609463",
+      "kind": "texture",
+      "name": "D109_D051_PAINTED_STEEL_basecolor",
+      "sourceIndex": 5,
+      "sourceKey": "texture:D109_D051_PAINTED_STEEL_basecolor"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fd228130c5d",
+      "kind": "texture",
+      "name": "D109_D051_RUBBER_normal",
+      "sourceIndex": 6,
+      "sourceKey": "texture:D109_D051_RUBBER_normal"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fd3db4be379",
+      "kind": "texture",
+      "name": "D109_D051_RUBBER_orm",
+      "sourceIndex": 7,
+      "sourceKey": "texture:D109_D051_RUBBER_orm"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fd4fbb7f070",
+      "kind": "texture",
+      "name": "D109_D051_RUBBER_basecolor",
+      "sourceIndex": 8,
+      "sourceKey": "texture:D109_D051_RUBBER_basecolor"
+    },
+    {
+      "guid": "01a1be65-d978-7088-95d4-9fd535de013f",
+      "kind": "sampler",
+      "name": "D109_Sampler_68a70efa3f0bf1c0",
+      "sourceIndex": 0,
+      "sourceKey": "sampler:D109_Sampler_68a70efa3f0bf1c0"
     }
   ]
 }

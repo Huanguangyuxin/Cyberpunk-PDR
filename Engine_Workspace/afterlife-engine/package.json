@@ -16,6 +16,8 @@
     "typecheck": "pnpm exec tsc --noEmit"
   },
   "forgeax": {
+    "startupTimeoutMs": 120000,
+    "frameTimeoutMs": 20000,
     "metrics": {
       "bundle-size": {
         "enabled": false,
@@ -40,7 +42,7 @@
     }
   },
   "dependencies": {
-    "@forgeax/engine": "0.4.18"
+    "@forgeax/engine": "0.5.0"
   },
   "devDependencies": {
     "@types/node": "20.19.40",

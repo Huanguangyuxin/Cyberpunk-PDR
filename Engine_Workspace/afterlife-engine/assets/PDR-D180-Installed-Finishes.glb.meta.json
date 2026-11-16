@@ -1,0 +1,900 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D180_Acoustic_Stage",
+        "D180_Acoustic_Hall_E",
+        "D180_Acoustic_Hall_W",
+        "D180_Glazed_Backbar",
+        "D180_Glazed_Entrance",
+        "D180_Ornament_VIP_E1",
+        "D180_Ornament_VIP_E2",
+        "D180_Ornament_VIP_W1",
+        "D180_Ornament_VIP_W2",
+        "D180_Material_Library"
+      ],
+      "unsupportedExtensions": []
+    },
+    "compressionMode": "auto",
+    "mipmap": true
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR-D180-Installed-Finishes.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Acoustic_Stage"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Acoustic_Hall_E"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Acoustic_Hall_W"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Glazed_Backbar"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Glazed_Entrance"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Ornament_VIP_E1"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Ornament_VIP_E2"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Ornament_VIP_W1"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Ornament_VIP_W2"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D180_Material_Library"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D180_Acoustic_Hall_E": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbce3827afb",
+          "slotName": "D180_W1b_BlackAnodizedPerf",
+          "sourceKey": "material:D180_W1b_BlackAnodizedPerf"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbe507e970f",
+          "slotName": "D180_W1_GraphiteAcousticRib",
+          "sourceKey": "material:D180_W1_GraphiteAcousticRib"
+        }
+      ]
+    },
+    "mesh:D180_Acoustic_Hall_W": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbce3827afb",
+          "slotName": "D180_W1b_BlackAnodizedPerf",
+          "sourceKey": "material:D180_W1b_BlackAnodizedPerf"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbe507e970f",
+          "slotName": "D180_W1_GraphiteAcousticRib",
+          "sourceKey": "material:D180_W1_GraphiteAcousticRib"
+        }
+      ]
+    },
+    "mesh:D180_Acoustic_Stage": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbce3827afb",
+          "slotName": "D180_W1b_BlackAnodizedPerf",
+          "sourceKey": "material:D180_W1b_BlackAnodizedPerf"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbe507e970f",
+          "slotName": "D180_W1_GraphiteAcousticRib",
+          "sourceKey": "material:D180_W1_GraphiteAcousticRib"
+        }
+      ]
+    },
+    "mesh:D180_Glazed_Backbar": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbfad2dd99a",
+          "slotName": "D180_W2_TealBlackGlazedTile",
+          "sourceKey": "material:D180_W2_TealBlackGlazedTile"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        }
+      ]
+    },
+    "mesh:D180_Glazed_Entrance": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbfad2dd99a",
+          "slotName": "D180_W2_TealBlackGlazedTile",
+          "sourceKey": "material:D180_W2_TealBlackGlazedTile"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        }
+      ]
+    },
+    "mesh:D180_Material_Library": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc130d43605",
+          "slotName": "D180_F1_BasaltAntiSlipTile",
+          "sourceKey": "material:D180_F1_BasaltAntiSlipTile"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc21ba64104",
+          "slotName": "D180_F2_BlackTechCeramic",
+          "sourceKey": "material:D180_F2_BlackTechCeramic"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc352175f01",
+          "slotName": "D180_F3_WornTreadPlate",
+          "sourceKey": "material:D180_F3_WornTreadPlate"
+        }
+      ]
+    },
+    "mesh:D180_Ornament_VIP_E1": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc055b80d2c",
+          "slotName": "D180_W3_LacquerOrnamentPanel",
+          "sourceKey": "material:D180_W3_LacquerOrnamentPanel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        }
+      ]
+    },
+    "mesh:D180_Ornament_VIP_E2": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc055b80d2c",
+          "slotName": "D180_W3_LacquerOrnamentPanel",
+          "sourceKey": "material:D180_W3_LacquerOrnamentPanel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        }
+      ]
+    },
+    "mesh:D180_Ornament_VIP_W1": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc055b80d2c",
+          "slotName": "D180_W3_LacquerOrnamentPanel",
+          "sourceKey": "material:D180_W3_LacquerOrnamentPanel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        }
+      ]
+    },
+    "mesh:D180_Ornament_VIP_W2": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bc055b80d2c",
+          "slotName": "D180_W3_LacquerOrnamentPanel",
+          "sourceKey": "material:D180_W3_LacquerOrnamentPanel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+          "slotName": "D180_T1_DarkBrushedSteel",
+          "sourceKey": "material:D180_T1_DarkBrushedSteel"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1e0f1-0b80-7ac2-b445-c167e96ffee3",
+      "kind": "mesh",
+      "name": "D180_Acoustic_Stage",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D180_Acoustic_Stage"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb30fb586b5",
+      "kind": "mesh",
+      "name": "D180_Acoustic_Hall_E",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D180_Acoustic_Hall_E"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb4c678cd82",
+      "kind": "mesh",
+      "name": "D180_Acoustic_Hall_W",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:D180_Acoustic_Hall_W"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb578a40ce9",
+      "kind": "mesh",
+      "name": "D180_Glazed_Backbar",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:D180_Glazed_Backbar"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb60c88749a",
+      "kind": "mesh",
+      "name": "D180_Glazed_Entrance",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:D180_Glazed_Entrance"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb7a9b55b28",
+      "kind": "mesh",
+      "name": "D180_Ornament_VIP_E1",
+      "sourceIndex": 5,
+      "sourceKey": "mesh:D180_Ornament_VIP_E1"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb8f43103fa",
+      "kind": "mesh",
+      "name": "D180_Ornament_VIP_E2",
+      "sourceIndex": 6,
+      "sourceKey": "mesh:D180_Ornament_VIP_E2"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bb91ade993d",
+      "kind": "mesh",
+      "name": "D180_Ornament_VIP_W1",
+      "sourceIndex": 7,
+      "sourceKey": "mesh:D180_Ornament_VIP_W1"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bbaf66c195d",
+      "kind": "mesh",
+      "name": "D180_Ornament_VIP_W2",
+      "sourceIndex": 8,
+      "sourceKey": "mesh:D180_Ornament_VIP_W2"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bbb41b04222",
+      "kind": "mesh",
+      "name": "D180_Material_Library",
+      "sourceIndex": 9,
+      "sourceKey": "mesh:D180_Material_Library"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bbce3827afb",
+      "kind": "material",
+      "name": "D180_W1b_BlackAnodizedPerf",
+      "sourceIndex": 0,
+      "sourceKey": "material:D180_W1b_BlackAnodizedPerf"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bbd1e0e0302",
+      "kind": "material",
+      "name": "D180_T1_DarkBrushedSteel",
+      "sourceIndex": 1,
+      "sourceKey": "material:D180_T1_DarkBrushedSteel"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bbe507e970f",
+      "kind": "material",
+      "name": "D180_W1_GraphiteAcousticRib",
+      "sourceIndex": 2,
+      "sourceKey": "material:D180_W1_GraphiteAcousticRib"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bbfad2dd99a",
+      "kind": "material",
+      "name": "D180_W2_TealBlackGlazedTile",
+      "sourceIndex": 3,
+      "sourceKey": "material:D180_W2_TealBlackGlazedTile"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc055b80d2c",
+      "kind": "material",
+      "name": "D180_W3_LacquerOrnamentPanel",
+      "sourceIndex": 4,
+      "sourceKey": "material:D180_W3_LacquerOrnamentPanel"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc130d43605",
+      "kind": "material",
+      "name": "D180_F1_BasaltAntiSlipTile",
+      "sourceIndex": 5,
+      "sourceKey": "material:D180_F1_BasaltAntiSlipTile"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc21ba64104",
+      "kind": "material",
+      "name": "D180_F2_BlackTechCeramic",
+      "sourceIndex": 6,
+      "sourceKey": "material:D180_F2_BlackTechCeramic"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc352175f01",
+      "kind": "material",
+      "name": "D180_F3_WornTreadPlate",
+      "sourceIndex": 7,
+      "sourceKey": "material:D180_F3_WornTreadPlate"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc44b953810",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc55c758297",
+      "kind": "texture",
+      "name": "D178_W1b_BlackAnodizedPerf_normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:D178_W1b_BlackAnodizedPerf_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc67400b55e",
+      "kind": "texture",
+      "name": "D178_W1b_BlackAnodizedPerf_orm",
+      "sourceIndex": 1,
+      "sourceKey": "texture:D178_W1b_BlackAnodizedPerf_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc7caca9b26",
+      "kind": "texture",
+      "name": "D178_W1b_BlackAnodizedPerf_base",
+      "sourceIndex": 2,
+      "sourceKey": "texture:D178_W1b_BlackAnodizedPerf_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc8e8a92094",
+      "kind": "texture",
+      "name": "D178_T1_DarkBrushedSteel_normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:D178_T1_DarkBrushedSteel_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bc97f019245",
+      "kind": "texture",
+      "name": "D178_T1_DarkBrushedSteel_orm",
+      "sourceIndex": 4,
+      "sourceKey": "texture:D178_T1_DarkBrushedSteel_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bcae788f659",
+      "kind": "texture",
+      "name": "D178_T1_DarkBrushedSteel_base",
+      "sourceIndex": 5,
+      "sourceKey": "texture:D178_T1_DarkBrushedSteel_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bcb94858e6f",
+      "kind": "texture",
+      "name": "D178_W1_GraphiteAcousticRib_normal",
+      "sourceIndex": 6,
+      "sourceKey": "texture:D178_W1_GraphiteAcousticRib_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bccb23924f9",
+      "kind": "texture",
+      "name": "D178_W1_GraphiteAcousticRib_orm",
+      "sourceIndex": 7,
+      "sourceKey": "texture:D178_W1_GraphiteAcousticRib_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bcd2cb76673",
+      "kind": "texture",
+      "name": "D178_W1_GraphiteAcousticRib_base",
+      "sourceIndex": 8,
+      "sourceKey": "texture:D178_W1_GraphiteAcousticRib_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bce91ebafea",
+      "kind": "texture",
+      "name": "D178_W2_TealBlackGlazedTile_normal",
+      "sourceIndex": 9,
+      "sourceKey": "texture:D178_W2_TealBlackGlazedTile_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bcf8b8143ac",
+      "kind": "texture",
+      "name": "D178_W2_TealBlackGlazedTile_orm",
+      "sourceIndex": 10,
+      "sourceKey": "texture:D178_W2_TealBlackGlazedTile_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd099dc8700",
+      "kind": "texture",
+      "name": "D178_W2_TealBlackGlazedTile_base",
+      "sourceIndex": 11,
+      "sourceKey": "texture:D178_W2_TealBlackGlazedTile_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd19d1f196a",
+      "kind": "texture",
+      "name": "D178_W3_LacquerOrnamentPanel_normal",
+      "sourceIndex": 12,
+      "sourceKey": "texture:D178_W3_LacquerOrnamentPanel_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd25a1c0e80",
+      "kind": "texture",
+      "name": "D178_W3_LacquerOrnamentPanel_orm",
+      "sourceIndex": 13,
+      "sourceKey": "texture:D178_W3_LacquerOrnamentPanel_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd397cda812",
+      "kind": "texture",
+      "name": "D178_W3_LacquerOrnamentPanel_base",
+      "sourceIndex": 14,
+      "sourceKey": "texture:D178_W3_LacquerOrnamentPanel_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd42aeb119a",
+      "kind": "texture",
+      "name": "D178_F1_BasaltAntiSlipTile_normal",
+      "sourceIndex": 15,
+      "sourceKey": "texture:D178_F1_BasaltAntiSlipTile_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd547aa964b",
+      "kind": "texture",
+      "name": "D178_F1_BasaltAntiSlipTile_orm",
+      "sourceIndex": 16,
+      "sourceKey": "texture:D178_F1_BasaltAntiSlipTile_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd6936828ba",
+      "kind": "texture",
+      "name": "D178_F1_BasaltAntiSlipTile_base",
+      "sourceIndex": 17,
+      "sourceKey": "texture:D178_F1_BasaltAntiSlipTile_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd7fc8a3733",
+      "kind": "texture",
+      "name": "D178_F2_BlackTechCeramic_normal",
+      "sourceIndex": 18,
+      "sourceKey": "texture:D178_F2_BlackTechCeramic_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd8abeb39a9",
+      "kind": "texture",
+      "name": "D178_F2_BlackTechCeramic_orm",
+      "sourceIndex": 19,
+      "sourceKey": "texture:D178_F2_BlackTechCeramic_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bd9d75c58ab",
+      "kind": "texture",
+      "name": "D178_F2_BlackTechCeramic_base",
+      "sourceIndex": 20,
+      "sourceKey": "texture:D178_F2_BlackTechCeramic_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bdabe274b3c",
+      "kind": "texture",
+      "name": "D178_F3_WornTreadPlate_normal",
+      "sourceIndex": 21,
+      "sourceKey": "texture:D178_F3_WornTreadPlate_normal"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bdb62be10d4",
+      "kind": "texture",
+      "name": "D178_F3_WornTreadPlate_orm",
+      "sourceIndex": 22,
+      "sourceKey": "texture:D178_F3_WornTreadPlate_orm"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bdcdc045855",
+      "kind": "texture",
+      "name": "D178_F3_WornTreadPlate_base",
+      "sourceIndex": 23,
+      "sourceKey": "texture:D178_F3_WornTreadPlate_base"
+    },
+    {
+      "guid": "01a1e0f1-0b81-7437-aab4-5bdd2bc84fe7",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

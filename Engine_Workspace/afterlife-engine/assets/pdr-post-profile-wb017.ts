@@ -47,11 +47,11 @@ export const BASELINE = {
  */
 export const CAMERA_BLOOM = {
   bloom: 1,
-  /** D085: .20 keeps strong Bloom on ceiling light bands and a soft neon halo on pillar strips while preventing secondary lights from blowing out. */
-  bloomIntensity: 0.20,
+  /** D095: .16 keeps vibrant Bloom on ceiling light bands and stage plaque while preventing glare. */
+  bloomIntensity: 0.16,
   /**
-   * 1.65 (scene-linear luminance, pre-exposure). Ceiling bands (linear ~4.14) cross it strongly,
-   * pillar strips (linear ~2.22) get a gentle pink halo, and weakened wall sconces/step LEDs/bulbs stay below it.
+   * 1.65 (scene-linear luminance, pre-exposure). Ceiling bands cross it strongly,
+   * pillar strips get a gentle pink halo, and weakened wall sconces/step LEDs/bulbs stay below it.
    */
   bloomThreshold: 1.65,
   /**
@@ -59,9 +59,9 @@ export const CAMERA_BLOOM = {
    */
   bloomSmoothWidth: 0.50,
   /**
-   * .34 radius spreads a soft halo around overhead light bands and pillar strips without washing out the room.
+   * .30 radius spreads a soft halo around overhead light bands and pillar strips without washing out the room.
    */
-  bloomRadius: 0.34,
+  bloomRadius: 0.30,
 } as const satisfies Partial<CameraData>;
 
 /**
@@ -99,13 +99,10 @@ export const SSR = {
    * stand-up ledges into the wet floor and break reflection edges. Too thin causes holes; see verification item V3.
    */
   thickness: 0.10,
-  /**
-   * .7 -> .52. pdr-wet-floor.ts writes wet roughness .09–.115 and dry front-hall roughness >= .58 (D051).
-   * With .52 the wet deep hall keeps SSR, while the dry front hall falls back to probe/IBL only. That keeps the front
-   * hall looking dry (no blurry SSR sheen) and the SSR work done there is rejected early. Transition band z -29..-22
-   * must be checked (V3).
-   */
-  maxRoughness: 0.52,
+  /** D110: match physically authored dry glazed tile (.28-.36) and metal/table
+   * response. Fade begins at .496 and ends at .62; rough mortar/walls remain
+   * excluded. Dry appearance comes from the material/film mask, not disabling SSR. */
+  maxRoughness: 0.62,
 } as const satisfies ScreenSpaceReflectionData;
 
 /**

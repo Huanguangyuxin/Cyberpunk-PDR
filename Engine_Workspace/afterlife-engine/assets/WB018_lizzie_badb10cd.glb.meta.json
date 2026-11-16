@@ -10,7 +10,9 @@
         "WB018_STAGE_FLANK_PANELS"
       ],
       "unsupportedExtensions": []
-    }
+    },
+    "compressionMode": "auto",
+    "mipmap": true
   },
   "importer": "gltf",
   "kind": "external-asset-package",
@@ -475,10 +477,80 @@
       "sourceKey": "texture:M18_ACOUSTIC_WEAVE_color"
     },
     {
+      "guid": "01a1be65-d15a-708c-94c4-479f9693bb37",
+      "kind": "texture",
+      "name": "D109_M_STEEL_BLACK_normal",
+      "sourceIndex": 10,
+      "sourceKey": "texture:D109_M_STEEL_BLACK_normal"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a0ba60e8f4",
+      "kind": "texture",
+      "name": "D109_M_STEEL_BLACK_basecolor",
+      "sourceIndex": 11,
+      "sourceKey": "texture:D109_M_STEEL_BLACK_basecolor"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a141762b8b",
+      "kind": "texture",
+      "name": "D109_M_RUBBER_normal",
+      "sourceIndex": 12,
+      "sourceKey": "texture:D109_M_RUBBER_normal"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a206ab9cf9",
+      "kind": "texture",
+      "name": "D109_M_RUBBER_orm",
+      "sourceIndex": 13,
+      "sourceKey": "texture:D109_M_RUBBER_orm"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a3e73a088d",
+      "kind": "texture",
+      "name": "D109_M_RUBBER_basecolor",
+      "sourceIndex": 14,
+      "sourceKey": "texture:D109_M_RUBBER_basecolor"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a4460ef5d8",
+      "kind": "texture",
+      "name": "D109_M_STEEL_BLACK_orm",
+      "sourceIndex": 15,
+      "sourceKey": "texture:D109_M_STEEL_BLACK_orm"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a5c24442bc",
+      "kind": "texture",
+      "name": "D109_M_STEEL_EDGE_normal",
+      "sourceIndex": 16,
+      "sourceKey": "texture:D109_M_STEEL_EDGE_normal"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a6c144e794",
+      "kind": "texture",
+      "name": "D109_M_STEEL_EDGE_orm",
+      "sourceIndex": 17,
+      "sourceKey": "texture:D109_M_STEEL_EDGE_orm"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a70b0b442b",
+      "kind": "texture",
+      "name": "D109_M_STEEL_EDGE_basecolor",
+      "sourceIndex": 18,
+      "sourceKey": "texture:D109_M_STEEL_EDGE_basecolor"
+    },
+    {
       "guid": "01a19ac5-5ad3-745b-a280-3f3fd8fa7d72",
       "kind": "sampler",
       "sourceIndex": 0,
       "sourceKey": "sampler"
+    },
+    {
+      "guid": "01a1be65-d15a-708c-94c4-47a83856648d",
+      "kind": "sampler",
+      "name": "D109_Sampler_68a70efa3f0bf1c0",
+      "sourceIndex": 1,
+      "sourceKey": "sampler:D109_Sampler_68a70efa3f0bf1c0"
     }
   ]
 }

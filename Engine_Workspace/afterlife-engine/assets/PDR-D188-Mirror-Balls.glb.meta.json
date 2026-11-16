@@ -1,0 +1,209 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D188_Mirror_Ball",
+        "D188_Mirror_Mount"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR-D188-Mirror-Balls.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D187_VIP_Ball"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D187_VIP_Mount"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D187_VIP_Ball": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c5ffba84dd1",
+          "slotName": "D187_Nickel_Mirror",
+          "sourceKey": "material:D187_Nickel_Mirror"
+        },
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c607c6816c7",
+          "slotName": "D187_Cyan_Mirror",
+          "sourceKey": "material:D187_Cyan_Mirror"
+        },
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c61f8dccdc8",
+          "slotName": "D187_Violet_Mirror",
+          "sourceKey": "material:D187_Violet_Mirror"
+        },
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c622ffccbd3",
+          "slotName": "D187_Smoked_Mirror",
+          "sourceKey": "material:D187_Smoked_Mirror"
+        },
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c63404e32c9",
+          "slotName": "D187_Blackened_Fixture_Steel",
+          "sourceKey": "material:D187_Blackened_Fixture_Steel"
+        }
+      ]
+    },
+    "mesh:D187_VIP_Mount": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c63404e32c9",
+          "slotName": "D187_Blackened_Fixture_Steel",
+          "sourceKey": "material:D187_Blackened_Fixture_Steel"
+        },
+        {
+          "defaultMaterialGuid": "01a1e1f9-4c7e-7345-a5b5-9c646185e7a4",
+          "slotName": "D187_Satin_Bronze",
+          "sourceKey": "material:D187_Satin_Bronze"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c5d8f1d8101",
+      "kind": "mesh",
+      "name": "D187_VIP_Ball",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D187_VIP_Ball"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c5e91ee3b34",
+      "kind": "mesh",
+      "name": "D187_VIP_Mount",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D187_VIP_Mount"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c5ffba84dd1",
+      "kind": "material",
+      "name": "D187_Nickel_Mirror",
+      "sourceIndex": 0,
+      "sourceKey": "material:D187_Nickel_Mirror"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c607c6816c7",
+      "kind": "material",
+      "name": "D187_Cyan_Mirror",
+      "sourceIndex": 1,
+      "sourceKey": "material:D187_Cyan_Mirror"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c61f8dccdc8",
+      "kind": "material",
+      "name": "D187_Violet_Mirror",
+      "sourceIndex": 2,
+      "sourceKey": "material:D187_Violet_Mirror"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c622ffccbd3",
+      "kind": "material",
+      "name": "D187_Smoked_Mirror",
+      "sourceIndex": 3,
+      "sourceKey": "material:D187_Smoked_Mirror"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c63404e32c9",
+      "kind": "material",
+      "name": "D187_Blackened_Fixture_Steel",
+      "sourceIndex": 4,
+      "sourceKey": "material:D187_Blackened_Fixture_Steel"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c646185e7a4",
+      "kind": "material",
+      "name": "D187_Satin_Bronze",
+      "sourceIndex": 5,
+      "sourceKey": "material:D187_Satin_Bronze"
+    },
+    {
+      "guid": "01a1e1f9-4c7e-7345-a5b5-9c6579a34236",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

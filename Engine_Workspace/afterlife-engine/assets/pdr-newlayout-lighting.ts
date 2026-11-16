@@ -1,7 +1,7 @@
 /** Codex new-layout Engine lighting. Actual cd/range, not a Blender-W conversion. */
 import type {World} from '@forgeax/engine/ecs';
 import {Name} from '@forgeax/engine/scene';
-import {PointLight,SpotLight} from '@forgeax/engine/render';
+import {PointLight,RectAreaLight,SpotLight} from '@forgeax/engine/render';
 export function tuneNewLayout(world:World){
  const points=Array.from(world.query({read:[Name,PointLight]}).unwrap(),r=>({entity:r.entity,name:r.get(Name).value,kind:'point',before:JSON.parse(JSON.stringify(r.get(PointLight)))}));
  const spots=Array.from(world.query({read:[Name,SpotLight]}).unwrap(),r=>({entity:r.entity,name:r.get(Name).value,kind:'spot',before:JSON.parse(JSON.stringify(r.get(SpotLight)))}));
@@ -28,8 +28,15 @@ export function tuneNewLayout(world:World){
   if(r.name.includes('_VIP_'))data={intensity:350,range:9,color:[1,.18,.58]};
   world.set(r.entity,r.kind==='point'?PointLight:SpotLight,data).unwrap();
  }
- const readLive=(entity:(typeof rows)[number]['entity'])=>world.hasComponent(entity,SpotLight)
-  ?world.get(entity,SpotLight).unwrap():world.get(entity,PointLight).unwrap();
- const read=()=>({author:'Codex native runtime tuning014, not DCC lighting',nativeCount:rows.length,units:'candela/metres/linear RGB',lights:rows.map(r=>({...r,runtime:JSON.parse(JSON.stringify(readLive(r.entity)))}))});
- return {read,set:(name:string,data:any)=>{const r=rows.find(x=>x.name===name);if(!r)throw new Error('Unknown new light');if(world.hasComponent(r.entity,SpotLight))world.set(r.entity,SpotLight,data).unwrap();else world.set(r.entity,PointLight,data).unwrap();return read();}};
+ const readLive=(entity:(typeof rows)[number]['entity'])=>{
+  if(world.hasComponent(entity,RectAreaLight))return {runtime:world.get(entity,RectAreaLight).unwrap(),runtimeKind:'rect-area'};
+  if(world.hasComponent(entity,SpotLight))return {runtime:world.get(entity,SpotLight).unwrap(),runtimeKind:'spot'};
+  if(world.hasComponent(entity,PointLight))return {runtime:world.get(entity,PointLight).unwrap(),runtimeKind:'point'};
+  return {runtime:{intensity:0},runtimeKind:'muted'};
+ };
+ const read=()=>({author:'Codex native runtime tuning014, not DCC lighting',nativeCount:rows.length,units:'Point/Spot candela; Rect radiance scale; metres/linear RGB',lights:rows.map(r=>{
+  const {runtime,runtimeKind}=readLive(r.entity);
+  return {...r,runtimeKind,runtime:JSON.parse(JSON.stringify(runtime))};
+ })});
+ return {read,set:(name:string,data:any)=>{const r=rows.find(x=>x.name===name);if(!r)throw new Error('Unknown new light');if(world.hasComponent(r.entity,RectAreaLight))world.set(r.entity,RectAreaLight,data).unwrap();else if(world.hasComponent(r.entity,SpotLight))world.set(r.entity,SpotLight,data).unwrap();else world.set(r.entity,PointLight,data).unwrap();return read();}};
 }

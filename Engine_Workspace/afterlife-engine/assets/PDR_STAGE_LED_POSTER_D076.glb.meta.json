@@ -1,0 +1,290 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "PDR_POSTER_STANDOFFS",
+        "PDR_STAGE_LED_POSTER_CARRIER",
+        "PDR_STAGE_LED_POSTER_CYAN",
+        "PDR_STAGE_LED_POSTER_LETTERS",
+        "PDR_STAGE_LED_POSTER_ROOT"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_STAGE_LED_POSTER_D076.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:PDR_POSTER_STANDOFFS"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_CARRIER.001"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:PDR_STAGE_LED_POSTER_CYAN"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:PDR_STAGE_LED_POSTER_LETTERS"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:ME_WB020_STAGE_LED_HEADLINE_CARRIER.001": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f68-0456-7e51-81a4-3d2782cdb468",
+          "slotName": "WB020_M_HEAD_CARRIER",
+          "sourceKey": "material:WB020_M_HEAD_CARRIER"
+        }
+      ]
+    },
+    "mesh:PDR_POSTER_STANDOFFS": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f68-0456-7e51-81a4-3d2782cdb468",
+          "slotName": "WB020_M_HEAD_CARRIER",
+          "sourceKey": "material:WB020_M_HEAD_CARRIER"
+        }
+      ]
+    },
+    "mesh:PDR_STAGE_LED_POSTER_CYAN": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f68-0456-7e51-81a4-3d28f54331a5",
+          "slotName": "PDR_POSTER_LED_CYAN",
+          "sourceKey": "material:PDR_POSTER_LED_CYAN"
+        }
+      ]
+    },
+    "mesh:PDR_STAGE_LED_POSTER_LETTERS": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a19f68-0456-7e51-81a4-3d29accf3d3c",
+          "slotName": "PDR_POSTER_LED_PINK",
+          "sourceKey": "material:PDR_POSTER_LED_PINK"
+        },
+        {
+          "defaultMaterialGuid": "01a19f68-0456-7e51-81a4-3d2a26ade918",
+          "slotName": "WB020_M_HEAD_METAL",
+          "sourceKey": "material:WB020_M_HEAD_METAL"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d237a2211a0",
+      "kind": "mesh",
+      "name": "PDR_POSTER_STANDOFFS",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:PDR_POSTER_STANDOFFS"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d2450e50f6d",
+      "kind": "mesh",
+      "name": "ME_WB020_STAGE_LED_HEADLINE_CARRIER.001",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:ME_WB020_STAGE_LED_HEADLINE_CARRIER.001"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d2556e37942",
+      "kind": "mesh",
+      "name": "PDR_STAGE_LED_POSTER_CYAN",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:PDR_STAGE_LED_POSTER_CYAN"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d267160510f",
+      "kind": "mesh",
+      "name": "PDR_STAGE_LED_POSTER_LETTERS",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:PDR_STAGE_LED_POSTER_LETTERS"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d2782cdb468",
+      "kind": "material",
+      "name": "WB020_M_HEAD_CARRIER",
+      "sourceIndex": 0,
+      "sourceKey": "material:WB020_M_HEAD_CARRIER"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d28f54331a5",
+      "kind": "material",
+      "name": "PDR_POSTER_LED_CYAN",
+      "sourceIndex": 1,
+      "sourceKey": "material:PDR_POSTER_LED_CYAN"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d29accf3d3c",
+      "kind": "material",
+      "name": "PDR_POSTER_LED_PINK",
+      "sourceIndex": 2,
+      "sourceKey": "material:PDR_POSTER_LED_PINK"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d2a26ade918",
+      "kind": "material",
+      "name": "WB020_M_HEAD_METAL",
+      "sourceIndex": 3,
+      "sourceKey": "material:WB020_M_HEAD_METAL"
+    },
+    {
+      "guid": "01a19f68-0456-7e51-81a4-3d2b4a03db51",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    }
+  ]
+}

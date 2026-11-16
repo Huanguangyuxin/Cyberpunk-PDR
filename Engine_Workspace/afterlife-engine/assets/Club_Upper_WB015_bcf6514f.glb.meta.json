@@ -2019,7 +2019,9 @@
         "WPANEL_UW3"
       ],
       "unsupportedExtensions": []
-    }
+    },
+    "compressionMode": "auto",
+    "mipmap": true
   },
   "importer": "gltf",
   "kind": "external-asset-package",
@@ -7272,9 +7274,9 @@
           "sourceKey": "material:M_STEEL_NAVY"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521b119a4038",
-          "slotName": "M_COUNTER_STEEL",
-          "sourceKey": "material:M_COUNTER_STEEL"
+          "defaultMaterialGuid": "2732d3f6-6836-4093-8db8-9aaf0d2726c7",
+          "slotName": "D109_CUSTOMER_COUNTER",
+          "sourceKey": "material:D109_CUSTOMER_COUNTER"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5218ace5ce6c",
@@ -7378,9 +7380,9 @@
           "sourceKey": "material:M_RUBBER"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521b119a4038",
-          "slotName": "M_COUNTER_STEEL",
-          "sourceKey": "material:M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
+          "slotName": "D109_TABLE_LAMINATE",
+          "sourceKey": "material:D109_TABLE_LAMINATE"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521faf9c38d5",
@@ -7868,9 +7870,9 @@
           "sourceKey": "material:M_STEP_LED"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521b119a4038",
-          "slotName": "M_COUNTER_STEEL",
-          "sourceKey": "material:M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521faf9c38d5",
@@ -7902,9 +7904,9 @@
           "sourceKey": "material:M_STEEL_BLACK"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521b119a4038",
-          "slotName": "M_COUNTER_STEEL",
-          "sourceKey": "material:M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
+          "slotName": "D109_TABLE_LAMINATE",
+          "sourceKey": "material:D109_TABLE_LAMINATE"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5237ec2db481",
@@ -8211,9 +8213,9 @@
           "sourceKey": "material:M_STEEL_BLACK"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521b119a4038",
-          "slotName": "M_COUNTER_STEEL",
-          "sourceKey": "material:M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
+          "slotName": "D109_TABLE_LAMINATE",
+          "sourceKey": "material:D109_TABLE_LAMINATE"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5237ec2db481",
@@ -8508,9 +8510,9 @@
           "sourceKey": "material:M_STEEL_BLACK"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-521b119a4038",
-          "slotName": "M_COUNTER_STEEL",
-          "sourceKey": "material:M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5221490a9859",
@@ -8752,9 +8754,9 @@
           "sourceKey": "material:WB015_M_RUBBER"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
+          "slotName": "D109_TABLE_LAMINATE",
+          "sourceKey": "material:D109_TABLE_LAMINATE"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525e2463b8e6",
@@ -9359,9 +9361,9 @@
           "sourceKey": "material:WB015_M_STEEL_BLACK"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
+          "slotName": "D109_TABLE_LAMINATE",
+          "sourceKey": "material:D109_TABLE_LAMINATE"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-526b7c49a6df",
@@ -9378,14 +9380,14 @@
     "mesh:WB015_ME_STAIR_E": {
       "materialSlots": [
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5255f4cbab4c",
-          "slotName": "WB015_M_WALL_NAVY",
-          "sourceKey": "material:WB015_M_WALL_NAVY"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad5947ac7fc",
+          "slotName": "D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5276b3fe4013",
@@ -9421,14 +9423,14 @@
     "mesh:WB015_ME_STAIR_W": {
       "materialSlots": [
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5255f4cbab4c",
-          "slotName": "WB015_M_WALL_NAVY",
-          "sourceKey": "material:WB015_M_WALL_NAVY"
+          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad5947ac7fc",
+          "slotName": "D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5276b3fe4013",
@@ -9488,9 +9490,9 @@
           "sourceKey": "material:WB015_M_GLASS_DOOR"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525e2463b8e6",
@@ -9591,9 +9593,9 @@
           "sourceKey": "material:WB015_M_GLASS_DOOR"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525e2463b8e6",
@@ -9694,9 +9696,9 @@
           "sourceKey": "material:WB015_M_GLASS_DOOR"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525e2463b8e6",
@@ -9797,9 +9799,9 @@
           "sourceKey": "material:WB015_M_GLASS_DOOR"
         },
         {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525d98556c92",
-          "slotName": "WB015_M_COUNTER_STEEL",
-          "sourceKey": "material:WB015_M_COUNTER_STEEL"
+          "defaultMaterialGuid": "01a1be65-c946-72a2-a45d-099f06371de7",
+          "slotName": "D109_STAIR_COATED_STEEL",
+          "sourceKey": "material:D109_STAIR_COATED_STEEL"
         },
         {
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-525e2463b8e6",
@@ -11517,6 +11519,34 @@
       "sourceKey": "material:WB015_M_DANCE_TILE"
     },
     {
+      "guid": "2732d3f6-6836-4093-8db8-9aaf0d2726c7",
+      "kind": "material",
+      "name": "D109_CUSTOMER_COUNTER",
+      "sourceIndex": 102,
+      "sourceKey": "material:D109_CUSTOMER_COUNTER"
+    },
+    {
+      "guid": "01a1be65-c946-72a2-a45d-099f06371de7",
+      "kind": "material",
+      "name": "D109_STAIR_COATED_STEEL",
+      "sourceIndex": 103,
+      "sourceKey": "material:D109_STAIR_COATED_STEEL"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
+      "kind": "material",
+      "name": "D109_TABLE_LAMINATE",
+      "sourceIndex": 104,
+      "sourceKey": "material:D109_TABLE_LAMINATE"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ad5947ac7fc",
+      "kind": "material",
+      "name": "D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY",
+      "sourceIndex": 105,
+      "sourceKey": "material:D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY"
+    },
+    {
       "guid": "01a18cc0-f159-7553-a50c-527de6f6d645",
       "kind": "scene",
       "name": "Cyberpunk-current-ground-WB015-upper",
@@ -11993,6 +12023,755 @@
       "sourceKey": "texture:WB015_M_OPAL_WHITE_color"
     },
     {
+      "guid": "396c8e66-acdf-4b10-92c5-00b375c2f1df",
+      "kind": "texture",
+      "name": "D109_CUSTOMER_COUNTER_normal",
+      "sourceIndex": 67,
+      "sourceKey": "texture:D109_CUSTOMER_COUNTER_normal"
+    },
+    {
+      "guid": "1dc03f44-71ad-4088-83ff-a8f8fd98a500",
+      "kind": "texture",
+      "name": "D109_CUSTOMER_COUNTER_orm",
+      "sourceIndex": 68,
+      "sourceKey": "texture:D109_CUSTOMER_COUNTER_orm"
+    },
+    {
+      "guid": "d19e590b-951e-4212-90ab-7403dbe042a8",
+      "kind": "texture",
+      "name": "D109_CUSTOMER_COUNTER_baseColor",
+      "sourceIndex": 69,
+      "sourceKey": "texture:D109_CUSTOMER_COUNTER_baseColor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ad6598ba256",
+      "kind": "texture",
+      "name": "D109_M_STEEL_BLACK_normal",
+      "sourceIndex": 70,
+      "sourceKey": "texture:D109_M_STEEL_BLACK_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ad7c86663e1",
+      "kind": "texture",
+      "name": "D109_STAIR_COATED_STEEL_orm",
+      "sourceIndex": 71,
+      "sourceKey": "texture:D109_STAIR_COATED_STEEL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ad881bd0951",
+      "kind": "texture",
+      "name": "D109_M_STEEL_BLACK_basecolor",
+      "sourceIndex": 72,
+      "sourceKey": "texture:D109_M_STEEL_BLACK_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ad91e0fb830",
+      "kind": "texture",
+      "name": "D109_M_PLASTIC_BLACK_normal",
+      "sourceIndex": 73,
+      "sourceKey": "texture:D109_M_PLASTIC_BLACK_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4adaa6c324e3",
+      "kind": "texture",
+      "name": "D109_TABLE_LAMINATE_orm",
+      "sourceIndex": 74,
+      "sourceKey": "texture:D109_TABLE_LAMINATE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4adb6448fa4e",
+      "kind": "texture",
+      "name": "D109_M_PLASTIC_BLACK_basecolor",
+      "sourceIndex": 75,
+      "sourceKey": "texture:D109_M_PLASTIC_BLACK_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4adeeea9b131",
+      "kind": "texture",
+      "name": "D109_M_COUNTER_STEEL_normal",
+      "sourceIndex": 76,
+      "sourceKey": "texture:D109_M_COUNTER_STEEL_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4adfa9786e16",
+      "kind": "texture",
+      "name": "D109_M_COUNTER_STEEL_orm",
+      "sourceIndex": 77,
+      "sourceKey": "texture:D109_M_COUNTER_STEEL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae0f76a46f0",
+      "kind": "texture",
+      "name": "D109_M_COUNTER_STEEL_basecolor",
+      "sourceIndex": 78,
+      "sourceKey": "texture:D109_M_COUNTER_STEEL_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae10d0a0a5c",
+      "kind": "texture",
+      "name": "D109_M_DANCE_TILE_normal",
+      "sourceIndex": 79,
+      "sourceKey": "texture:D109_M_DANCE_TILE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae24283511b",
+      "kind": "texture",
+      "name": "D109_M_DANCE_TILE_orm",
+      "sourceIndex": 80,
+      "sourceKey": "texture:D109_M_DANCE_TILE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae3e71773f7",
+      "kind": "texture",
+      "name": "D109_M_DANCE_TILE_basecolor",
+      "sourceIndex": 81,
+      "sourceKey": "texture:D109_M_DANCE_TILE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae4a53d5f7e",
+      "kind": "texture",
+      "name": "D109_M_FLOOR_TILE_normal",
+      "sourceIndex": 82,
+      "sourceKey": "texture:D109_M_FLOOR_TILE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae5938e9e33",
+      "kind": "texture",
+      "name": "D109_M_FLOOR_TILE_orm",
+      "sourceIndex": 83,
+      "sourceKey": "texture:D109_M_FLOOR_TILE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae668d986a4",
+      "kind": "texture",
+      "name": "D109_M_FLOOR_TILE_basecolor",
+      "sourceIndex": 84,
+      "sourceKey": "texture:D109_M_FLOOR_TILE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae74a334dd2",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_PATCH_normal",
+      "sourceIndex": 85,
+      "sourceKey": "texture:D109_M_LEATHER_PATCH_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae868517e53",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_PATCH_orm",
+      "sourceIndex": 86,
+      "sourceKey": "texture:D109_M_LEATHER_PATCH_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4ae99c39252a",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_PATCH_basecolor",
+      "sourceIndex": 87,
+      "sourceKey": "texture:D109_M_LEATHER_PATCH_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4aea9f457a82",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_WINE_normal",
+      "sourceIndex": 88,
+      "sourceKey": "texture:D109_M_LEATHER_WINE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4aeb61de2942",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_WINE_orm",
+      "sourceIndex": 89,
+      "sourceKey": "texture:D109_M_LEATHER_WINE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4aec1869140f",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_WINE_basecolor",
+      "sourceIndex": 90,
+      "sourceKey": "texture:D109_M_LEATHER_WINE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4aed102442b0",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_WORN_normal",
+      "sourceIndex": 91,
+      "sourceKey": "texture:D109_M_LEATHER_WORN_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4aee3d8264f2",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_WORN_orm",
+      "sourceIndex": 92,
+      "sourceKey": "texture:D109_M_LEATHER_WORN_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4aeff905018f",
+      "kind": "texture",
+      "name": "D109_M_LEATHER_WORN_basecolor",
+      "sourceIndex": 93,
+      "sourceKey": "texture:D109_M_LEATHER_WORN_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af0863acd7c",
+      "kind": "texture",
+      "name": "D109_M_PERF_STEEL_normal",
+      "sourceIndex": 94,
+      "sourceKey": "texture:D109_M_PERF_STEEL_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af1af079f7a",
+      "kind": "texture",
+      "name": "D109_M_PERF_STEEL_orm",
+      "sourceIndex": 95,
+      "sourceKey": "texture:D109_M_PERF_STEEL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af21f5bb316",
+      "kind": "texture",
+      "name": "D109_M_PERF_STEEL_basecolor",
+      "sourceIndex": 96,
+      "sourceKey": "texture:D109_M_PERF_STEEL_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af3c2e7b7aa",
+      "kind": "texture",
+      "name": "D109_M_PLASTIC_BLACK_orm",
+      "sourceIndex": 97,
+      "sourceKey": "texture:D109_M_PLASTIC_BLACK_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af42062a10d",
+      "kind": "texture",
+      "name": "D109_M_ROOF_DARK_normal",
+      "sourceIndex": 98,
+      "sourceKey": "texture:D109_M_ROOF_DARK_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af54db41676",
+      "kind": "texture",
+      "name": "D109_M_ROOF_DARK_orm",
+      "sourceIndex": 99,
+      "sourceKey": "texture:D109_M_ROOF_DARK_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af674fa0443",
+      "kind": "texture",
+      "name": "D109_M_ROOF_DARK_basecolor",
+      "sourceIndex": 100,
+      "sourceKey": "texture:D109_M_ROOF_DARK_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af7776709ff",
+      "kind": "texture",
+      "name": "D109_M_RUBBER_normal",
+      "sourceIndex": 101,
+      "sourceKey": "texture:D109_M_RUBBER_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af8500fb059",
+      "kind": "texture",
+      "name": "D109_M_RUBBER_orm",
+      "sourceIndex": 102,
+      "sourceKey": "texture:D109_M_RUBBER_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4af964357a59",
+      "kind": "texture",
+      "name": "D109_M_RUBBER_basecolor",
+      "sourceIndex": 103,
+      "sourceKey": "texture:D109_M_RUBBER_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4afa6a153249",
+      "kind": "texture",
+      "name": "D109_M_SOIL_normal",
+      "sourceIndex": 104,
+      "sourceKey": "texture:D109_M_SOIL_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4afb0f455607",
+      "kind": "texture",
+      "name": "D109_M_SOIL_orm",
+      "sourceIndex": 105,
+      "sourceKey": "texture:D109_M_SOIL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4afcfefa2431",
+      "kind": "texture",
+      "name": "D109_M_SOIL_basecolor",
+      "sourceIndex": 106,
+      "sourceKey": "texture:D109_M_SOIL_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4afd3eacba1c",
+      "kind": "texture",
+      "name": "D109_M_SPEAKER_GRILLE_normal",
+      "sourceIndex": 107,
+      "sourceKey": "texture:D109_M_SPEAKER_GRILLE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4afe799c4141",
+      "kind": "texture",
+      "name": "D109_M_SPEAKER_GRILLE_orm",
+      "sourceIndex": 108,
+      "sourceKey": "texture:D109_M_SPEAKER_GRILLE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4affa07415ab",
+      "kind": "texture",
+      "name": "D109_M_SPEAKER_GRILLE_basecolor",
+      "sourceIndex": 109,
+      "sourceKey": "texture:D109_M_SPEAKER_GRILLE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0005b0b9f5",
+      "kind": "texture",
+      "name": "D109_M_STEEL_BLACK_orm",
+      "sourceIndex": 110,
+      "sourceKey": "texture:D109_M_STEEL_BLACK_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b01abd5bfe3",
+      "kind": "texture",
+      "name": "D109_M_STEEL_NAVY_normal",
+      "sourceIndex": 111,
+      "sourceKey": "texture:D109_M_STEEL_NAVY_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b02d8698154",
+      "kind": "texture",
+      "name": "D109_M_STEEL_NAVY_orm",
+      "sourceIndex": 112,
+      "sourceKey": "texture:D109_M_STEEL_NAVY_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b035e02f843",
+      "kind": "texture",
+      "name": "D109_M_STEEL_NAVY_basecolor",
+      "sourceIndex": 113,
+      "sourceKey": "texture:D109_M_STEEL_NAVY_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4adce6d0f29a",
+      "kind": "texture",
+      "name": "D109_M_WALL_NAVY_normal",
+      "sourceIndex": 114,
+      "sourceKey": "texture:D109_M_WALL_NAVY_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b04a6d0e579",
+      "kind": "texture",
+      "name": "D109_M_WALL_NAVY_orm",
+      "sourceIndex": 115,
+      "sourceKey": "texture:D109_M_WALL_NAVY_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4addb0eb2f6b",
+      "kind": "texture",
+      "name": "D109_M_WALL_NAVY_basecolor",
+      "sourceIndex": 116,
+      "sourceKey": "texture:D109_M_WALL_NAVY_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b051fc678ad",
+      "kind": "texture",
+      "name": "D109_WB015_M_COUNTER_STEEL_normal",
+      "sourceIndex": 117,
+      "sourceKey": "texture:D109_WB015_M_COUNTER_STEEL_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b06f414aff3",
+      "kind": "texture",
+      "name": "D109_WB015_M_COUNTER_STEEL_orm",
+      "sourceIndex": 118,
+      "sourceKey": "texture:D109_WB015_M_COUNTER_STEEL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0742e3f59a",
+      "kind": "texture",
+      "name": "D109_WB015_M_COUNTER_STEEL_basecolor",
+      "sourceIndex": 119,
+      "sourceKey": "texture:D109_WB015_M_COUNTER_STEEL_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0803bff41b",
+      "kind": "texture",
+      "name": "D109_WB015_M_DANCE_TILE_normal",
+      "sourceIndex": 120,
+      "sourceKey": "texture:D109_WB015_M_DANCE_TILE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b095e44ade9",
+      "kind": "texture",
+      "name": "D109_WB015_M_DANCE_TILE_orm",
+      "sourceIndex": 121,
+      "sourceKey": "texture:D109_WB015_M_DANCE_TILE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0ac73abc6f",
+      "kind": "texture",
+      "name": "D109_WB015_M_DANCE_TILE_basecolor",
+      "sourceIndex": 122,
+      "sourceKey": "texture:D109_WB015_M_DANCE_TILE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0b44dd3667",
+      "kind": "texture",
+      "name": "D109_WB015_M_FLOOR_TILE_normal",
+      "sourceIndex": 123,
+      "sourceKey": "texture:D109_WB015_M_FLOOR_TILE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0c9a89e7c5",
+      "kind": "texture",
+      "name": "D109_WB015_M_FLOOR_TILE_orm",
+      "sourceIndex": 124,
+      "sourceKey": "texture:D109_WB015_M_FLOOR_TILE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0db1cc666a",
+      "kind": "texture",
+      "name": "D109_WB015_M_FLOOR_TILE_basecolor",
+      "sourceIndex": 125,
+      "sourceKey": "texture:D109_WB015_M_FLOOR_TILE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0e2ead34f3",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_PATCH_normal",
+      "sourceIndex": 126,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_PATCH_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b0fb157f977",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_PATCH_orm",
+      "sourceIndex": 127,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_PATCH_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1044d7952a",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_PATCH_basecolor",
+      "sourceIndex": 128,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_PATCH_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b114553e89f",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_WINE_normal",
+      "sourceIndex": 129,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_WINE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b128e3dfaa8",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_WINE_orm",
+      "sourceIndex": 130,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_WINE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b13fd9e63a3",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_WINE_basecolor",
+      "sourceIndex": 131,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_WINE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b14ca2a6c26",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_WORN_normal",
+      "sourceIndex": 132,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_WORN_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1581e5dfcf",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_WORN_orm",
+      "sourceIndex": 133,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_WORN_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b16a611305d",
+      "kind": "texture",
+      "name": "D109_WB015_M_LEATHER_WORN_basecolor",
+      "sourceIndex": 134,
+      "sourceKey": "texture:D109_WB015_M_LEATHER_WORN_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1798432ec6",
+      "kind": "texture",
+      "name": "D109_WB015_M_PERF_STEEL_normal",
+      "sourceIndex": 135,
+      "sourceKey": "texture:D109_WB015_M_PERF_STEEL_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b183ac51129",
+      "kind": "texture",
+      "name": "D109_WB015_M_PERF_STEEL_orm",
+      "sourceIndex": 136,
+      "sourceKey": "texture:D109_WB015_M_PERF_STEEL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b19bf9c8748",
+      "kind": "texture",
+      "name": "D109_WB015_M_PERF_STEEL_basecolor",
+      "sourceIndex": 137,
+      "sourceKey": "texture:D109_WB015_M_PERF_STEEL_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1aaaa56c0f",
+      "kind": "texture",
+      "name": "D109_WB015_M_PLASTIC_BLACK_normal",
+      "sourceIndex": 138,
+      "sourceKey": "texture:D109_WB015_M_PLASTIC_BLACK_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1b7137e91d",
+      "kind": "texture",
+      "name": "D109_WB015_M_PLASTIC_BLACK_orm",
+      "sourceIndex": 139,
+      "sourceKey": "texture:D109_WB015_M_PLASTIC_BLACK_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1c93315d9e",
+      "kind": "texture",
+      "name": "D109_WB015_M_PLASTIC_BLACK_basecolor",
+      "sourceIndex": 140,
+      "sourceKey": "texture:D109_WB015_M_PLASTIC_BLACK_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1dfead8592",
+      "kind": "texture",
+      "name": "D109_WB015_M_ROOF_DARK_normal",
+      "sourceIndex": 141,
+      "sourceKey": "texture:D109_WB015_M_ROOF_DARK_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1e686c68c9",
+      "kind": "texture",
+      "name": "D109_WB015_M_ROOF_DARK_orm",
+      "sourceIndex": 142,
+      "sourceKey": "texture:D109_WB015_M_ROOF_DARK_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b1febddc838",
+      "kind": "texture",
+      "name": "D109_WB015_M_ROOF_DARK_basecolor",
+      "sourceIndex": 143,
+      "sourceKey": "texture:D109_WB015_M_ROOF_DARK_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b200a472e88",
+      "kind": "texture",
+      "name": "D109_WB015_M_RUBBER_normal",
+      "sourceIndex": 144,
+      "sourceKey": "texture:D109_WB015_M_RUBBER_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2164e31ebb",
+      "kind": "texture",
+      "name": "D109_WB015_M_RUBBER_orm",
+      "sourceIndex": 145,
+      "sourceKey": "texture:D109_WB015_M_RUBBER_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b22d144847a",
+      "kind": "texture",
+      "name": "D109_WB015_M_RUBBER_basecolor",
+      "sourceIndex": 146,
+      "sourceKey": "texture:D109_WB015_M_RUBBER_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b23a05a91bc",
+      "kind": "texture",
+      "name": "D109_WB015_M_SOIL_normal",
+      "sourceIndex": 147,
+      "sourceKey": "texture:D109_WB015_M_SOIL_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b242d18b7fe",
+      "kind": "texture",
+      "name": "D109_WB015_M_SOIL_orm",
+      "sourceIndex": 148,
+      "sourceKey": "texture:D109_WB015_M_SOIL_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b259a41415c",
+      "kind": "texture",
+      "name": "D109_WB015_M_SOIL_basecolor",
+      "sourceIndex": 149,
+      "sourceKey": "texture:D109_WB015_M_SOIL_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b265605c703",
+      "kind": "texture",
+      "name": "D109_WB015_M_SPEAKER_GRILLE_normal",
+      "sourceIndex": 150,
+      "sourceKey": "texture:D109_WB015_M_SPEAKER_GRILLE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b275e98eaef",
+      "kind": "texture",
+      "name": "D109_WB015_M_SPEAKER_GRILLE_orm",
+      "sourceIndex": 151,
+      "sourceKey": "texture:D109_WB015_M_SPEAKER_GRILLE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b285421c4e0",
+      "kind": "texture",
+      "name": "D109_WB015_M_SPEAKER_GRILLE_basecolor",
+      "sourceIndex": 152,
+      "sourceKey": "texture:D109_WB015_M_SPEAKER_GRILLE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b29051b6426",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_BLACK_normal",
+      "sourceIndex": 153,
+      "sourceKey": "texture:D109_WB015_M_STEEL_BLACK_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2accfca110",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_BLACK_orm",
+      "sourceIndex": 154,
+      "sourceKey": "texture:D109_WB015_M_STEEL_BLACK_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2b747bc63e",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_BLACK_basecolor",
+      "sourceIndex": 155,
+      "sourceKey": "texture:D109_WB015_M_STEEL_BLACK_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2c81a65932",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_EDGE_normal",
+      "sourceIndex": 156,
+      "sourceKey": "texture:D109_WB015_M_STEEL_EDGE_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2d0deb27af",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_EDGE_orm",
+      "sourceIndex": 157,
+      "sourceKey": "texture:D109_WB015_M_STEEL_EDGE_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2e54736c7f",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_EDGE_basecolor",
+      "sourceIndex": 158,
+      "sourceKey": "texture:D109_WB015_M_STEEL_EDGE_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b2ff8164fd9",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_NAVY_normal",
+      "sourceIndex": 159,
+      "sourceKey": "texture:D109_WB015_M_STEEL_NAVY_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b30ae264f87",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_NAVY_orm",
+      "sourceIndex": 160,
+      "sourceKey": "texture:D109_WB015_M_STEEL_NAVY_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b31d55d14c7",
+      "kind": "texture",
+      "name": "D109_WB015_M_STEEL_NAVY_basecolor",
+      "sourceIndex": 161,
+      "sourceKey": "texture:D109_WB015_M_STEEL_NAVY_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b32fb7dcbe0",
+      "kind": "texture",
+      "name": "D109_WB015_M_VINYL_CONTACT_normal",
+      "sourceIndex": 162,
+      "sourceKey": "texture:D109_WB015_M_VINYL_CONTACT_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b33cb820858",
+      "kind": "texture",
+      "name": "D109_WB015_M_VINYL_CONTACT_orm",
+      "sourceIndex": 163,
+      "sourceKey": "texture:D109_WB015_M_VINYL_CONTACT_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b34cded438c",
+      "kind": "texture",
+      "name": "D109_WB015_M_VINYL_CONTACT_basecolor",
+      "sourceIndex": 164,
+      "sourceKey": "texture:D109_WB015_M_VINYL_CONTACT_basecolor"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b3513c19d28",
+      "kind": "texture",
+      "name": "D109_WB015_M_WALL_NAVY_normal",
+      "sourceIndex": 165,
+      "sourceKey": "texture:D109_WB015_M_WALL_NAVY_normal"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b36dedae4fd",
+      "kind": "texture",
+      "name": "D109_WB015_M_WALL_NAVY_orm",
+      "sourceIndex": 166,
+      "sourceKey": "texture:D109_WB015_M_WALL_NAVY_orm"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b370fd937f4",
+      "kind": "texture",
+      "name": "D109_WB015_M_WALL_NAVY_basecolor",
+      "sourceIndex": 167,
+      "sourceKey": "texture:D109_WB015_M_WALL_NAVY_basecolor"
+    },
+    {
+      "guid": "01a1c39b-0d8c-705c-a74e-033fd33ddcbb",
+      "kind": "texture",
+      "name": "D121_M_WALL_COLLAGE_normal",
+      "sourceIndex": 168,
+      "sourceKey": "texture:D121_M_WALL_COLLAGE_normal"
+    },
+    {
+      "guid": "01a1c39b-0d8c-705c-a74e-03401b9a1dcb",
+      "kind": "texture",
+      "name": "D121_M_WALL_COLLAGE_orm",
+      "sourceIndex": 169,
+      "sourceKey": "texture:D121_M_WALL_COLLAGE_orm"
+    },
+    {
+      "guid": "01a1c39b-0d8c-705c-a74e-0341819f4a84",
+      "kind": "texture",
+      "name": "D121_M_POSTER_normal",
+      "sourceIndex": 170,
+      "sourceKey": "texture:D121_M_POSTER_normal"
+    },
+    {
+      "guid": "01a1c39b-0d8c-705c-a74e-034250b24f52",
+      "kind": "texture",
+      "name": "D121_M_POSTER_orm",
+      "sourceIndex": 171,
+      "sourceKey": "texture:D121_M_POSTER_orm"
+    },
+    {
+      "guid": "01a1c39b-0d8c-705c-a74e-03439942c1dd",
+      "kind": "texture",
+      "name": "D121_M_BIG_POSTER_normal",
+      "sourceIndex": 172,
+      "sourceKey": "texture:D121_M_BIG_POSTER_normal"
+    },
+    {
+      "guid": "01a1c39b-0d8c-705c-a74e-03449a7fd691",
+      "kind": "texture",
+      "name": "D121_M_BIG_POSTER_orm",
+      "sourceIndex": 173,
+      "sourceKey": "texture:D121_M_BIG_POSTER_orm"
+    },
+    {
       "guid": "01a18cc0-f159-7553-a50c-52c159caf512",
       "kind": "sampler",
       "name": "Sampler_0_0",
@@ -12005,6 +12784,13 @@
       "name": "Sampler_1_0",
       "sourceIndex": 1,
       "sourceKey": "sampler:Sampler_1_0"
+    },
+    {
+      "guid": "01a1be65-c947-7e80-98cb-4b38d48db76d",
+      "kind": "sampler",
+      "name": "D109_Sampler_68a70efa3f0bf1c0",
+      "sourceIndex": 2,
+      "sourceKey": "sampler:D109_Sampler_68a70efa3f0bf1c0"
     }
   ]
 }

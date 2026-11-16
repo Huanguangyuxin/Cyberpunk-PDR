@@ -1,32 +1,61 @@
 /** Stage plaque, ceiling bands and directional light inside the upper booths. */
 import type {AssetRegistry} from '@forgeax/engine/assets-runtime';
 import type {EntityHandle, World} from '@forgeax/engine/ecs';
-import {MeshFilter, MeshRenderer, PointLight, SpotLight} from '@forgeax/engine/render';
+import {MeshFilter, MeshRenderer, PointLight, RectAreaLight, SpotLight} from '@forgeax/engine/render';
 import {Name, Transform} from '@forgeax/engine/scene';
 import type {AssetHandle} from '@forgeax/engine/types';
 
 type RGB = readonly [number, number, number];
 
 export const brandAmbient = {
-  irradiance: [1.05, .45, 1.42],
-  sky: [.86, .72, 1],
+  irradiance: [0.88, 0.38, 1.20],
+  sky: [0.82, 0.68, 0.96],
 };
 
 const violet: RGB = [.48, .22, 1];
 const orchid: RGB = [.77, .28, 1];
 const pink: RGB = [1, .18, .55];
+const vipLight: RGB = [.76, .83, 1];
+const vipStripRadiance = 960;
 const rose: RGB = [1, .25, .48];
 const coral: RGB = [1, .29, .20];
 const coralLight: RGB = [1, .43, .36];
 const houseBandNumbers = new Set([12, 13, 14, 18, 19, 20, 21, 23, 26]);
-const upperBoothNumbers = new Set([15, 16, 17, 28]);
 const plaqueBounceNumbers = new Set([31, 32]);
 const plaqueFaceSlot = 'D077_Official_ForgeAX_E8692C';
 const plaqueGlowGain = 3.65;
 const plaqueEmission: RGB = [1, .073, .018];
-const upperBoothDirection: RGB = [0, -.950, -.312];
+
+// D112 candidate: front-strip radiance 825 (was1500) retains wall diffuse gradients.
+// Source dimensions/colors/positions, other24 lights, exposure/Bloom/ambient unchanged.
+// D108: Reuse existing light slots as finite, downward-facing luminous strips.
+// Dimensions/positions match the flush emitters built by elevationAndSoffit:
+// A3 roof strips y=9.243; B2 gallery strips y=3.344. The 6mm offset
+// places the emitting plane just below the diffuser, not in a solid beam.
+// Rect intensity is source radiance scale, NOT the candela used by Point/Spot.
+const stripSources = new Map<number, {pos:RGB; width:number; height:number; intensity:number; range:number; mount:string; color?:RGB}>([
+  [4, {pos:[8,9.237,-6.1], width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof +8 south'}],
+  [5, {pos:[8,9.237,-14.9],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof +8 north'}],
+  [6, {pos:[-11.2,9.237,-6.1],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof -11.2 south'}],
+  [7, {pos:[-11.2,9.237,-14.9],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof -11.2 north'}],
+  [8, {pos:[-8,9.237,-6.1],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof -8 south'}],
+  [9, {pos:[-8,9.237,-14.9],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof -8 north'}],
+  [10,{pos:[11.2,9.237,-6.1],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof +11.2 south'}],
+  [11,{pos:[11.2,9.237,-14.9],width:.15,height:8.8,intensity:825,range:27,mount:'A3 roof +11.2 north'}],
+  [15,{pos:[-12.305,6.584,-38.3],width:.13,height:1.64,intensity:vipStripRadiance,range:9,color:vipLight,mount:'VIP_W2_SHELL suspended opal strip'}],
+  [16,{pos:[-9.475,3.338,-35.3],width:.14,height:5.1,intensity:120,range:11,mount:'B2 west soffit bay 3'}],
+  [17,{pos:[9.475,3.338,-35.3],width:.14,height:5.1,intensity:120,range:11,mount:'B2 east soffit bay 3'}],
+  [28,{pos:[12.305,6.584,-38.3],width:.13,height:1.64,intensity:vipStripRadiance,range:9,color:vipLight,mount:'VIP_E2_SHELL suspended opal strip'}],
+  [29,{pos:[-9.475,3.338,-24.7],width:.14,height:3.9,intensity:120,range:11,mount:'B2 west soffit bay 1'}],
+  [30,{pos:[9.475,3.338,-24.7],width:.14,height:3.9,intensity:120,range:11,mount:'B2 east soffit bay 1'}],
+  // D113: retire the two8cd plaque bounce slots; match real missing VIP1 emitters.
+  [31,{pos:[-12.305,6.584,-28.1],width:.13,height:1.64,intensity:vipStripRadiance,range:9,color:vipLight,mount:'VIP_W1_SHELL suspended opal strip; reused source31'}],
+  [32,{pos:[12.305,6.584,-28.1],width:.13,height:1.64,intensity:vipStripRadiance,range:9,color:vipLight,mount:'VIP_E1_SHELL suspended opal strip; reused source32'}],
+]);
 
 function fixtureColor(number: number): RGB {
+  if (number === 24) return [.42, .52, 1];
+  if (number === 25) return [1, .22, .60];
   if (number >= 22 && number <= 27) return number % 2 === 0 ? coralLight : coral;
   if ([12, 14, 17, 20].includes(number)) return violet;
   if ([18, 19].includes(number)) return orchid;
@@ -48,30 +77,44 @@ interface FixtureAdjustment {
 // force with wide, even wash cones; local point/spot lights stay understated so they
 // never create overexposed hotspots on nearby surfaces or in volumetric fog.
 const fixtureAdjustments = new Map<number, FixtureAdjustment>([
-  [1, {pos:[10.65,2.092,-6.70], intensity:8, range:6.5, cone:[32,54]}],
-  [2, {pos:[10.65,2.092,-8.90], intensity:15, range:6.5, cone:[32,54]}],
-  [3, {pos:[10.65,2.092,-12.20], intensity:8, range:6.5, cone:[32,54]}],
-  [4, {pos:[13.94,2.05,-7], intensity:5, range:4.5}],
-  [5, {pos:[13.94,2.05,-11.6], intensity:5, range:4.5}],
-  [12, {pos:[-6.5,7.376,-3.5], direction:[.08,-.94,-.33], intensity:1460, range:28, cone:[48,76]}],
-  [13, {pos:[4.18,6.51,-10.2], direction:[-.18,-.984,0], intensity:1520, range:28, cone:[48,76]}],
-  [14, {pos:[-5,7.376,-14.8], direction:[.08,-.96,-.26], intensity:1480, range:28, cone:[48,76]}],
-  [15, {pos:[-12.305,6.112,-38.3], intensity:80, range:8.5, cone:[38,66]}],
-  [16, {pos:[-12.305,6.112,-28.1], intensity:80, range:8.5, cone:[38,66]}],
-  [17, {pos:[12.305,6.112,-28.1], intensity:80, range:8.5, cone:[38,66]}],
-  [18, {pos:[0,7.678,-23.468], direction:[0,-.94,-.34], intensity:1320, range:25, cone:[46,74]}],
-  [19, {pos:[5,7.376,-26.5], direction:[-.28,-.945,-.17], intensity:1420, range:26, cone:[48,76]}],
-  [20, {pos:[-6,7.376,-31.5], direction:[.30,-.952,.06], intensity:1400, range:26, cone:[48,76]}],
-  [21, {pos:[3.5,7.376,-35], direction:[-.24,-.96,.14], intensity:1220, range:24, cone:[46,74]}],
-  [22, {intensity:620, range:12, cone:[24,42]}],
-  [23, {pos:[-3.2,7.678,-42.68], direction:[.08,-.985,.15], intensity:1120, range:21, cone:[44,72]}],
-  [24, {intensity:540, range:11.5}],
-  [25, {intensity:540, range:11.5}],
-  [26, {pos:[3.2,7.678,-42.68], direction:[-.08,-.985,.15], intensity:1120, range:21, cone:[44,72]}],
-  [27, {intensity:600, range:12, cone:[24,42]}],
-  [28, {pos:[12.305,6.112,-38.3], intensity:80, range:8.5, cone:[38,66]}],
-  [29, {pos:[-11.15,2.283,-26.2], intensity:10, range:4.0}],
-  [30, {pos:[11.15,2.283,-26.2], intensity:10, range:4.0}],
+  // D095: Front-hall East bar canopy spots (L01..L03) + Front-hall flush ceiling light-band wash (L04..L14 at y = 8.45m)
+  [1, {pos:[10.65,2.092,-6.70], intensity:11, range:7.0, cone:[34,56]}],
+  [2, {pos:[10.65,2.092,-8.90], intensity:16, range:7.0, cone:[34,56]}],
+  [3, {pos:[10.65,2.092,-12.20], intensity:11, range:7.0, cone:[34,56]}],
+  [4, {pos:[8.2,8.45,-4.5], intensity:1150, range:24.0}],
+  [5, {pos:[8.2,8.45,-15.5], intensity:1220, range:24.0}],
+  [6, {pos:[-11.5,8.45,-3.5], intensity:1100, range:24.0}],
+  [7, {pos:[-11.5,8.45,-9.5], intensity:1100, range:24.0}],
+  [8, {pos:[-11.5,8.45,-16.0], intensity:1220, range:24.0}],
+  [9, {pos:[-8.2,8.45,-3.5], intensity:1080, range:24.0}],
+  [10, {pos:[-8.2,8.45,-9.5], intensity:1080, range:24.0}],
+  [11, {pos:[-8.2,8.45,-15.5], intensity:1150, range:24.0}],
+  // D095: Place L12..L14 at y = 8.45m (just below the flush ceiling light bands at y = 8.58m) with wide 54..82 deg wash cones
+  [12, {pos:[-4.5,8.588,-2.75], direction:[.10,-.96,-.26], intensity:600, range:30, cone:[50,78]}],
+  [13, {pos:[4.5,8.588,-8.25], direction:[-.14,-.98,-.10], intensity:620, range:30, cone:[50,78]}],
+  [14, {pos:[-4.5,8.588,-13.75], direction:[.10,-.96,-.24], intensity:600, range:30, cone:[50,78]}],
+  [15, {pos:[-12.305,6.562,-38.3], intensity:85, range:9.0, cone:[40,68]}],
+  // D095: L16 & L17 sit under the raised West & East 2nd-floor soffits (y = 2.86m, z = -37.2m)
+  // with wide 62..88 deg downward/inward cones to wash the northern ground-floor booths & round tables.
+  [16, {pos:[-10.45,2.86,-37.2], direction:[.22,-.975,0], intensity:380, range:15.0, cone:[54,82]}],
+  [17, {pos:[10.45,2.86,-37.2], direction:[-.22,-.975,0], intensity:380, range:15.0, cone:[54,82]}],
+  // D095: L18_PORTAL sits directly under the raised 2nd-floor bridge soffit (y = 2.94m, z = -21.20m)
+  // to illuminate the ground-floor bridge underpass and central transition zone without shadow cast blockage.
+  [18, {pos:[0,2.94,-21.20], direction:[0,-.985,-.17], intensity:680, range:20, cone:[58,84]}],
+  [19, {pos:[5,8.576,-26.5], direction:[0,-1,0], intensity:1360, range:28, cone:[28,52]}],
+  [20, {pos:[-6,8.576,-31.5], direction:[0,-1,0], intensity:1340, range:28, cone:[28,52]}],
+  [21, {pos:[3.5,8.576,-35], direction:[0,-1,0], intensity:1200, range:26, cone:[28,52]}],
+  [22, {intensity:1650, range:19, cone:[20,36]}],
+  [23, {pos:[-3.2,8.328,-42.68], direction:[.08,-.985,.15], intensity:1200, range:23, cone:[44,72]}],
+  [24, {intensity:3600, range:24, cone:[6.5,13.5]}],
+  [25, {intensity:3600, range:24, cone:[6.5,13.5]}],
+  [26, {pos:[3.2,8.328,-42.68], direction:[-.08,-.985,.15], intensity:1200, range:23, cone:[44,72]}],
+  [27, {intensity:1600, range:19, cone:[20,36]}],
+  [28, {pos:[12.305,6.562,-38.3], intensity:85, range:9.0, cone:[40,68]}],
+  // D095: L29_DEEP_W & L30_DEEP_E sit under the raised West & East 2nd-floor gallery soffits (y = 2.86m, z = -27.8m)
+  // with wide 16.5m reach to eliminate ground-floor shadows under the 2nd-floor decks.
+  [29, {pos:[-10.45,2.86,-27.8], intensity:320, range:15.5}],
+  [30, {pos:[10.45,2.86,-27.8], intensity:320, range:15.5}],
   // Two retired gallery slots now sit behind the opaque plaque enclosure
   // (rear z=-43.65), in the gap to the stage wall (z=-43.94).
   [31, {pos:[-1.10,3.35,-43.70], intensity:8, range:1.35}],
@@ -82,12 +125,14 @@ function tuneFixtures(world: World) {
   const points = Array.from(world.query({read: [Name, Transform, PointLight]}).unwrap(), row => ({
     entity: row.entity, name: row.get(Name).value, kind: 'point' as const,
     pos: Array.from(row.get(Transform).pos),
+    quat: Array.from(row.get(Transform).quat),
     pointData: {...row.get(PointLight),color:Array.from(row.get(PointLight).color)},
     intensity: row.get(PointLight).intensity, range: row.get(PointLight).range, color: Array.from(row.get(PointLight).color),
   }));
   const spots = Array.from(world.query({read: [Name, Transform, SpotLight]}).unwrap(), row => ({
     entity: row.entity, name: row.get(Name).value, kind: 'spot' as const,
     pos: Array.from(row.get(Transform).pos),
+    quat: Array.from(row.get(Transform).quat),
     intensity: row.get(SpotLight).intensity, range: row.get(SpotLight).range, color: Array.from(row.get(SpotLight).color),
     direction: Array.from(row.get(SpotLight).direction),
     innerConeDeg: row.get(SpotLight).innerConeDeg, outerConeDeg: row.get(SpotLight).outerConeDeg,
@@ -97,26 +142,32 @@ function tuneFixtures(world: World) {
   if (fixtures.length !== 32 || new Set(numbers).size !== 32 || numbers.some(n => !(n >= 1 && n <= 32))) {
     throw new Error('D078 requires the existing 32 named fixtures');
   }
-  const convertedBooths = new Set<EntityHandle>();
+  const convertedStrips = new Set<EntityHandle>();
   for (const [index, fixture] of fixtures.entries()) {
     const number = numbers[index];
-    const adjustment = fixtureAdjustments.get(number);
-    const pos = number >= 6 && number <= 11 ? [fixture.pos[0], .722, fixture.pos[2]] : adjustment?.pos;
-    if (pos) world.set(fixture.entity, Transform, {pos: [...pos]}).unwrap();
-    const patch = {color: [...(plaqueBounceNumbers.has(number) ? coral : fixtureColor(number))], range: adjustment?.range ?? (number >= 6 && number <= 11 ? 3.5 : fixture.range),
-      intensity: adjustment?.intensity ?? (number >= 6 && number <= 11 ? 6 : fixture.intensity)};
-    if (fixture.kind === 'point' && upperBoothNumbers.has(number)) {
+    const strip = stripSources.get(number);
+    if (strip) {
+      if (fixture.kind !== 'point') throw new Error('D108 strip slot must replace a point: ' + fixture.name);
       world.removeComponent(fixture.entity,PointLight).unwrap();
       try {
-        world.addComponent(fixture.entity,{component:SpotLight,data:{
-          ...patch, direction:[...upperBoothDirection], innerConeDeg:adjustment?.cone?.[0]??42, outerConeDeg:adjustment?.cone?.[1]??72, castShadow:false,
+        world.addComponent(fixture.entity,{component:RectAreaLight,data:{
+          color:[...(strip.color ?? orchid)],intensity:strip.intensity,range:strip.range,width:strip.width,height:strip.height,
         }}).unwrap();
+        world.set(fixture.entity,Transform,{pos:[...strip.pos],quat:[Math.SQRT1_2,0,0,Math.SQRT1_2]}).unwrap();
       } catch (error) {
+        if(world.hasComponent(fixture.entity,RectAreaLight))world.removeComponent(fixture.entity,RectAreaLight).unwrap();
         world.addComponent(fixture.entity,{component:PointLight,data:fixture.pointData}).unwrap();
         throw error;
       }
-      convertedBooths.add(fixture.entity);
-    } else if (fixture.kind === 'spot') {
+      convertedStrips.add(fixture.entity);
+      continue;
+    }
+    const adjustment = fixtureAdjustments.get(number);
+    const pos = adjustment?.pos ?? (number >= 6 && number <= 11 ? [fixture.pos[0], .722, fixture.pos[2]] : undefined);
+    if (pos) world.set(fixture.entity, Transform, {pos: [...pos]}).unwrap();
+    const patch = {color: [...(plaqueBounceNumbers.has(number) ? coral : fixtureColor(number))], range: adjustment?.range ?? (number >= 6 && number <= 11 ? 3.5 : fixture.range),
+      intensity: adjustment?.intensity ?? (number >= 6 && number <= 11 ? 6 : fixture.intensity)};
+    if (fixture.kind === 'spot') {
       world.set(fixture.entity, SpotLight, {...patch, direction: adjustment?.direction ? [...adjustment.direction] : fixture.direction,
         innerConeDeg: adjustment?.cone?.[0] ?? fixture.innerConeDeg,
         outerConeDeg: adjustment?.cone?.[1] ?? fixture.outerConeDeg}).unwrap();
@@ -126,25 +177,36 @@ function tuneFixtures(world: World) {
   }
   const restore = () => {
     for (const fixture of fixtures) {
-      world.set(fixture.entity, Transform, {pos: fixture.pos}).unwrap();
+      world.set(fixture.entity, Transform, {pos: fixture.pos,quat:fixture.quat}).unwrap();
       const patch = {color: fixture.color, intensity: fixture.intensity, range: fixture.range};
-      if (fixture.kind === 'point' && convertedBooths.has(fixture.entity)) {
-        world.removeComponent(fixture.entity,SpotLight).unwrap();
+      if (fixture.kind === 'point' && convertedStrips.has(fixture.entity)) {
+        if(world.hasComponent(fixture.entity,RectAreaLight))world.removeComponent(fixture.entity,RectAreaLight).unwrap();
         world.addComponent(fixture.entity,{component:PointLight,data:fixture.pointData}).unwrap();
       } else if (fixture.kind === 'spot') world.set(fixture.entity, SpotLight, {...patch, direction: fixture.direction, innerConeDeg: fixture.innerConeDeg, outerConeDeg: fixture.outerConeDeg}).unwrap();
       else world.set(fixture.entity, PointLight, patch).unwrap();
     }
   };
-  if (convertedBooths.size !== 4) throw new Error('D080 expected four upper booth point lights');
+  if (convertedStrips.size !== 16) throw new Error('D113 expected sixteen strip sources');
   const houseBands = spots.filter(spot => houseBandNumbers.has(Number(spot.name.slice(1,3))));
-  const plaqueBounce = points.filter(point => plaqueBounceNumbers.has(Number(point.name.slice(1,3))));
+  const plaqueBounce = points.filter(point => plaqueBounceNumbers.has(Number(point.name.slice(1,3))) && !convertedStrips.has(point.entity));
   const read = () => ({
+    nativeCount:fixtures.length,
+    retiredPlaqueBounceSlots:[31,32],
+    strips:points.filter(point=>convertedStrips.has(point.entity)).map(point=>{
+      const light=world.get(point.entity,RectAreaLight);
+      const strip=stripSources.get(Number(point.name.slice(1,3)))!;
+      return {name:point.name,kind:'native LTC rectangle',mount:stripSources.get(Number(point.name.slice(1,3)))!.mount,
+        intensity:light.ok?light.value.intensity:0,units:'radiance scale (not cd)',
+        width:light.ok?light.value.width:strip.width,height:light.ok?light.value.height:strip.height,
+        pos:Array.from(world.get(point.entity,Transform).unwrap().pos)};
+    }),
     main:houseBands.map(spot => ({name:spot.name,
       intensity:world.get(spot.entity,SpotLight).unwrap().intensity,
       pos:Array.from(world.get(spot.entity,Transform).unwrap().pos)})),
-    upperBooths:points.filter(point => convertedBooths.has(point.entity)).map(point => {
-      const spot = world.get(point.entity,SpotLight).unwrap();
-      return {name:point.name,kind:'downward spot',intensity:spot.intensity,range:spot.range};
+    upperBooths:points.filter(point => [15,28,31,32].includes(Number(point.name.slice(1,3)))).map(point => {
+      const light = world.get(point.entity,RectAreaLight);
+      const strip=stripSources.get(Number(point.name.slice(1,3)))!;
+      return {name:point.name,kind:'ceiling strip',mount:strip.mount,intensity:light.ok?light.value.intensity:0,range:light.ok?light.value.range:strip.range};
     }),
     plaqueBounce:plaqueBounce.map(point => ({
       name:point.name,intensity:world.get(point.entity,PointLight).unwrap().intensity,
@@ -153,28 +215,30 @@ function tuneFixtures(world: World) {
   });
   const muteHouseBands = () => {
     for (const spot of houseBands) world.set(spot.entity,SpotLight,{intensity:0}).unwrap();
+    for (const entity of convertedStrips) world.set(entity,RectAreaLight,{intensity:0}).unwrap();
   };
   const mutePlaqueBounce = () => {
     for (const point of plaqueBounce) world.set(point.entity,PointLight,{intensity:0}).unwrap();
   };
-  return {restore,read,muteHouseBands,mutePlaqueBounce};
+  const muteVipLights=()=>{for(const entity of convertedStrips){const n=Number(world.get(entity,Name).unwrap().value.slice(1,3));if([15,28,31,32].includes(n))world.set(entity,RectAreaLight,{intensity:0}).unwrap();}};
+  return {restore,read,muteHouseBands,mutePlaqueBounce,muteVipLights};
 }
 // Graphic neon and labels retain their own identity. Architectural LEDs get
 // both a hue and a luminance ceiling; old HDR bulbs could clip to white.
 type Practical = readonly [color: RGB, targetEmission: number];
 const practicals = new Map<string, Practical>([
-  ['M_STEP_LED', [pink, 2.6]],
-  ['M_OPAL_PINK_DIM', [rose, .25]],
-  ['M_OPAL_PINK', [[1, .20, .58], 5.6]],
-  ['WB015_M_STEP_LED', [pink, 2.6]],
-  ['WB015_M_PLINTH_PINK', [orchid, 2.0]],
-  ['WB015_M_FRAME_PINK', [pink, 2.5]],
-  ['WB015_M_COVE_BLUE', [violet, 5.8]],
-  ['WB015_M_UPLIGHT', [orchid, 6.5]],
-  ['M18_BASE_LED_PINK', [[1, .18, .55], 3.8]],
-  ['M18_TALL_PANEL_PINK', [coral, 3.6]],
-  ['M18_BAND_COOL', [orchid, 9.5]],
-  ['M18_BAND_COOL_DIM', [violet, 5.5]],
+  ['M_STEP_LED', [pink, 1.35]],
+  ['M_OPAL_PINK_DIM', [rose, .22]],
+  ['M_OPAL_PINK', [[1, .20, .58], 4.6]],
+  ['WB015_M_STEP_LED', [pink, 1.35]],
+  ['WB015_M_PLINTH_PINK', [orchid, 1.7]],
+  ['WB015_M_FRAME_PINK', [pink, 2.1]],
+  ['WB015_M_COVE_BLUE', [violet, 4.8]],
+  ['WB015_M_UPLIGHT', [orchid, 5.2]],
+  ['M18_BASE_LED_PINK', [[1, .18, .55], 3.1]],
+  ['M18_TALL_PANEL_PINK', [coral, 3.2]],
+  ['M18_BAND_COOL', [orchid, 9.0]],
+  ['M18_BAND_COOL_DIM', [violet, 5.4]],
 ]);
 
 // These legacy materials have a different cooked specialization, including
@@ -202,45 +266,25 @@ const sharedOpalSlots = new Map([
 // package-scoped, so keep it on its original asset handle and lift all non-switch slots.
 type RGBA = readonly [number, number, number, number];
 const darkSurfaceBaseColor = new Map<string, RGBA>([
-  ['M_ROOF_DARK', [2.2, 2.0, 2.15, 1]],
-  ['WB015_M_ROOF_DARK', [2.2, 2.0, 2.15, 1]],
-  ['M_WALL_NAVY', [1.85, 1.7, 1.85, 1]],
-  ['WB015_M_WALL_NAVY', [1.85, 1.7, 1.85, 1]],
-  ['M_STEEL_NAVY', [1.9, 1.75, 1.9, 1]],
-  ['WB015_M_STEEL_NAVY', [1.9, 1.75, 1.9, 1]],
-  ['M_STEEL_BLACK', [2.3, 2.2, 2.45, 1]],
-  ['WB015_M_STEEL_BLACK', [2.3, 2.2, 2.45, 1]],
-  ['M_PERF_STEEL', [2.0, 1.9, 2.1, 1]],
-  ['WB015_M_PERF_STEEL', [2.0, 1.9, 2.1, 1]],
-  ['M_COUNTER_STEEL', [1.55, 1.5, 1.65, 1]],
-  ['WB015_M_COUNTER_STEEL', [1.55, 1.5, 1.65, 1]],
-  ['M_SPEAKER_GRILLE', [2.4, 2.3, 2.55, 1]],
-  ['WB015_M_SPEAKER_GRILLE', [2.4, 2.3, 2.55, 1]],
-  ['WB015_M_LEATHER_WINE', [1.32, 1.38, 1.45, 1]],
-  ['WB015_M_VINYL_CONTACT', [1.32, 1.38, 1.45, 1]],
-  ['M_LEATHER_WORN', [1.32, 1.38, 1.45, 1]],
-  ['WB015_M_LEATHER_WORN', [1.32, 1.38, 1.45, 1]],
-  ['M_LEATHER_PATCH', [1.32, 1.38, 1.45, 1]],
-  ['WB015_M_LEATHER_PATCH', [1.32, 1.38, 1.45, 1]],
-  ['M_FLOOR_TILE', [1.35, 1.30, 1.42, 1]],
-  ['WB015_M_FLOOR_TILE', [1.35, 1.30, 1.42, 1]],
-  ['M_DANCE_TILE', [1.35, 1.30, 1.42, 1]],
-  ['WB015_M_DANCE_TILE', [1.35, 1.30, 1.42, 1]],
+  // D109: DCC owns rebuilt architectural/furniture PBR. Do not overwrite
+  // its baseColor or multiply the original dark texture a second time.
   ['M_PLANT_LEAF', [2.2, 1.85, 2.1, 1]],
   ['WB015_M_PLANT_LEAF', [2.2, 1.85, 2.1, 1]],
   ['M_POT', [.08, .076, .094, 1]],
   ['WB015_M_POT', [.08, .076, .094, 1]],
-  ['M_SOIL', [.085, .062, .05, 1]],
-  ['WB015_M_SOIL', [.085, .062, .05, 1]],
-  ['M_RUBBER', [.048, .046, .055, 1]],
-  ['WB015_M_RUBBER', [.048, .046, .055, 1]],
-  ['M_PLASTIC_BLACK', [.048, .046, .055, 1]],
-  ['WB015_M_PLASTIC_BLACK', [.048, .046, .055, 1]],
   ['M_CONE', [.048, .046, .055, 1]],
 ]);
 
 export async function installForgeAxBrandLighting(world: World, assets: AssetRegistry) {
   const fixtures = tuneFixtures(world);
+  const setFrontStripBaseline=()=>{
+    let count=0;
+    for(const row of world.query({read:[Name,RectAreaLight]}).unwrap()){
+      const n=Number(row.get(Name).value.match(/^L(\d+)_/)?.[1]);
+      if(n>=4&&n<=11){world.set(row.entity,RectAreaLight,{intensity:1500}).unwrap();count++;}
+    }
+    if(count!==8)throw new Error('D112 expected8 front ceiling strips');
+  };
   const created = new Map<string, AssetHandle<'material'>>();
   const saved: {entity: EntityHandle; materials: number[]}[] = [];
   const rows = Array.from(world.query({read: [Name, MeshFilter, MeshRenderer]}).unwrap(), row => ({
@@ -254,6 +298,8 @@ export async function installForgeAxBrandLighting(world: World, assets: AssetReg
     fixtures.restore();
   };
 
+  const vipEmitterNames:string[]=[];
+  let vipStripMaterial:AssetHandle<'material'>|undefined;
   let plaqueFace: {entity: EntityHandle; materials: number[]} | undefined;
   try {
     let stageGraphicUpdated = false;
@@ -264,6 +310,9 @@ export async function installForgeAxBrandLighting(world: World, assets: AssetReg
       const materials = slots.map((_, index) => Number(row.materials[index] ?? 0));
       let changed = false;
       for (const [index, slot] of slots.entries()) {
+        // D107: never overwrite ARCH_FLOOR_SLAB / ARCH_DANCE_FLOOR / ARCH_FLOOR_PATCHES wet materials
+        // installed by installWetFloor — otherwise brandLighting replaces them with dry non-SSR materials!
+        if (['ARCH_FLOOR_SLAB', 'ARCH_DANCE_FLOOR', 'ARCH_FLOOR_PATCHES'].includes(row.name)) continue;
         const stagePractical = row.name === 'STAGE_PLATFORM_DJ' &&
           ['M_OPAL_PINK','M_OPAL_PINK_DIM','M_STEP_LED'].includes(slot.slotName);
         const sconcePractical = (row.name.startsWith('WPANEL_') || row.name === 'BAR_COUNTER_L' || row.name.startsWith('ENTRY_POST_')) &&
@@ -278,8 +327,9 @@ export async function installForgeAxBrandLighting(world: World, assets: AssetReg
         const isStageGraphic = row.name === 'STAGE_PLATFORM_DJ' && slot.slotName === 'M_BIG_POSTER';
         const isPlaqueFace = row.name === 'PDR_Official_ForgeAX_Orange_Face' && slot.slotName === plaqueFaceSlot;
         const darkLift = darkSurfaceBaseColor.get(slot.slotName);
+        const sourceDonor = slot.slotName === 'D109_STAIR_COATED_STEEL';
         const ref = materials[index] || slot.defaultMaterial;
-        if ((!practical && !isStageGraphic && !isPlaqueFace && !darkLift) || !ref) continue;
+        if ((!practical && !isStageGraphic && !isPlaqueFace && !darkLift && !sourceDonor) || !ref) continue;
         const variant = isStageGraphic ? 'dj-fascia' : stagePractical
           ? slot.slotName === 'M_OPAL_PINK' ? 'stage-opal' : 'stage-' + slot.slotName
           : sconcePractical ? 'sconce-opal'
@@ -337,15 +387,29 @@ export async function installForgeAxBrandLighting(world: World, assets: AssetReg
     if (created.size < 8 || saved.length < 20) throw new Error('D078 architectural practicals did not resolve');
 
     const donorMaterials = new Map(Array.from(created, ([key, handle]) => [key.split(':', 1)[0], handle]));
+    // The four VIP strips retain their own opal donor and use the same tint as their Rect lights.
+    // Source DIM donor is already cooked and has no emissive texture. Leave all
+    // other table lamps/bulbs at their existing .22 setting.
+    const vipBase=donorMaterials.get('M_OPAL_PINK_DIM');
+    if(vipBase===undefined)throw new Error('D113 cooked nontextured opal donor missing');
+    vipStripMaterial=assets.copy(vipBase).unwrap();
+    const vipData=assets.read(vipStripMaterial).unwrap();
+    assets.update(vipStripMaterial,{values:{...vipData.values,baseColor:[.72,.77,.86,1],emissive:[...vipLight],emissiveIntensity:6.5}}).unwrap();
+    created.set('vip-ceiling-strip',vipStripMaterial);
+    donorMaterials.set('vip-ceiling-strip',vipStripMaterial);
     for (const row of rows) {
       const source = assets.read(row.mesh);
       if (!source.ok || source.value.kind !== 'mesh') continue;
       const original = Array.from(world.get(row.entity, MeshRenderer).unwrap().materials);
       const materials = source.value.materialSlots.map((_, index) => Number(original[index] ?? 0));
       let changed = false;
+      // D095: also brighten under-soffit pendant bulbs (`FIX_SOFFIT_PENDANTS`) so the 16 soffit club lamps glow visibly
       for (const [index, slot] of source.value.materialSlots.entries()) {
         const isUpperSconce = (row.name.startsWith('WPANEL_') || row.name.startsWith('VIP_')) && slot.slotName === 'WB015_M_OPAL_PINK';
-        const donor = isUpperSconce ? 'sconce-opal' : sharedOpalSlots.get(slot.slotName);
+        const isSoffitPendantBulb = row.name === 'FIX_SOFFIT_PENDANTS' && slot.slotName === 'M_BULB_WARM';
+        const isVipCeiling=/^VIP_[EW][12]_SHELL$/.test(row.name)&&slot.slotName==='WB015_M_OPAL_PINK_DIM';
+        if(isVipCeiling)vipEmitterNames.push(row.name);
+        const donor = isVipCeiling ? 'vip-ceiling-strip' : isSoffitPendantBulb ? 'M_OPAL_PINK' : isUpperSconce ? 'sconce-opal' : sharedOpalSlots.get(slot.slotName);
         if (!donor) continue;
         const material = donorMaterials.get(donor);
         if (material === undefined) throw new Error('D078 cooked opal material missing ' + donor);
@@ -357,6 +421,7 @@ export async function installForgeAxBrandLighting(world: World, assets: AssetReg
         world.set(row.entity, MeshRenderer, {materials}).unwrap();
       }
     }
+    if(vipEmitterNames.length!==4||new Set(vipEmitterNames).size!==4)throw new Error('D113 expected four scoped VIP ceiling emitters');
   } catch (error) {
     dispose();
     throw error;
@@ -367,5 +432,24 @@ export async function installForgeAxBrandLighting(world: World, assets: AssetReg
     world.set(plaqueFace.entity,MeshRenderer,{materials:plaqueFace.materials}).unwrap();
     fixtures.mutePlaqueBounce();
   };
-  return {dispose, read:fixtures.read, muteHouseBands:fixtures.muteHouseBands, resetPlaqueGlow};
+  const read=()=>({...fixtures.read(),vipCeilings:{names:vipEmitterNames,sourceSlot:'WB015_M_OPAL_PINK_DIM',emissiveIntensity:vipStripMaterial?assets.read(vipStripMaterial).unwrap().values?.emissiveIntensity??null:null,scope:'only four shell ceiling strips; no other DIM bulb modified'}});
+  const muteVipEmission=()=>{if(vipStripMaterial){const m=assets.read(vipStripMaterial).unwrap();assets.update(vipStripMaterial,{values:{...m.values,emissiveIntensity:0}}).unwrap();}};
+  const emissions = new Map<AssetHandle<'material'>,number>();
+  const setPracticalEmission = (enabled: boolean) => {
+    if (!enabled && !emissions.size) {
+      for (const handle of created.values()) {
+        const {values} = assets.read(handle).unwrap();
+        if (typeof values?.emissiveIntensity !== 'number' || values.emissiveIntensity <= 0) continue;
+        emissions.set(handle, values.emissiveIntensity);
+        assets.update(handle, {values:{...values,emissiveIntensity:0}}).unwrap();
+      }
+    } else if (enabled) {
+      for (const [handle,emissiveIntensity] of emissions) {
+        const {values} = assets.read(handle).unwrap();
+        assets.update(handle, {values:{...values,emissiveIntensity}}).unwrap();
+      }
+      emissions.clear();
+    }
+  };
+  return {dispose, read, setPracticalEmission, muteVipLights:fixtures.muteVipLights,muteVipEmission,setFrontStripBaseline, muteHouseBands:fixtures.muteHouseBands, resetPlaqueGlow, materials: new Map(Array.from(created, ([key, handle]) => [key.split(':', 1)[0], handle]))};
 }

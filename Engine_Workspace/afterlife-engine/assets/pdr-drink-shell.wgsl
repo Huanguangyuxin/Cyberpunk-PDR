@@ -12,5 +12,5 @@ fn evaluate_surface(input : SurfaceInput) -> SurfaceData {
   let f0 = 0.04; // air/glass IOR1.5, matching the native Standard parameter.
   let reflectance = f0 + (1.0 - f0) * pow(1.0 - noV, 5.0);
   return SurfaceData(vec3<f32>(0.0), n, 0.0, 0.025,
-    vec3<f32>(0.0), 1.0, reflectance, 0.0);
+    vec3<f32>(0.0), 1.0, reflectance, 0.0, 0.0);
 }

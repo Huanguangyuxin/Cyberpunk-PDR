@@ -270,11 +270,10 @@ export function buildRepairedPlantMesh(source: MeshAsset, isScreen: boolean): {m
 export function installPlantRepair(world: World, assets: AssetRegistry) {
   const saved: {entity: EntityHandle; name: string; mesh: AssetHandle<'mesh'>}[] = [];
   const created: AssetHandle<'mesh'>[] = [];
-  const standaloneCache = new Map<number, AssetHandle<'mesh'>>();
-  const screenCache = new Map<number, AssetHandle<'mesh'>>();
+  const meshCache = new Map<number, AssetHandle<'mesh'>>();
   const records: {
     name: string;
-    kind: 'standalone-pot' | 'aisle-screen-planter';
+    kind: 'standalone-pot';
     position: number[];
     scale: number[];
     localMin: number[];
@@ -296,27 +295,29 @@ export function installPlantRepair(world: World, assets: AssetRegistry) {
   if (rows.length !== 21) {
     throw new Error(`D082 expected 21 DECOR_PLANT_* entities; found ${rows.length}`);
   }
+  // Imported pot origins are at Y=0, Y=.40 on a screen, or Y=3.20 on the gallery.
+  const groundPlants = rows.filter(row => row.pos[1] < 1);
+  const galleryPlants = rows.filter(row => row.pos[1] >= 1);
+  if (groundPlants.length !== 17) throw new Error('Expected 17 pots on the ground floor');
 
   try {
-    for (const row of rows) {
-      const isScreen = row.name.startsWith('DECOR_PLANT_SCREEN_');
-      const cache = isScreen ? screenCache : standaloneCache;
-      let handle = cache.get(row.mesh);
+    for (const row of galleryPlants) {
+      let handle = meshCache.get(row.mesh);
       const sourceRes = assets.read(row.mesh);
       if (!sourceRes.ok || sourceRes.value.kind !== 'mesh') {
         throw new Error(`D082 plant mesh not readable for ${row.name}`);
       }
-      const built = buildRepairedPlantMesh(sourceRes.value as MeshAsset, isScreen);
+      const built = buildRepairedPlantMesh(sourceRes.value as MeshAsset, false);
       if (handle === undefined) {
         handle = assets.create(built.mesh).unwrap();
         created.push(handle);
-        cache.set(row.mesh, handle);
+        meshCache.set(row.mesh, handle);
       }
       saved.push({entity: row.entity, name: row.name, mesh: row.mesh});
       world.set(row.entity, MeshFilter, {assetHandle: handle}).unwrap();
       records.push({
         name: row.name,
-        kind: isScreen ? 'aisle-screen-planter' : 'standalone-pot',
+        kind: 'standalone-pot',
         position: row.pos,
         scale: row.scale,
         localMin: [...built.localMin],
@@ -324,16 +325,19 @@ export function installPlantRepair(world: World, assets: AssetRegistry) {
         maxLeafRadiusLocal: Number(built.maxLeafRadiusLocal.toFixed(4)),
       });
     }
+    for (const row of groundPlants) world.despawn(row.entity).unwrap();
   } catch (error) {
     for (const item of saved) world.set(item.entity, MeshFilter, {assetHandle: item.mesh}).unwrap();
     for (const handle of created) assets.release(handle).unwrap();
     throw error;
   }
 
+  const removedNames = new Set(groundPlants.map(row => row.name));
   const read = () => ({
     count: saved.length,
-    standaloneCount: records.filter(r => r.kind === 'standalone-pot').length,
-    screenPlanterCount: records.filter(r => r.kind === 'aisle-screen-planter').length,
+    standaloneCount: saved.length,
+    screenPlanterCount: 0,
+    removedGroundPlants: [...removedNames],
     transformsPreserved: true,
     singleSheetUpwardNormals: true,
     records,
@@ -343,6 +347,7 @@ export function installPlantRepair(world: World, assets: AssetRegistry) {
 
   return {
     read,
+    removedNames,
     dispose: () => {
       world.removeResource('cyberpunk.plants');
       for (const item of saved) {

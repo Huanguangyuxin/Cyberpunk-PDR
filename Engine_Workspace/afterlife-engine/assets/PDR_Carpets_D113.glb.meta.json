@@ -1,0 +1,785 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "D113_CARPET_VIP_E1/BODY",
+        "D113_CARPET_VIP_E1/BOUND_EDGE",
+        "D113_CARPET_VIP_E2/BODY",
+        "D113_CARPET_VIP_E2/BOUND_EDGE",
+        "D113_CARPET_VIP_W1/BODY",
+        "D113_CARPET_VIP_W1/BOUND_EDGE",
+        "D113_CARPET_VIP_W2/BODY",
+        "D113_CARPET_VIP_W2/BOUND_EDGE",
+        "D115_CARPET_EAST_01/BODY",
+        "D115_CARPET_EAST_01/BOUND_EDGE",
+        "D115_CARPET_WEST_01/BODY",
+        "D115_CARPET_WEST_01/BOUND_EDGE"
+      ],
+      "unsupportedExtensions": []
+    },
+    "compressionMode": "auto",
+    "mipmap": true
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "PDR_Carpets_D113.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_E1_PLUSH_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_E1_PLUSH_BOUND_BORDER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_E2_PLUSH_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_E2_PLUSH_BOUND_BORDER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_W1_PLUSH_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_W1_PLUSH_BOUND_BORDER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_W2_PLUSH_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D113_CARPET_VIP_W2_PLUSH_BOUND_BORDER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D115_CARPET_EAST_01_PLUSH_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D115_CARPET_EAST_01_PLUSH_BOUND_BORDER"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D115_CARPET_WEST_01_PLUSH_BODY"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:D115_CARPET_WEST_01_PLUSH_BOUND_BORDER"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:D113_CARPET_VIP_E1_PLUSH_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+          "slotName": "D113_SHORT_PILE_CARPET",
+          "sourceKey": "material:D113_SHORT_PILE_CARPET"
+        },
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_E1_PLUSH_BOUND_BORDER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_E2_PLUSH_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+          "slotName": "D113_SHORT_PILE_CARPET",
+          "sourceKey": "material:D113_SHORT_PILE_CARPET"
+        },
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_E2_PLUSH_BOUND_BORDER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_W1_PLUSH_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+          "slotName": "D113_SHORT_PILE_CARPET",
+          "sourceKey": "material:D113_SHORT_PILE_CARPET"
+        },
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_W1_PLUSH_BOUND_BORDER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_W2_PLUSH_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+          "slotName": "D113_SHORT_PILE_CARPET",
+          "sourceKey": "material:D113_SHORT_PILE_CARPET"
+        },
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D113_CARPET_VIP_W2_PLUSH_BOUND_BORDER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D115_CARPET_EAST_01_PLUSH_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+          "slotName": "D113_SHORT_PILE_CARPET",
+          "sourceKey": "material:D113_SHORT_PILE_CARPET"
+        },
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D115_CARPET_EAST_01_PLUSH_BOUND_BORDER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D115_CARPET_WEST_01_PLUSH_BODY": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+          "slotName": "D113_SHORT_PILE_CARPET",
+          "sourceKey": "material:D113_SHORT_PILE_CARPET"
+        },
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    },
+    "mesh:D115_CARPET_WEST_01_PLUSH_BOUND_BORDER": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+          "slotName": "D113_CARPET_BOUND_EDGE",
+          "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f36442e288d6",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_E1_PLUSH_BODY",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:D113_CARPET_VIP_E1_PLUSH_BODY"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f3658c9ed9ce",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_E1_PLUSH_BOUND_BORDER",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:D113_CARPET_VIP_E1_PLUSH_BOUND_BORDER"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f3668c2b66fa",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_E2_PLUSH_BODY",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:D113_CARPET_VIP_E2_PLUSH_BODY"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f36753be17a1",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_E2_PLUSH_BOUND_BORDER",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:D113_CARPET_VIP_E2_PLUSH_BOUND_BORDER"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f368d510ea3d",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_W1_PLUSH_BODY",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:D113_CARPET_VIP_W1_PLUSH_BODY"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f369bd681a1a",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_W1_PLUSH_BOUND_BORDER",
+      "sourceIndex": 5,
+      "sourceKey": "mesh:D113_CARPET_VIP_W1_PLUSH_BOUND_BORDER"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f36a7c759760",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_W2_PLUSH_BODY",
+      "sourceIndex": 6,
+      "sourceKey": "mesh:D113_CARPET_VIP_W2_PLUSH_BODY"
+    },
+    {
+      "guid": "01a1bf78-b54f-7776-be4f-f36be654bc2e",
+      "kind": "mesh",
+      "name": "D113_CARPET_VIP_W2_PLUSH_BOUND_BORDER",
+      "sourceIndex": 7,
+      "sourceKey": "mesh:D113_CARPET_VIP_W2_PLUSH_BOUND_BORDER"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-410c09c3ced4",
+      "kind": "mesh",
+      "name": "D115_CARPET_EAST_01_PLUSH_BODY",
+      "sourceIndex": 8,
+      "sourceKey": "mesh:D115_CARPET_EAST_01_PLUSH_BODY"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-410d1ed6d6b6",
+      "kind": "mesh",
+      "name": "D115_CARPET_EAST_01_PLUSH_BOUND_BORDER",
+      "sourceIndex": 9,
+      "sourceKey": "mesh:D115_CARPET_EAST_01_PLUSH_BOUND_BORDER"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-410eca338e77",
+      "kind": "mesh",
+      "name": "D115_CARPET_WEST_01_PLUSH_BODY",
+      "sourceIndex": 10,
+      "sourceKey": "mesh:D115_CARPET_WEST_01_PLUSH_BODY"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-410f0a7e3637",
+      "kind": "mesh",
+      "name": "D115_CARPET_WEST_01_PLUSH_BOUND_BORDER",
+      "sourceIndex": 11,
+      "sourceKey": "mesh:D115_CARPET_WEST_01_PLUSH_BOUND_BORDER"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-41164464106e",
+      "kind": "material",
+      "name": "D113_SHORT_PILE_CARPET",
+      "sourceIndex": 0,
+      "sourceKey": "material:D113_SHORT_PILE_CARPET"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-4117982e4e49",
+      "kind": "material",
+      "name": "D113_CARPET_BOUND_EDGE",
+      "sourceIndex": 1,
+      "sourceKey": "material:D113_CARPET_BOUND_EDGE"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-4118f704fe14",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-4119b51275f5",
+      "kind": "texture",
+      "name": "D113_CARPET_normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:D113_CARPET_normal"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-411afba180fc",
+      "kind": "texture",
+      "name": "D113_CARPET_orm",
+      "sourceIndex": 1,
+      "sourceKey": "texture:D113_CARPET_orm"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-411b8a89bea6",
+      "kind": "texture",
+      "name": "D113_CARPET_basecolor",
+      "sourceIndex": 2,
+      "sourceKey": "texture:D113_CARPET_basecolor"
+    },
+    {
+      "guid": "01a1bf45-9bff-7c0d-8252-411c3b524c9e",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

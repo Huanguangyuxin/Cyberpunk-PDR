@@ -5,7 +5,7 @@
 import type {AssetRegistry} from '@forgeax/engine/assets-runtime';
 import type {EntityHandle, World} from '@forgeax/engine/ecs';
 import {packInterleavedVertexAttributes} from '@forgeax/engine/geometry';
-import {Layer, MeshFilter, MeshRenderer} from '@forgeax/engine/render';
+import {Layer, MeshFilter, MeshRenderer, Visibility, VisibilityStateValue} from '@forgeax/engine/render';
 import {Name} from '@forgeax/engine/scene';
 import type {AssetHandle, MaterialAsset, MeshAsset} from '@forgeax/engine/types';
 
@@ -29,6 +29,7 @@ const TIER_3_SLOTS = new Set([
 ]);
 
 const TIER_2_SLOTS = new Set([
+  'D109_TABLE_LAMINATE', 'D109_CUSTOMER_COUNTER', 'D109_STAIR_COATED_STEEL',
   'M_CHROME', 'WB015_M_CHROME', 'M_STEEL_EDGE', 'WB015_M_STEEL_EDGE',
   'M_LEATHER_WINE', 'WB015_M_LEATHER_WINE', 'WB015_M_VINYL_CONTACT',
   'M_LEATHER_WORN', 'WB015_M_LEATHER_WORN', 'M_COUNTER_STEEL',
@@ -56,12 +57,26 @@ const DECAL_PRIORITY_ORDER = new Map<string, number>([
   ['DECOR_WALL_HISTORY_RACEWAYS', 4],
   ['DECOR_BIG_POSTERS_PANELS', 5],
   ['DECOR_POSTERS', 6],
-  ['DECOR_STICKERS', 7],
 ]);
 
 const DECAL_BOX_SLOTS = new Set([
   'M_WALL_COLLAGE', 'M_PLASTER_PATCH', 'M_STENCIL', 'M_POSTER', 'M_BIG_POSTER', 'M_STICKER',
 ]);
+
+// Keep a few focal prints at the bar, both stairs, the entrance and the galleries.
+// Keys and box indices refer to the installed R8 source, before overlap cleanup.
+const FOCAL_POSTERS: Readonly<Record<string, readonly number[]>> = {
+  'DECOR_COMPOSED_WALLS/M_POSTER': [1, 7, 15, 19, 26, 32],
+  'DECOR_COMPOSED_WALLS/M_BIG_POSTER': [4],
+  'DECOR_POSTERS/M_POSTER': [0, 1, 7, 9, 20, 22],
+  'DECOR_BIG_POSTERS_PANELS/M_STICKER': [],
+  'DECOR_WALL_COLLAGE/M_WALL_COLLAGE': [1, 3, 5, 7],
+  'DECOR_WALL_HISTORY_RACEWAYS/M_POSTER': [1],
+  'DECOR_COMPOSED_WALLS/M_PLASTER_PATCH': [],
+  'DECOR_WALL_HISTORY_RACEWAYS/M_PLASTER_PATCH': [],
+  'ARCH_PYLONS/M_WALL_COLLAGE': [],
+};
+const BOOTH_PRINT_SLOTS = new Set(['M_STICKER', 'M_POSTER', 'M_TAPE', 'M_LEATHER_PATCH']);
 
 function decalMaterialLayerClass(slotName: string): number {
   if (slotName === 'M_WALL_COLLAGE') return 0;
@@ -202,6 +217,9 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
   const details: unknown[] = [];
   const biasCache = new Map<number, AssetHandle<'material'>>();
   const placedDecalQuads: PlacedDecalQuad[] = [];
+  const hiddenStickerGroups: {entity:EntityHandle; previous?:number; boxes:number}[] = [];
+  const removedWallDecor: Record<string,number> = {};
+  const removedBoothPrints: Record<string,number> = {};
 
   const rows = Array.from(
     world.query({read: [Name, MeshFilter, MeshRenderer]}).unwrap(),
@@ -218,6 +236,16 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
   });
 
   for (const {entity, name, handle, materials} of rows) {
+    if(name==='DECOR_STICKERS'){
+      const mesh = assets.read(handle).unwrap();
+      const previous = world.get(entity,Visibility);
+      const hidden = {state:VisibilityStateValue.hidden};
+      if(previous.ok)world.set(entity,Visibility,hidden).unwrap();
+      else world.addComponent(entity,{component:Visibility,data:hidden}).unwrap();
+      const indices=mesh.submeshes.reduce((count,part)=>count+part.indexCount,0);
+      hiddenStickerGroups.push({entity,previous:previous.ok?previous.value.state:undefined,boxes:indices/36});
+      continue;
+    }
     const prior = world.get(entity, Layer);
     const liquid = name.startsWith('DRINK_') && name.endsWith('_LIQUID');
     const glass = name.startsWith('DRINK_') && name.endsWith('_GLASS');
@@ -279,6 +307,7 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
           let normalsModified = false;
           let uvsModified = false;
           let removedCount = 0;
+          let removedPrints = false;
 
           if (name === 'ARCH_FLOOR_INLAY') {
             // Reconstruct ARCH_FLOOR_INLAY as a watertight, zero-overlap, zero-T-junction manifold grid at y = 0.0090m
@@ -360,6 +389,14 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
             details.push({name, nonOverlappingSegmentsRebuilt: true});
           } else {
 
+          // 2) For STAIR_E / STAIR_W, remove inner-wall-facing and room-side vertical faces of prim0 (step risers)
+          //    that overlap the x = +-12.60m stringer beam (prim3) and x = +-14.00m wall, and keep STAIR_E/W_GLASS untouched.
+          const isStairMesh = name === 'STAIR_E' || name === 'STAIR_W';
+          const isStairGlass = name === 'STAIR_E_GLASS' || name === 'STAIR_W_GLASS';
+          if (isStairGlass) {
+            dedup.set(cacheKey, handle);
+            continue;
+          }
           const allTris: TriRecord[] = [];
           const subTris: TriRecord[][] = mesh.submeshes.map(() => []);
           const vertexTouched = new Uint8Array(p.length / 3);
@@ -377,6 +414,22 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
             const sub = mesh.submeshes[sIdx];
             const slotName = mesh.materialSlots[sub.materialSlot]?.slotName ?? '';
             const tier = slotTier(slotName);
+            if(isBooth&&BOOTH_PRINT_SLOTS.has(slotName.replace(/^WB015_/,''))){
+              removedBoothPrints[name]=(removedBoothPrints[name]??0)+1;
+              removedCount+=sub.indexCount/3;
+              removedPrints=true;
+              continue;
+            }
+
+            const printKey = name+'/'+slotName;
+            const selectedPrints = FOCAL_POSTERS[printKey];
+            if(selectedPrints){
+              if(sub.indexCount%36!==0)throw new Error('Expected authored poster boxes for '+printKey);
+              const boxCount = sub.indexCount/36;
+              removedWallDecor[printKey] = boxCount-selectedPrints.filter(index=>index<boxCount).length;
+              removedPrints ||= removedWallDecor[printKey]>0;
+              if(!selectedPrints.length){removedCount+=sub.indexCount/3;continue;}
+            }
 
             // Preserve ground booth slot 10 (M_PERF_STEEL, 72 indices) verbatim for pdr-other-screens.ts createBoothGrid
             if (isGroundBooth && slotName === 'M_PERF_STEEL') {
@@ -455,6 +508,7 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
               const boxCandidates: BoxCandidate[] = [];
               for (let bStart = sub.indexOffset; bStart < sub.indexOffset + sub.indexCount; bStart += 36) {
                 const boxIdx = (bStart - sub.indexOffset) / 36;
+                if(selectedPrints&&!selectedPrints.includes(boxIdx)){removedCount+=12;continue;}
                 const origMn: [number, number, number] = [Infinity, Infinity, Infinity];
                 const origMx: [number, number, number] = [-Infinity, -Infinity, -Infinity];
                 for (let k = bStart; k < bStart + 36; k++) {
@@ -471,22 +525,6 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                 const mx: [number, number, number] = [...origMx];
                 const sz = [mx[0] - mn[0], mx[1] - mn[1], mx[2] - mn[2]];
                 const thinAxis = sz[0] <= sz[1] && sz[0] <= sz[2] ? 0 : sz[1] <= sz[2] ? 1 : 2;
-
-                // Drop redundant pylon +Z decals where 3D sconces (WPANEL_PYLON_E1/E2/W2) or neon sign (SIGN_WOMAN_01) are mounted
-                if (name === 'ARCH_PYLONS' && slotName === 'M_WALL_COLLAGE') {
-                  if (boxIdx === 0 || boxIdx === 4 || boxIdx === 8 || boxIdx === 12) {
-                    removedCount += 12;
-                    continue;
-                  }
-                  if (boxIdx % 4 === 2 || boxIdx % 4 === 3) {
-                    mn[2] = -21.55;
-                    mx[2] = -20.85;
-                  }
-                }
-                if (name === 'DECOR_COMPOSED_WALLS' && slotName === 'M_BIG_POSTER' && boxIdx <= 2) {
-                  removedCount += 12;
-                  continue;
-                }
 
                 // Reposition DECOR_WALL_COLLAGE boxes into clear wall spaces so booths/sconces/partitions never cut through them
                 if (name === 'DECOR_WALL_COLLAGE' && slotName === 'M_WALL_COLLAGE' && boxIdx < collageTargets.length) {
@@ -530,10 +568,6 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                     mx[1] += 1.58;
                   }
                 }
-                if (name === 'DECOR_COMPOSED_WALLS' && slotName === 'M_PLASTER_PATCH' && (boxIdx === 0 || boxIdx === 5)) {
-                  mn[1] += 0.45;
-                  mx[1] += 0.45;
-                }
                 if (name === 'DECOR_COMPOSED_WALLS' && slotName === 'M_STENCIL') {
                   if (boxIdx === 0) {
                     mn[2] = -5.75;
@@ -548,10 +582,6 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                 if (name === 'DECOR_POSTERS' && slotName === 'M_POSTER' && boxIdx === 3) {
                   mn[2] -= 0.65;
                   mx[2] -= 0.65;
-                }
-                if (name === 'DECOR_BIG_POSTERS_PANELS' && slotName === 'M_STICKER' && boxIdx === 3) {
-                  mn[2] += 1.50;
-                  mx[2] += 1.50;
                 }
 
                 const cx = 0.5 * (mn[0] + mx[0]);
@@ -731,6 +761,13 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                 removedCount++;
                 continue;
               }
+              // For STAIR_E / STAIR_W step riser boxes (prim0 WB015_M_WALL_NAVY):
+              // remove X-facing side walls (which overlap prim3 stringer beam at x=+-12.60m and outer wall at x=+-14.00m)
+              // and upward top faces (covered by prim1 tread), keeping only the front/back risers so the staircase stays open and crisp.
+              if (isStairMesh && slotName === 'WB015_M_WALL_NAVY' && (Math.abs(vnx) > 0.7 || vny > 0.7)) {
+                removedCount++;
+                continue;
+              }
 
               // Booth local-coordinate cleanup (BOOTH_DE/DW/F and BOOTH_UE/UW)
               if (isBooth) {
@@ -823,7 +860,7 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                   }
                 }
                 // 6. Booth counter steel (kickplates at x = 2.200..2.204 and tabletop/coasters at y = 0.525..0.554):
-                if (slotName.includes('COUNTER_STEEL')) {
+                if (slotName.includes('COUNTER_STEEL') || slotName === 'D109_TABLE_LAMINATE') {
                   // Front kickplates: keep only the outward +X face (vnx > 0.8) and offset +2.0mm
                   if (cy < 0.20) {
                     if (vnx < 0.8) {
@@ -1252,6 +1289,7 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                 layeredOffsetApplied: positionsModified,
               });
             } else {
+              if(removedPrints)throw createdMesh.error;
               // If prepareRuntimeAsset rejects the new mesh (e.g. non-contiguous submesh vertexCount),
               // patch the existing runtime mesh attributes in place so position/normal/uv offsets always take effect.
               if (positionsModified || normalsModified || uvsModified) {
@@ -1311,10 +1349,21 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
     }
   }
 
+  const boothsWithPrintedDetails = rows.filter(({name,entity})=>{
+    if(!/^BOOTH_(?:[DU][EW]|F)\d+$/.test(name))return false;
+    const mesh=assets.read(world.get(entity,MeshFilter).unwrap().assetHandle).unwrap();
+    return mesh.submeshes.some(part=>BOOTH_PRINT_SLOTS.has(mesh.materialSlots[part.materialSlot].slotName.replace(/^WB015_/,'')));
+  }).map(row=>row.name);
   const read = () => ({
-    owner: '019 native Layer/SortKey + coplanar/degenerate removal + 182-box decal de-confliction + booth/MEP/stage micro-layering',
+    owner: 'Depth-tested scene hierarchy and decal cleanup',
     objects: saved.length,
     placedDecalQuads: placedDecalQuads.length,
+    reducedPrints: {
+      walls:removedWallDecor,
+      boothSlots:removedBoothPrints,
+      boothsWithPrintedDetails,
+      hiddenStickerBoxes:hiddenStickerGroups.reduce((count,group)=>count+group.boxes,0),
+    },
     transparentLayers: {liquids: 10, drinkGlass: 20, overlays: 5, otherPhysical: 0},
     overlayRasterBias: {constant: -2, slope: -0.25, clamp: -0.00002},
     deduplicated: details,
@@ -1325,6 +1374,10 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
     read,
     dispose: () => {
       world.removeResource('cyberpunk.displayHierarchy');
+      for(const {entity,previous} of hiddenStickerGroups){
+        if(previous===undefined)world.removeComponent(entity,Visibility).unwrap();
+        else world.set(entity,Visibility,{state:previous}).unwrap();
+      }
       for (const s of saved) {
         world.set(s.entity, MeshFilter, {assetHandle: s.mesh}).unwrap();
         world.set(s.entity, MeshRenderer, {materials: s.materials}).unwrap();
