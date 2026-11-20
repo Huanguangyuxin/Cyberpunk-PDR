@@ -1,1 +1,0 @@
-import{oE as e}from"./engine-4f53cda18c2baa0c-C4F8E8SX.js";try{await globalThis.__forgeaxStartup?.ready?.(),new URLSearchParams(globalThis.location?.search??``).get(`forgeax-startup-retry`)===`1`?await e(()=>import(`./main-DUshcsMB.js`),[]):await e(()=>import(`./main-CnG4mMIU.js`),[])}catch(e){globalThis.__forgeaxStartup?.fail?.(e)}

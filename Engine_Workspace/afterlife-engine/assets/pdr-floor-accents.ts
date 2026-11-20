@@ -5,13 +5,10 @@ import {MeshFilter, MeshRenderer, Visibility, VisibilityStateValue} from '@forge
 import {Name, Transform} from '@forgeax/engine/scene';
 import type {AssetHandle} from '@forgeax/engine/types';
 
-type Finish = 'tread' | 'pile' | 'binding';
+type Finish = 'tread';
 const accents = [
   // Front of the doors, between the two entry posts.
   {id:'entrance-tread', size:[2.72,.006,.18], centre:[0,.004,-.40], repeat:.24, finish:'tread'},
-  // One small mat for RTABLE_E1, entirely inside its seating bay.
-  {id:'lounge-binding', size:[1.30,.004,1.08], centre:[5.8,.003,-23.30], repeat:.30, finish:'binding'},
-  {id:'lounge-pile', size:[1.27,.004,1.05], centre:[5.8,.005,-23.30], repeat:.30, finish:'pile'},
 ] as const;
 
 export function installFloorAccents(

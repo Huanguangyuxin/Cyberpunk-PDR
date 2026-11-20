@@ -15,9 +15,9 @@ import {mirrorBallLightLabel} from './pdr-mirror-balls';
 
 const intensityComponents = [PointLight, RectAreaLight, SpotLight, DirectionalLight, ReflectionProbe, Skylight] as const;
 const zoneNumbers: [LightGroup, readonly number[]][] = [
-  ['bar', [1, 2, 3, 10, 11]],
+  ['bar', [1, 2, 3, 4, 5]],
   ['booths', [6, 7, 8, 9]],
-  ['foyer', [4, 5, 12, 13, 14]],
+  ['foyer', [10, 11, 12, 13, 14]],
   ['vip', [15, 28, 31, 32]],
   ['gallery', [16, 17, 18, 29, 30]],
   ['dance', [19, 20, 21]],

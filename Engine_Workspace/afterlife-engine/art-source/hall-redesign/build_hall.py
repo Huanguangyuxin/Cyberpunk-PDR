@@ -109,17 +109,9 @@ def folded_skin(group, material_, points, panels, bevel=.004):
     verts.extend((x,-z,h) for x,h,z in points)
     polys.extend(tuple(base+k for k in panel) for panel in panels)
 
-def folded_blade(side, lower_x, upper_x, bottom, top, bottom_width, top_width, face_z):
-    # Two visible facets meeting along the standing seam of a tapered metal shell.
-    points=[]
-    for cx,h,w in [(lower_x,bottom,bottom_width),(upper_x,top,top_width)]:
-        for u,depth in [(-.5,0),(-.09,.24),(.5,.015),(.5,-.105),(-.5,-.105)]:
-            points.append((side*(cx+w*u),h,face_z+depth))
-    panels=[(4,3,2,1,0),(5,6,7,8,9)]
-    panels.extend((i,(i+1)%5,(i+1)%5+5,i+5) for i in range(5))
-    # Mirroring reverses the winding of the sealed shell.
-    if side<0: panels=[tuple(reversed(p)) for p in panels]
-    folded_skin('Stage nickel fan blades',nickel,points,panels,.012)
+import runpy
+stage_wings=runpy.run_path(str(Path(__file__).with_name('stage_wings.py')))
+stage_materials=stage_wings['create_materials'](material,finish_map)
 
 def fascia_quad(group, material_, a,b,c,d, ridge):
     # Sealed pressed-metal face: four triangular facets and back cap.
@@ -253,18 +245,10 @@ for side in (-1,1):
         box('Stair warm nosing diffuser',marker,(side*13.30,h-.017,z+.007),(1.303,.014,.012),.003)
 
     # Reuse enclosed support frames as collision owners behind folded fins.
-    box('Stage wing acoustic backing',pad,(side*4.33,3.37,-43.10),(3.80,5.6,.18),.025)
-    box('Stage steel uprights',black,(side*3.26,3.12,-42.80),(.15,4.93,.20),.014)
+    box('Stage wing acoustic backing',stage_materials[3],(side*5.32,3.19,-43.10),(5.48,5.48,.18),.025)
+    box('Stage steel uprights',black,(side*3.26,3.12,-43.30),(.15,4.93,.20),.014)
     box('Stage lattice',black,(side*4.77,2.96,-42.79),(.12,4.42,.15),.012)
-    for lo,hi,b,t,bw,tw,z in [
-        (2.94,3.36,.62,5.83,.36,.78,-42.50),
-        (3.72,4.60,.62,6.22,.52,1.12,-42.28),
-        (4.58,5.84,.62,6.43,.61,1.32,-42.03)]:
-        folded_blade(side,lo,hi,b,t,bw,tw,z)
-        box('Fan blade uplight housing',black,(side*lo,.625,z+.20),(.41,.068,.18),.012)
-        box('Fan blade footlight glass',marker,(side*lo,.665,z+.20),(.34,.010,.12),.002)
-    box('Sapphire slit recess',black,(side*2.29,3.34,-43.68),(.14,3.42,.10),.012)
-    box('Sapphire slit opal strip',blue,(side*2.29,3.34,-43.61),(.057,3.30,.015),.006)
+    stage_wings['install'](side,box,folded_skin,black,marker,stage_materials)
     # Upholstered wall bays sit behind the banquettes; the upper row repeats their rhythm.
     for y,height in [(2.02,1.24),(6.85,1.06)]:
         for station in [-24.55,-29.1,-33.65,-38.2]:
@@ -344,6 +328,12 @@ for (group,mat,radius),(vertices,polys) in groups.items():
     obj=bpy.data.objects.new(group,mesh)
     scene.collection.objects.link(obj)
     mesh.materials.append(mat)
+    if group=='Stage nickel fan blades':
+        mesh.materials.append(stage_materials[4])
+        # Seven source faces per closed sheet, first two side faces meet at the ridge.
+        for face in mesh.polygons:
+            blade,side_face=divmod(face.index,7)
+            face.material_index=int(side_face==(2 if blade%3!=1 else 3))
     if radius>0:
         bevel=obj.modifiers.new('Fabricated edge radius','BEVEL')
         bevel.width=radius
@@ -366,7 +356,10 @@ for (group,mat,radius),(vertices,polys) in groups.items():
         u,v=[i for i in range(3) if i!=axis]
         for idx in poly.loop_indices:
             point=finished.vertices[finished.loops[idx].vertex_index].co
-            uv.data[idx].uv=(point[u]*uv_scale,point[v]*uv_scale)
+            if group in ('Stage nickel fan blades','Sapphire blued recessed reflector'):
+                uv.data[idx].uv=stage_wings['lighting_uv'](group,point.x,point.z,-point.y)
+            else:
+                uv.data[idx].uv=(point[u]*uv_scale,point[v]*uv_scale)
 bpy.context.preferences.filepaths.save_version=0
 bpy.ops.file.pack_all()
 bpy.ops.wm.save_as_mainfile(filepath=str(Path(__file__).with_name('D189-hall-fittings.blend')))

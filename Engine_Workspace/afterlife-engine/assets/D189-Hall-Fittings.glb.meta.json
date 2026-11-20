@@ -16,6 +16,7 @@
         "End paving joint bed",
         "End running bond",
         "Fan blade footlight glass",
+        "Fan blade plinth shoes",
         "Fan blade uplight housing",
         "Folded gallery beam jackets",
         "Gallery end mullion",
@@ -50,6 +51,8 @@
         "Portal lintel reveal",
         "Raised chequer lugs",
         "Running bond side paving",
+        "Sapphire blued recessed reflector",
+        "Sapphire lens end saddles",
         "Sapphire slit opal strip",
         "Sapphire slit recess",
         "Sidewall acoustic cassettes",
@@ -552,6 +555,46 @@
       },
       "semantic": "mesh-material-slot-defaults",
       "sourceKey": "mesh:Fan blade footlight glass"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Fan blade plinth shoes"
     },
     {
       "payloadSchema": {
@@ -1912,6 +1955,86 @@
       },
       "semantic": "mesh-material-slot-defaults",
       "sourceKey": "mesh:Running bond side paving"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sapphire blued recessed reflector"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sapphire lens end saddles"
     },
     {
       "payloadSchema": {
@@ -2583,6 +2706,15 @@
         }
       ]
     },
+    "mesh:Fan blade plinth shoes": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
     "mesh:Fan blade uplight housing": {
       "materialSlots": [
         {
@@ -2889,12 +3021,30 @@
         }
       ]
     },
+    "mesh:Sapphire blued recessed reflector": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "8174d80b-4569-5e54-9ff7-bb3397255e2e",
+          "slotName": "Stage blued reflector steel",
+          "sourceKey": "material:Stage blued reflector steel"
+        }
+      ]
+    },
+    "mesh:Sapphire lens end saddles": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
     "mesh:Sapphire slit opal strip": {
       "materialSlots": [
         {
-          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94efddec8de6",
-          "slotName": "M10 cobalt etched interlayer",
-          "sourceKey": "material:M10 cobalt etched interlayer"
+          "defaultMaterialGuid": "8e59781a-afec-5987-94b0-b272024ed345",
+          "slotName": "Stage continuous cobalt opal",
+          "sourceKey": "material:Stage continuous cobalt opal"
         }
       ]
     },
@@ -2946,9 +3096,14 @@
     "mesh:Stage nickel fan blades": {
       "materialSlots": [
         {
-          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
-          "slotName": "M03 satin folded nickel",
-          "sourceKey": "material:M03 satin folded nickel"
+          "defaultMaterialGuid": "0db78aad-85b4-5f1e-ae34-bd700e96d955",
+          "slotName": "Stage folded champagne nickel",
+          "sourceKey": "material:Stage folded champagne nickel"
+        },
+        {
+          "defaultMaterialGuid": "1dd5be9e-4a60-58c0-817a-6a85c8096200",
+          "slotName": "Stage smoke titanium fold",
+          "sourceKey": "material:Stage smoke titanium fold"
         }
       ]
     },
@@ -2964,9 +3119,9 @@
     "mesh:Stage wing acoustic backing": {
       "materialSlots": [
         {
-          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94eb31bf3297",
-          "slotName": "Oxblood acoustic cassette",
-          "sourceKey": "material:Oxblood acoustic cassette"
+          "defaultMaterialGuid": "a7225a5f-5d56-5484-b8bd-1aef886c9f45",
+          "slotName": "Stage anthracite acoustic liner",
+          "sourceKey": "material:Stage anthracite acoustic liner"
         }
       ]
     },
@@ -3102,339 +3257,360 @@
       "sourceKey": "mesh:Fan blade footlight glass"
     },
     {
+      "guid": "9b8eddd4-dd45-580b-800a-c7f0ff92adff",
+      "kind": "mesh",
+      "name": "Fan blade plinth shoes",
+      "sourceIndex": 12,
+      "sourceKey": "mesh:Fan blade plinth shoes"
+    },
+    {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c16a9e12ab",
       "kind": "mesh",
       "name": "Fan blade uplight housing",
-      "sourceIndex": 12,
+      "sourceIndex": 13,
       "sourceKey": "mesh:Fan blade uplight housing"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c24d566294",
       "kind": "mesh",
       "name": "Folded gallery beam jackets",
-      "sourceIndex": 13,
+      "sourceIndex": 14,
       "sourceKey": "mesh:Folded gallery beam jackets"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c332345e4b",
       "kind": "mesh",
       "name": "Gallery end mullion",
-      "sourceIndex": 14,
+      "sourceIndex": 15,
       "sourceKey": "mesh:Gallery end mullion"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c484347409",
       "kind": "mesh",
       "name": "Gallery fascia panel",
-      "sourceIndex": 15,
+      "sourceIndex": 16,
       "sourceKey": "mesh:Gallery fascia panel"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c571bb7822",
       "kind": "mesh",
       "name": "Gallery grazer diffuser",
-      "sourceIndex": 16,
+      "sourceIndex": 17,
       "sourceKey": "mesh:Gallery grazer diffuser"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c6d12b42c8",
       "kind": "mesh",
       "name": "Gallery grazer valance",
-      "sourceIndex": 17,
+      "sourceIndex": 18,
       "sourceKey": "mesh:Gallery grazer valance"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb2931f33e57",
       "kind": "mesh",
       "name": "Gallery honed walkway flags",
-      "sourceIndex": 18,
+      "sourceIndex": 19,
       "sourceKey": "mesh:Gallery honed walkway flags"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb2a4b35dbfd",
       "kind": "mesh",
       "name": "Gallery inspection pulls",
-      "sourceIndex": 19,
+      "sourceIndex": 20,
       "sourceKey": "mesh:Gallery inspection pulls"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c7c1a554b1",
       "kind": "mesh",
       "name": "Gallery quilt welt",
-      "sourceIndex": 20,
+      "sourceIndex": 21,
       "sourceKey": "mesh:Gallery quilt welt"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb2c2e98e6ea",
       "kind": "mesh",
       "name": "Gallery rail edge spline",
-      "sourceIndex": 21,
+      "sourceIndex": 22,
       "sourceKey": "mesh:Gallery rail edge spline"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb2d997c95f4",
       "kind": "mesh",
       "name": "Gallery removable rail edge panels",
-      "sourceIndex": 22,
+      "sourceIndex": 23,
       "sourceKey": "mesh:Gallery removable rail edge panels"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c875c093b2",
       "kind": "mesh",
       "name": "Gallery return light",
-      "sourceIndex": 23,
+      "sourceIndex": 24,
       "sourceKey": "mesh:Gallery return light"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb2f59be5d64",
       "kind": "mesh",
       "name": "Gallery sill access panels",
-      "sourceIndex": 24,
+      "sourceIndex": 25,
       "sourceKey": "mesh:Gallery sill access panels"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb30cba5973b",
       "kind": "mesh",
       "name": "Gallery sill caps",
-      "sourceIndex": 25,
+      "sourceIndex": 26,
       "sourceKey": "mesh:Gallery sill caps"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb3161fbf706",
       "kind": "mesh",
       "name": "Gallery sill corner studs",
-      "sourceIndex": 26,
+      "sourceIndex": 27,
       "sourceKey": "mesh:Gallery sill corner studs"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb32a53dc382",
       "kind": "mesh",
       "name": "Gallery sill reveals",
-      "sourceIndex": 27,
+      "sourceIndex": 28,
       "sourceKey": "mesh:Gallery sill reveals"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb33f75a478e",
       "kind": "mesh",
       "name": "Hall inset service covers",
-      "sourceIndex": 28,
+      "sourceIndex": 29,
       "sourceKey": "mesh:Hall inset service covers"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb34bf3809d0",
       "kind": "mesh",
       "name": "Hall nickel movement joints",
-      "sourceIndex": 29,
+      "sourceIndex": 30,
       "sourceKey": "mesh:Hall nickel movement joints"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb35878dd746",
       "kind": "mesh",
       "name": "Hall pressed dado returns",
-      "sourceIndex": 30,
+      "sourceIndex": 31,
       "sourceKey": "mesh:Hall pressed dado returns"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb363cfa4f12",
       "kind": "mesh",
       "name": "Hall recessed plate fixings",
-      "sourceIndex": 31,
+      "sourceIndex": 32,
       "sourceKey": "mesh:Hall recessed plate fixings"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb375f2e8a15",
       "kind": "mesh",
       "name": "Hall service cover flutes",
-      "sourceIndex": 32,
+      "sourceIndex": 33,
       "sourceKey": "mesh:Hall service cover flutes"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb385b355754",
       "kind": "mesh",
       "name": "Hall sidewall wainscot",
-      "sourceIndex": 33,
+      "sourceIndex": 34,
       "sourceKey": "mesh:Hall sidewall wainscot"
     },
     {
       "guid": "01a1f324-57a0-7a86-935e-cb39ca39b5d5",
       "kind": "mesh",
       "name": "Hall staggered mineral flags",
-      "sourceIndex": 34,
+      "sourceIndex": 35,
       "sourceKey": "mesh:Hall staggered mineral flags"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94c9120984e4",
       "kind": "mesh",
       "name": "Ledge cantilever bracket",
-      "sourceIndex": 35,
+      "sourceIndex": 36,
       "sourceKey": "mesh:Ledge cantilever bracket"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94ca00a29b75",
       "kind": "mesh",
       "name": "Low recessed step markers",
-      "sourceIndex": 36,
+      "sourceIndex": 37,
       "sourceKey": "mesh:Low recessed step markers"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94cb4b1f43c3",
       "kind": "mesh",
       "name": "M05 drilled garnet stair infill",
-      "sourceIndex": 37,
+      "sourceIndex": 38,
       "sourceKey": "mesh:M05 drilled garnet stair infill"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94cc0cff0395",
       "kind": "mesh",
       "name": "M10 cobalt glass contour",
-      "sourceIndex": 38,
+      "sourceIndex": 39,
       "sourceKey": "mesh:M10 cobalt glass contour"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94cd9cdfd88a",
       "kind": "mesh",
       "name": "Middle metal nosing",
-      "sourceIndex": 39,
+      "sourceIndex": 40,
       "sourceKey": "mesh:Middle metal nosing"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94ce1c5ea837",
       "kind": "mesh",
       "name": "Paver joint bed",
-      "sourceIndex": 40,
+      "sourceIndex": 41,
       "sourceKey": "mesh:Paver joint bed"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94cfca36d757",
       "kind": "mesh",
       "name": "Portal illuminated reveal",
-      "sourceIndex": 41,
+      "sourceIndex": 42,
       "sourceKey": "mesh:Portal illuminated reveal"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d0576640d0",
       "kind": "mesh",
       "name": "Portal lintel",
-      "sourceIndex": 42,
+      "sourceIndex": 43,
       "sourceKey": "mesh:Portal lintel"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d1487e4481",
       "kind": "mesh",
       "name": "Portal lintel reveal",
-      "sourceIndex": 43,
+      "sourceIndex": 44,
       "sourceKey": "mesh:Portal lintel reveal"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d2b7e909ea",
       "kind": "mesh",
       "name": "Raised chequer lugs",
-      "sourceIndex": 44,
+      "sourceIndex": 45,
       "sourceKey": "mesh:Raised chequer lugs"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d3f8072c9e",
       "kind": "mesh",
       "name": "Running bond side paving",
-      "sourceIndex": 45,
+      "sourceIndex": 46,
       "sourceKey": "mesh:Running bond side paving"
+    },
+    {
+      "guid": "7701c984-b633-5ba7-aad7-daf42098f467",
+      "kind": "mesh",
+      "name": "Sapphire blued recessed reflector",
+      "sourceIndex": 47,
+      "sourceKey": "mesh:Sapphire blued recessed reflector"
+    },
+    {
+      "guid": "9a3c6481-5ac9-5368-aaca-18221674a72c",
+      "kind": "mesh",
+      "name": "Sapphire lens end saddles",
+      "sourceIndex": 48,
+      "sourceKey": "mesh:Sapphire lens end saddles"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d4b7f26d59",
       "kind": "mesh",
       "name": "Sapphire slit opal strip",
-      "sourceIndex": 46,
+      "sourceIndex": 49,
       "sourceKey": "mesh:Sapphire slit opal strip"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d56b14df77",
       "kind": "mesh",
       "name": "Sapphire slit recess",
-      "sourceIndex": 47,
+      "sourceIndex": 50,
       "sourceKey": "mesh:Sapphire slit recess"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d6060079c2",
       "kind": "mesh",
       "name": "Sidewall acoustic cassettes",
-      "sourceIndex": 48,
+      "sourceIndex": 51,
       "sourceKey": "mesh:Sidewall acoustic cassettes"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d7fc0680d4",
       "kind": "mesh",
       "name": "Sidewall metal reveals",
-      "sourceIndex": 49,
+      "sourceIndex": 52,
       "sourceKey": "mesh:Sidewall metal reveals"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d8b287a418",
       "kind": "mesh",
       "name": "Sidewall warm reveal",
-      "sourceIndex": 50,
+      "sourceIndex": 53,
       "sourceKey": "mesh:Sidewall warm reveal"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94d93884255c",
       "kind": "mesh",
       "name": "Stage lattice",
-      "sourceIndex": 51,
+      "sourceIndex": 54,
       "sourceKey": "mesh:Stage lattice"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94da2bb25081",
       "kind": "mesh",
       "name": "Stage nickel fan blades",
-      "sourceIndex": 52,
+      "sourceIndex": 55,
       "sourceKey": "mesh:Stage nickel fan blades"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94db0575a8cc",
       "kind": "mesh",
       "name": "Stage steel uprights",
-      "sourceIndex": 53,
+      "sourceIndex": 56,
       "sourceKey": "mesh:Stage steel uprights"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94dcc19b5a81",
       "kind": "mesh",
       "name": "Stage wing acoustic backing",
-      "sourceIndex": 54,
+      "sourceIndex": 57,
       "sourceKey": "mesh:Stage wing acoustic backing"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94dd65618723",
       "kind": "mesh",
       "name": "Stair warm nosing diffuser",
-      "sourceIndex": 55,
+      "sourceIndex": 58,
       "sourceKey": "mesh:Stair warm nosing diffuser"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94de6ae951b0",
       "kind": "mesh",
       "name": "Threshold fasteners",
-      "sourceIndex": 56,
+      "sourceIndex": 59,
       "sourceKey": "mesh:Threshold fasteners"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94df1b0546bf",
       "kind": "mesh",
       "name": "Threshold milled edge",
-      "sourceIndex": 57,
+      "sourceIndex": 60,
       "sourceKey": "mesh:Threshold milled edge"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94e0067f7d52",
       "kind": "mesh",
       "name": "Threshold stainless pan",
-      "sourceIndex": 58,
+      "sourceIndex": 61,
       "sourceKey": "mesh:Threshold stainless pan"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-94e140886844",
       "kind": "mesh",
       "name": "Upper nickel standing ledge",
-      "sourceIndex": 59,
+      "sourceIndex": 62,
       "sourceKey": "mesh:Upper nickel standing ledge"
     },
     {
@@ -3555,6 +3731,41 @@
       "name": "Burnished steel edge",
       "sourceIndex": 16,
       "sourceKey": "material:Burnished steel edge"
+    },
+    {
+      "guid": "8174d80b-4569-5e54-9ff7-bb3397255e2e",
+      "kind": "material",
+      "name": "Stage blued reflector steel",
+      "sourceIndex": 17,
+      "sourceKey": "material:Stage blued reflector steel"
+    },
+    {
+      "guid": "8e59781a-afec-5987-94b0-b272024ed345",
+      "kind": "material",
+      "name": "Stage continuous cobalt opal",
+      "sourceIndex": 18,
+      "sourceKey": "material:Stage continuous cobalt opal"
+    },
+    {
+      "guid": "0db78aad-85b4-5f1e-ae34-bd700e96d955",
+      "kind": "material",
+      "name": "Stage folded champagne nickel",
+      "sourceIndex": 19,
+      "sourceKey": "material:Stage folded champagne nickel"
+    },
+    {
+      "guid": "1dd5be9e-4a60-58c0-817a-6a85c8096200",
+      "kind": "material",
+      "name": "Stage smoke titanium fold",
+      "sourceIndex": 20,
+      "sourceKey": "material:Stage smoke titanium fold"
+    },
+    {
+      "guid": "a7225a5f-5d56-5484-b8bd-1aef886c9f45",
+      "kind": "material",
+      "name": "Stage anthracite acoustic liner",
+      "sourceIndex": 21,
+      "sourceKey": "material:Stage anthracite acoustic liner"
     },
     {
       "guid": "01a1eef9-abd7-7b12-8e6a-22ab8af23940",
@@ -3716,6 +3927,20 @@
       "name": "enamel-normal",
       "sourceIndex": 21,
       "sourceKey": "texture:enamel-normal"
+    },
+    {
+      "guid": "0c014a35-7c58-56ab-b969-a17a2bda91f3",
+      "kind": "texture",
+      "name": "Stage cobalt slot internal bounce",
+      "sourceIndex": 22,
+      "sourceKey": "texture:Stage cobalt slot internal bounce"
+    },
+    {
+      "guid": "34033d1a-93d1-522c-b218-52f4f3efa978",
+      "kind": "texture",
+      "name": "Stage fixture grazing the folds",
+      "sourceIndex": 23,
+      "sourceKey": "texture:Stage fixture grazing the folds"
     },
     {
       "guid": "01a1f2e9-c89e-79d5-aab1-95024f8254d1",

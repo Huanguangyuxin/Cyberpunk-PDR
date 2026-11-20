@@ -248,36 +248,6 @@
         "DRINK_HERO_TUMBLER_ICE_1",
         "DRINK_HERO_TUMBLER_ICE_2",
         "DRINK_HERO_TUMBLER_LIQUID",
-        "DRINK_RTABLE_E1_TUMBLER",
-        "DRINK_RTABLE_E1_TUMBLER_GLASS",
-        "DRINK_RTABLE_E1_TUMBLER_ICE_1",
-        "DRINK_RTABLE_E1_TUMBLER_ICE_2",
-        "DRINK_RTABLE_E1_TUMBLER_LIQUID",
-        "DRINK_RTABLE_E2_TUMBLER",
-        "DRINK_RTABLE_E2_TUMBLER_GLASS",
-        "DRINK_RTABLE_E2_TUMBLER_ICE_1",
-        "DRINK_RTABLE_E2_TUMBLER_ICE_2",
-        "DRINK_RTABLE_E2_TUMBLER_LIQUID",
-        "DRINK_RTABLE_E3_TUMBLER",
-        "DRINK_RTABLE_E3_TUMBLER_GLASS",
-        "DRINK_RTABLE_E3_TUMBLER_ICE_1",
-        "DRINK_RTABLE_E3_TUMBLER_ICE_2",
-        "DRINK_RTABLE_E3_TUMBLER_LIQUID",
-        "DRINK_RTABLE_W1_TUMBLER",
-        "DRINK_RTABLE_W1_TUMBLER_GLASS",
-        "DRINK_RTABLE_W1_TUMBLER_ICE_1",
-        "DRINK_RTABLE_W1_TUMBLER_ICE_2",
-        "DRINK_RTABLE_W1_TUMBLER_LIQUID",
-        "DRINK_RTABLE_W2_TUMBLER",
-        "DRINK_RTABLE_W2_TUMBLER_GLASS",
-        "DRINK_RTABLE_W2_TUMBLER_ICE_1",
-        "DRINK_RTABLE_W2_TUMBLER_ICE_2",
-        "DRINK_RTABLE_W2_TUMBLER_LIQUID",
-        "DRINK_RTABLE_W3_TUMBLER",
-        "DRINK_RTABLE_W3_TUMBLER_GLASS",
-        "DRINK_RTABLE_W3_TUMBLER_ICE_1",
-        "DRINK_RTABLE_W3_TUMBLER_ICE_2",
-        "DRINK_RTABLE_W3_TUMBLER_LIQUID",
         "DRINK_SHELF1_000",
         "DRINK_SHELF1_000_CAP",
         "DRINK_SHELF1_000_CORK",
@@ -579,30 +549,6 @@
         "L30_DEEP_E",
         "L31_GAL_W",
         "L32_GAL_E",
-        "RTABLE_E1",
-        "RTABLE_E1_CHAIR_1",
-        "RTABLE_E1_CHAIR_2",
-        "RTABLE_E1_CHAIR_3",
-        "RTABLE_E2",
-        "RTABLE_E2_CHAIR_1",
-        "RTABLE_E2_CHAIR_2",
-        "RTABLE_E2_CHAIR_3",
-        "RTABLE_E3",
-        "RTABLE_E3_CHAIR_1",
-        "RTABLE_E3_CHAIR_2",
-        "RTABLE_E3_CHAIR_3",
-        "RTABLE_W1",
-        "RTABLE_W1_CHAIR_1",
-        "RTABLE_W1_CHAIR_2",
-        "RTABLE_W1_CHAIR_3",
-        "RTABLE_W2",
-        "RTABLE_W2_CHAIR_1",
-        "RTABLE_W2_CHAIR_2",
-        "RTABLE_W2_CHAIR_3",
-        "RTABLE_W3",
-        "RTABLE_W3_CHAIR_1",
-        "RTABLE_W3_CHAIR_2",
-        "RTABLE_W3_CHAIR_3",
         "SPK_E",
         "SPK_W",
         "STAGE_MONITOR_1",
@@ -625,7 +571,6 @@
         "FP_STAIR_UPPER",
         "FP_SIT_TABLE_DETAIL",
         "FP_GALLERY_EXIT",
-        "ARCH_COLUMNS_WB015",
         "ARCH_DECK_BEAMS_FASCIA",
         "ARCH_ROOF_BEAMS",
         "ARCH_ROOF_SLAB",
@@ -2839,86 +2784,6 @@
         "type": "object"
       },
       "semantic": "mesh-material-slot-defaults",
-      "sourceKey": "mesh:ME_ROUND_TABLE"
-    },
-    {
-      "payloadSchema": {
-        "additionalProperties": true,
-        "properties": {
-          "materialSlotDefaultOverrides": {
-            "additionalProperties": {
-              "nullable": true,
-              "type": "string"
-            },
-            "type": "object"
-          },
-          "materialSlots": {
-            "items": {
-              "additionalProperties": true,
-              "properties": {
-                "defaultMaterialGuid": {
-                  "type": "string"
-                },
-                "slotName": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "sourceKey": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "slotName"
-              ],
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "semantic": "mesh-material-slot-defaults",
-      "sourceKey": "mesh:ME_CAFE_CHAIR"
-    },
-    {
-      "payloadSchema": {
-        "additionalProperties": true,
-        "properties": {
-          "materialSlotDefaultOverrides": {
-            "additionalProperties": {
-              "nullable": true,
-              "type": "string"
-            },
-            "type": "object"
-          },
-          "materialSlots": {
-            "items": {
-              "additionalProperties": true,
-              "properties": {
-                "defaultMaterialGuid": {
-                  "type": "string"
-                },
-                "slotName": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "sourceKey": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "slotName"
-              ],
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "semantic": "mesh-material-slot-defaults",
       "sourceKey": "mesh:ME_SPK_E"
     },
     {
@@ -3360,46 +3225,6 @@
       },
       "semantic": "mesh-material-slot-defaults",
       "sourceKey": "mesh:ME_STAGE_TRUSS"
-    },
-    {
-      "payloadSchema": {
-        "additionalProperties": true,
-        "properties": {
-          "materialSlotDefaultOverrides": {
-            "additionalProperties": {
-              "nullable": true,
-              "type": "string"
-            },
-            "type": "object"
-          },
-          "materialSlots": {
-            "items": {
-              "additionalProperties": true,
-              "properties": {
-                "defaultMaterialGuid": {
-                  "type": "string"
-                },
-                "slotName": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "sourceKey": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "slotName"
-              ],
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "semantic": "mesh-material-slot-defaults",
-      "sourceKey": "mesh:WB015_ME_ARCH_COLUMNS_WB015"
     },
     {
       "payloadSchema": {
@@ -5633,20 +5458,6 @@
         }
       ]
     },
-    "mesh:ME_CAFE_CHAIR": {
-      "materialSlots": [
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5227b92d10b7",
-          "slotName": "M_LEATHER_WINE",
-          "sourceKey": "material:M_LEATHER_WINE"
-        },
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5218ace5ce6c",
-          "slotName": "M_STEEL_BLACK",
-          "sourceKey": "material:M_STEEL_BLACK"
-        }
-      ]
-    },
     "mesh:ME_CLEAR_CUT_CAP": {
       "materialSlots": [
         {
@@ -6064,30 +5875,6 @@
         }
       ]
     },
-    "mesh:ME_ROUND_TABLE": {
-      "materialSlots": [
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5218ace5ce6c",
-          "slotName": "M_STEEL_BLACK",
-          "sourceKey": "material:M_STEEL_BLACK"
-        },
-        {
-          "defaultMaterialGuid": "01a1be65-c947-7e80-98cb-4ad4d29af7c2",
-          "slotName": "D109_TABLE_LAMINATE",
-          "sourceKey": "material:D109_TABLE_LAMINATE"
-        },
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5237ec2db481",
-          "slotName": "M_GLASS_CLEAR",
-          "sourceKey": "material:M_GLASS_CLEAR"
-        },
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-5224fa63538d",
-          "slotName": "M_BULB_WARM",
-          "sourceKey": "material:M_BULB_WARM"
-        }
-      ]
-    },
     "mesh:ME_SPK_E": {
       "materialSlots": [
         {
@@ -6396,25 +6183,6 @@
           "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-523edaf92f38",
           "slotName": "M_LABEL",
           "sourceKey": "material:M_LABEL"
-        }
-      ]
-    },
-    "mesh:WB015_ME_ARCH_COLUMNS_WB015": {
-      "materialSlots": [
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-524ff4615e5c",
-          "slotName": "WB015_M_STEEL_EDGE",
-          "sourceKey": "material:WB015_M_STEEL_EDGE"
-        },
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-52502a8077f6",
-          "slotName": "WB015_M_STEEL_NAVY",
-          "sourceKey": "material:WB015_M_STEEL_NAVY"
-        },
-        {
-          "defaultMaterialGuid": "01a18cc0-f159-7553-a50c-52516ad3df47",
-          "slotName": "WB015_M_STEEL_BLACK",
-          "sourceKey": "material:WB015_M_STEEL_BLACK"
         }
       ]
     },
@@ -8003,444 +7771,423 @@
       "sourceKey": "mesh:ME_FURN_AISLE_SCREENS"
     },
     {
-      "guid": "01a18cc0-f158-7cdf-8343-7abefd498844",
-      "kind": "mesh",
-      "name": "ME_ROUND_TABLE",
-      "sourceIndex": 50,
-      "sourceKey": "mesh:ME_ROUND_TABLE"
-    },
-    {
-      "guid": "01a18cc0-f158-7cdf-8343-7abf03cb5ee3",
-      "kind": "mesh",
-      "name": "ME_CAFE_CHAIR",
-      "sourceIndex": 51,
-      "sourceKey": "mesh:ME_CAFE_CHAIR"
-    },
-    {
       "guid": "01a18cc0-f159-7553-a50c-51dd48b525bb",
       "kind": "mesh",
       "name": "ME_SPK_E",
-      "sourceIndex": 52,
+      "sourceIndex": 50,
       "sourceKey": "mesh:ME_SPK_E"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51ded3cb1850",
       "kind": "mesh",
       "name": "ME_SPK_W",
-      "sourceIndex": 53,
+      "sourceIndex": 51,
       "sourceKey": "mesh:ME_SPK_W"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51df687ac658",
       "kind": "mesh",
       "name": "ME_STAGE_MONITOR_1",
-      "sourceIndex": 54,
+      "sourceIndex": 52,
       "sourceKey": "mesh:ME_STAGE_MONITOR_1"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e095430143",
       "kind": "mesh",
       "name": "ME_STAGE_MONITOR_2",
-      "sourceIndex": 55,
+      "sourceIndex": 53,
       "sourceKey": "mesh:ME_STAGE_MONITOR_2"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e1cc3a742d",
       "kind": "mesh",
       "name": "ME_STAGE_MOVING_HEAD_1",
-      "sourceIndex": 56,
+      "sourceIndex": 54,
       "sourceKey": "mesh:ME_STAGE_MOVING_HEAD_1"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e269766c87",
       "kind": "mesh",
       "name": "ME_STAGE_MOVING_HEAD_2",
-      "sourceIndex": 57,
+      "sourceIndex": 55,
       "sourceKey": "mesh:ME_STAGE_MOVING_HEAD_2"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e31f9f1a5c",
       "kind": "mesh",
       "name": "ME_STAGE_MOVING_HEAD_3",
-      "sourceIndex": 58,
+      "sourceIndex": 56,
       "sourceKey": "mesh:ME_STAGE_MOVING_HEAD_3"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e47ccf1341",
       "kind": "mesh",
       "name": "ME_STAGE_MOVING_HEAD_4",
-      "sourceIndex": 59,
+      "sourceIndex": 57,
       "sourceKey": "mesh:ME_STAGE_MOVING_HEAD_4"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e522aada93",
       "kind": "mesh",
       "name": "ME_STAGE_MOVING_HEAD_5",
-      "sourceIndex": 60,
+      "sourceIndex": 58,
       "sourceKey": "mesh:ME_STAGE_MOVING_HEAD_5"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e60949809f",
       "kind": "mesh",
       "name": "ME_STAGE_MOVING_HEAD_6",
-      "sourceIndex": 61,
+      "sourceIndex": 59,
       "sourceKey": "mesh:ME_STAGE_MOVING_HEAD_6"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e7ae68096f",
       "kind": "mesh",
       "name": "ME_STAGE_PLATFORM_DJ",
-      "sourceIndex": 62,
+      "sourceIndex": 60,
       "sourceKey": "mesh:ME_STAGE_PLATFORM_DJ"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51e86ac84c25",
       "kind": "mesh",
       "name": "ME_STAGE_TRUSS",
-      "sourceIndex": 63,
+      "sourceIndex": 61,
       "sourceKey": "mesh:ME_STAGE_TRUSS"
-    },
-    {
-      "guid": "01a18cc0-f159-7553-a50c-51ea7a370817",
-      "kind": "mesh",
-      "name": "WB015_ME_ARCH_COLUMNS_WB015",
-      "sourceIndex": 64,
-      "sourceKey": "mesh:WB015_ME_ARCH_COLUMNS_WB015"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51eb94b1a898",
       "kind": "mesh",
       "name": "WB015_ME_ARCH_DECK_BEAMS_FASCIA",
-      "sourceIndex": 65,
+      "sourceIndex": 62,
       "sourceKey": "mesh:WB015_ME_ARCH_DECK_BEAMS_FASCIA"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51ec488a9a04",
       "kind": "mesh",
       "name": "WB015_ME_ARCH_ROOF_BEAMS",
-      "sourceIndex": 66,
+      "sourceIndex": 63,
       "sourceKey": "mesh:WB015_ME_ARCH_ROOF_BEAMS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51ed02baa1b8",
       "kind": "mesh",
       "name": "WB015_ME_ARCH_ROOF_SLAB",
-      "sourceIndex": 67,
+      "sourceIndex": 64,
       "sourceKey": "mesh:WB015_ME_ARCH_ROOF_SLAB"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51ee06630245",
       "kind": "mesh",
       "name": "WB015_ME_ARCH_UPPER_DECK",
-      "sourceIndex": 68,
+      "sourceIndex": 65,
       "sourceKey": "mesh:WB015_ME_ARCH_UPPER_DECK"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51efa59bace3",
       "kind": "mesh",
       "name": "WB015_ME_ARCH_WALL_SOUTH",
-      "sourceIndex": 69,
+      "sourceIndex": 66,
       "sourceKey": "mesh:WB015_ME_ARCH_WALL_SOUTH"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f0c5450834",
       "kind": "mesh",
       "name": "WB015_ME_ARCH_WALLS_WEN",
-      "sourceIndex": 70,
+      "sourceIndex": 67,
       "sourceKey": "mesh:WB015_ME_ARCH_WALLS_WEN"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f1252b6507",
       "kind": "mesh",
       "name": "WB015_ME_BOOTH_MODULE",
-      "sourceIndex": 71,
+      "sourceIndex": 68,
       "sourceKey": "mesh:WB015_ME_BOOTH_MODULE"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f247ea9a8a",
       "kind": "mesh",
       "name": "WB015_ME_CEILING_L",
-      "sourceIndex": 72,
+      "sourceIndex": 69,
       "sourceKey": "mesh:WB015_ME_CEILING_L"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f3d67e0c39",
       "kind": "mesh",
       "name": "WB015_ME_PLANT",
-      "sourceIndex": 73,
+      "sourceIndex": 70,
       "sourceKey": "mesh:WB015_ME_PLANT"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f46ef544d8",
       "kind": "mesh",
       "name": "WB015_ME_COUPE_GLASS",
-      "sourceIndex": 74,
+      "sourceIndex": 71,
       "sourceKey": "mesh:WB015_ME_COUPE_GLASS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f5f00a6ee5",
       "kind": "mesh",
       "name": "WB015_ME_COUPE_LIQ",
-      "sourceIndex": 75,
+      "sourceIndex": 72,
       "sourceKey": "mesh:WB015_ME_COUPE_LIQ"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f68990c77b",
       "kind": "mesh",
       "name": "WB015_ME_TUMBLER_GLASS",
-      "sourceIndex": 76,
+      "sourceIndex": 73,
       "sourceKey": "mesh:WB015_ME_TUMBLER_GLASS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f73e053508",
       "kind": "mesh",
       "name": "WB015_ME_ICE_1",
-      "sourceIndex": 77,
+      "sourceIndex": 74,
       "sourceKey": "mesh:WB015_ME_ICE_1"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f869b86963",
       "kind": "mesh",
       "name": "WB015_ME_ICE_2",
-      "sourceIndex": 78,
+      "sourceIndex": 75,
       "sourceKey": "mesh:WB015_ME_ICE_2"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51f94b14765b",
       "kind": "mesh",
       "name": "WB015_ME_DRINK_HERO_TUMBLER_LIQUID_CUT",
-      "sourceIndex": 79,
+      "sourceIndex": 76,
       "sourceKey": "mesh:WB015_ME_DRINK_HERO_TUMBLER_LIQUID_CUT"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51fa8f39251f",
       "kind": "mesh",
       "name": "WB015_ME_FIX_ROOF_LIGHT_BANDS",
-      "sourceIndex": 80,
+      "sourceIndex": 77,
       "sourceKey": "mesh:WB015_ME_FIX_ROOF_LIGHT_BANDS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51fb250127cf",
       "kind": "mesh",
       "name": "WB015_ME_LA_E",
-      "sourceIndex": 81,
+      "sourceIndex": 78,
       "sourceKey": "mesh:WB015_ME_LA_E"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51fcd5d1e83e",
       "kind": "mesh",
       "name": "WB015_ME_LA_W",
-      "sourceIndex": 82,
+      "sourceIndex": 79,
       "sourceKey": "mesh:WB015_ME_LA_W"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51fdb59fb690",
       "kind": "mesh",
       "name": "WB015_ME_MEP_DUCTS",
-      "sourceIndex": 83,
+      "sourceIndex": 80,
       "sourceKey": "mesh:WB015_ME_MEP_DUCTS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51feaae43a47",
       "kind": "mesh",
       "name": "WB015_ME_MEP_NET_C",
-      "sourceIndex": 84,
+      "sourceIndex": 81,
       "sourceKey": "mesh:WB015_ME_MEP_NET_C"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-51ff74323606",
       "kind": "mesh",
       "name": "WB015_ME_MEP_NET_F",
-      "sourceIndex": 85,
+      "sourceIndex": 82,
       "sourceKey": "mesh:WB015_ME_MEP_NET_F"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5200f6005957",
       "kind": "mesh",
       "name": "WB015_ME_MEP_NET_M",
-      "sourceIndex": 86,
+      "sourceIndex": 83,
       "sourceKey": "mesh:WB015_ME_MEP_NET_M"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520145bf3e42",
       "kind": "mesh",
       "name": "WB015_ME_MEP_PIPES",
-      "sourceIndex": 87,
+      "sourceIndex": 84,
       "sourceKey": "mesh:WB015_ME_MEP_PIPES"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5202f4cecc3e",
       "kind": "mesh",
       "name": "WB015_ME_MEP_TRANSVERSE_SERVICES",
-      "sourceIndex": 88,
+      "sourceIndex": 85,
       "sourceKey": "mesh:WB015_ME_MEP_TRANSVERSE_SERVICES"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520371ab66ba",
       "kind": "mesh",
       "name": "WB015_ME_MEP_TRAYS_WIRES_JBOX",
-      "sourceIndex": 89,
+      "sourceIndex": 86,
       "sourceKey": "mesh:WB015_ME_MEP_TRAYS_WIRES_JBOX"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5204d5a8f93c",
       "kind": "mesh",
       "name": "WB015_ME_RAIL_BRIDGE_NORTH",
-      "sourceIndex": 90,
+      "sourceIndex": 87,
       "sourceKey": "mesh:WB015_ME_RAIL_BRIDGE_NORTH"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5205da331df8",
       "kind": "mesh",
       "name": "WB015_ME_RAIL_DECK_SOUTH",
-      "sourceIndex": 91,
+      "sourceIndex": 88,
       "sourceKey": "mesh:WB015_ME_RAIL_DECK_SOUTH"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5206026cf6eb",
       "kind": "mesh",
       "name": "WB015_ME_RAIL_GAL_E",
-      "sourceIndex": 92,
+      "sourceIndex": 89,
       "sourceKey": "mesh:WB015_ME_RAIL_GAL_E"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5207e0eb035b",
       "kind": "mesh",
       "name": "WB015_ME_RAIL_GAL_W",
-      "sourceIndex": 93,
+      "sourceIndex": 90,
       "sourceKey": "mesh:WB015_ME_RAIL_GAL_W"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-52081737a67c",
       "kind": "mesh",
       "name": "WB015_ME_STAIR_E",
-      "sourceIndex": 94,
+      "sourceIndex": 91,
       "sourceKey": "mesh:WB015_ME_STAIR_E"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-5209a20d83ea",
       "kind": "mesh",
       "name": "WB015_ME_STAIR_E_GLASS",
-      "sourceIndex": 95,
+      "sourceIndex": 92,
       "sourceKey": "mesh:WB015_ME_STAIR_E_GLASS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520a7235ea9d",
       "kind": "mesh",
       "name": "WB015_ME_STAIR_W",
-      "sourceIndex": 96,
+      "sourceIndex": 93,
       "sourceKey": "mesh:WB015_ME_STAIR_W"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520bc303f9f9",
       "kind": "mesh",
       "name": "WB015_ME_STAIR_W_GLASS",
-      "sourceIndex": 97,
+      "sourceIndex": 94,
       "sourceKey": "mesh:WB015_ME_STAIR_W_GLASS"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520c7646ba7a",
       "kind": "mesh",
       "name": "WB015_ME_VIP_E1_DOOR_LEAF",
-      "sourceIndex": 98,
+      "sourceIndex": 95,
       "sourceKey": "mesh:WB015_ME_VIP_E1_DOOR_LEAF"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520d888e5ef3",
       "kind": "mesh",
       "name": "WB015_ME_CAFE_CHAIR",
-      "sourceIndex": 99,
+      "sourceIndex": 96,
       "sourceKey": "mesh:WB015_ME_CAFE_CHAIR"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520ef759adf6",
       "kind": "mesh",
       "name": "WB015_ME_ROUND_TABLE",
-      "sourceIndex": 100,
+      "sourceIndex": 97,
       "sourceKey": "mesh:WB015_ME_ROUND_TABLE"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-520f7717936f",
       "kind": "mesh",
       "name": "WB015_ME_VIP_E1_SHELL",
-      "sourceIndex": 101,
+      "sourceIndex": 98,
       "sourceKey": "mesh:WB015_ME_VIP_E1_SHELL"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-52100c72e3e1",
       "kind": "mesh",
       "name": "WB015_ME_VIP_E2_DOOR_LEAF",
-      "sourceIndex": 102,
+      "sourceIndex": 99,
       "sourceKey": "mesh:WB015_ME_VIP_E2_DOOR_LEAF"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-521125c3dba6",
       "kind": "mesh",
       "name": "WB015_ME_VIP_E2_SHELL",
-      "sourceIndex": 103,
+      "sourceIndex": 100,
       "sourceKey": "mesh:WB015_ME_VIP_E2_SHELL"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-52129d1fdb04",
       "kind": "mesh",
       "name": "WB015_ME_VIP_W1_DOOR_LEAF",
-      "sourceIndex": 104,
+      "sourceIndex": 101,
       "sourceKey": "mesh:WB015_ME_VIP_W1_DOOR_LEAF"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-52130ae16938",
       "kind": "mesh",
       "name": "WB015_ME_VIP_W1_SHELL",
-      "sourceIndex": 105,
+      "sourceIndex": 102,
       "sourceKey": "mesh:WB015_ME_VIP_W1_SHELL"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-52143fd4151c",
       "kind": "mesh",
       "name": "WB015_ME_VIP_W2_DOOR_LEAF",
-      "sourceIndex": 106,
+      "sourceIndex": 103,
       "sourceKey": "mesh:WB015_ME_VIP_W2_DOOR_LEAF"
     },
     {
       "guid": "01a18cc0-f159-7553-a50c-521521cec9d7",
       "kind": "mesh",
       "name": "WB015_ME_VIP_W2_SHELL",
-      "sourceIndex": 107,
+      "sourceIndex": 104,
       "sourceKey": "mesh:WB015_ME_VIP_W2_SHELL"
     },
     {
       "guid": "01a1f71a-7a76-7cbf-a194-aa5d6c2dde60",
       "kind": "mesh",
       "name": "ME_COPPER_RELAY_LABEL",
-      "sourceIndex": 108,
+      "sourceIndex": 105,
       "sourceKey": "mesh:ME_COPPER_RELAY_LABEL"
     },
     {
       "guid": "01a1f71a-7a76-7cbf-a194-aa5e2921f3d8",
       "kind": "mesh",
       "name": "ME_LOW_TIDE_LABEL",
-      "sourceIndex": 109,
+      "sourceIndex": 106,
       "sourceKey": "mesh:ME_LOW_TIDE_LABEL"
     },
     {
       "guid": "01a1f71a-7a76-7cbf-a194-aa5f6db2d01d",
       "kind": "mesh",
       "name": "ME_VESPER_No4_LABEL",
-      "sourceIndex": 110,
+      "sourceIndex": 107,
       "sourceKey": "mesh:ME_VESPER_No4_LABEL"
     },
     {
       "guid": "01a1f71a-7a76-7cbf-a194-aa60be281ab4",
       "kind": "mesh",
       "name": "ME_AFTER_HOURS_LABEL",
-      "sourceIndex": 111,
+      "sourceIndex": 108,
       "sourceKey": "mesh:ME_AFTER_HOURS_LABEL"
     },
     {
       "guid": "01a1f71a-7a76-7cbf-a194-aa61408d6aca",
       "kind": "mesh",
       "name": "ME_GLASS_LINE_LABEL",
-      "sourceIndex": 112,
+      "sourceIndex": 109,
       "sourceKey": "mesh:ME_GLASS_LINE_LABEL"
     },
     {

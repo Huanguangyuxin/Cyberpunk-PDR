@@ -40,3 +40,10 @@ bake('stone',np.array([53,49,52])+(chip*52+noise(36)*3)[:,:,None],.32+chip*.08,.
 bottom=(y/(size-1))**4.8
 light=.045+bottom*.57+seeds*(.10+bottom*.23)+stars*(.56+bottom*.18)
 Image.fromarray(np.clip(light[:,:,None]*np.array([255,158,51]),0,255).astype('uint8')).save(root/'amber-emission.png')
+
+# Linear source coupled into the bottom of a clear, reeded sheet. glTF UVs
+# cover one full screen; four pixels across each flute survive the mip chain.
+u,v=np.meshgrid(np.linspace(0,1,2048),np.linspace(1,0,256))
+ridge=(.5+.5*np.cos(2*np.pi*91*u))**3
+flux=(.76*np.exp(-5.0*v)+.025)*(.55+.45*ridge)+.13*ridge*np.exp(-1.9*v)
+Image.fromarray(np.uint8(np.clip(flux[:,:,None]*np.array([255,156,65]),0,255))).save(root/'fluted-edge-light.png')

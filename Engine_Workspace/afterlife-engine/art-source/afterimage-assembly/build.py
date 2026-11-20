@@ -250,22 +250,6 @@ for obj in core.objects:
     light(obj.name+' · Opal table lamp','POINT',[p.x,p.z,-p.y],(1,.58,.30),6 if style=='VIP' else 4,1.45)
     booths.append(obj.name)
 
-for code,x,z in [('E1',5.8,-23.30),('W1',-5.8,-23.30),('E2',9.2,-32.5),('W2',-9.2,-30.85),('E3',8.95,-36.65),('W3',-8.95,-36.05)]:
-    name='RTABLE_'+code
-    table=core.objects[name]
-    origin=table.location.copy()
-    dest=Vector((x,-z,origin.z))
-    for o in core.objects:
-        if o.name==name or o.name=='DRINK_'+name+'_TUMBLER':
-            o.location += dest-origin
-        elif o.name.startswith(name+'_CHAIR_'):
-            delta=o.location-origin
-            delta.z=0
-            o.location=dest+.76*delta.normalized()
-            o.rotation_mode='XYZ'
-            o.rotation_euler=(0,0,math.atan2(delta.x,-delta.y))
-            o.data=fixture.objects['D051_CAFE_CHAIR'].data
-
 for idx,side in enumerate([-1,1]):
     for part in ('MOUNT','YOKE','HEAD'):
         inst(fixture.objects['D051_LIGHT_'+part],f'Moving head {idx+1} · {part}',(side*2.2,4.82,-39.6))
@@ -424,7 +408,7 @@ audit={'booths':sorted(booths),'areas':sum(o.data.type=='AREA' for o in native.o
        'nativeLights':len(native.objects),'reviewCameras':len(cameras.objects),'collections':counts,
        'externalImages':[im.name for im in bpy.data.images if im.filepath and not im.packed_file],
        'lighting':'Static review pose. Engine candela and rectangular radiance retained on object properties. Blender watts approximate a 30 lm/W RGB source.'}
-assert len(booths)==21 and audit['areas']==16 and not audit['externalImages'],audit
+assert len(booths)==21 and audit['areas']==len(areas) and not audit['externalImages'],audit
 (OUT/'assembly-check.json').write_text(json.dumps(audit,indent=2,ensure_ascii=False))
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'D189-Afterimage-Club.blend'),compress=True)
 print('AFTERIMAGE ASSEMBLY VERIFIED',audit)

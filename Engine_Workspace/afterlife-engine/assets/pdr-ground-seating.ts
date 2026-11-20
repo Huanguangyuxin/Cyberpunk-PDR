@@ -48,20 +48,4 @@ export function arrangeGroundSeating(world: World) {
     }
   }
 
-  // Move each complete table setting before registering collisions and chair repair.
-  // E1/W1 are the near-stage social islands; the other tables sit in side bays.
-  const tables = [
-    ['E1',5.8,-23.30], ['W1',-5.8,-23.30],
-    ['E2',9.2,-32.5], ['W2',-9.2,-30.85],
-    ['E3',8.95,-36.65], ['W3',-8.95,-36.05],
-  ] as const;
-  for (const [id,x,z] of tables) {
-    const name = 'RTABLE_'+id;
-    const origin = Array.from(world.get(entityFor(name),Transform).unwrap().pos);
-    for (const [key,entity] of objects) {
-      if (key!==name && !key.startsWith(name+'_CHAIR_') && key!=='DRINK_'+name+'_TUMBLER') continue;
-      const pos = world.get(entity,Transform).unwrap().pos;
-      world.set(entity,Transform,{pos:[pos[0]+x-origin[0],pos[1],pos[2]+z-origin[2]]}).unwrap();
-    }
-  }
 }

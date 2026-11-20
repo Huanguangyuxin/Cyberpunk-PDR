@@ -21,7 +21,12 @@ for prefix in ('L04_','L05_'):
     merge_spec=json.loads((p.parents[1]/'assets/pdr-fixed-lighting.json').read_text())
     target=next(r['intensity'] for r in merge_spec['merges'] if r['owner']==int(prefix[1:3]))
     assert lamp.data.type=='AREA' and abs(lamp['engine_rect_radiance_scale']-target)<.01
-    assert abs(lamp.location.x-12.17)<.001 and abs(lamp.location.z-2.68)<.001
+    assert abs(lamp.location.x-13.711)<.001 and abs(lamp.location.z-2.405)<.001
+    assert abs(lamp.data.size-.046)<.001 and abs(lamp.data.size_y-1.84)<.001
+for number,x,height,z,length,width in [(2,12.196407,3.069895,-6.718037,4.5509,.034),(3,12.091407,2.714585,-11.688037,4.5325,.034),(13,0,8.555,-8.25,26.8,.12),(18,0,3.305,-20.65,16,.14)]:
+    lamp=next(o for o in s.objects if o.type=='LIGHT' and o.name.startswith(f'L{number:02d}_'))
+    assert lamp.data.type=='AREA' and (lamp.location-Vector((x,-z,height))).length<.001
+    assert abs(lamp.data.size-length)<.001 and abs(lamp.data.size_y-width)<.001
 assert all(s.objects.get(key) for key in ('Afterimage wordmark','Shelf working light','BAR_WORK_SURFACE'))
 assert not any(o.name.startswith(('SIGN_', 'WPANEL_', 'HTABLE_')) for o in s.objects)
 assert s.objects.get('Wrought east stair handrail') is not None

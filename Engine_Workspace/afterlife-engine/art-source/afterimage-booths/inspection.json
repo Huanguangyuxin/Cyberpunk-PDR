@@ -1,5 +1,5 @@
 {
-  "sha256": "5b96f486b1e4e4be4633658982607cd4b094ad7520ec8d91a7e08c2d9579f248",
+  "sha256": "986d17658eb1788831b673b6f227f091e479009ca34e5f84dadeaacec75ebd97",
   "doubleSided": {
     "M01 Merlot channel leather": false,
     "M02 Amber cast ribbed glass": false,
@@ -8,12 +8,15 @@
     "Graphite enamel": false,
     "M07 Satin aggregate table": false,
     "Merlot piping": false,
-    "Warm lamp lens": false
+    "Warm lamp lens": false,
+    "Clear amber edge-lit screen": false,
+    "Honey opal plinth diffuser": false,
+    "Warm bronze plinth reflector": false
   },
   "meshes": [
     {
       "name": "Afterimage Foyer Booth",
-      "triangles": 82026,
+      "triangles": 82942,
       "materials": [
         "M01 Merlot channel leather",
         "M02 Amber cast ribbed glass",
@@ -22,42 +25,45 @@
         "Graphite enamel",
         "M07 Satin aggregate table",
         "Merlot piping",
-        "Warm lamp lens"
+        "Warm lamp lens",
+        "Clear amber edge-lit screen",
+        "Honey opal plinth diffuser",
+        "Warm bronze plinth reflector"
       ],
-      "minUvDoubleArea": 2.376144720983575e-07,
-      "maxNormalTangentDot": 0.00012666994420307276,
+      "minUvDoubleArea": 5.99201712248032e-07,
+      "maxNormalTangentDot": 0.0001297617121895911,
       "minExportFaceNormalAgreement": 0.2461493811767675,
       "closedOrientedBackrest": true,
       "closedOrientedSolids": {
         "seat": {
-          "signedVolumeM3": 0.3857545430515055,
-          "triangles": 17940
+          "signedVolumeM3": 0.35690364263180935,
+          "triangles": 17524
         },
         "kick": {
-          "signedVolumeM3": 0.8667819875026925,
+          "signedVolumeM3": 0.8100961252821645,
           "triangles": 4284
         },
         "outer shell": {
-          "signedVolumeM3": 0.8393396120837822,
+          "signedVolumeM3": 0.7531439256770663,
           "triangles": 21350
         },
         "backrest": {
-          "signedVolumeM3": 0.5787151644296985,
-          "triangles": 30576
+          "signedVolumeM3": 0.5616059545251874,
+          "triangles": 28548
         },
         "end lens A": {
           "signedVolumeM3": 0.021483283565953516,
           "triangles": 504
         },
         "end lens B": {
-          "signedVolumeM3": 0.021483283565953252,
+          "signedVolumeM3": 0.02148328356595358,
           "triangles": 504
         }
       }
     },
     {
       "name": "Afterimage Hall Booth",
-      "triangles": 56522,
+      "triangles": 80266,
       "materials": [
         "M01 Merlot channel leather",
         "M02 Amber cast ribbed glass",
@@ -65,38 +71,45 @@
         "Graphite enamel",
         "M07 Satin aggregate table",
         "Merlot piping",
-        "Warm lamp lens"
+        "Warm lamp lens",
+        "Clear amber edge-lit screen",
+        "Honey opal plinth diffuser",
+        "Warm bronze plinth reflector"
       ],
-      "minUvDoubleArea": 2.4114967800414888e-05,
-      "maxNormalTangentDot": 0.00011457963703359608,
+      "minUvDoubleArea": 1.672628968663048e-06,
+      "maxNormalTangentDot": 0.00011902740476443796,
       "minExportFaceNormalAgreement": 0.24490745805164998,
       "closedOrientedBackrest": true,
       "closedOrientedSolids": {
         "seat": {
-          "signedVolumeM3": 0.29693113628784185,
-          "triangles": 12220
+          "signedVolumeM3": 0.30900845088949486,
+          "triangles": 17524
         },
         "kick": {
-          "signedVolumeM3": 0.6622513120181778,
-          "triangles": 2856
+          "signedVolumeM3": 0.7020677337307655,
+          "triangles": 4284
         },
         "outer shell": {
-          "signedVolumeM3": 0.5732932901637772,
-          "triangles": 14210
+          "signedVolumeM3": 0.6933416644310562,
+          "triangles": 21350
         },
         "backrest": {
-          "signedVolumeM3": 0.43924309493667096,
-          "triangles": 22932
+          "signedVolumeM3": 0.5158328791947591,
+          "triangles": 26208
         },
         "end lens A": {
           "signedVolumeM3": 0.021483283565953516,
+          "triangles": 504
+        },
+        "end lens B": {
+          "signedVolumeM3": 0.0214832835659538,
           "triangles": 504
         }
       }
     },
     {
       "name": "Afterimage VIP Booth",
-      "triangles": 81402,
+      "triangles": 81626,
       "materials": [
         "M01 Merlot channel leather",
         "M02 Amber cast ribbed glass",
@@ -124,7 +137,7 @@
           "triangles": 21350
         },
         "backrest": {
-          "signedVolumeM3": 0.5618553437641822,
+          "signedVolumeM3": 0.5619673452743902,
           "triangles": 29796
         },
         "end lens A": {

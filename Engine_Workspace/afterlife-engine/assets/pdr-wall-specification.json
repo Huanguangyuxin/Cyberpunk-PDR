@@ -59,11 +59,6 @@
       "M_WALL_NAVY": "graphite",
       "M_STEEL_BLACK": "black"
     },
-    "ARCH_COLUMNS_WB015": {
-      "WB015_M_STEEL_EDGE": "nickel",
-      "WB015_M_STEEL_NAVY": "graphite",
-      "WB015_M_STEEL_BLACK": "black"
-    },
     "ARCH_DECK_BEAMS_FASCIA": {
       "WB015_M_STEEL_NAVY": "graphite",
       "WB015_M_STEEL_BLACK": "black"

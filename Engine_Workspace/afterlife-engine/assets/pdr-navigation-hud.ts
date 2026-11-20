@@ -36,15 +36,7 @@ const hud:Plugin.Object<{hud:string}>={name:'cyberpunk/navigation-hud',inject:['
 
       const bookmark=requestedView&&Object.hasOwn(OBSERVATION_BOOKMARKS,requestedView)?requestedView:null;
       const query=new URLSearchParams(window.location.search);
-      let unavailableNormals=false;
-      if(query.get('forgeax-startup-retry')==='1'){
-        try {
-          const scope=new URL('./',document.baseURI).href;
-          const failure=window.sessionStorage.getItem('forgeax.startup/afterlife-engine/'+scope+'/failure')??'';
-          unavailableNormals=failure.includes('coverage-incomplete') && failure.includes('standard-surface-normal-v1');
-        } catch { /* Browsers may disable session storage. */ }
-      }
-      const startWithOcclusion=query.get('ao')!=='off' && renderDebug!=='gtao-off' && !unavailableNormals;
+      const startWithOcclusion=query.get('ao')!=='off' && renderDebug!=='gtao-off';
       let occlusionSent=false;
       let bookmarkSent=false,renderDiagnosticSent=false;
       const part=(name:string)=>ui.host.shadowRoot!.querySelector<HTMLElement>(`[data-ui-part="${name}"]`)!;

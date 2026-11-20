@@ -10,9 +10,7 @@
         "WB018_STAGE_FLANK_PANELS"
       ],
       "unsupportedExtensions": []
-    },
-    "compressionMode": "auto",
-    "mipmap": true
+    }
   },
   "importer": "gltf",
   "kind": "external-asset-package",
@@ -281,9 +279,9 @@
           "sourceKey": "material:M18_ACOUSTIC_WEAVE"
         },
         {
-          "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f334b9703b2",
           "slotName": "M18_TALL_PANEL_PINK",
-          "sourceKey": "material:M18_TALL_PANEL_PINK"
+          "sourceKey": "material:M18_TALL_PANEL_PINK",
+          "tombstone": true
         },
         {
           "defaultMaterialGuid": "01a19ac5-5ad3-745b-a280-3f317f1340aa",
@@ -391,13 +389,6 @@
       "name": "M18_ACOUSTIC_WEAVE",
       "sourceIndex": 9,
       "sourceKey": "material:M18_ACOUSTIC_WEAVE"
-    },
-    {
-      "guid": "01a19ac5-5ad3-745b-a280-3f334b9703b2",
-      "kind": "material",
-      "name": "M18_TALL_PANEL_PINK",
-      "sourceIndex": 10,
-      "sourceKey": "material:M18_TALL_PANEL_PINK"
     },
     {
       "guid": "01a19ac5-5ad3-745b-a280-3f341ab888de",

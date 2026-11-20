@@ -1,0 +1,101 @@
+[
+  {
+    "key": "2",
+    "before": {
+      "camera": "CAM05_DEEP_REVERSE",
+      "mode": "showcase",
+      "physical": [
+        0,
+        0.8899999856948853,
+        -1.100000023841858
+      ],
+      "ticks": 0
+    },
+    "returned": {
+      "camera": "FP_AISLE",
+      "mode": "first-person",
+      "physical": [
+        -0.000002134349870175356,
+        0.889376699924469,
+        -1.100005865097046
+      ],
+      "ticks": 82
+    },
+    "moved": {
+      "camera": "FP_AISLE",
+      "mode": "first-person",
+      "physical": [
+        -0.000009698953363113105,
+        0.8891749382019043,
+        -1.9866821765899658
+      ],
+      "ticks": 138
+    }
+  },
+  {
+    "key": "5",
+    "before": {
+      "camera": "CAM06_GALLERY_WEST",
+      "mode": "showcase",
+      "physical": [
+        -0.000009698953363113105,
+        0.8891749382019043,
+        -1.9866821765899658
+      ],
+      "ticks": 138
+    },
+    "returned": {
+      "camera": "FP_AISLE",
+      "mode": "first-person",
+      "physical": [
+        -0.000002134349870175356,
+        0.889376699924469,
+        -1.100005865097046
+      ],
+      "ticks": 220
+    },
+    "moved": {
+      "camera": "FP_AISLE",
+      "mode": "first-person",
+      "physical": [
+        -0.000009901131306833122,
+        0.8891748785972595,
+        -2.0100162029266357
+      ],
+      "ticks": 278
+    }
+  },
+  {
+    "key": "8",
+    "before": {
+      "camera": "CAM09_CUTAWAY",
+      "mode": "showcase",
+      "physical": [
+        -0.000009901131306833122,
+        0.8891748785972595,
+        -2.0100162029266357
+      ],
+      "ticks": 278
+    },
+    "returned": {
+      "camera": "FP_AISLE",
+      "mode": "first-person",
+      "physical": [
+        -0.000002104308123307419,
+        0.889176607131958,
+        -1.100005865097046
+      ],
+      "ticks": 362
+    },
+    "moved": {
+      "camera": "FP_AISLE",
+      "mode": "first-person",
+      "physical": [
+        -0.0000056253275033668615,
+        0.8891748189926147,
+        -2.056652545928955
+      ],
+      "ticks": 421
+    }
+  }
+]

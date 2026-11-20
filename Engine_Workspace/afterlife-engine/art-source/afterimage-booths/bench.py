@@ -11,8 +11,7 @@ def plan(vip,foyer,exterior=False):
         # in the profile correspond to millimetres across its physical thickness.
         specs=[(.06-.0665,outer_y-.0665,.190),(.06+.0665,outer_y+.0665,.057)]
         upper=[(.06-.0665,high_y+.0665,.190),(.06+.0665,high_y-.0665,.057)]
-        far=1.87 if foyer else end
-        is_u=vip or foyer
+        far=1.51 if foyer else end if vip else 1.09
     else:
         end=1.95 if vip else 2.13
         # Both rails arrive tangentially at the side and main seat edges. The
@@ -20,8 +19,7 @@ def plan(vip,foyer,exterior=False):
         return_depth=.060 if foyer else 0.
         specs=[(.165,.185,.380),(.792,.708+return_depth,.227)]
         upper=[(.165,2.415,.380),(.792,1.892-return_depth,.227)]
-        far=1.92 if foyer else end
-        is_u=vip or foyer
+        far=1.56 if foyer else end if vip else 1.14
     stations=[]
     def segment(f,count):
         for i in range(1 if stations else 0,count+1):
@@ -35,12 +33,11 @@ def plan(vip,foyer,exterior=False):
     low_in=arc(specs,0,1); low_out=arc(specs,1,1)
     segment(lambda t:between(low_start,low_in,t),70)
     segment(lambda t:arc(specs,t,1),32)
-    main_end=arc(upper,1,-1) if is_u else [(x,2.555 if exterior else 2.531) for x,y,r in specs]
+    main_end=arc(upper,1,-1)
     segment(lambda t:between(low_out,main_end,t),100)
-    if is_u:
-        segment(lambda t:arc(upper,1-t,-1),32)
-        upper_out=arc(upper,0,-1)
-        segment(lambda t:between(upper_out,[(far,y) for _,y,_ in upper],t),70)
+    segment(lambda t:arc(upper,1-t,-1),32)
+    upper_out=arc(upper,0,-1)
+    segment(lambda t:between(upper_out,[(far,y) for _,y,_ in upper],t),70)
     return stations
 
 def sweep(stations,profile,emit,styles,default,seams=False,end_radius=0.,seam_mat=None,heights=None):
@@ -104,7 +101,7 @@ def sweep(stations,profile,emit,styles,default,seams=False,end_radius=0.,seam_ma
                  default,False)
     emit(verts,faces,uv,smooth,materials)
 
-def build_bench(vip,foyer,emit,leather,welt,enamel,bronze,amber,lens,smoke):
+def build_bench(vip,foyer,emit,leather,welt,enamel,bronze,amber,lens,smoke,reflector=None):
     rail=plan(vip,foyer)
     # A 53 mm bullnose, slow crown, lower rolled welt, and a recessed toe line.
     cushion=[(.025,.351,0),(.87,.351,0),(.94,.354,0),(.975,.365,.12),
@@ -118,7 +115,16 @@ def build_bench(vip,foyer,emit,leather,welt,enamel,bronze,amber,lens,smoke):
     kick=[(.035,.008,0),(.76,.008,0),(.81,.022,0),(.82,.076,0),(.852,.084,0),
           (.89,.087,0),(.90,.092,0),(.90,.100,0),(.895,.105,0),(.922,.115,0),
           (.929,.322,0),(.915,.351,0),(.86,.363,0),(.04,.363,0)]
-    sweep(rail[::2]+([rail[-1]] if (len(rail)-1)%2 else []),kick,emit,{4:bronze,5:lens,6:lens,7:bronze},enamel,end_radius=.014)
+    kick_materials={4:bronze,5:lens,6:lens,7:bronze}
+    if not vip:
+        # Recessed reflector below the 33 mm diffuser returns onto the grounded
+        # foot. Its exposed bronze lip catches the amber light around each bend.
+        kick[2:10]=[(.89,.016,0),(.890,.033,0),(.842,.056,0),(.854,.060,0),
+                    (.870,.065,0),(.870,.098,0),(.878,.105,0),(.922,.121,0)]
+        kick_materials.update({3:reflector or bronze,4:reflector or bronze,5:bronze,6:lens,7:bronze,8:bronze})
+    if foyer:
+        kick_materials.update({9:leather,10:welt,11:leather})
+    sweep(rail[::2]+([rail[-1]] if (len(rail)-1)%2 else []),kick,emit,kick_materials,enamel,end_radius=.014)
     shell=plan(vip,foyer,True)
     # The exterior is one bent shell. Parallel flanged rails turn with it.
     # A hidden lower shoe supports the raised fascia all the way around the
@@ -135,10 +141,10 @@ def build_bench(vip,foyer,emit,leather,welt,enamel,bronze,amber,lens,smoke):
         (.048,.845,enamel),(.048,.157,bronze),(.022,.149,bronze),(0,.145,bronze),
         (0,.091,bronze),(.029,.080,enamel),(.13,.076,enamel)]
     def head_lift(i):
-        if not (foyer or vip):return 0.
+        if not vip:return 0.
         # Smoothly raise the amber cap at the far back and return it into the ends.
         blend=max(0.,min(1.,(i-74)/26,(228-i)/26))
-        return (.157 if vip else .135)*blend*blend*(3-2*blend)
+        return .157*blend*blend*(3-2*blend)
     sweep(shell,[(u,z,0.) for u,z,_ in section],emit,
           {j:m for j,(_,_,m) in enumerate(section)},enamel,heights=head_lift)
     return shell,head_lift

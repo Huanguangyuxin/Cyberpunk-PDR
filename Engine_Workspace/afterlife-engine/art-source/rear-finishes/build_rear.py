@@ -4,6 +4,7 @@ import bpy
 from mathutils import Vector, Quaternion
 import math
 import runpy
+import json
 import subprocess
 from tempfile import TemporaryDirectory
 import numpy as np
@@ -85,35 +86,6 @@ for x in [-7,7,-1.75,1.75]:
 for z in [-.09,-19.73]:
     box('Threshold band',trim,(0,.015,z),(27.95,.003,.035),.0006)
 
-# Place finishes against the original shell. Upper sheets lie behind the
-# existing graphic faces. Raised vents occupy separate service bands.
-def panel(sidewall, anchor, u, y, width, height, detail=False, inset=.01, face=steel):
-    def part(label, mat, du, dy, front, w, h, d, radius):
-        if sidewall:
-            side=1 if anchor>0 else -1
-            pos=(anchor-side*front,y+dy,u+du)
-            size=(d,h,w)
-        else:
-            pos=(u+du,y+dy,anchor+front if anchor<0 else anchor-front)
-            size=(w,h,d)
-        box(label,mat,pos,size,radius)
-    part('Gunmetal cassette' if face == steel else 'West graphite cassette',face,0,0,inset,width-.018,height-.019,.016,.003)
-    for a in [-1,1]:
-        for b in [-1,1]:
-            part('Captive panel bolts',trim,a*(width/2-.052),b*(height/2-.054),inset+.011,.027,.027,.010,.004)
-    if detail:
-        part('Service recess',joint,0,0,inset+.013,width*.64,height*.49,.015,.004)
-        for i in range(4):
-            part('Stamped vent louvers',trim,-width*.065,(i-1.5)*height*.074,inset+.024,width*.39,.018,.022,.004)
-        for i in range(2):
-            part('Status LEDs',cyan,width*(.19+i*.053),0,inset+.025,.045,.018,.015,.003)
-
-for side in [-1,1]:
-    for i in range(8):
-        x=side*(2.39+i*1.52)
-        for j in range(4):
-            panel(False,0,x,.47+j*.94,1.52,.94,(i+j)%6==2,inset=.026)
-
 # Structural finishes fitted around the D189 countertop, original worktop and
 # server opening. X and Z are the x/z coordinates of the reviewed engine.
 cobalt=finish('cobalt')
@@ -131,7 +103,7 @@ cobalt_shader=cobalt.node_tree.nodes.get('Principled BSDF')
 scatter=cobalt.node_tree.nodes.new('ShaderNodeTexImage')
 scatter.image=bpy.data.images.load(str(Path(__file__).parent/'maps/cobalt-scatter.png'))
 cobalt.node_tree.links.new(scatter.outputs['Color'],cobalt_shader.inputs['Emission Color'])
-cobalt_shader.inputs['Emission Strength'].default_value=.94
+cobalt_shader.inputs['Emission Strength'].default_value=21.
 cobalt_shader.inputs['IOR'].default_value=1.51
 cobalt_shader.inputs['Coat Weight'].default_value=.52
 cobalt_shader.inputs['Coat Roughness'].default_value=.16
@@ -148,47 +120,44 @@ def transmitting_layer(name,tint,roughness,ior):
 
 # The copper skirt has its own baked colour and roughness without changing the canopy.
 copper_skirt=finish('copper')
-warm_reflector=diode('Amber reflector behind the perforations',(1,.39,.085),1.45)
+warm_reflector=diode('Amber reflector behind the perforations',(.46,.16,.035),.55)
 front_glass=transmitting_layer('Low iron front glazing',(.978,.995,1),.056,1.50)
-flowing_water=transmitting_layer('Cavity water film',(.925,.974,1),.072,1.333)
+flowing_water=transmitting_layer('Cavity water film',(.978,.994,1),.045,1.0003)
 
 def install_water_frame():
-    # Sample both the free surface and its contact surface on the cobalt slab.
+    # The authoring preview contains rising bubbles and the full cassette in
+    # one node. The engine replaces both with the same running geometry.
+    vertices,faces,texcoords,slots=[],[],[],[]
     with TemporaryDirectory() as work:
         subprocess.run(['node','--experimental-strip-types',str(Path(__file__).with_name('water_frame.mjs')),work],check=True)
-        p=np.fromfile(Path(work)/'position',dtype='<f4').reshape(-1,3)
-        normals=np.fromfile(Path(work)/'normal',dtype='<f4').reshape(-1,3)
-        backing=np.fromfile(Path(work)/'backingPosition',dtype='<f4').reshape(-1,3)
-        uv=np.fromfile(Path(work)/'uv',dtype='<f4').reshape(-1,2)
-        front=np.fromfile(Path(work)/'indices',dtype='<u4').reshape(-1,3).copy()
-    # Convert engine XYZ to Blender X,-Z,Y; preserve the perimeter and UVs.
-    assert backing.shape==p.shape and np.isfinite(backing).all()
-    thickness=np.einsum("ij,ij->i",p-backing,normals)
-    assert np.isfinite(thickness).all() and 0 < thickness.max() < .033
-    # The runtime hides dry vertices inside the stone. Keep only faces
-    # fully above its surface when closing the solid DCC preview mesh.
-    front=front[thickness[front].min(axis=1)>.00001]
-    blended=np.concatenate([p,backing])[:,[0,2,1]]
-    blended[:,1]*=-1
-    original_edges=np.concatenate([front[:,[0,1]],front[:,[1,2]],front[:,[2,0]]])
-    _,edge_index,edge_counts=np.unique(np.sort(original_edges,axis=1),axis=0,return_index=True,return_counts=True)
-    outline=original_edges[edge_index[edge_counts==1]]
-    count=len(p)
-    back=(front[:,::-1]+count).tolist()
-    sides=[(int(a),int(a)+count,int(b)+count,int(b)) for a,b in outline]
+        for slot,prefix in enumerate(('bubbles','tank')):
+            p=np.fromfile(Path(work)/(prefix+'-position'),dtype='<f4').reshape(-1,3)
+            uv=np.fromfile(Path(work)/(prefix+'-uv'),dtype='<f4').reshape(-1,2)
+            tris=np.fromfile(Path(work)/(prefix+'-indices'),dtype='<u4').reshape(-1,3)
+            area=np.linalg.norm(np.cross(p[tris[:,1]]-p[tris[:,0]],p[tris[:,2]]-p[tris[:,0]]),axis=1)
+            tris=tris[area>1e-12]
+            used,indices=np.unique(tris,return_inverse=True)
+            coords=p[used][:,[0,2,1]]
+            coords[:,1]*=-1
+            faces.extend((indices.reshape(-1,3)+len(vertices)).tolist())
+            slots.extend([slot if slot==0 or uv[t[0],1]<2 else 2 for t in tris])
+            vertices.extend(coords.tolist())
+            texcoords.extend(uv[used].tolist())
     mesh=bpy.data.meshes.new('Y-layer flowing water')
-    mesh.from_pydata(blended.tolist(),[],front.tolist()+back+sides)
+    mesh.from_pydata(vertices,[],faces)
     mesh.update()
     obj=bpy.data.objects.new(mesh.name,mesh)
     scene.collection.objects.link(obj)
     mesh.materials.append(flowing_water)
-    for face in mesh.polygons[:len(front)*2]:
-        face.use_smooth=True
-    tex=mesh.uv_layers.new(name='Flow')
+    mesh.materials.append(transmitting_layer('Aerated cassette liquid',(.83,.97,1),.04,1.333))
+    mesh.materials.append(steel)
+    for face,slot in zip(mesh.polygons,slots):
+        face.material_index=slot
+        face.use_smooth=slot==0
+    tex=mesh.uv_layers.new(name='Aeration')
     for loop in mesh.loops:
-        tex.data[loop.index].uv=uv[loop.vertex_index%count]
-    obj['source']='pdr-cobalt-stream-geometry.ts · primed film on cobalt'
-    obj['film_peak_mm']=float(thickness.max()*1000)
+        tex.data[loop.index].uv=texcoords[loop.vertex_index]
+    obj['source']='pdr-cobalt-stream-geometry.ts · full cassettes and rising submerged air'
 
 def section_prism(name,material,plan,bottom,top,radius,cap_top=True):
     # Orient top normal toward Blender +Z regardless of footprint winding.
@@ -255,7 +224,8 @@ inlaid_ribbon([(-1.89,-.08),(-1.89,-2.13),(1.89,-2.13),(1.89,-.08)])
 # with diagonal returns that follow the folded counter rather than the room grid.
 inlaid_ribbon([(10.0,-14.78),(8.18,-14.78),(7.75,-14.35),(7.75,-4.0),
                (8.69,-2.91),(12.83,-2.91)], ordering_zone=True)
-front_path=[(10.10,-14.01),(10.035,-13.70),(10.035,-4.26),(10.34,-3.78),(13.23,-3.78)]
+footprint=json.loads((root/'assets/pdr-bar-footprint.json').read_text())
+front_path=[(10.10,-14.01),*map(tuple,footprint['stations'])]
 # Offset the entire polyline before building the cap, rails or each individual
 # glass depth. Its corner bisectors join each layered return on a single mitre.
 normals=[]
@@ -269,6 +239,9 @@ mitres=[normals[0]]
 for prev,nxt in zip(normals,normals[1:]):
     mitres.append((prev+nxt)/(1+prev.dot(nxt)))
 mitres.append(normals[-1])
+# Begin the first optical run on its own face normal; the adjacent rolled
+# end terminates in the dry joint before this optical assembly.
+mitres[1]=normals[1]
 def surface_station(point):
     # Locate the face and its common horizontal UV station on the folded bar.
     chain=0.
@@ -304,12 +277,28 @@ def top_outline(offset,near_offset):
     arc=end_turn(near_offset)
     return list(reversed(arc))+[(front_path[1][0]-offset,front_path[1][1]+.033)]+offset_path(offset)[2:]+[
         (13.25,-4.75),(11.0,-4.75),(11.0,arc[-1][1])]
-# The fascia subdeck steps back at the end. Only the 9 mm polished edge is visible.
-section_prism('Folded pewter guest counter',bar_silver,top_outline(.080,.042),.944,1.098,0,cap_top=False)
-section_prism('Folded pewter guest counter',bar_silver,top_outline(.094,.075),1.098,1.107,0)
+# A single folded section: deep shadow under the overhang, sloped face
+# and a rounded outer lip. Every rail follows the same four plan facets.
+sections=[(.070,.069,.944),(.074,.070,.970),(.137,.083,1.071),
+          (.151,.088,1.091),(.153,.089,1.098),(.150,.088,1.104),(.144,.084,1.107)]
+rings=[[(x,-z,h) for x,z in top_outline(offset,end)] for offset,end,h in sections]
+verts,polys=groups.setdefault(('Folded pewter guest counter',bar_silver,0),([],[]))
+ring_size=len(rings[0])
+# Source plan winds counterclockwise in engine x/z, hence clockwise in Blender x/y.
+if sum(x*y2-x2*y for (x,y,_),(x2,y2,_) in zip(rings[0],rings[0][1:]+rings[0][:1]))<0:
+    rings=[list(reversed(row)) for row in rings]
+for row in rings:
+    verts.extend(row)
+polys.append(tuple(reversed(range(ring_size))))
+for level in range(len(rings)-1):
+    lower=level*ring_size
+    for i in range(ring_size):
+        j=(i+1)%ring_size
+        polys.append((lower+i,lower+j,lower+ring_size+j,lower+ring_size+i))
+polys.append(tuple((len(rings)-1)*ring_size+i for i in range(ring_size)))
 # A solid toe follows the glass area. The lower band wraps its stationary
 # tangent into the terminal skin without leaving the old diagonal rail behind.
-for inset,lower,upper in [(.067,.018,.073),(.071,.073,.248),(.076,.248,.26),(.060,.26,.272)]:
+for inset,lower,upper in [(.039,.018,.073),(.049,.073,.248),(.059,.248,.26),(.060,.26,.272)]:
     skirt_plan=straight_run(inset)+list(reversed(straight_run(-.022)))
     section_prism('Bar copper plinth',copper_skirt,skirt_plan,lower,upper,.003)
 def cut_face(name,material,front,back,radius):
@@ -325,66 +314,40 @@ def cut_face(name,material,front,back,radius):
         j=(i+1)%n
         polys.append((start+i,start+n+i,start+n+j,start+j))
 
-for k,(a,b) in enumerate(zip(front_path,front_path[1:])):
-    dx,dz=b[0]-a[0],b[1]-a[1]
-    run=math.hypot(dx,dz)
-    def behind(u,h,d):
-        t=u/run
-        m=mitres[k].lerp(mitres[k+1],t)
-        return (a[0]+dx*t+m.x*d,-a[1]-dz*t-m.y*d,h)
-    def panel_face(name,mat,outline,offset,depth,bevel):
-        cut_face(name,mat,[behind(u,h,offset) for u,h in outline],
-                 [behind(u,h,offset-depth) for u,h in outline],bevel)
-    if k==0:
-        continue  # The former straight starter has been replaced with the formed end.
-    strip_between('Bar panel shadow carrier',joint,a,b,.579,.918,.027,.006)
-    lo,hi=.272,.918
-    def rail(name,mat,low,high,offset,thickness,radius):
-        panel_face(name,mat,[(0,low),(run,low),(run,high),(0,high)],offset,thickness,radius)
-    # A recessed 5 mm amber line grazes the copper kick below the cold water sill.
-    rail('Bar lower blue edge',toe_light,.033,.036,.0528,.003,.0005)
-    rail('Cabinet upper glazing bead',bar_silver,.918,.944,.069,.034,.0015)
-    if k>0:
-        edge0_top=edge0_lo=0
-        edge1_top=edge1_lo=run
-        bays=(8,1,3)[k-1]
-        for j in range(bays):
-            bl=edge0_lo+(edge1_lo-edge0_lo)*j/bays+.005
-            br=edge0_lo+(edge1_lo-edge0_lo)*(j+1)/bays-.005
-            tl=edge0_top+(edge1_top-edge0_top)*j/bays+.005
-            tr=edge0_top+(edge1_top-edge0_top)*(j+1)/bays-.005
-            outline=[(bl,lo),(br,lo),(tr,hi),(tl,hi)]
-            panel_face('Cobalt kiln cast modules',cobalt,outline,.024,.007,.0015)
-            panel_face('Y-layer clear glazing',front_glass,outline,.065,.008,.0014)
-            # The return shoe slopes toward a narrow drain immediately
-            # behind the front glass. Its wet surface is visible through the
-            # pane. The folded nose shields the bottom LED from a guest's eye.
-            profile=[(bl,.294,.024),(bl,.2747,.051),(br,.2747,.051),(br,.294,.024)]
-            top=[behind(u,y,d) for u,y,d in profile]
-            underside=[behind(u,y-.0014,d) for u,y,d in profile]
-            cut_face('Internal water supply and collector',pewter,top,underside,.00035)
-            for low,high,reach,depth in [(.273,.2778,.0548,.0018),
-                                          (.920,.926,.035,.011)]:
-                panel_face('Internal water supply and collector',pewter,
-                           [(bl,low),(br,low),(tr,high),(tl,high)],reach,depth,.00035)
-            # Continuous dry rebates support the lower and upper corners. The
-            # standing metal edge sits 2 mm inside the outer face of the pane.
-            for low,high in [(lo-.004,lo+.0018),(hi-.0018,hi+.004)]:
-                ll=(low-lo)/(hi-lo)
-                hh=(high-lo)/(hi-lo)
-                panel_face('Y-layer glazing retainers',pewter,
-                           [(bl+(tl-bl)*ll,low),(br+(tr-br)*ll,low),
-                            (br+(tr-br)*hh,high),(bl+(tl-bl)*hh,high)],
-                           .063,.043,.0007)
-            # The slim edge lens sits inside the glazing silhouette. Cut each
-            # to the diagonal module and keep the vertical reveal dark.
-            for low,high,reach in [(lo+.002,lo+.004,.0525),(hi-.012,hi-.004,.043)]:
-                ll=(low-lo)/(hi-lo)
-                hh=(high-lo)/(hi-lo)
-                panel_face('X-facing cobalt edge lenses',glass_lens,
-                           [(bl+(tl-bl)*ll+.010,low),(br+(tr-br)*ll-.010,low),
-                            (br+(tr-br)*hh-.010,high),(bl+(tl-bl)*hh+.010,high)],
-                           reach,.0014,.00035)
+# Sweep each optical skin through every physical change in direction. Only the
+# ends are closed: there are no transverse walls or capped joints in the bend.
+def bar_extrusion(name,mat,cross,radius=0):
+    verts,faces=groups.setdefault((name,mat,radius),([],[]))
+    start=len(verts)
+    n=len(cross)
+    for (x,z),m in zip(front_path[1:],mitres[1:]):
+        verts.extend((x+m.x*offset,-z-m.y*offset,height) for offset,height in cross)
+    faces.append(tuple(start+i for i in range(n)))
+    for run in range(len(front_path)-2):
+        head=start+run*n
+        for i in range(n):
+            j=(i+1)%n
+            faces.append((head+i,head+n+i,head+n+j,head+j))
+    head=start+(len(front_path)-2)*n
+    faces.append(tuple(head+i for i in reversed(range(n))))
+
+def bar_band(name,mat,lo,hi,front,depth,radius=0):
+    bar_extrusion(name,mat,[(front,lo),(front,hi),(front-depth,hi),(front-depth,lo)],radius)
+
+bar_band('Bar panel shadow carrier',joint,.28,.915,-.003,.020)
+bar_band('Bar lower blue edge',toe_light,.033,.036,.0528,.003)
+bar_band('Cabinet upper glazing bead',bar_silver,.918,.944,.069,.034,.0015)
+bar_band('Cobalt kiln cast modules',cobalt,.272,.918,.024,.007)
+bar_band('Y-layer clear glazing',front_glass,.272,.918,.065,.008)
+bar_extrusion('Internal water supply and collector',pewter,
+             [(.024,.294),(.051,.2747),(.051,.2733),(.024,.2926)])
+for lo,hi,front,thickness in [(.273,.2778,.0548,.0018),(.920,.926,.035,.011)]:
+    bar_band('Internal water supply and collector',pewter,lo,hi,front,thickness)
+for lo,hi in [(.268,.2738),(.9162,.922)]:
+    bar_band('Y-layer glazing retainers',pewter,lo,hi,.063,.043)
+# Two continuous concealed rails light the entire folded backdrop.
+for lo,hi,front in [(.274,.276,.0525),(.906,.914,.043)]:
+    bar_band('X-facing cobalt edge lenses',glass_lens,lo,hi,front,.0014)
 
 # Broad sealed skins at both ends, including the original steel core.
 # At the stair end a single bent sheet meets the low prep cabinet on its inner side.
@@ -393,14 +356,14 @@ def end_skin(outside,inside):
     inner=end_turn(inside)
     # The rear return is cut square to the working aisle.
     return arc+[(11.003,arc[-1][1]),(11.003,inner[-1][1])]+list(reversed(inner))
-section_prism('Wrapped pewter counter ends',bar_silver,end_skin(.069,.041),.073,1.098,.004)
-section_prism('Bar copper plinth',copper_skirt,end_skin(.067,.035),.018,.073,.003)
+section_prism('Wrapped pewter counter ends',bar_silver,end_skin(.069,.041),.073,.944,.004)
+section_prism('Bar copper plinth',copper_skirt,end_skin(.039,.018),.018,.073,.003)
 
 # The second cheek ends the 90-degree return at the foyer. It spans its entire
 # depth, including the lip and shoe behind the last clear pane.
 section_prism('Wrapped pewter counter ends',bar_silver,
               [(13.229,-3.713),(13.252,-3.713),(13.252,-4.749),(13.229,-4.749)],
-              .073,1.098,.004)
+              .073,.944,.004)
 section_prism('Bar copper plinth',copper_skirt,
               [(13.228,-3.708),(13.253,-3.708),(13.253,-4.751),(13.228,-4.751)],
               .018,.073,.003)
@@ -434,43 +397,37 @@ for x in (11.011,11.590):
     box('Prep end satin apron',bar_silver,(x,.472,(end_z-13.899)/2),
         (.015,.800,-13.899-end_z),.005)
 
-# Four folded, perforated shades project from the back bar on steel returns.
-# Each bore is open through both skins. A baffled undertray conceals the LEDs.
-def folded_bar_shade(zcentre,width,variant,tier):
-    cols,rows=round(width/.075),14
+# Three independent diagonal valances. Each presents a pierced, nearly
+# upright face, folded top wing and closed lip to a guest at standing height.
+def folded_bar_shade(zcentre,width,tier):
+    cols,rows=round(width/.067),11
     verts,polys=groups.setdefault(('Perforated canopy blades',canopy_bronze,0),([],[]))
     rim=[(-1,-1),(0,-1),(1,-1),(1,0),(1,1),(0,1),(-1,1),(-1,0)]
+    def depth(u):
+        return .42+.29*(1-abs(2*u))
     def P(u,v,layer=0):
-        # The staggered rolls make continuous eaves; the long outside arris stays level.
-        # A short return bevel sweeps into the tip at each end of the run.
-        corner=max(0,(abs(u)-.39)/.11)
-        x=11.82+.155*tier+.105*(variant%2)+.24*corner+1.27*v
-        h=2.73+.33*tier+.065*(variant%2)+.025*u+.39*v+.055*max(0,2*v-1)
-        return (x+layer*.33,-(zcentre+width*u+.21*v),h-layer*.94)
+        run=zcentre+width*u
+        # The lower arris follows a raked sill while the upper arris runs
+        # back and sideways into a pointed folded nose.
+        x=12.02+.40*tier+.12*v+.065*u+layer
+        h=3.03+.48*tier+.082*(run+9.5)+depth(u)*v-layer*.20
+        z=run+(.38+.09*tier)*v
+        return (x,-z,h)
     def flange(u,v):
-        # The underside slopes back toward the wall behind the blade.
         x,y,h=P(u,v)
-        return (x,y,h-.052-.105*v)
+        return (x+.10,y,h-.048)
     def closed_patch(group,mat,points,offset,radius):
         cut_face(group,mat,points,[(x+offset[0],y+offset[1],h+offset[2]) for x,y,h in points],radius)
     for row in range(rows):
         for col in range(cols):
             u=(col+.5)/cols-.5
             v=(row+.5)/rows
-            aperture=.014+.0035*math.sin(.27*col+row*.53+variant)
+            aperture=min(.017+.004*math.sin(.27*col+row*.53+tier),.44*math.hypot(.12,depth(u))/rows)
             base=len(verts)
             for layer in (0,.008):
                 verts.extend(P(u+ox/(2*cols),v+oy/(2*rows),layer) for ox,oy in rim)
                 verts.extend(P(u+ox/math.hypot(ox,oy)*aperture/width,
-                               v+oy/math.hypot(ox,oy)*aperture/1.65,layer) for ox,oy in rim)
-            # Two frosted ends of each light pipe sit 0.5 mm inside the skin.
-            # At oblique views the near end remains visible past the 8 mm bore.
-            dv,df=groups.setdefault(('Zoned amber canopy backing',warm_reflector,0),([],[]))
-            cap=len(dv)
-            for depth in (.0005,.0075):
-                dv.extend(P(u+ox/math.hypot(ox,oy)*aperture*.96/width,
-                            v+oy/math.hypot(ox,oy)*aperture*.96/1.65,depth) for ox,oy in rim)
-            df.extend([tuple(cap+i for i in range(8)),tuple(cap+8+i for i in reversed(range(8)))])
+                               v+oy/math.hypot(ox,oy)*aperture/math.hypot(.12,depth(u)),layer) for ox,oy in rim)
             for i,(ox,oy) in enumerate(rim):
                 j=(i+1)%8
                 polys.extend([tuple(base+a for a in f) for f in
@@ -479,6 +436,23 @@ def folded_bar_shade(zcentre,width,variant,tier):
                 if ((ox==nx==-1 and col==0) or (ox==nx==1 and col==cols-1)
                   or (oy==ny==-1 and row==0) or (oy==ny==1 and row==rows-1)):
                     polys.append(tuple(base+a for a in (i,16+i,16+j,j)))
+    # The perforations stay open. Recessed alternating warm reflector
+    # fields and dark open bays give parallax through each folded sheet.
+    for bay in range(5):
+        u0=-.486+bay*.194
+        u1=u0+.178
+        # Narrow the tray to the rear return. A broad tray blocks the
+        # perforations at the shallow viewing angle from the public aisle.
+        va,vb=.835,.89
+        points=[P(u0,va,.048),P(u1,va,.048),P(u1,vb,.048),P(u0,vb,.048)]
+        closed_patch('Zoned amber canopy backing',warm_reflector,points,(0,0,.003),0)
+        # Folded charcoal receiver: light can still pass between trays and
+        # along both margins. The back face sits 87 mm behind the bronze.
+        dark=[P(u0,.12,.087),P(u1,.12,.087),P(u1,.83,.087),P(u0,.83,.087)]
+        closed_patch('Canopy recessed charcoal liners',steel,dark,(.004,0,0),0)
+        # Rear angle joins the reflector tray to the drilled fascia frame.
+        web=[P(u0,.87,.048),P(u0,.89,.048),P(u0,.89,0),P(u0,.87,0)]
+        closed_patch('Canopy reflector ties',steel,web,(0,.006,0),0)
     for u in (-.5,.5):
         pts=[P(u,0),flange(u,0),flange(u,1),P(u,1)]
         closed_patch('Canopy folded hems',canopy_bronze,pts,(0,.012 if u<0 else -.012,0),.003)
@@ -488,29 +462,36 @@ def folded_bar_shade(zcentre,width,variant,tier):
                      (.018,0,0),.003)
         closed_patch('Canopy standoff brackets',steel,[flange(left,.89),flange(right,.89),flange(right,1),flange(left,1)],
                      (0,0,.016),.004)
-    # Replace exposed bright bars with a strip tucked under the folded leading lip.
-    p,q=flange(-.46,.08),flange(.46,.08)
-    # The luminous strip follows all three axes of the lip.
-    vec=Vector(q)-Vector(p)
-    pts=[]
-    for t,d,h in [(0,0,0),(1,0,0),(1,.034,0),(0,.034,0)]:
-        v=Vector(p)+vec*t+Vector((d,0,h-.006))
-        pts.append(tuple(v))
-    closed_patch('Canopy internal diffusers',amber,pts,(0,0,.007),.004)
-    for u in (-.32,.32):
-        x,y,h=flange(u,.92)
-        box('Canopy standoff brackets',steel,((13.96+x)/2,h+.035,-y),
-            (13.96-x,.070,.075),.004)
-# A shadow seam separates each return. Shingled overhangs span the join
-# in the adjacent course, like the concept's overlapping folded valance.
-for tier,(ends,widths) in enumerate((
-    ((-14.16,-9.20),(4.91,4.93)),
-    ((-14.01,-10.85,-7.20),(3.11,3.60,3.03)),
-    ((-14.12,-8.86),(5.21,4.61)),
-)):
-    for index,(end,width) in enumerate(zip(ends,widths)):
-        folded_bar_shade(end+width/2,width,index,tier)
+    # A folded solid cap at the top of the pierced face is visible
+    # edge-on from the room and conceals the warm optical tray behind it.
+    for left,right in [(-.5,0),(0,.5)]:
+        a,b=P(left,1),P(right,1)
+        wing=[a,b,(b[0]+.18,b[1]-.12,b[2]-.065),(a[0]+.18,a[1]-.12,a[2]-.065)]
+        closed_patch('Canopy folded hems',canopy_bronze,wing,(0,0,-.008),.003)
+    for u in (-.42,0,.42):
+        x,y,h=P(u,.2)
+        box('Canopy standoff brackets',steel,((13.96+x)/2,h,-y),(13.96-x,.058,.060),.004)
 
+for low,high,tier in [(-14.02,-6.47,0),(-11.20,-3.98,1),(-14.18,-4.52,2)]:
+    folded_bar_shade((low+high)/2,high-low,tier)
+
+# Independent wall-mounted service lights retain their surveyed engine
+# positions under the new folded shades. Endpoints are before the .04 rake.
+for p,q in [((12.179327,8.9860,2.876264),(12.179327,4.4504,3.249406)),
+            ((12.074327,13.9468,2.525733),(12.074327,9.4296,2.897717))]:
+    vec=Vector(q)-Vector(p)
+    def extrude_strip(name,mat,d0,d1,h0,h1):
+        low=[tuple(Vector(p)+vec*t+Vector((d,0,h0)))
+             for t,d in ((0,d0),(0,d1),(1,d1),(1,d0))]
+        cut_face(name,mat,low,[(x,y,z+h1-h0) for x,y,z in low],0)
+    extrude_strip('Canopy internal diffusers',amber,0,.034,-.006,.001)
+    extrude_strip('Canopy cove housings',steel,-.003,0,-.006,.013)
+    extrude_strip('Canopy cove housings',steel,.034,.037,-.006,.013)
+    extrude_strip('Canopy cove housings',steel,0,.034,.001,.013)
+    for t in (.08,.5,.92):
+        x,y,h=Vector(p)+vec*t
+        box('Canopy cove mounting clips',steel,((x+13.96)/2,h+.031,-y),
+            (13.96-x,.036,.032),.001)
 
 # Side and entrance walls: real glazed ceramic over a setback dark grout bed.
 def wall_tiles(sidewall,anchor,start,end,top):
@@ -567,41 +548,18 @@ def wall_tiles(sidewall,anchor,start,end,top):
     for k in range(1,count):
         u=start+(end-start)*k/count
         wall_box('Tile head trim',pewter,u,(top+.11)/2,.033,top-.11,.032,.003,.084)
-    # One removable service cover near the corner of each long wall. The 
-    # graphite face sits forward of the tiled field with a thin nickel rim,
-    # four retained bolts and three narrow louvres below the top joint.
-    if end-start>8 and not sidewall:
-        service_u = start+1.03 if sidewall else end-.94
-        wall_box('Tile head trim',pewter,service_u,.93,.46,.54,.020,.003,.093)
-        wall_box('Gunmetal cassette',steel,service_u,.93,.435,.515,.018,.003,.11)
-        for side in (-1,1):
-            for level in (-1,1):
-                wall_box('Captive panel bolts',trim,service_u+side*.184,.93+level*.218,
-                         .021,.021,.009,.004,.124)
-        for line in range(3):
-            wall_box('Stamped vent louvers',trim,service_u,.96+line*.039,
-                     .284,.013,.017,.004,.125)
-    # Wider door-side return panels establish a strong entrance wall rhythm.
-    if not sidewall:
-        for k in range(count):
-            u=start+(end-start)*(k+.5)/count
-            wall_box('Gunmetal cassette',steel,u,1.972,(end-start)/count-.057,.47,.026,.003,.077)
-            wall_box('Tile head trim',pewter,u,2.221,(end-start)/count-.057,.018,.045,.003,.087)
-
 # Both dados continue behind their stairs to the gallery landing.
 wall_start,wall_end=-19.79,-.015
 dado_height=1.65
 for anchor in (-14,14):
     wall_tiles(True,anchor,wall_start,wall_end,dado_height)
-wall_tiles(False,0,-13.95,-1.52,1.65)
-wall_tiles(False,0,1.52,13.95,1.65)
-# Frame the double doors without narrowing the clear leaf swing.
-for sign in (-1,1):
-    box('Entry folded portal',pewter,(sign*1.41,1.44,-.10),(.13,2.84,.16),.013)
-    box('Entry portal reveal',amber,(sign*1.331,1.48,-.181),(.014,2.61,.015),.002)
-box('Entry portal head',pewter,(0,2.91,-.10),(2.95,.15,.16),.013)
-box('Entry portal head reveal',amber,(0,2.83,-.181),(2.66,.015,.012),.002)
-
+entry=runpy.run_path(str(Path(__file__).with_name('entrance_portal.py')))
+entry_materials=entry['materials']()
+entry_outer=entry['OUTER']
+entry_dado=entry['TILE_HEIGHT']
+wall_tiles(False,0,-13.95,-entry_outer,entry_dado)
+wall_tiles(False,0,entry_outer,13.95,entry_dado)
+entry['install'](box,cut_face,entry_materials,amber,pewter)
 for i in range(5):
     z=-6.04-i*1.68
     box('Bottle niche rear',steel,(13.84,1.24,z),(.020,2.46,1.68),.006)
@@ -628,6 +586,34 @@ for side,group_name in [(-1,'West graphite cassette'),(1,'Wrapped satin east wal
             box(group_name,graphite,(side*13.901,level,z),
                 (.012,sheet_height-.007,sheet_width-.007),.003)
 
+# Return the side-wall graphite finish across the entire entrance elevation.
+# Course edges meet the folded door surround. UVs use the same metric span
+# as the side walls so the brushing and roughness continue above the lintel.
+def entrance_course(left,right,bottom,top,columns):
+    span=(right-left)/columns
+    box('Entrance shadow bed',joint,((left+right)/2,(bottom+top)/2,-.077),
+        (right-left,top-bottom,.008),0)
+    for i in range(columns):
+        box('Entrance graphite lining',entry_materials[4],(left+(i+.5)*span,(bottom+top)/2,-.09),
+            (span-.007,top-bottom-.007,.012),.003)
+
+for bottom,top in [(entry_dado+.14,2.78),(2.78,3.80)]:
+    entrance_course(-13.90,-entry_outer,bottom,top,7)
+    entrance_course(entry_outer,13.90,bottom,top,7)
+for i in range(5):
+    bottom=3.80+i*(upper_top-3.80)/5
+    top=3.80+(i+1)*(upper_top-3.80)/5
+    entrance_course(-13.90,-entry_outer,bottom,top,7)
+    entrance_course(-entry_outer,entry_outer,bottom,top,3)
+    entrance_course(entry_outer,13.90,bottom,top,7)
+# Two recessed louver cabinets per side straddle the boundary of the wall finishes.
+for side in (-1,1):
+    x=side*3.49
+    for h in (1.41,2.36):
+        box('Entrance service bezel',steel,(x,h,-.119),(.78,.365,.040),.004)
+        for row in range(3):
+            box('Stamped vent louvers',pewter,(x,h+(row-1)*.072,-.148),
+                (.545,.016,.020),.002)
 # Section of the portrait-wall overhead cornice. The folded back and cut-off
 # lip conceal each row of LEDs, leaving a warm reflected field on the cassettes.
 # Baffles stop above the original artwork and clear its suspension cables.
@@ -775,7 +761,7 @@ def venue_sign(x,y,z,scale,east):
     def coord(u,v,d=0):
         return (x-d,-z-u*scale,y+v*scale) if east else (x-u*scale,-z+d,y+v*scale)
     outline=[(-.55,.90),(-.29,.83),(-.14,.70),(-.10,.52),(.02,.42),(.12,.37),(.04,.30),(.09,.26),(.02,.22),(.08,.16),(.06,.08),(-.04,.04),(-.23,-.03),(-.38,-.17),(-.47,-.33)]
-    for dx,mat in [(0,pearl),(.19,cyan)]:
+    for dx,mat in [(0,pearl),(.19,cyan if east else pearl)]:
         line=bpy.data.curves.new('Offset side profile','CURVE')
         line.dimensions='3D'
         line.bevel_depth=.012*scale
@@ -800,7 +786,7 @@ def venue_sign(x,y,z,scale,east):
     obj.rotation_euler=(math.pi/2,0,-math.pi/2 if east else math.pi)
     font.materials.append(pearl)
 venue_sign(13.70,6.47,-11.65,1.33,True)
-venue_sign(.88,3.18,-.16,.79,False)
+venue_sign(1.023,3.220,-.422,.738,False)
 
 # Continuous solid plinth below the three portrait-wall booths.
 # Root Z is 4 mm in the donor, so a 140 mm rise contacts the 144 mm deck.
@@ -856,7 +842,9 @@ for (group,mat,radius),(vertices,polys) in groups.items():
         u,v=[i for i in range(3) if i!=axis]
         for idx in poly.loop_indices:
             point=mesh.vertices[mesh.loops[idx].vertex_index].co
-            if mat in (bar_silver,copper_skirt):
+            if mat==entry_materials[0]:
+                uv.data[idx].uv=entry['folded_uv'](group,point.x,point.z)
+            elif mat in (bar_silver,copper_skirt):
                 if axis==2:
                     # Each rolled sheet follows its own long axis at the return.
                     if group=='Folded pewter guest counter' and poly.center.x>11.0:

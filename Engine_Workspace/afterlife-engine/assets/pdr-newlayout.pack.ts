@@ -1,5 +1,6 @@
 import {nativeViewport} from './pdr-native-resolution';
 import {installFixedLighting, fixedLightCapacity, fixedShadowNumbers} from './pdr-local-light-budget';
+import {completeRetiredSlots} from './pdr-imported-material-slots';
 import {installWallResponse} from './pdr-wall-response';
 import {nativeFloorAssets,nativeFloorGuid,nativeFloorMaterialKey} from './pdr-native-floor-assets';
 import {installDisplayHierarchy} from './pdr-display-hierarchy';
@@ -14,7 +15,7 @@ import {causticTextureAsset,installBarCaustic} from './pdr-bar-caustics';
 import {CAMERA_BLOOM,GTAO,nextHistoryVersion,validatePostProfile} from './pdr-post-profile-wb017';
 import {liquidOpticalAssets,liquidOpticalGuid,liquidOpticalKeys} from './pdr-liquid-optical-materials';
 import {drinkShellMaterial} from './pdr-drink-shell-material';
-import {installCafeChairRepair,installMovingHeads} from './pdr-fixtures-d051';
+import {installMovingHeads} from './pdr-fixtures-d051';
 import {installPlantRepair} from './pdr-plant-repair';
 import {installGlassGuardTrial} from './pdr-glass-guards';
 import {installOtherScreens} from './pdr-other-screens';
@@ -69,7 +70,7 @@ export const scene: Plugin.Object<{ readonly scene: string; readonly carpetScene
   readonly originalFloor:{readonly standard:readonly string[];readonly planar:readonly string[]};
   readonly installedFloor:{readonly standard:readonly string[];readonly planar:readonly string[]};
   readonly wb018Decor: string; readonly stageSign: string; readonly liquidTemplates: readonly string[];
-  readonly chairMesh: string; readonly headMeshes: readonly string[];
+  readonly headMeshes: readonly string[];
   readonly glassMaterial: string; readonly heroGlassMeshes: readonly string[]; readonly liquidMaterials: readonly string[];
   readonly collectorMaterial:string; readonly cobaltWater:string; readonly barCaustic:string; readonly heroRefractiveMaterial:string }> = {
   name: 'cyberpunk/newlayout-observer',
@@ -203,6 +204,16 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         else world.addComponent(fixture,{component:Visibility,data:{state:VisibilityStateValue.hidden}}).unwrap();
         yield ()=>world.set(fixture,Visibility,{state:oldState}).unwrap();
       }
+      // Retain imported slot IDs for authored overrides and repair only unused,
+      // default-less slots. The loaded scene owns the original material handles.
+      const importedMeshes=new Set(Array.from(world.query({read:[MeshFilter]}).unwrap(),row=>row.get(MeshFilter).assetHandle));
+      for(const handle of importedMeshes){
+        const mesh=assets.read(handle).unwrap();
+        const materialSlots=completeRetiredSlots(mesh);
+        if(!materialSlots)continue;
+        assets.update(handle,{materialSlots}).unwrap();
+        yield ()=>assets.update(handle,{materialSlots:mesh.materialSlots}).unwrap();
+      }
       ctx.gameHost?.setPointerLockAllowed?.(true);
       yield () => ctx.gameHost?.setPointerLockAllowed?.(false);
       yield () => worldDespawnScene(world, root).unwrap();
@@ -234,8 +245,6 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       yield ()=>world.despawn(barDrinkProbe).unwrap();
       const guards=installGlassGuardTrial(world,assets);
       yield ()=>guards.dispose();
-      const chairRepair=await installCafeChairRepair(world,assets,config.chairMesh);
-      yield ()=>chairRepair.dispose();
       const plantRepair=installPlantRepair(world,assets);
       yield ()=>plantRepair.dispose();
       const otherScreens=await installOtherScreens(world,assets,config.boothFoyer,config.boothHall,config.boothVip);
@@ -539,15 +548,11 @@ const readScaleBounds = (rootNames: readonly string[]) => {
           stageMist.tick();
           liquidMotion.tick();
           cobaltFlow.tick();
-          collector.tick();
           if (!world.hasResource(INPUT_SNAPSHOT_RESOURCE_KEY)) return;
           const input = world.getResource<InputSnapshot>(INPUT_SNAPSHOT_RESOURCE_KEY);
           const elapsed=world.getResource(Time).elapsed;
           if(elapsed-lastStatusTime>.1){publishHud();lastStatusTime=elapsed;}
           const hotKey = (code:string)=>keyboardAllowed&&(input.keyboard.downCode(code)||input.keyboard.justPressedCode(code));
-          const pump = hotKey('KeyK');
-          if (pump && !keys.get('KeyK')) cobaltFlow.toggleInlet();
-          keys.set('KeyK', pump);
           const disturb=hotKey('KeyJ');if(disturb&&!keys.get('KeyJ'))world.getResource<{disturb:(v:number)=>unknown}>('cyberpunk.liquids').disturb(1.5);keys.set('KeyJ',disturb);
           for(const code of ['KeyW','KeyA','KeyS','KeyD','Space'])if(hotKey(code))lastKey=code.replace('Key','');
           lastPointerLocked=input.mouse.pointerLocked;
@@ -632,7 +637,7 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         },
       }).unwrap();
       yield () => world.removeSystem(Update, 'cyberpunk-pdr-v2-observer').unwrap();
-      // One bar light, one dance-floor light and two moving heads own the four shadow maps.
+      // The two dance-floor downlights and two moving heads own the four shadow maps.
       const allSpots=Array.from(world.query({read:[Name,SpotLight]}).unwrap(),r=>({entity:r.entity,name:r.get(Name).value}));
       // Exact names come from the live32-light roster, not guessed IDs.
       const pick=(numbers:readonly number[])=>numbers.map(n=>{const l=allSpots.find(r=>Number(r.name.slice(1,3))===n);if(!l)throw Error('D063 shadow Spot missing '+n);return l;});
@@ -697,7 +702,6 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         readBarLighting: () => readBarLighting(),
         readCobaltFlow: () => ({...cobaltFlow.read(world.getResource(Time).elapsed),collector:collector.read()}),
         setCobaltLayerVisible: (which:'cover'|'water',visible:boolean) => cobaltFlow.setLayerVisible(which,visible),
-        setCobaltInlet: (open:boolean) => cobaltFlow.setInlet(open),
         setCobaltFlowPhase: (seconds:number|null) => cobaltFlow.setPhase(seconds),
         readLightRefinement: () => readLightRefinement(),
         tuneLight: (name:string,data:any) => lighting.set(name,data),
@@ -795,6 +799,6 @@ export default definePack({
         originalFloor:{standard:floorRefs(false,false),planar:floorRefs(false,true)},
         installedFloor:{standard:floorRefs(true,false),planar:floorRefs(true,true)},
         carpetScene: {$asset:'01a1bf45-9bff-7c0d-8252-4118f704fe14'},
-        scene: { $asset: '01a18cc0-f159-7553-a50c-527de6f6d645' }, wb018Decor: {$asset:'01a19ac5-5ad3-745b-a280-3f341ab888de'}, stageSign: {$asset:'01a19fd2-3fe1-706c-8d9f-456c597a27b3'}, liquidTemplates: [{$asset:'01a19004-fd33-7799-af85-7f526edf0b11'},{$asset:'01a19004-fd34-74bc-a0d4-c9ef090e01ff'},{$asset:'01a19004-fd34-74bc-a0d4-c9f0e787a828'},{$asset:'01a19004-fd34-74bc-a0d4-c9f116fd16e7'},{$asset:'01a19004-fd34-74bc-a0d4-c9f2485cabaf'}], glassMaterial:{$asset:GLASS_GUID}, liquidMaterials:liquidOpticalKeys.map(key=>({$asset:liquidOpticalGuid(key)})), barCaustic:{$asset:liquidOpticalGuid('texture/bar-caustic-d061')},heroRefractiveMaterial:{$asset:liquidOpticalGuid('material/hero-refractive-019')}, heroGlassMeshes:[{$asset:'01a19072-2965-797d-9284-3beb445d93b5'},{$asset:'01a19072-2965-797d-9284-3bedd366bfa0'},{$asset:'01a19072-2965-797d-9284-3beae95930bc'},{$asset:'01a19072-2965-797d-9284-3bec88871603'},{$asset:'01a19072-2965-797d-9284-3bee013ae40b'}], chairMesh:{$asset:'01a19043-06fe-7abd-bee2-3bbc7a1d954a'}, headMeshes:[{$asset:'01a19043-06fe-7abd-bee2-3bbe2acfb9a9'},{$asset:'01a19043-06fe-7abd-bee2-3bbf12acefd4'},{$asset:'01a19043-06fe-7abd-bee2-3bbdc32f9c5c'}] } },
+        scene: { $asset: '01a18cc0-f159-7553-a50c-527de6f6d645' }, wb018Decor: {$asset:'01a19ac5-5ad3-745b-a280-3f341ab888de'}, stageSign: {$asset:'01a19fd2-3fe1-706c-8d9f-456c597a27b3'}, liquidTemplates: [{$asset:'01a19004-fd33-7799-af85-7f526edf0b11'},{$asset:'01a19004-fd34-74bc-a0d4-c9ef090e01ff'},{$asset:'01a19004-fd34-74bc-a0d4-c9f0e787a828'},{$asset:'01a19004-fd34-74bc-a0d4-c9f116fd16e7'},{$asset:'01a19004-fd34-74bc-a0d4-c9f2485cabaf'}], glassMaterial:{$asset:GLASS_GUID}, liquidMaterials:liquidOpticalKeys.map(key=>({$asset:liquidOpticalGuid(key)})), barCaustic:{$asset:liquidOpticalGuid('texture/bar-caustic-d061')},heroRefractiveMaterial:{$asset:liquidOpticalGuid('material/hero-refractive-019')}, heroGlassMeshes:[{$asset:'01a19072-2965-797d-9284-3beb445d93b5'},{$asset:'01a19072-2965-797d-9284-3bedd366bfa0'},{$asset:'01a19072-2965-797d-9284-3beae95930bc'},{$asset:'01a19072-2965-797d-9284-3bec88871603'},{$asset:'01a19072-2965-797d-9284-3bee013ae40b'}], headMeshes:[{$asset:'01a19043-06fe-7abd-bee2-3bbe2acfb9a9'},{$asset:'01a19043-06fe-7abd-bee2-3bbf12acefd4'},{$asset:'01a19043-06fe-7abd-bee2-3bbdc32f9c5c'}] } },
   }),
 });

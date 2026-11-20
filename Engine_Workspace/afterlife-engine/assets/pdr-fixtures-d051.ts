@@ -22,23 +22,6 @@ export async function loadFixtureMeshes(assets:AssetRegistry,guids:readonly stri
  }
  return {rows,dispose:()=>{for(const h of held)assets.release(h).unwrap();}};
 }
-export async function installCafeChairRepair(world:World,assets:AssetRegistry,guid:string){
- const loaded=await loadFixtureMeshes(assets,[guid]),template=loaded.rows[0],saved:{entity:EntityHandle;pos:number[];quat:number[];mesh:AssetHandle<'mesh'>;materials:number[]}[]=[],changes:unknown[]=[];
- const rows=Array.from(world.query({read:[Name,Transform,MeshFilter,MeshRenderer]}).unwrap(),r=>({entity:r.entity,name:r.get(Name).value}));
- for(const row of rows){
-  const match=/^(RTABLE_[EW][1-3])_CHAIR_([1-3])$/.exec(row.name);if(!match)continue;
-  const table=rows.find(t=>t.name===match[1]);if(!table)throw new Error('D051 table missing '+match[1]);
-  const p=world.get(row.entity,Transform).unwrap(),t=world.get(table.entity,Transform).unwrap().pos,dx=p.pos[0]-t[0],dz=p.pos[2]-t[2],length=Math.hypot(dx,dz);if(length<.1)throw new Error('D051 invalid chair/table pair');
-  const radial=.76,pos=[t[0]+radial*dx/length,t[1],t[2]+radial*dz/length],yaw=Math.atan2(pos[0]-t[0],pos[2]-t[2]);
-  saved.push({entity:row.entity,pos:Array.from(p.pos),quat:Array.from(p.quat),mesh:world.get(row.entity,MeshFilter).unwrap().assetHandle,materials:Array.from(world.get(row.entity,MeshRenderer).unwrap().materials)});
-  world.set(row.entity,Transform,{pos,quat:Array.from(quat.fromEuler(quat.create(),0,yaw,0,'YXZ')),scale:[1,1,1]}).unwrap();
-  world.set(row.entity,MeshFilter,{assetHandle:template.handle}).unwrap();world.set(row.entity,MeshRenderer,{materials:template.materials}).unwrap();
-  changes.push({name:row.name,table:table.name,before:saved.at(-1)!.pos,position:pos,seatHeight:.46,front:'local -Z toward table centre',centreRadiusM:radial,tableEdgeToSeatFrontM:.76-.35-.2325});
- }
- if(saved.length!==18)throw new Error('D051 expected18 ground cafe chairs; got'+saved.length);
- world.insertResource('cyberpunk.chairs',{read:()=>({count:saved.length,source:'Codex Blender D051',beforePhysicsCooking:true,changes})});
- return {dispose:()=>{world.removeResource('cyberpunk.chairs');for(const s of saved){world.set(s.entity,Transform,{pos:s.pos,quat:s.quat}).unwrap();world.set(s.entity,MeshFilter,{assetHandle:s.mesh}).unwrap();world.set(s.entity,MeshRenderer,{materials:s.materials}).unwrap();}loaded.dispose();}};
-}
 export async function installMovingHeads(world:World,assets:AssetRegistry,guids:readonly string[]){
  const loaded=await loadFixtureMeshes(assets,guids),hidden:{entity:EntityHandle;state:number}[]=[];
  const oldHeads=Array.from(world.query({read:[Name]}).unwrap(),row=>({entity:row.entity,name:row.get(Name).value})).filter(row=>['STAGE_MOVING_HEAD_3','STAGE_MOVING_HEAD_4'].includes(row.name));

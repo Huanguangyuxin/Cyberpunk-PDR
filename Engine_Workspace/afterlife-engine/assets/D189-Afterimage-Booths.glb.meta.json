@@ -179,6 +179,21 @@
           "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fc029f9412",
           "slotName": "Warm lamp lens",
           "sourceKey": "material:Warm lamp lens"
+        },
+        {
+          "defaultMaterialGuid": "39c1be96-a49a-58df-99d5-c491adc12177",
+          "slotName": "Clear amber edge-lit screen",
+          "sourceKey": "material:Clear amber edge-lit screen"
+        },
+        {
+          "defaultMaterialGuid": "6e9ed442-436d-535b-8713-da53a29dfd40",
+          "slotName": "Honey opal plinth diffuser",
+          "sourceKey": "material:Honey opal plinth diffuser"
+        },
+        {
+          "defaultMaterialGuid": "f19b8fce-2bfd-5bb9-804c-4f16b7b0d106",
+          "slotName": "Warm bronze plinth reflector",
+          "sourceKey": "material:Warm bronze plinth reflector"
         }
       ]
     },
@@ -218,6 +233,21 @@
           "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fc029f9412",
           "slotName": "Warm lamp lens",
           "sourceKey": "material:Warm lamp lens"
+        },
+        {
+          "defaultMaterialGuid": "39c1be96-a49a-58df-99d5-c491adc12177",
+          "slotName": "Clear amber edge-lit screen",
+          "sourceKey": "material:Clear amber edge-lit screen"
+        },
+        {
+          "defaultMaterialGuid": "6e9ed442-436d-535b-8713-da53a29dfd40",
+          "slotName": "Honey opal plinth diffuser",
+          "sourceKey": "material:Honey opal plinth diffuser"
+        },
+        {
+          "defaultMaterialGuid": "f19b8fce-2bfd-5bb9-804c-4f16b7b0d106",
+          "slotName": "Warm bronze plinth reflector",
+          "sourceKey": "material:Warm bronze plinth reflector"
         }
       ]
     },
@@ -340,6 +370,27 @@
       "sourceKey": "material:Warm lamp lens"
     },
     {
+      "guid": "39c1be96-a49a-58df-99d5-c491adc12177",
+      "kind": "material",
+      "name": "Clear amber edge-lit screen",
+      "sourceIndex": 8,
+      "sourceKey": "material:Clear amber edge-lit screen"
+    },
+    {
+      "guid": "6e9ed442-436d-535b-8713-da53a29dfd40",
+      "kind": "material",
+      "name": "Honey opal plinth diffuser",
+      "sourceIndex": 9,
+      "sourceKey": "material:Honey opal plinth diffuser"
+    },
+    {
+      "guid": "f19b8fce-2bfd-5bb9-804c-4f16b7b0d106",
+      "kind": "material",
+      "name": "Warm bronze plinth reflector",
+      "sourceIndex": 10,
+      "sourceKey": "material:Warm bronze plinth reflector"
+    },
+    {
       "guid": "01a1f2ee-20e8-77a4-9858-94fd822a0ce6",
       "kind": "scene",
       "name": "Scene",
@@ -438,10 +489,17 @@
       "sourceKey": "texture:stone-orm"
     },
     {
+      "guid": "c7b7582b-4e35-5b44-89b3-ae2c0a2195ab",
+      "kind": "texture",
+      "name": "fluted-edge-light",
+      "sourceIndex": 13,
+      "sourceKey": "texture:fluted-edge-light"
+    },
+    {
       "guid": "01a1f79a-b0ed-7b12-b211-56e46682370b",
       "kind": "texture",
       "name": "D189 table lamp local irradiance",
-      "sourceIndex": 13,
+      "sourceIndex": 14,
       "sourceKey": "texture:D189 table lamp local irradiance"
     },
     {

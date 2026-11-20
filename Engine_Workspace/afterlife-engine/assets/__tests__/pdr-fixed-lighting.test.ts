@@ -9,7 +9,7 @@ it('keeps a fixed 32-light roster and four shadow sources, with reversible local
   function add(name:string,kind:unknown) {
     emitters.set(emitters.size,{name,kind,light:{intensity:40,range:4},transform:{pos:[1,2,3]}});
   }
-  for(let n=1;n<=32;n++)add('L'+String(n).padStart(2,'0')+'_fixture',[4,5,8,9,10,11].includes(n)?RectAreaLight:SpotLight);
+  for(let n=1;n<=32;n++)add('L'+String(n).padStart(2,'0')+'_fixture',[2,3,4,5,8,9,10,11,13,18].includes(n)?RectAreaLight:SpotLight);
   for(let i=1;i<=5;i++)add('mirror '+i,SpotLight);
   for(let i=1;i<=4;i++)add('PDR/bar local reflector/Niche cross wash '+i,SpotLight);
   const get=(i:number,c:unknown)=>{
@@ -24,10 +24,10 @@ it('keeps a fixed 32-light roster and four shadow sources, with reversible local
   const setup=installFixedLighting(world), state=setup.read();
   expect(state.nativeCount).toBe(32);
   expect(state.activeCount).toBe(32);
-  expect(state.shadowNumbers).toEqual([2,19,24,25]);
+  expect(state.shadowNumbers).toEqual([19,20,24,25]);
   expect(state.fixtures.filter(l=>isMergedLight(l.name))).toHaveLength(0);
   expect(emitters.get(10)?.light.intensity).toBe(40); // Stair fixture remains independently admitted.
-  expect(emitters.get(12)?.light.intensity).toBe(1280);
+  expect(emitters.get(12)?.light.intensity).toBe(345);
   expect(emitters.get(11)?.light.intensity).toBe(0); // Historical handle remains readable for diagnostics.
   setup.restore();
   expect([...emitters.values()].every(l=>l.light.intensity===40&&l.transform.pos.join()==='1,2,3')).toBe(true);

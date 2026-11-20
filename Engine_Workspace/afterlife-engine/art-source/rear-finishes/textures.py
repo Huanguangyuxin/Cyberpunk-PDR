@@ -80,20 +80,14 @@ def export_surface(key,colour,height,roughness,metalness):
     save(key+'-normal',127.5+127.5*normal/np.linalg.norm(normal,axis=2,keepdims=True))
     save(key+'-orm',np.stack([np.full_like(height,255),roughness,np.full_like(height,metalness)],axis=2))
 
-inclusions=np.zeros((n,n))
-for _ in range(1050):
-    x,y=rng.integers(0,n,size=2)
-    radius=rng.uniform(.65,3)
-    extent=int(np.ceil(radius*1.9))
-    iy,ix=np.mgrid[-extent:extent+1,-extent:extent+1]
-    rr=np.hypot(ix,iy)/radius
-    bubble=(np.exp(-((rr-.75)*3.7)**2)*(.50+.22*iy/radius)+.16*np.exp(-rr**2))
-    inclusions[np.ix_((y+np.arange(-extent,extent+1))%n,(x+np.arange(-extent,extent+1))%n)]+=bubble*rng.uniform(.6,1.4)
-glassnoise=.42*noise(9)+.28*noise(35)+.12*noise(128)
-g=np.clip(.24+glassnoise*.12+.56*inclusions,0,1)
-export_surface('cobalt',np.stack([6+27*g,24+84*g,76+155*g],2),
-               .12*glassnoise+.85*inclusions,51+14*g,16)
-save('cobalt-scatter',np.stack([2+12*g,18+48*g,70+115*g],2))
+# Blue-green diffuser behind the single water volume; real air supplies the glints.
+def bake_water_backing():
+    y,x=np.mgrid[:1024,:1024]*(2*np.pi/1024)
+    variation=.5+.23*np.sin(x+2*y)+.15*np.sin(3*x-y)+.10*np.cos(2*x+3*y)
+    export_surface('cobalt',np.stack([19+7*variation,27+9*variation,69+20*variation],2),
+                   .025*variation,72+9*variation,8)
+    save('cobalt-scatter',np.stack([7+2*variation,10+3*variation,27+6*variation],2))
+bake_water_backing()
 
 glaze=.52*noise(7)+.26*noise(49)+.12*noise(171)
 export_surface('garnet',np.stack([89+17*glaze,17+5*glaze,27+5*glaze],2),

@@ -1,0 +1,12 @@
+{
+  "artifacts": 202,
+  "bytes": 373507064,
+  "sha256": "19d570ff81ae627ba284ed9b5945cbc3c3457046d1405a9b38cef4e2d65f1158",
+  "port": 64757,
+  "health": {
+    "ready": true,
+    "expected": 117,
+    "admitted": 117,
+    "lights": 32
+  }
+}

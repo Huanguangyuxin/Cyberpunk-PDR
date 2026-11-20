@@ -117,22 +117,31 @@ def install(bpy, assets, ingest, group, xyz, drop):
         node.inputs['Emission Strength'].default_value=2.5
         return material
     amber=diffuser('Soffit · warm opal',(1,.48,.21))
-    cool=diffuser('Soffit · cool opal',(.18,.66,1))
+    cool=diffuser('Soffit · pale honey opal',(1,.76,.55))
+    def mounted(name,pos,dims,material):
+        x,y,z=pos
+        w,t,l=dims
+        box(name+' · steel channel',(x,y+t/2-.016,z),(w+.032,.032,l+.032),steel)
+        box(name,(x,y-.032,z),dims,material)
+    blue=diffuser('Dance rail · collimator optic',(.09,.38,1))
+    for i,(x,z) in enumerate([(5,-26.5),(-6,-31.5),(3.5,-35)]):
+        box(f'Dance optic bezel {i}',(x,8.577,z),(.17,.038,.17),steel)
+        box(f'Dance optic lens {i}',(x,8.554,z),(.115,.008,.115),blue)
     for i,z in enumerate([-2.75,-8.25,-13.75,-19.25]):
-        box(f'Transverse roof light {i}',(0,8.594,z),(26.8,.012,.12),[cool,amber][i%2])
-    for x in (-4.5,4.5):
-        box(f'Long roof beam light {x}',(x,8.594,-11),(.12,.012,16.8),amber)
+        mounted(f'Transverse roof light {i}',(0,8.594,z),(26.8,.012,.12),[cool,amber][i%2])
     for i,x in enumerate((-13.6,-11.2,-8.,8.,11.2,13.6)):
-        box(f'Roof strip {i}',(x,9.243,-10.5),(.15,.014,17.6),[amber,cool][i%2])
+        mounted(f'Roof strip {i}',(x,9.243,-10.5),(.15,.014,17.6),[amber,cool][i%2])
     for z in (-20.65,-21.75):
-        box(f'Bridge strip {z}',(0,3.344,z),(16,.012,.14),cool)
+        mounted(f'Bridge strip {z}',(0,3.344,z),(16,.012,.14),cool)
+    for z in (-19.92,-22.48):
+        mounted(f'Bridge beam {z}',(0,2.994,z),(16,.012,.11),amber if z==-19.92 else cool)
     for i,(z0,z1) in enumerate([(-26.65,-22.75),(-32.25,-27.15),(-37.85,-32.75),(-43.45,-38.35)]):
         for side in (-1,1):
             mid=(z0+z1)/2
-            for x,dims,m in [(9.475,(.14,.012,z1-z0),cool),(12.15,(.14,.012,z1-z0),amber),(12.3,(3.,.012,.14),[amber,cool][i%2])]:
-                box(f'Gallery strip {i} {side*x}',(side*x,3.344,mid),dims,m)
+            for x,dims,m in [(9.475,(.14,.012,z1-z0),cool),(12.15,(.14,.012,z1-z0),amber)]:
+                mounted(f'Gallery strip {i} {side*x}',(side*x,3.344,mid),dims,m)
     for side in (-1,1):
-        box(f'Gallery edge strip {side}',(side*8.425,2.994,-33.2),(.11,.012,21.),amber)
+        mounted(f'Gallery edge strip {side}',(side*8.425,2.994,-33.2),(.11,.012,21.),amber)
         for k in range(19):
             z=-14.62-k*.28
             lift=.45*max(0,min(1,(-14.46-z)/5.34))

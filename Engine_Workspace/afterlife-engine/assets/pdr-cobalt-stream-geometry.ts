@@ -1,7 +1,9 @@
 // World metres. The station lines and seals are shared with the rear-fittings GLB.
-const stations=[[10.035,-13.70],[10.035,-4.26],[10.34,-3.78],[13.23,-3.78]];
-const counts=[8,1,3];
-const high=.923, low=.287;
+import footprint from './pdr-bar-footprint.json' with {type:'json'};
+const {stations}=footprint;
+// The overflow sets the standing level independently of the supply valve.
+export const reservoirLevel=.907;
+const nozzleHeight=.303;
 const random=(k:number)=>{const v=Math.sin(k*78.233+12.9898)*43758.5453;return v-Math.floor(v);};
 type Segment={x:number;z:number;tx:number;tz:number;nx:number;nz:number;length:number};
 const segments:Segment[]=stations.slice(1).map(([x,z],i)=>{
@@ -13,190 +15,139 @@ function miter(a:Segment,b:Segment){
   const den=1+a.nx*b.nx+a.nz*b.nz;
   return [(a.nx+b.nx)/den,(a.nz+b.nz)/den];
 }
-const pathStarts=[0,segments[0].length,segments[0].length+segments[1].length];
-const backing=.024;
-const dy=(high-low)/40;
-const dt=1/60;
-const rows=40;
-// A seeded, smooth mineral permeability field. It is stationary in the stone.
-function smoothNoise(x:number,seed:number){
-  const k=Math.floor(x),a=x-k,w=a*a*(3-2*a);
-  return random(k+seed)*(1-w)+random(k+seed+1)*w;
-}
-export function createStreamGeometry(_runtime=false){
-  const bays=segments.flatMap((segment,section)=>{
-    const width=segment.length/counts[section];
-    return Array.from({length:counts[section]},(_,bay)=>{
-      const span=width-.038,left=width*bay+.019,cols=Math.ceil(span/.014);
-      const dx=span/cols;
-      const cells=rows*cols;
-      const seed=section*397+bay*61+7;
-      const supply=Array.from({length:Math.max(3,Math.round(span/.18))},(_,i)=>{
-        return {x:(i+.18+.64*random(seed+i))*span/Math.max(3,Math.round(span/.18)),
-          radius:.012+.026*random(seed+31+i),gain:.8+1.7*random(seed+51+i),key:seed+101*i};
-      });
-      const mouths=supply.map(feed=>({...feed,weights:Float32Array.from({length:cols},(_,i)=>{
-        const d=((i+.5)*dx-feed.x)/feed.radius;return Math.exp(-.5*d*d);
-      })}));
-      const down=new Float32Array(cells),side=new Float32Array(cells);
-      for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
-        const k=j*cols+i,x=(i+.5)*dx,y=(j+.5)*dy;
-        const mineral=smoothNoise(x*14+y*.9,seed+207);
-        // Gravity-driven acceleration approaches terminal speed under wall drag.
-        down[k]=(.21+.33*(1-Math.exp(-6*y)))*(.70+.44*mineral);
-        side[k]=(.22*(smoothNoise(x*4.2,seed+43)-.45)+.122)*Math.exp(-3.1*y)+.055*(smoothNoise(x*9+y*3.1,seed+337)-.5)+
-          .034*(smoothNoise(y*8+x*2.1,seed+601)-.5);
-      }
-      // A catchment spans a few bottom cells; its bubbles can only be born
-      // from volume that actually crossed this section of the lower boundary.
-      const pockets=Array.from({length:Math.ceil(cols/9)},(_,i)=>({
-        first:i*9,last:Math.min(cols,(i+1)*9),charge:0,pulseLiters:.045+.055*random(seed+19*i),
-        birth:-10,serial:0,impactX:0,discharge:0,moment:0,
-      }));
-      return {section,segment,left,span,cols,dx,mouths,down,side,pockets,h:new Float64Array(cells),
-        change:new Float64Array(cells),start:miter(segments[section-1]??segment,segment),
-        end:miter(segment,segments[section+1]??segment)};
-    });
+const rings=5,sides=8,verticesPerBubble=(rings+1)*sides;
+const longestRise=(reservoirLevel-nozzleHeight)/.136;
+
+export function createStreamGeometry(){
+  // Floor-plan stations are the actual bends in one channel. Plume
+  // locations are measured from the same service end, independent of bends.
+  const totalLength=segments.reduce((sum,s)=>sum+s.length,0);
+  const clusters=[[.48,.14,3],[1.91,.23,2],[3.02,.11,3],[5.78,.19,2],
+    [7.43,.15,3],[9.34,.18,2],[11.47,.13,3],[12.55,.25,2]];
+  let chain=0;
+  const strips=segments.map((segment,section)=>{
+    const origin=chain;
+    chain+=segment.length;
+    const jets=clusters.flatMap(([at,period,holes],g)=>
+      Array.from({length:holes},(_,i)=>{
+        const seed=113*g+i*23+11;
+        const location=at+(i-(holes-1)/2)*(.059+.054*random(seed+9));
+        return {seed,group:g,centre:location-origin,period:period*(.16+.085*random(seed+19)),
+          depth:.032+.016*random(seed+31)};
+      }).filter(jet=>jet.centre>=0&&jet.centre<segment.length));
+    return {segment,left:0,chain:origin,span:segment.length,totalLength,
+      start:miter(segments[section-1]??segment,segment),end:miter(segment,segments[section+1]??segment),jets};
   });
-  const count=bays.reduce((n,b)=>n+(rows+1)*(b.cols+1),0);
-  const position=new Float32Array(3*count),normal=new Float32Array(3*count),uv=new Float32Array(2*count);
-  const backingPosition=new Float32Array(3*count);
-  const indices=new Uint32Array(bays.reduce((n,b)=>n+6*rows*b.cols,0));
-  let startVertex=0,idx=0;
-  for(const b of bays){
-    for(let j=0;j<=rows;j++)for(let i=0;i<=b.cols;i++){
-      const v=startVertex+j*(b.cols+1)+i;uv[2*v]=pathStarts[b.section]+b.left+i*b.dx;uv[2*v+1]=j/rows;
-      const station=b.left+i*b.dx,a=station/b.segment.length;
-      backingPosition[3*v]=b.segment.x+station*b.segment.tx+(b.start[0]+a*(b.end[0]-b.start[0]))*backing;
-      backingPosition[3*v+1]=high-j*dy;
-      backingPosition[3*v+2]=b.segment.z+station*b.segment.tz+(b.start[1]+a*(b.end[1]-b.start[1]))*backing;
-      if(i<b.cols&&j<rows){const below=v+b.cols+1;indices.set([v,below,v+1,below,below+1,v+1],idx);idx+=6;}
-    }
-    startVertex+=(rows+1)*(b.cols+1);
-  }
-  const collector={
-    seconds:0,
-    strips:bays.map(b=>({
-      segment:b.segment,start:b.start,end:b.end,left:b.left,dx:b.dx,
-      flux:new Float32Array(b.cols),depth:new Float32Array(b.cols),pockets:b.pockets,
-    })),
-  };
-  let inletOpen=true,ticks=0,time=0,inflow=0,outflow=0;
-  function step(){
-    const t=ticks*dt;
-    for(const [bayIndex,b] of bays.entries()){
-      const {cols,dx,h,change}=b;
-      for(const p of b.pockets){p.discharge=0;p.moment=0;}
-      change.fill(0);
-      // Supply flux (m²/s per metre of slot) enters ONLY through the top boundary.
-      if(inletOpen){
-        for(let i=0;i<cols;i++)change[i]=.000038*dt/dy;
-        for(const m of b.mouths){
-          const drive=.07+.93*smoothNoise(t*2.35,m.key)**2+.44*smoothNoise(t*5.6,m.key+813);
-          const pulse=.00091*m.gain*drive*dt/dy;
-          for(let i=0;i<cols;i++)change[i]+=pulse*m.weights[i];
-        }
-        for(let i=0;i<cols;i++)inflow+=change[i]*dx*dy;
-      }
-      for(let k=0;k<h.length;k++){
-        const depth=h[k];
-        // Nonlinear mobility lets thicker slugs overtake the trailing wet film.
-        const speed=b.down[k]*(.56+.74*depth/(depth+.0018));
-        const forward=depth*speed*dt/dy;
-        change[k]-=forward;
-        if(k+cols<h.length)change[k+cols]+=forward;
-        else {
-          const discharge=forward*dx*dy/dt;
-          outflow+=discharge*dt;
-          const col=k%cols,p=b.pockets[Math.floor(col/9)];
-          p.discharge+=discharge;
-          p.moment+=discharge*(col+.5)*dx;
-          collector.strips[bayIndex].flux[col]=discharge/dx;
-          collector.strips[bayIndex].depth[col]=depth;
-        }
-        if(k%cols===cols-1)continue;
-        // Signed face flux: opposite cells exchange the EXACT same volume.
-        const right=h[k+1],v=b.side[k];
-        const lateral=(v*(v>=0?depth:right)+.016*(depth-right))*dt/dx;
-        change[k]-=lateral;change[k+1]+=lateral;
-      }
-      for(const p of b.pockets){
-        p.charge+=p.discharge*dt*1000;
-        if(p.charge>=p.pulseLiters){
-          p.charge%=p.pulseLiters;p.birth=t+dt;p.serial++;
-          p.impactX=p.moment/p.discharge;
-        }
-      }
-      for(let k=0;k<h.length;k++)h[k]+=change[k];
-    }
-    ticks++;
-  }
-  function publish(){
-    let base=0;
-    for(const b of bays){
-      const s=b.segment,stride=b.cols+1;
-      for(let j=0;j<=rows;j++)for(let i=0;i<=b.cols;i++){
-        const x0=Math.max(0,i-1),x1=Math.min(b.cols-1,i),y0=Math.max(0,j-1)*b.cols,y1=Math.min(rows-1,j)*b.cols;
-        const h=.25*(b.h[y0+x0]+b.h[y0+x1]+b.h[y1+x0]+b.h[y1+x1]);
-        const station=b.left+i*b.dx,along=station/s.length;
-        // Dry cells retreat just beneath the opaque mineral to avoid coplanar flicker.
-        const d=backing+h-.00013*Math.max(0,1-h/.00015);
-        const o=3*(base+j*stride+i);
-        position[o]=s.x+station*s.tx+(b.start[0]+along*(b.end[0]-b.start[0]))*d;
-        position[o+1]=high-j*dy;
-        position[o+2]=s.z+station*s.tz+(b.start[1]+along*(b.end[1]-b.start[1]))*d;
-      }
-      for(let j=0;j<=rows;j++)for(let i=0;i<=b.cols;i++){
-        const v=base+j*stride+i,a=(v-(i>0?1:0))*3,c=(v+(i<b.cols?1:0))*3;
-        const e=(v-(j>0?stride:0))*3,d=(v+(j<rows?stride:0))*3;
-        const ax=position[c]-position[a],az=position[c+2]-position[a+2];
-        const bx=position[d]-position[e],by=position[d+1]-position[e+1],bz=position[d+2]-position[e+2];
-        const nx=by*az,ny=bz*ax-bx*az,nz=-by*ax;
-        const inv=(nx*s.nx+nz*s.nz<0?-1:1)/Math.hypot(nx,ny,nz);
-        normal[v*3]=nx*inv;normal[v*3+1]=ny*inv;normal[v*3+2]=nz*inv;
-      }
-      base+=(rows+1)*stride;
+  const slots=strips.flatMap(strip=>strip.jets.flatMap(jet=>{
+    const capacity=Math.ceil(longestRise/jet.period)+2;
+    return Array.from({length:capacity},(_,lane)=>({strip,jet,capacity,lane}));
+  }));
+  const collector={level:reservoirLevel,strips,
+    standingLitres:strips.reduce((sum,s)=>sum+s.span*.0326*(reservoirLevel-.2844)*1000,0)};
+  const n=slots.length*verticesPerBubble;
+  const position=new Float32Array(n*3),normal=new Float32Array(n*3),uv=new Float32Array(n*2);
+  const tangent=new Float32Array(n*4),triangles:number[]=[];
+  for(let i=0;i<slots.length;i++)for(let j=0;j<=rings;j++)for(let k=0;k<sides;k++){
+    const phi=Math.PI*j/rings,theta=Math.PI*2*k/sides;
+    const v=i*verticesPerBubble+j*sides+k;
+    normal.set([Math.sin(phi)*Math.cos(theta),Math.cos(phi),Math.sin(phi)*Math.sin(theta)],3*v);
+    tangent.set([-Math.sin(theta),0,Math.cos(theta),1],4*v);
+    uv.set([k/sides,j/rings],2*v);
+    const next=i*verticesPerBubble+j*sides+(k+1)%sides;
+    if(j<rings){
+      if(j>0)triangles.push(v,next,v+sides);
+      if(j<rings-1)triangles.push(next,next+sides,v+sides);
     }
   }
-  // Start with the pump having run for four seconds. Rewinds replay exactly
-  // the same boundary schedule; normal frames only advance the elapsed ticks.
-  const warmSteps=240;
-  const gates:{tick:number;open:boolean}[]=[];
-  let gateIndex=0;
+  const indices=new Uint32Array(triangles);
+  let time=0,activeBubbles=0;
   function update(seconds:number){
-    if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid water film time');
-    const target=warmSteps+Math.floor(seconds/dt+1e-7);
-    if(target<ticks){
-      for(const b of bays){
-        b.h.fill(0);
-        for(const p of b.pockets){p.charge=0;p.birth=-10;p.serial=0;p.impactX=0;}
+    if(!Number.isFinite(seconds)||seconds<0)throw Error('Expected a nonnegative bubble clock');
+    time=seconds;activeBubbles=0;
+    for(const [i,{strip,jet,capacity,lane}] of slots.entries()){
+      const phase=random(jet.seed+97),last=Math.floor(time/jet.period-phase);
+      const cycle=last-((last-lane)%capacity+capacity)%capacity;
+      const key=jet.seed+cycle*319;
+      const age=time-(cycle+phase+.71*random(key+44))*jet.period;
+      // Small bubbles rise gently and almost straight. Larger bubbles drift
+      // further sideways as the jet disperses into the surrounding water.
+      const size=random(key+51);
+      const r=size>.91?.0065+.0022*random(key+73):.0028+.0035*size**1.8;
+      const speed=.136+.083*Math.max(0,r-.00066)/.0037+.013*random(key+27);
+      const rise=Math.max(0,age)*speed;
+      const height=nozzleHeight+rise;
+      // Individual pores go quiet for short spells. Modulating acceptance
+      // at release time preserves bubbles already rising during a lull.
+      const release=time-age;
+      const burst=.81+.12*Math.sin(release*1.9+jet.group*7.6)+.06*Math.sin(release*3.7+jet.seed*.17);
+      const active=age>=0&&height+r<reservoirLevel&&random(key+199)<burst;
+      const radius=active?r*Math.min(1,age/.028):0;
+      if(active)activeBubbles++;
+      const progress=Math.min(1,rise/(reservoirLevel-nozzleHeight));
+      const sway=.011*Math.sin(age*4.9+key)+.033*Math.sin(time*1.4+jet.group*.9+rise*5);
+      const spread=(random(key+3)-.5)*.34+sway;
+      const station=strip.left+jet.centre+.006*(random(key+7)-.5)+progress*spread;
+      const depth=Math.min(.056-r,Math.max(.025+r,jet.depth+.008*progress*Math.sin(age*3.3+key*.23)));
+      const s=strip.segment,u=station/s.length;
+      const x=s.x+station*s.tx+depth*(strip.start[0]+u*(strip.end[0]-strip.start[0]));
+      const z=s.z+station*s.tz+depth*(strip.start[1]+u*(strip.end[1]-strip.start[1]));
+      const centreY=active?height:nozzleHeight;
+      for(let k=0;k<verticesPerBubble;k++){
+        const o=3*(i*verticesPerBubble+k);
+        position[o]=x+radius*normal[o];position[o+1]=centreY+radius*(1-.24*size**4)*normal[o+1];
+        position[o+2]=z+radius*normal[o+2];
       }
-      ticks=0;inflow=0;outflow=0;inletOpen=true;gateIndex=0;
     }
-    while(ticks<target){
-      while(gateIndex<gates.length&&gates[gateIndex].tick<=ticks)inletOpen=gates[gateIndex++].open;
-      step();
-    }
-    while(gateIndex<gates.length&&gates[gateIndex].tick<=ticks)inletOpen=gates[gateIndex++].open;
-    time=seconds;collector.seconds=ticks*dt;publish();
-  }
-  function setInlet(open:boolean){
-    if(open===inletOpen)return;
-    gates.splice(gateIndex);
-    gates.push({tick:ticks,open});gateIndex=gates.length;inletOpen=open;
-  }
-  function inspect(){
-    const rowLiters=Array<number>(rows).fill(0);
-    let peakMm=0;
-    for(const b of bays)for(let k=0;k<b.h.length;k++){
-      rowLiters[Math.floor(k/b.cols)]+=b.h[k]*b.dx*dy*1000;
-      peakMm=Math.max(peakMm,b.h[k]*1000);
-    }
-    const heldLiters=rowLiters.reduce((a,b)=>a+b,0);
-    return {inletOpen,seconds:time,preRollSeconds:warmSteps*dt,litersIn:inflow*1000,
-      litersOut:outflow*1000,heldLiters,massErrorLiters:(inflow-outflow)*1000-heldLiters,peakMm,rowLiters};
   }
   update(0);
-  return {collector,position,backingPosition,normal,uv,indices,update,setInlet,inspect,bays:bays.length,ribbons:bays.reduce((n,b)=>n+b.mouths.length,0),
-    aabb:new Float32Array([9.94,low-.005,-13.71,13.24,high+.002,-3.70])};
+  return {collector,position,normal,tangent,uv,indices,update,chambers:1,
+    nozzles:strips.reduce((sum,s)=>sum+s.jets.length,0),verticesPerBubble,
+    inspect:()=>({mode:'continuous aeration',seconds:time,activeBubbles,
+      plumeGroups:clusters.length,waterLevelM:reservoirLevel,standingLitres:collector.standingLitres}),
+    aabb:new Float32Array([9.63,.285,-13.72,13.24,reservoirLevel+.001,-3.70])};
+}
+
+// Static tank and porous diffuser faces. These same vertices are baked into
+// the Blender preview and installed in the engine behind the outer glazing.
+export function createTankGeometry(tank:ReturnType<typeof createStreamGeometry>['collector']){
+  const pos:number[]=[],norm:number[]=[],tex:number[]=[],idx:number[]=[];
+  for(const s of tank.strips){
+    const seg=s.segment;
+    function vertex(u:number,h:number,d:number,nx:number,ny:number,nz:number,ut:number,vt:number){
+      const a=(s.left+u)/seg.length;
+      const i=pos.length/3;
+      pos.push(seg.x+(s.left+u)*seg.tx+d*(s.start[0]+a*(s.end[0]-s.start[0])),h,
+        seg.z+(s.left+u)*seg.tz+d*(s.start[1]+a*(s.end[1]-s.start[1])));
+      norm.push(nx,ny,nz);tex.push(ut,vt);return i;
+    }
+    // Horizontal top curls into the glass. Give its front the full standing
+    // depth, with a slender air gap only at the uppermost glazing bead.
+    const cross=[[.0242,tank.level,1.02],[.0549,tank.level,1.5],[.0568,tank.level+.0016,1.8],
+      [.0568,tank.level+.0016,0],[.0568,.275,.99]];
+    const base=pos.length/3;
+    for(const u of [0,s.span]){
+      for(const [d,h,v] of cross){
+        const top=v>=1;
+        vertex(u,h,d,top?0:seg.nx,top?1:0,top?0:seg.nz,(s.chain+u)/s.totalLength,v);
+      }
+    }
+    for(const k of [0,1,3])idx.push(base+k,base+k+1,base+k+5,base+k+5,base+k+1,base+k+6);
+    // Actual miniature air diffusers: a dark porous cap on a low cylindrical
+    // foot sits on the sloping return shoe at each independent bubble plume.
+    for(const jet of s.jets){
+      const r=.010,cap=.3005,foot=.283;
+      for(let k=0;k<12;k++){
+        const a=2*Math.PI*k/12,b=2*Math.PI*(k+1)/12;
+        const ring=(angle:number,height:number,top:boolean)=>vertex(jet.centre+r*Math.cos(angle),height,
+          jet.depth+r*Math.sin(angle),top?0:Math.cos(angle)*seg.tx+Math.sin(angle)*seg.nx,top?1:0,
+          top?0:Math.cos(angle)*seg.tz+Math.sin(angle)*seg.nz,.5+.5*Math.cos(angle),top?3:2.5);
+        const c=vertex(jet.centre,cap,jet.depth,0,1,0,.5,3);
+        const aTop=ring(a,cap,true),bTop=ring(b,cap,true);
+        idx.push(c,bTop,aTop);
+        const a0=ring(a,foot,false),a1=ring(a,cap,false),b0=ring(b,foot,false),b1=ring(b,cap,false);
+        idx.push(a0,b0,a1,a1,b0,b1);
+      }
+    }
+  }
+  return {position:new Float32Array(pos),normal:new Float32Array(norm),uv:new Float32Array(tex),indices:new Uint32Array(idx)};
 }

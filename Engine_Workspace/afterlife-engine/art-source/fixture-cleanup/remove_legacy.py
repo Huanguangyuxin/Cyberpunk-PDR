@@ -12,7 +12,10 @@ WALL_OWNERS = {
 def obsolete(name):
     return name in WALL_OWNERS or name.startswith(('SIGN_', 'WPANEL_', 'HTABLE_', 'DRINK_HTABLE_'))
 
-def cleanup(source, target):
+def retired_aisle_node(name):
+    return name.startswith(('RTABLE_', 'DRINK_RTABLE_')) or name == 'ARCH_COLUMNS_WB015'
+
+def cleanup(source, target, stage_only=False):
     raw=source.read_bytes()
     size=struct.unpack_from('<I',raw,12)[0]
     g=json.loads(raw[20:20+size]);binary=bytearray(raw[28+size:])
@@ -29,10 +32,20 @@ def cleanup(source, target):
         if 'max' in a:a['max']=arr.reshape(len(arr),-1).max(0).tolist()
         g['bufferViews'].append(v)
     original_materials={p['material'] for mesh in g['meshes'] for p in mesh['primitives']}
-    dropped=[n['name'] for n in g['nodes'] if obsolete(n['name'])]
-    assert set(dropped)>=WALL_OWNERS
-    mesh_ids={n['mesh'] for n in g['nodes'] if 'mesh' in n and obsolete(n['name'])}
-    nodes={i:j for j,i in enumerate(i for i,n in enumerate(g['nodes']) if not obsolete(n['name']))}
+    def retire(name):
+        return retired_aisle_node(name) or (not stage_only and obsolete(name))
+    dead_nodes={i for i,n in enumerate(g['nodes']) if retire(n['name'])}
+    pending=list(dead_nodes)
+    while pending:
+        for child in g['nodes'][pending.pop()].get('children',[]):
+            if child not in dead_nodes:
+                dead_nodes.add(child)
+                pending.append(child)
+    dropped=[g['nodes'][i]['name'] for i in sorted(dead_nodes)]
+    if not stage_only:
+        assert set(dropped)>=WALL_OWNERS
+    mesh_ids={g['nodes'][i]['mesh'] for i in dead_nodes if 'mesh' in g['nodes'][i]}
+    nodes={i:j for j,i in enumerate(i for i in range(len(g['nodes'])) if i not in dead_nodes)}
     g['nodes']=[n for i,n in enumerate(g['nodes']) if i in nodes]
     def links(obj,key,mapping):
         if key in obj:obj[key]=[mapping[n] for n in obj[key] if n in mapping]
@@ -46,11 +59,26 @@ def cleanup(source, target):
         if 'mesh' in node:node['mesh']=remap[node['mesh']]
     audit={}
     for node in g['nodes']:
-        if node['name'] not in ('ARCH_PYLONS','ARCH_COLUMNS_WB015','BAR_COUNTER_L','MEP_TRAYS_WIRES_JBOX'):continue
+        stage_geometry=('WB018_BASE_LED_LINES','WB018_STAGE_FLANK_PANELS')
+        if node['name'] not in stage_geometry and (stage_only or node['name'] not in ('ARCH_PYLONS','BAR_COUNTER_L','MEP_TRAYS_WIRES_JBOX')):
+            continue
         mesh=g['meshes'][node['mesh']];keep=[]
         for q in mesh['primitives']:
             name=node['name'];mat=g['materials'][q['material']]['name']
             pid=q['attributes']['POSITION'];pos=data(pid);iid=q['indices'];tris=data(iid).reshape(-1,3)
+            if name=='WB018_STAGE_FLANK_PANELS' and mat=='M18_TALL_PANEL_PINK':
+                audit[name+'/'+mat]={'removedTriangles':len(tris)}
+                continue
+            if name=='WB018_BASE_LED_LINES':
+                # This combined mesh also includes the genuine bridge pylons and outer structural columns.
+                xs=np.abs(pos[tris][:,:,0])
+                kill=((xs>8.20)&(xs<8.70)).all(axis=1)
+                if np.any(kill):
+                    audit[name+'/'+mat]={'removedTriangles':int(sum(kill))}
+                    if np.all(kill):continue
+                    used,reindex=np.unique(tris[~kill].ravel(),return_inverse=True)
+                    for attr in q['attributes'].values():write(attr,data(attr)[used])
+                    write(iid,reindex.astype(tris.dtype).reshape(-1,1))
             if (name,mat) in [('ARCH_PYLONS','M_WALL_COLLAGE'),('ARCH_COLUMNS_WB015','WB015_M_OPAL_PINK')]:
                 audit[name+'/'+mat]={'removedTriangles':len(tris)};continue
             if name=='MEP_TRAYS_WIRES_JBOX':
@@ -133,4 +161,6 @@ def cleanup(source, target):
     return dict(removedNodes=dropped,removedMeshes=removed_meshes,changedGeometry=audit,removedMaterials=retired_material_names,removedTextures=len(dead_textures),removedImages=retired_image_names,bytesBefore=len(raw),bytesAfter=target.stat().st_size)
 
 if __name__=='__main__':
-    src,dst,report=map(Path,sys.argv[1:]);report.write_text(json.dumps(cleanup(src,dst),ensure_ascii=False,indent=2)+'\n')
+    stage_only='--stage-aisles' in sys.argv
+    src,dst,report=map(Path,[arg for arg in sys.argv[1:] if arg!='--stage-aisles'])
+    report.write_text(json.dumps(cleanup(src,dst,stage_only),ensure_ascii=False,indent=2)+'\n')

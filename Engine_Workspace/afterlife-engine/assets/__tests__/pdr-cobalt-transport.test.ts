@@ -1,53 +1,35 @@
 import {expect,it} from 'vitest';
-import {createStreamGeometry} from '../pdr-cobalt-stream-geometry';
+import {createStreamGeometry,reservoirLevel} from '../pdr-cobalt-stream-geometry';
 
-it('conserves the water in all twelve films as the slot drains and supplies them again',()=>{
-  const film=createStreamGeometry();
-  const wet=film.inspect();
-  expect(film.bays).toBe(12);
-  expect(wet.preRollSeconds).toBe(4);
-  expect(wet.rowLiters.every(v=>v>0)).toBe(true);
-  expect(film.backingPosition.length).toBe(film.position.length);
-  film.setInlet(false);
-  film.update(.5);
-  const receding=film.inspect();
-  expect(receding.rowLiters[0]).toBeLessThan(receding.rowLiters[39]*.1);
-  expect(receding.litersIn).toBe(wet.litersIn);
-  film.update(6);
-  expect(film.inspect().heldLiters).toBeLessThan(wet.heldLiters*.0001);
-  film.setInlet(true);
-  film.update(6.45);
-  const filling=film.inspect();
-  expect(filling.rowLiters[0]).toBeGreaterThan(.05);
-  expect(filling.rowLiters[39]).toBeLessThan(filling.rowLiters[0]*.0001);
-  expect(Math.abs(filling.massErrorLiters)).toBeLessThan(1e-7);
-  const end=film.position.slice();
-  film.update(.5);
-  expect(film.inspect().heldLiters).toBeCloseTo(receding.heldLiters,10);
-  film.update(6.45);
-  expect(film.position.every((v,i)=>v===end[i])).toBe(true);
-  expect(film.normal.every(Number.isFinite)).toBe(true);
+it('starts with independent rising bubbles, confined inside one continuous tank',()=>{
+  const wall=createStreamGeometry();
+  expect(wall.chambers).toBe(1);
+  expect(wall.inspect().plumeGroups).toBe(8);
+  expect(wall.inspect().activeBubbles).toBeGreaterThan(120);
+  const before=wall.position.slice();
+  const first=(i:number)=>3*i*wall.verticesPerBubble;
+  wall.update(.04);
+  let rising=0;
+  for(let i=0;i<wall.position.length/(3*wall.verticesPerBubble);i++){
+    const offset=first(i);
+    const wasLive=before[offset+1]>.32;
+    const isLive=wall.position[offset+1]>.32;
+    if(wasLive&&isLive){
+      expect(wall.position[offset+1]).toBeGreaterThan(before[offset+1]);
+      rising++;
+    }
+    expect(wall.position[offset+1]).toBeLessThan(reservoirLevel+.0001);
+  }
+  expect(rising).toBeGreaterThan(120);
+  expect(wall.inspect().mode).toBe('continuous aeration');
 });
 
-it('drives the collector from arriving water through shutdown, refill and replay',()=>{
-  const film=createStreamGeometry();
-  const pockets=film.collector.strips.flatMap(s=>s.pockets);
-  const flux=()=>film.collector.strips.reduce((sum,s)=>sum+s.flux.reduce((n,q)=>n+q*s.dx,0),0);
-  const primed=flux();
-  expect(primed).toBeGreaterThan(.001);
-  film.setInlet(false);
-  film.update(.25);
-  expect(flux()).toBeGreaterThan(primed*.4);
-  film.update(6);
-  expect(flux()).toBeLessThan(primed*.001);
-  expect(pockets.every(p=>film.collector.seconds-p.birth>.8)).toBe(true);
-  const dryCount=pockets.reduce((sum,p)=>sum+p.serial,0);
-  film.setInlet(true);
-  film.update(6.4);
-  expect(pockets.reduce((sum,p)=>sum+p.serial,0)).toBe(dryCount);
-  film.update(10);
-  const births=pockets.map(p=>[p.serial,p.birth,p.impactX]);
-  expect(pockets.some(p=>film.collector.seconds-p.birth<.5)).toBe(true);
-  film.update(.25);film.update(10);
-  expect(pockets.map(p=>[p.serial,p.birth,p.impactX])).toEqual(births);
+it('keeps the water level and geometry repeatable after arbitrary playback times',()=>{
+  const wall=createStreamGeometry();
+  const initial=wall.position.slice(),litres=wall.collector.standingLitres;
+  wall.update(7.3);
+  expect(wall.position).not.toEqual(initial);
+  expect(wall.collector.standingLitres).toBe(litres);
+  wall.update(0);
+  expect(wall.position).toEqual(initial);
 });

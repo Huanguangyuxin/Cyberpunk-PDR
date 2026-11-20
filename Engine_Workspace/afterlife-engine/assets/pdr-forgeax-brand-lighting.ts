@@ -34,20 +34,24 @@ const plaqueEmission: RGB = [1, .073, .018];
 // places the emitting plane just below the diffuser, not in a solid beam.
 // Rect intensity is source radiance scale, NOT the candela used by Point/Spot.
 const stripSources = new Map<number, {pos:RGB; width:number; height:number; intensity:number; range:number; mount:string; color?:RGB; rotation?:readonly [number,number,number,number]}>([
-  [4, {pos:[12.17,2.68,-7.15],width:3.4,height:.13,intensity:31,range:3.1,color:[1,.55,.26],rotation:[.230211,.668583,-.230211,.668583],mount:'East backbar shelf diffuser'}],
-  [5, {pos:[12.17,2.68,-11.45],width:3.4,height:.13,intensity:31,range:3.1,color:[1,.55,.26],rotation:[.230211,.668583,-.230211,.668583],mount:'East backbar shelf diffuser'}],
+  [2,{pos:[12.196407,3.069895,-6.718037],width:4.5509,height:.034,intensity:385,range:5.6,color:[1,.64,.36],rotation:[.489329,-.468608,.529535,.510448],mount:'Amber opal on upper canopy folded lip'}],
+  [3,{pos:[12.091407,2.714585,-11.688037],width:4.5325,height:.034,intensity:310,range:5,color:[1,.64,.36],rotation:[.489309,-.468587,.529553,.510467],mount:'Amber opal on lower canopy folded lip'}],
+  [13,{pos:[0,8.555,-8.25],width:26.8,height:.12,intensity:345,range:23,color:[1,.76,.55],mount:'Front transverse beam centre diffuser'}],
+  [18,{pos:[0,3.305,-20.65],width:16,height:.14,intensity:240,range:13,color:[1,.74,.50],mount:'Bridge south soffit bay opal'}],
+  [4, {pos:[13.711,2.405,-8.35],width:.046,height:1.84,intensity:215,range:2.25,color:[1,.56,.28],mount:'Bottle shelf upper opal channel'}],
+  [5, {pos:[13.711,2.405,-12.55],width:.046,height:1.84,intensity:225,range:2.25,color:[1,.56,.28],mount:'Bottle shelf upper opal channel'}],
   [6,{pos:[-13.44,6.480,-7.375],width:13.5,height:.095,intensity:440,range:7.4,color:[1,.77,.57],rotation:[0.424264,-0.565685,0.424264,0.565685],mount:'West portrait overhead shielded wall washer'}],
-  [7,{pos:[-11.2,9.237,-14.9],width:8.8,height:.15,intensity:655,range:11,color:[1,.83,.68],rotation:[0.403138,-0.580930,0.403138,0.580930],mount:'A3 west stair and side seating wash'}],
-  [8, {pos:[-8,9.237,-6.1],width:.15,height:8.8,intensity:430,range:18,color:[1,.81,.64],mount:'A3 roof -8 south'}],
-  [9, {pos:[-8,9.237,-14.9],width:.15,height:8.8,intensity:430,range:18,color:[1,.81,.64],mount:'A3 roof -8 north'}],
-  [10,{pos:[11.2,9.237,-6.1],width:.15,height:8.8,intensity:430,range:18,color:[1,.81,.64],mount:'A3 roof +11.2 south'}],
-  [11,{pos:[11.2,9.237,-14.9],width:8.8,height:.15,intensity:615,range:11,color:[1,.83,.68],rotation:[0.580930,-0.403138,0.580930,0.403138],mount:'A3 east stair landing wash'}],
+  [7,{pos:[-11.2,9.205,-14.9],width:8.8,height:.15,intensity:655,range:11,color:[1,.83,.68],rotation:[0.403138,-0.580930,0.403138,0.580930],mount:'A3 west stair and side seating wash'}],
+  [8, {pos:[-8,9.205,-6.1],width:.15,height:8.8,intensity:430,range:18,color:[1,.81,.64],mount:'A3 roof -8 south'}],
+  [9, {pos:[-8,9.205,-14.9],width:.15,height:8.8,intensity:430,range:18,color:[1,.81,.64],mount:'A3 roof -8 north'}],
+  [10,{pos:[11.2,9.205,-6.1],width:.15,height:8.8,intensity:430,range:18,color:[1,.81,.64],mount:'A3 roof +11.2 south'}],
+  [11,{pos:[11.2,9.205,-14.9],width:8.8,height:.15,intensity:615,range:11,color:[1,.83,.68],rotation:[0.580930,-0.403138,0.580930,0.403138],mount:'A3 east stair landing wash'}],
   [15,{pos:[-10.68,7.005,-38.55],width:6.08,height:1.08,intensity:vipStripRadiance,range:5.4,color:[.93,.96,1],rotation:[0.3241069,-0.6284542,0.3241069,0.6284542],mount:'VIP_W2_SHELL gallery valance grazer'}],
-  [16,{pos:[-9.475,3.338,-35.3],width:5.1,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.327578,-0.626652,0.327578,0.626652],mount:'B2 soffit grazing side seats'}],
-  [17,{pos:[9.475,3.338,-35.3],width:5.1,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.626652,-0.327578,0.626652,0.327578],mount:'B2 soffit grazing side seats'}],
+  [16,{pos:[-9.475,3.305,-35.3],width:5.1,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.327578,-0.626652,0.327578,0.626652],mount:'B2 soffit grazing side seats'}],
+  [17,{pos:[9.475,3.305,-35.3],width:5.1,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.626652,-0.327578,0.626652,0.327578],mount:'B2 soffit grazing side seats'}],
   [28,{pos:[10.68,7.005,-38.55],width:6.08,height:1.08,intensity:vipStripRadiance,range:5.4,color:[.93,.96,1],rotation:[0.6284542,-0.3241069,0.6284542,0.3241069],mount:'VIP_E2_SHELL gallery valance grazer'}],
-  [29,{pos:[-9.475,3.338,-24.7],width:3.9,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.327578,-0.626652,0.327578,0.626652],mount:'B2 soffit grazing side seats'}],
-  [30,{pos:[9.475,3.338,-24.7],width:3.9,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.626652,-0.327578,0.626652,0.327578],mount:'B2 soffit grazing side seats'}],
+  [29,{pos:[-9.475,3.305,-24.7],width:3.9,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.327578,-0.626652,0.327578,0.626652],mount:'B2 soffit grazing side seats'}],
+  [30,{pos:[9.475,3.305,-24.7],width:3.9,height:.14,intensity:525,range:7.4,color:[1,.74,.55],rotation:[0.626652,-0.327578,0.626652,0.327578],mount:'B2 soffit grazing side seats'}],
   // D113: retire the two8cd plaque bounce slots; match real missing VIP1 emitters.
   [31,{pos:[-10.68,7.005,-28.35],width:6.08,height:1.08,intensity:vipStripRadiance,range:5.4,color:[.93,.96,1],rotation:[0.3241069,-0.6284542,0.3241069,0.6284542],mount:'VIP_W1_SHELL gallery valance grazer; reused source31'}],
   [32,{pos:[10.68,7.005,-28.35],width:6.08,height:1.08,intensity:vipStripRadiance,range:5.4,color:[.93,.96,1],rotation:[0.6284542,-0.3241069,0.6284542,0.3241069],mount:'VIP_E1_SHELL gallery valance grazer; reused source32'}],
@@ -104,9 +108,9 @@ const fixtureAdjustments = new Map<number, FixtureAdjustment>([
   // D095: L18_PORTAL sits directly under the raised 2nd-floor bridge soffit (y = 2.94m, z = -21.20m)
   // to illuminate the ground-floor bridge underpass and central transition zone without shadow cast blockage.
   [18, {pos:[0,2.94,-21.20], direction:[0,-.985,-.17], intensity:680, range:20, cone:[58,84]}],
-  [19, {pos:[5,8.576,-26.5], direction:[0,-1,0], intensity:1780, range:19, cone:[16,32]}],
-  [20, {pos:[-6,8.576,-31.5], direction:[0,-1,0], intensity:1700, range:19, cone:[17,34]}],
-  [21, {pos:[3.5,8.576,-35], direction:[0,-1,0], intensity:1500, range:17, cone:[15,30]}],
+  [19, {pos:[5,8.548,-26.5], direction:[0,-1,0], intensity:1780, range:19, cone:[16,32]}],
+  [20, {pos:[-6,8.548,-31.5], direction:[0,-1,0], intensity:1700, range:19, cone:[17,34]}],
+  [21, {pos:[3.5,8.548,-35], direction:[0,-1,0], intensity:1500, range:17, cone:[15,30]}],
   [22, {intensity:1650, range:19, cone:[20,36]}],
   [23, {pos:[-4.8,6.68,-40.45], direction:[0.12,-.80,-.58], intensity:330, range:23, cone:[44,72]}],
   [24, {intensity:3600, range:24, cone:[6.5,13.5]}],
@@ -136,6 +140,7 @@ function tuneFixtures(world: World) {
     entity: row.entity, name: row.get(Name).value, kind: 'spot' as const,
     pos: Array.from(row.get(Transform).pos),
     quat: Array.from(row.get(Transform).quat),
+    spotData: {...row.get(SpotLight),color:Array.from(row.get(SpotLight).color),direction:Array.from(row.get(SpotLight).direction)},
     intensity: row.get(SpotLight).intensity, range: row.get(SpotLight).range, color: Array.from(row.get(SpotLight).color),
     direction: Array.from(row.get(SpotLight).direction),
     innerConeDeg: row.get(SpotLight).innerConeDeg, outerConeDeg: row.get(SpotLight).outerConeDeg,
@@ -150,8 +155,7 @@ function tuneFixtures(world: World) {
     const number = numbers[index];
     const strip = stripSources.get(number);
     if (strip) {
-      if (fixture.kind !== 'point') throw new Error('D108 strip slot must replace a point: ' + fixture.name);
-      world.removeComponent(fixture.entity,PointLight).unwrap();
+      world.removeComponent(fixture.entity,fixture.kind === 'point' ? PointLight : SpotLight).unwrap();
       try {
         world.addComponent(fixture.entity,{component:RectAreaLight,data:{
           color:[...(strip.color ?? (number <= 11 ? (number === 8 || number === 9 || number === 10 || number === 11 ? [1, .20, .095] : [.25, .50, 1]) : [.08, .32, 1]))],intensity:strip.intensity,range:strip.range,width:strip.width,height:strip.height,
@@ -159,7 +163,8 @@ function tuneFixtures(world: World) {
         world.set(fixture.entity,Transform,{pos:[...strip.pos],quat:strip.rotation ? [...strip.rotation] : [Math.SQRT1_2,0,0,Math.SQRT1_2]}).unwrap();
       } catch (error) {
         if(world.hasComponent(fixture.entity,RectAreaLight))world.removeComponent(fixture.entity,RectAreaLight).unwrap();
-        world.addComponent(fixture.entity,{component:PointLight,data:fixture.pointData}).unwrap();
+        if(fixture.kind==='point')world.addComponent(fixture.entity,{component:PointLight,data:fixture.pointData}).unwrap();
+        else world.addComponent(fixture.entity,{component:SpotLight,data:fixture.spotData}).unwrap();
         throw error;
       }
       convertedStrips.add(fixture.entity);
@@ -182,23 +187,24 @@ function tuneFixtures(world: World) {
     for (const fixture of fixtures) {
       world.set(fixture.entity, Transform, {pos: fixture.pos,quat:fixture.quat}).unwrap();
       const patch = {color: fixture.color, intensity: fixture.intensity, range: fixture.range};
-      if (fixture.kind === 'point' && convertedStrips.has(fixture.entity)) {
+      if (convertedStrips.has(fixture.entity)) {
         if(world.hasComponent(fixture.entity,RectAreaLight))world.removeComponent(fixture.entity,RectAreaLight).unwrap();
-        world.addComponent(fixture.entity,{component:PointLight,data:fixture.pointData}).unwrap();
+        if(fixture.kind==='point')world.addComponent(fixture.entity,{component:PointLight,data:fixture.pointData}).unwrap();
+        else world.addComponent(fixture.entity,{component:SpotLight,data:fixture.spotData}).unwrap();
       } else if (fixture.kind === 'spot') world.set(fixture.entity, SpotLight, {...patch, direction: fixture.direction, innerConeDeg: fixture.innerConeDeg, outerConeDeg: fixture.outerConeDeg}).unwrap();
       else world.set(fixture.entity, PointLight, patch).unwrap();
     }
   };
-  if (convertedStrips.size !== 16) throw new Error('D113 expected sixteen strip sources');
-  const houseBands = spots.filter(spot => houseBandNumbers.has(Number(spot.name.slice(1,3))));
+  if (convertedStrips.size !== stripSources.size) throw new Error('Missing architectural area emitters');
+  const houseBands = spots.filter(spot => houseBandNumbers.has(Number(spot.name.slice(1,3))) && !convertedStrips.has(spot.entity));
   const plaqueBounce = points.filter(point => plaqueBounceNumbers.has(Number(point.name.slice(1,3))) && !convertedStrips.has(point.entity));
   const read = () => ({
     nativeCount:fixtures.length,
     retiredPlaqueBounceSlots:[31,32],
-    strips:points.filter(point=>convertedStrips.has(point.entity)).map(point=>{
+    strips:fixtures.filter(point=>convertedStrips.has(point.entity)).map(point=>{
       const light=world.get(point.entity,RectAreaLight);
       const strip=stripSources.get(Number(point.name.slice(1,3)))!;
-      return {name:point.name,kind:'native LTC rectangle',mount:stripSources.get(Number(point.name.slice(1,3)))!.mount,
+      return {name:point.name,kind:'native LTC rectangle',mount:strip.mount,
         intensity:light.ok?light.value.intensity:0,units:'radiance scale (not cd)',
         width:light.ok?light.value.width:strip.width,height:light.ok?light.value.height:strip.height,
         pos:Array.from(world.get(point.entity,Transform).unwrap().pos)};

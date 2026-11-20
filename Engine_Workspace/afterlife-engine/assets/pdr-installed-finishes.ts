@@ -37,7 +37,6 @@ const finishesByMesh: Readonly<Record<string,FinishSlots>> = {
   ARCH_WALLS_WEN: {WB015_M_WALL_NAVY:satinTile},
   ARCH_PYLONS: {M_WALL_NAVY:brushedWall,M_STEEL_BLACK:brushed},
   ARCH_COLUMNS: {M_STEEL_NAVY:brushed,M_STEEL_BLACK:brushed},
-  ARCH_COLUMNS_WB015: {WB015_M_STEEL_NAVY:brushed,WB015_M_STEEL_BLACK:brushed},
   ARCH_DECK_BEAMS_FASCIA: {WB015_M_STEEL_NAVY:brushed,WB015_M_STEEL_BLACK:brushed},
   ARCH_SKIRTING: {M_STEEL_BLACK:brushed},
   ARCH_UPPER_DECK: {WB015_M_FLOOR_TILE:dryTile},
@@ -263,20 +262,7 @@ export async function installFinishes(
         rebound.push({entity:garnet.entity,original,installed:[...original,glaze]});
       }finally{if(typeof ref==='string')assets.release(donor).unwrap();}
     }
-    const carpet = rows.find(row=>row.name==='D115_CARPET_EAST_01/BODY');
-    if(!carpet)throw new Error('Floor mat requires the existing short-pile carpet');
-    const carpetSlots = assets.read(carpet.mesh).unwrap().materialSlots;
-    const carpetMaterial = (name:string)=>{
-      const index = carpetSlots.findIndex(slot=>slot.slotName===name);
-      const handle = carpet.materials[index] || carpetSlots[index]?.defaultMaterial;
-      if(!handle)throw new Error(`Floor mat material missing: ${name}`);
-      return handle as AssetHandle<'material'>;
-    };
-    floorAccents = installFloorAccents(world,assets,{
-      tread:await material(['tread',1]),
-      pile:carpetMaterial('D113_SHORT_PILE_CARPET'),
-      binding:carpetMaterial('D113_CARPET_BOUND_EDGE'),
-    });
+    floorAccents = installFloorAccents(world,assets,{tread:await material(['tread',1])});
     scene = (await assets.load(assets.parseGuid(sceneGuid),'scene')).unwrap();
     root = assets.instantiate(scene,world);
     if(!root.ok)throw root.error;

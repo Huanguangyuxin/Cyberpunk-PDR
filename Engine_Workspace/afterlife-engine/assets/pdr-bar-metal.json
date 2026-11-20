@@ -6,22 +6,26 @@
     "Canopy folded hems",
     "Canopy standoff brackets",
     "Canopy internal diffusers",
-    "Zoned amber canopy backing"
+    "Zoned amber canopy backing",
+    "Canopy reflector ties",
+    "Canopy recessed charcoal liners",
+    "Canopy cove housings",
+    "Canopy cove mounting clips"
   ],
   "finishes": {
     "Folded pewter guest counter": {
       "slot": "Rear counter-silver",
       "baseColor": [
-        1.02,
-        1.03,
-        1.035,
+        0.86,
+        0.84,
+        0.81,
         1
       ],
-      "roughness": 1.2,
+      "roughness": 1.07,
       "metallic": 0.99,
       "normalScale": [
-        0.34,
-        0.34
+        0.23,
+        0.23
       ]
     },
     "Wrapped pewter counter ends": {
@@ -110,22 +114,29 @@
       "roughness": 0.88,
       "metallic": 0.81
     },
+    "Canopy recessed charcoal liners": {
+      "slot": "Rear steel",
+      "baseColor": [0.16, 0.135, 0.115, 1],
+      "roughness": 1.36,
+      "metallic": 0.54,
+      "specular": 0.22
+    },
     "Zoned amber canopy backing": {
       "slot": "Amber reflector behind the perforations",
       "baseColor": [
-        0.65,
-        0.34,
-        0.13,
+        0.23,
+        0.115,
+        0.045,
         1
       ],
-      "metallic": 0.1,
-      "roughness": 0.61,
+      "metallic": 0.66,
+      "roughness": 0.44,
       "emissive": [
-        1,
-        0.53,
-        0.18
+        0.85,
+        0.28,
+        0.065
       ],
-      "emissiveIntensity": 8.5
+      "emissiveIntensity": 0.15
     },
     "Shelf recessed amber reflectors": {
       "slot": "Shelf amber brushed reflector",
@@ -142,24 +153,30 @@
         0.74,
         0.47
       ],
-      "emissiveIntensity": 0.84,
+      "emissiveIntensity": 0.67,
       "specular": 0.17
     },
     "Cobalt kiln cast modules": {
       "slot": "Rear cobalt",
       "baseColor": [
-        0.77,
-        0.88,
+        0.72,
+        1,
         1,
         1
       ],
       "metallic": 0,
-      "roughness": 1.87,
-      "specular": 0.2,
+      "roughness": 1.13,
+      "specular": 0.36,
       "normalScale": [
-        0.23,
-        0.23
-      ]
+        0.47,
+        0.47
+      ],
+      "emissive": [
+        0.42,
+        1,
+        1
+      ],
+      "emissiveIntensity": 21.0
     },
     "Prep end satin apron": {
       "slot": "Rear counter-silver",
@@ -175,6 +192,40 @@
         0.23,
         0.23
       ]
+    },
+    "Canopy internal diffusers": {
+      "slot": "Warm recessed LED",
+      "baseColor": [
+        0.45,
+        0.22,
+        0.05,
+        1
+      ],
+      "emissive": [
+        1,
+        0.45,
+        0.12
+      ],
+      "emissiveIntensity": 0.62,
+      "roughness": 0.43,
+      "metallic": 0
+    },
+    "X-facing cobalt edge lenses": {
+      "slot": "Sapphire optical edge",
+      "baseColor": [
+        0.08,
+        0.26,
+        0.84,
+        1
+      ],
+      "emissive": [
+        0.07,
+        0.32,
+        1
+      ],
+      "emissiveIntensity": 1.18,
+      "metallic": 0,
+      "roughness": 0.3
     }
   },
   "spots": [

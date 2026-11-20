@@ -28,7 +28,7 @@ def install(box, groups):
     rubber = surface('Service draining rubber', (.028, .028, .032), .70)
     glass = surface('Service pressed crystal', (.75, .87, .88), .13, .08, .40)
     lip = surface('Service crystal rolled lip', (.71, .80, .81), .16, .10, .69)
-    diffuser = surface('Shelf honey opal diffuser', (1.00, .54, .235), .38, .02, 1.55)
+    diffuser = surface('Shelf honey opal diffuser', (1.00, .54, .235), .38, .02, glow=1.55)
     lining = surface('Shelf oiled bronze reveal', (.082, .059, .038), .44, .68)
     back = surface('Shelf amber brushed reflector', (.074, .048, .030), .53, .42)
     # A local irradiance map on the rear reflector gives each shelf a soft

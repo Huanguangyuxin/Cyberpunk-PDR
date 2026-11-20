@@ -24,8 +24,7 @@ HIGH_Y=2.373
 
 def build_backrest(vip, foyer, emit):
     end_x=(1.949 if vip else 2.129)-.085
-    far_end_x=1.92-.085 if foyer else end_x
-    two_returns=foyer or vip
+    far_end_x=(1.56 if foyer else 1.95 if vip else 1.14)-.085
     bend_x=RAIL_X+RADIUS
     elbow_low=LOW_Y+RADIUS
     elbow_high=HIGH_Y-RADIUS
@@ -42,13 +41,12 @@ def build_backrest(vip, foyer, emit):
         a=-math.pi/2-d/RADIUS
         return bend_x+RADIUS*math.cos(a),elbow_low+RADIUS*math.sin(a),math.sin(a),-math.cos(a)
     sample(math.pi*RADIUS/2,arc_low)
-    sample((elbow_high if two_returns else 2.515)-elbow_low,lambda d:(RAIL_X,elbow_low+d,0.,1.))
-    if two_returns:
-        def arc_high(d):
-            a=math.pi-d/RADIUS
-            return bend_x+RADIUS*math.cos(a),elbow_high+RADIUS*math.sin(a),math.sin(a),-math.cos(a)
-        sample(math.pi*RADIUS/2,arc_high)
-        sample(far_end_x-bend_x,lambda d:(bend_x+d,HIGH_Y,1.,0.))
+    sample(elbow_high-elbow_low,lambda d:(RAIL_X,elbow_low+d,0.,1.))
+    def arc_high(d):
+        a=math.pi-d/RADIUS
+        return bend_x+RADIUS*math.cos(a),elbow_high+RADIUS*math.sin(a),math.sin(a),-math.cos(a)
+    sample(math.pi*RADIUS/2,arc_high)
+    sample(far_end_x-bend_x,lambda d:(bend_x+d,HIGH_Y,1.,0.))
 
     total=path[-1][4]
     # Rounded, solid end panels turn the upholstery over the arm in full view.
@@ -66,7 +64,7 @@ def build_backrest(vip, foyer, emit):
     def face(indices,coords,rounded=True):
         polygons.append(indices);uv.append(coords);smooth.append(rounded)
     count=len(PROFILE)
-    pitch=total/max(1,round(total/.170))
+    pitch=total/max(1,round(total/(.143 if foyer else .170)))
     for i,(x,y,tx,ty,s,scale) in enumerate(path):
         dist=abs((s+pitch/2)%pitch-pitch/2)
         inset=.0165*math.exp(-(dist/.015)**2)
@@ -74,6 +72,11 @@ def build_backrest(vip, foyer, emit):
         for j,(offset,z,weight) in enumerate(PROFILE):
             depth=(min(0.,offset)*.4+max(0.,offset)-weight*inset*fade)*scale
             h=.700+(z-.700)*scale
+            if not vip:
+                # Compress the arm foam toward its rounded nose, retaining the seat seam.
+                shoulder=max(0.,min(1.,(x-.65)/.80))
+                shoulder=shoulder*shoulder*(3-2*shoulder)
+                h+=.045*(1.-shoulder)*max(0.,(h-.502)/.56)
             vertices.append((x+ty*depth,y-tx*depth,h))
         if i==0:continue
         for j in range(count):

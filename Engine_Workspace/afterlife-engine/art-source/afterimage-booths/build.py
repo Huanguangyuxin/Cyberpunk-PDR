@@ -53,7 +53,16 @@ black=material('Graphite enamel',(.043,.032,.033),.37,.51)
 stone=material('M07 Satin aggregate table',(.09,.08,.08),.32,.13,texture='stone')
 welt=material('Merlot piping',(.13,.031,.036),.37)
 opal=material('Warm lamp lens',(.86,.53,.22),.36,emission=(1,.58,.26),emit=2.25)
-mats=[leather,glass,nickel,smoke,black,stone,welt,opal]
+screen=material('Clear amber edge-lit screen',(.92,.65,.36),.135,alpha=.36,emission=(1,.59,.15),emit=2.2)
+# The external importer reliably preserves BLEND coverage and mapped emission.
+# Keep a closed volume with single-sided faces to prevent duplicate blend layers.
+screen.use_backface_culling=True
+edge_map=screen.node_tree.nodes.new('ShaderNodeTexImage')
+edge_map.image=bpy.data.images.load(str(src/'maps'/'fluted-edge-light.png'),check_existing=True)
+screen.node_tree.links.new(edge_map.outputs['Color'],screen.node_tree.nodes.get('Principled BSDF').inputs['Emission Color'])
+toe_lens=material('Honey opal plinth diffuser',(.58,.22,.047),.38,emission=(1,.28,.045),emit=1.1)
+reflector=material('Warm bronze plinth reflector',(.24,.128,.060),.32,.56,emission=(.31,.085,.012),emit=.55)
+mats=[leather,glass,nickel,smoke,black,stone,welt,opal,screen,toe_lens,reflector]
 def append_mesh(b,mat,origin,angle=0):
     transform=Matrix.Translation(Vector(origin))@Matrix.Rotation(angle,4,'Z')
     b.transform(transform);bmesh.ops.triangulate(b,faces=list(b.faces));b.normal_update();b.verts.index_update();offset=len(vertices)
@@ -104,7 +113,7 @@ def build(kind):
     vip=kind=='VIP'; front=kind=='Foyer'
     # Rounded exterior metal envelope and formed cushions are added by the loft builder.
     corner_liner()
-    if vip or front:corner_liner(upper=True)
+    corner_liner(upper=True)
     # Same glassware positions as the D189 scene, on a larger functional 690 mm top.
     table_start=len(vertices)
     shift=contact_spec["foyer"]["tableShift"] if front else 0.
@@ -114,8 +123,8 @@ def build(kind):
         box(nickel,(*xy,.339),(.30,.45,.592),.07,segments=4)
     else:
         cyl(nickel,xy,.344,.071,.61)
-    cyl(nickel,xy,.651,.595 if front else .54,.043,36,.565 if front else .58)
-    cyl(stone,xy,.679,.590 if front else .535,.022,36,.560 if front else .575)
+    cyl(nickel,xy,.651,.595 if front else .54 if vip else .50,.043,64,.565 if front else .58 if vip else .50)
+    cyl(stone,xy,.679,.590 if front else .535 if vip else .495,.022,64,.560 if front else .575 if vip else .495)
     lx,ly=1.53+shift,1.54
     if vip:
         box(nickel,(lx,ly,.70375),(.18,.105,.0275),.008)
@@ -145,7 +154,7 @@ def build(kind):
             face_mats.append(mats.index(material))
     def add_upholstery(points,polygons,uvs,smooth):
         add_surface(points,polygons,uvs,smooth,[leather]*len(polygons))
-    shell,brow=build_bench(vip,front,add_surface,leather,welt,black,nickel,glass,opal,smoke)
+    shell,brow=build_bench(vip,front,add_surface,leather,welt,black,nickel,glass,opal if vip else toe_lens,smoke,reflector)
     # Molded ribs catch the room lights across the arcuate header.
     distance=0.
     previous=None
@@ -161,7 +170,14 @@ def build(kind):
     end=1.95 if vip else 2.13
     end_lens(end,(.12135 if front else .12635),add_surface,nickel,glass)
     if vip:end_lens(end,2.42665,add_surface,nickel,glass)
-    if front:end_lens(1.92,2.46965,add_surface,nickel,glass)
+    if front:end_lens(1.56,2.46965,add_surface,nickel,glass)
+    if kind=='Hall':
+        end_lens(1.14,2.42665,add_surface,nickel,glass)
+    if not vip:
+        # Slumped 12 mm amber screen carried by two brass end stiles and a bottom
+        # glazing shoe. Each 24 mm reed exists in the front surface silhouette.
+        from privacy_screen import build_screen
+        build_screen(add_surface,box,screen,nickel,toe_lens)
     build_backrest(vip,front,add_upholstery)
     if front:
         # Grade the carcass, edge trim and leather as one cut, maintaining every

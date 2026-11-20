@@ -74,8 +74,7 @@ for mesh in doc['meshes']:
     build_bench(vip, foyer, check_solid, 'leather', 'welt', 'enamel', 'bronze', 'amber', 'lens', 'smoke')
     build_backrest(vip, foyer, check_solid)
     end_lens(1.95 if vip else 2.13, .12, check_solid, 'bronze', 'glass')
-    if vip or foyer:
-        end_lens(1.95 if vip else 1.92, 2.45, check_solid, 'bronze', 'glass')
+    end_lens(1.95 if vip else 1.56 if foyer else 1.14, 2.45, check_solid, 'bronze', 'glass')
     names = ['seat', 'kick', 'outer shell', 'backrest', 'end lens A', 'end lens B']
     results.append({'name':mesh['name'],'triangles':tris,'materials':slots,
                     'minUvDoubleArea':minimum_uv,'maxNormalTangentDot':worst_orthogonality,

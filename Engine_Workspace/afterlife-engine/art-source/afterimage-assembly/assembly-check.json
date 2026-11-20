@@ -22,22 +22,22 @@
     "BOOTH_UW3",
     "BOOTH_UW4"
   ],
-  "areas": 16,
+  "areas": 20,
   "nativeLights": 62,
-  "reviewCameras": 110,
+  "reviewCameras": 116,
   "collections": {
-    "01 · Building and furnishings": 706,
+    "01 · Building and furnishings": 651,
     "02 · Architectural lighting details": 4,
-    "03 · Performance hall": 60,
-    "04 · Foyer and backbar": 110,
+    "03 · Performance hall": 63,
+    "04 · Foyer and backbar": 125,
     "05 · Gallery portals": 9,
     "06 · Official stage plaque": 6,
     "07 · Floor textiles": 8,
     "08 · Surface treatments": 9,
     "12 · Installed head and mirror assemblies": 26,
     "13 · Engine fixtures": 62,
-    "14 · Review cameras": 110,
-    "15 · Fabricated soffits and stair supports": 96
+    "14 · Review cameras": 116,
+    "15 · Fabricated soffits and stair supports": 126
   },
   "externalImages": [],
   "lighting": "Static review pose. Engine candela and rectangular radiance retained on object properties. Blender watts approximate a 30 lm/W RGB source."

@@ -257,6 +257,21 @@ export function installElevationAndSoffitLights(
     spawnedEntities.push(e);
   };
 
+  const railFinish = cookedMaterials?.get('D109_STAIR_COATED_STEEL');
+  if (railFinish === undefined) throw new Error('Mounting channel finish missing');
+  const mountStrip = (
+    name: string, size: readonly [number, number, number], pos: readonly [number, number, number],
+    mat: AssetHandle<'material'>,
+  ) => {
+    // Top of the steel channel meets the structural soffit. The opal snaps
+    // onto its lower face. The two parts share a contact surface only.
+    const [w, t, l] = size;
+    const [x, y, z] = pos;
+    const ceiling = y + t / 2;
+    spawnStrip(name + '_CHANNEL', [w + .032,.032,l + .032], [x,ceiling - .016,z], railFinish);
+    spawnStrip(name, [w,t,l], [x,ceiling - .032 - t / 2,z], mat);
+  };
+
   // ============================================================================
   // PART A: FRONT HALL (前厅 z = -1.2m .. -19.5m) FLUSH CEILING LIGHT STRIPS
   //         Embedded directly onto the underside of the existing roof beams (y = 8.595m)
@@ -267,17 +282,13 @@ export function installElevationAndSoffitLights(
   //     (ARCH_ROOF_BEAMS exist at z = -2.75m, -8.25m, -13.75m, -19.25m, bottom face y = 8.600m)
   for (const [bIdx, z] of [-2.75, -8.25, -13.75, -19.25].entries()) {
     const mat = bIdx % 2 === 0 ? coolBandMat : pinkBandMat;
-    spawnStrip(`PDR/SOFFIT_FRONT_BEAM_TRANS_${bIdx}`, [26.8, 0.012, 0.12], [0, 8.594, z], mat);
+    mountStrip(`PDR/SOFFIT_FRONT_BEAM_TRANS_${bIdx}`, [26.8, 0.012, 0.12], [0, 8.594, z], mat);
   }
-  // A2. Flush LED strips mounted directly along the bottom face of the 2 longitudinal roof beams (x = +-4.50m, y = 8.600m)
-  spawnStrip('PDR/SOFFIT_FRONT_BEAM_LON_W', [0.12, 0.012, 16.8], [-4.50, 8.594, -11.0], pinkBandMat);
-  spawnStrip('PDR/SOFFIT_FRONT_BEAM_LON_E', [0.12, 0.012, 16.8], [4.50, 8.594, -11.0], pinkBandMat);
-
   // A3. Flush LED strips mounted directly against the high ceiling slab (ARCH_ROOF_SLAB bottom at y = 9.250m)
   //     above the West booths/stairs (x = -13.6m, -11.2m, -8.0m) and East high-tables/bar/stairs (x = +8.0m, +11.2m, +13.6m)
   for (const [sIdx, x] of [-13.6, -11.2, -8.0, 8.0, 11.2, 13.6].entries()) {
     const mat = sIdx % 2 === 0 ? pinkBandMat : coolBandMat;
-    spawnStrip(`PDR/SOFFIT_FRONT_SLAB_LON_${sIdx}`, [0.15, 0.014, 17.6], [x, 9.243, -10.5], mat);
+    mountStrip(`PDR/SOFFIT_FRONT_SLAB_LON_${sIdx}`, [0.15, 0.014, 17.6], [x, 9.243, -10.5], mat);
   }
 
   // ============================================================================
@@ -287,11 +298,11 @@ export function installElevationAndSoffitLights(
   // ============================================================================
 
   // B1. Under-Bridge Flush Ceiling Light Strips (inside bridge ceiling bay z = -22.35..-20.05m at y = 3.344m)
-  spawnStrip('PDR/SOFFIT_BRIDGE_STRIP_0', [16.0, 0.012, 0.14], [0, 3.344, -20.65], coolBandMat);
-  spawnStrip('PDR/SOFFIT_BRIDGE_STRIP_1', [16.0, 0.012, 0.14], [0, 3.344, -21.75], pinkBandMat);
+  mountStrip('PDR/SOFFIT_BRIDGE_STRIP_0', [16.0, 0.012, 0.14], [0, 3.344, -20.65], coolBandMat);
+  mountStrip('PDR/SOFFIT_BRIDGE_STRIP_1', [16.0, 0.012, 0.14], [0, 3.344, -21.75], pinkBandMat);
   // Flush along the bottom face of the South & North bridge fascia beams (y = 2.994m)
-  spawnStrip('PDR/SOFFIT_BRIDGE_BEAM_SOUTH', [16.0, 0.012, 0.11], [0, 2.994, -19.92], pinkBandMat);
-  spawnStrip('PDR/SOFFIT_BRIDGE_BEAM_NORTH', [16.0, 0.012, 0.11], [0, 2.994, -22.48], coolBandMat);
+  mountStrip('PDR/SOFFIT_BRIDGE_BEAM_SOUTH', [16.0, 0.012, 0.11], [0, 2.994, -19.92], pinkBandMat);
+  mountStrip('PDR/SOFFIT_BRIDGE_BEAM_NORTH', [16.0, 0.012, 0.11], [0, 2.994, -22.48], coolBandMat);
 
   // B2. Under-Gallery Bay-Fitted Flush Ceiling Light Strips (inside each of the 4 ceiling bays on y = 3.344m)
   const galleryBays: readonly [number, number][] = [
@@ -306,21 +317,21 @@ export function installElevationAndSoffitLights(
     for (const [sideIdx, sign] of [-1, 1].entries()) {
       const side = sideIdx === 0 ? 'W' : 'E';
       // Inner aisle bay (between beams at x = 8.55m and x = 10.40m -> center x = +-9.475m)
-      spawnStrip(`PDR/SOFFIT_AISLE_LON_${side}_${bIdx}`, [0.14, 0.012, zLen], [sign * 9.475, 3.344, zMid], coolBandMat);
+      mountStrip(`PDR/SOFFIT_AISLE_LON_${side}_${bIdx}`, [0.14, 0.012, zLen], [sign * 9.475, 3.344, zMid], coolBandMat);
       // Outer booth bay (between beam at x = 10.65m and wall at x = 14.00m -> center x = +-12.15m)
-      spawnStrip(`PDR/SOFFIT_BOOTH_LON_${side}_${bIdx}`, [0.14, 0.012, zLen], [sign * 12.15, 3.344, zMid], pinkBandMat);
-      // Transverse flush strip across the outer booth bay (x = +-10.75..+-13.85m -> width 3.0m, center +-12.30m)
-      spawnStrip(
-        `PDR/SOFFIT_BOOTH_TRANS_${side}_${bIdx}`,
-        [3.0, 0.012, 0.14],
-        [sign * 12.30, 3.344, zMid],
-        bIdx % 2 === 0 ? pinkBandMat : coolBandMat,
-      );
+      mountStrip(`PDR/SOFFIT_BOOTH_LON_${side}_${bIdx}`, [0.14, 0.012, zLen], [sign * 12.15, 3.344, zMid], pinkBandMat);
     }
   }
   // Flush along the bottom face of the inner gallery longitudinal beams (x = +-8.425m, y = 2.994m)
-  spawnStrip('PDR/SOFFIT_GAL_BEAM_W', [0.11, 0.012, 21.0], [-8.425, 2.994, -33.2], pinkBandMat);
-  spawnStrip('PDR/SOFFIT_GAL_BEAM_E', [0.11, 0.012, 21.0], [8.425, 2.994, -33.2], pinkBandMat);
+  mountStrip('PDR/SOFFIT_GAL_BEAM_W', [0.11, 0.012, 21.0], [-8.425, 2.994, -33.2], pinkBandMat);
+  mountStrip('PDR/SOFFIT_GAL_BEAM_E', [0.11, 0.012, 21.0], [8.425, 2.994, -33.2], pinkBandMat);
+
+  // The dance-floor downlights occupy the joint of each suspended L-shaped
+  // rail. A dark bezel distinguishes their directional lens from the warm rail.
+  for (const [i, [x,z]] of [[5,-26.5],[-6,-31.5],[3.5,-35]].entries()) {
+    spawnStrip('PDR/DANCE_OPTIC_BEZEL_'+i, [.17,.038,.17], [x,8.577,z], railFinish);
+    spawnStrip('PDR/DANCE_OPTIC_LENS_'+i, [.115,.008,.115], [x,8.554,z], dimBandMat);
+  }
 
   // 6. Spawn solid glossy black step risers + continuous under-stair sloped soffit for STAIR_E and STAIR_W
   //    so the stairs to the 2nd floor read as a solid, smooth, reflective black structure with zero hollow gaps.
