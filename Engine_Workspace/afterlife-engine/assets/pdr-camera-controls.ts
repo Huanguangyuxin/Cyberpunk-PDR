@@ -1,3 +1,4 @@
+import {allowsNativeSsr} from './pdr-native-resolution';
 import type {Component, ComponentSchema, EntityHandle, InputShapeOf, World} from '@forgeax/engine/ecs';
 import {Name} from '@forgeax/engine/scene';
 import {
@@ -29,7 +30,7 @@ const optionalEffects = {
 type Effect = keyof typeof optionalEffects;
 
 export function installCameraControls(world: World, cameras: readonly EntityHandle[], renderer: Renderer | undefined,
-  bindPlanarFloor: (enabled:boolean)=>void, volumeFogEnabled:()=>boolean) {
+  bindPlanarFloor: (enabled:boolean)=>void, volumeFogEnabled:()=>boolean, drawingBuffer:()=>{width:number;height:number}|undefined) {
   const originals = cameras.map(entity=>({entity,camera:{...world.get(entity,Camera).unwrap()}}));
   const baseline = originals[0].camera;
   const originalProfile = renderer?.inspect({fields:['profile']}).profile;
@@ -40,7 +41,7 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
   let contactLight: EntityHandle | undefined;
   let sceneLightsOn=true;
   let giFailure='';
-  let aa=defaultAA,tone=defaultTone,scale=1,fogQuality=defaultFog;
+  let aa=defaultAA,tone=defaultTone,fogQuality=defaultFog;
 
   const patchCamera = (data:Partial<CameraData>, resetHistory=false) => {
     for (const entity of cameras) {
@@ -82,8 +83,7 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
     }
     if(!caps?.rgba16floatRenderable)disabled.lensFlare='需要浮点 HDR 渲染目标';
     if(!(caps?.compute&&caps.storageTexture) && (device?.limits?.maxColorAttachments??0)<3)disabled.tsr='当前后端缺少 TSR 所需的渲染能力';
-    if(!caps?.timestampQuery||!caps.timestampPeriodNanoseconds)disabled.dynamicResolution='需要 GPU 时间戳';
-    if(aa!=='taa'&&aa!=='tsr')disabled.dynamicResolution='请先选择 TAA 或 TSR';
+    disabled.dynamicResolution='项目锁定显示像素，动态缩放已停用';
     if(!caps||!['webgpu','wgpu-native'].includes(caps.backendKind))disabled.msaa='此预览的后端无法启用该 MSAA 配置';
     if(volumeFogEnabled())disabled.msaa='请先关闭体积雾';
     if(Array.from(world.query({read:[Fog]}).unwrap()).length||Array.from(world.query({read:[Atmosphere]}).unwrap()).length){
@@ -100,6 +100,7 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
     }
     if(enabled.stereo)disabled.planar='立体相机与平面反射不能同时开启';
     if(enabled.planar)disabled.stereo='请先关闭平面反射';
+    if(!allowsNativeSsr(drawingBuffer()))disabled.ssr='当前视口超过 SSR 的 320 MiB 预算，使用局部反射探针';
     return {disabled,hardwareRayQuery:caps?.rayQuery.supported===true};
   };
   const changeProfile = (mode:AntialiasMode, next:typeof enabled, fog:typeof fogQuality) => {
@@ -134,10 +135,10 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
       case 'barrelDistortion': companion(BarrelDistortion,{strength:.075},on);break;
       case 'autoExposure': for(const {entity,camera} of originals)world.set(entity,Camera,{exposureMode:on?CAMERA_EXPOSURE_MODE_AUTO:camera.exposureMode}).unwrap();break;
       case 'weightedTransparency': for(const {entity,camera} of originals)world.set(entity,Camera,{transparency:on?TRANSPARENCY_WEIGHTED_BLENDED:camera.transparency}).unwrap();break;
-      case 'dynamicResolution': companion(DynamicResolution,{minScale:.5,maxScale:1,targetGpuMs:16.67},on);patchCamera({},true);break;
+      case 'dynamicResolution': companion(DynamicResolution,{minScale:1,maxScale:1,targetGpuMs:16.67},false);patchCamera({},true);break;
       case 'stereo': companion(StereoCamera,{eyeSeparation:.064,convergence:4,layout:StereoLayoutValue['side-by-side']},on);break;
       case 'planar':
-        companion(PlanarReflection,{normal:[0,1,0],distance:0,clipBias:.002,distortion:.15,resolutionScale:.35,updateIntervalFrames:2,generateMipmaps:true},on);
+        companion(PlanarReflection,{normal:[0,1,0],distance:.30,clipBias:.002,distortion:.15,resolutionScale:.35,updateIntervalFrames:2,generateMipmaps:true},on);
         bindPlanarFloor(on);
         break;
       case 'contactShadows':
@@ -171,7 +172,7 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
   };
   const reset = () => {
     for (const id of Object.keys(enabled) as Effect[])setEffect(id,false);
-    setAA(defaultAA);setFogQuality(defaultFog);setTone(defaultTone);scale=1;giFailure='';
+    setAA(defaultAA);setFogQuality(defaultFog);setTone(defaultTone);giFailure='';
     for (const {entity,camera} of originals){
       const {exposure,temperature,tint,bloomIntensity}=camera;
       world.set(entity,Camera,{exposure,temperature,tint,bloomIntensity}).unwrap();
@@ -193,7 +194,20 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
     const giState=enabled.diffuseGi
       ? gi?.state==='ready'?'实时 GI 已就绪':'实时 GI 正在准备'
       : giFailure;
-    return {effects:{...enabled},antialias:aa,tonemap:tone,fogQuality,renderScale:scale,
+    const snapshot=renderer?.inspect({fields:['views','limits','temporalTarget']});
+    const view=snapshot?.views?.find(v=>v.output==='screen' && v.renderedFrames>0 && v.width>0 && v.height>0);
+    const extent=view?.dynamicResolution?.extent;
+    // A single display camera can use the primary recorder; it need not appear in views[].
+    const target=snapshot?.temporalTarget?.descriptor;
+    const buffer=drawingBuffer();
+    const width=buffer?Math.min(buffer.width,Math.round(buffer.height*16/9)):0;
+    const height=buffer?Math.min(buffer.height,Math.round(buffer.width*9/16)):0;
+    const pixels={viewWidth:view?.width??width,viewHeight:view?.height??height,
+      internalWidth:extent?.internalWidth??target?.width??view?.width??width,
+      internalHeight:extent?.internalHeight??target?.height??view?.height??height,
+      source:extent||target?'attachment' as const:view?'view' as const:'camera' as const,
+      maxDimension:snapshot?.limits?.maxTextureDimension2D??0,separateEyes:view?.eye!==undefined};
+    return {effects:{...enabled},antialias:aa,tonemap:tone,fogQuality,renderScale:1,pixels,
       camera:{exposure,temperature,tint,bloomIntensity},unavailable:s.disabled,hardwareRayQuery:s.hardwareRayQuery,giState};
   };
   return {
@@ -203,6 +217,6 @@ export function installCameraControls(world: World, cameras: readonly EntityHand
       sceneLightsOn=on;
       if(contactLight!==undefined)world.set(contactLight,DirectionalLight,{intensity:on ? .12 : 0}).unwrap();
     },
-    scale:()=>scale,setScale:(value:number)=>{if([.5,.7,.85,1].includes(value)&&value!==scale){scale=value;patchCamera({},true);}},
+    setScale:(value:number)=>{if(value!==1)throw Error('项目锁定显示像素，渲染比例为 100%');},
   };
 }

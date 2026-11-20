@@ -1,0 +1,454 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "Afterimage Foyer Booth",
+        "Afterimage Hall Booth",
+        "Afterimage VIP Booth"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "D189-Afterimage-Booths.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Afterimage Foyer Booth"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Afterimage Hall Booth"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Afterimage VIP Booth"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:Afterimage Foyer Booth": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f5bfdd1613",
+          "slotName": "M01 Merlot channel leather",
+          "sourceKey": "material:M01 Merlot channel leather"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f6a6e9937a",
+          "slotName": "M02 Amber cast ribbed glass",
+          "sourceKey": "material:M02 Amber cast ribbed glass"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f761b7f7dd",
+          "slotName": "M03 Satin champagne metal",
+          "sourceKey": "material:M03 Satin champagne metal"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f85936829f",
+          "slotName": "M04 Smoked safety glazing",
+          "sourceKey": "material:M04 Smoked safety glazing"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f96d72ee99",
+          "slotName": "Graphite enamel",
+          "sourceKey": "material:Graphite enamel"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fa85b42366",
+          "slotName": "M07 Satin aggregate table",
+          "sourceKey": "material:M07 Satin aggregate table"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fbc3db8b39",
+          "slotName": "Merlot piping",
+          "sourceKey": "material:Merlot piping"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fc029f9412",
+          "slotName": "Warm lamp lens",
+          "sourceKey": "material:Warm lamp lens"
+        }
+      ]
+    },
+    "mesh:Afterimage Hall Booth": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f5bfdd1613",
+          "slotName": "M01 Merlot channel leather",
+          "sourceKey": "material:M01 Merlot channel leather"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f6a6e9937a",
+          "slotName": "M02 Amber cast ribbed glass",
+          "sourceKey": "material:M02 Amber cast ribbed glass"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f761b7f7dd",
+          "slotName": "M03 Satin champagne metal",
+          "sourceKey": "material:M03 Satin champagne metal"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f96d72ee99",
+          "slotName": "Graphite enamel",
+          "sourceKey": "material:Graphite enamel"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fa85b42366",
+          "slotName": "M07 Satin aggregate table",
+          "sourceKey": "material:M07 Satin aggregate table"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fbc3db8b39",
+          "slotName": "Merlot piping",
+          "sourceKey": "material:Merlot piping"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fc029f9412",
+          "slotName": "Warm lamp lens",
+          "sourceKey": "material:Warm lamp lens"
+        }
+      ]
+    },
+    "mesh:Afterimage VIP Booth": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f5bfdd1613",
+          "slotName": "M01 Merlot channel leather",
+          "sourceKey": "material:M01 Merlot channel leather"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f6a6e9937a",
+          "slotName": "M02 Amber cast ribbed glass",
+          "sourceKey": "material:M02 Amber cast ribbed glass"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f761b7f7dd",
+          "slotName": "M03 Satin champagne metal",
+          "sourceKey": "material:M03 Satin champagne metal"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94f96d72ee99",
+          "slotName": "Graphite enamel",
+          "sourceKey": "material:Graphite enamel"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fa85b42366",
+          "slotName": "M07 Satin aggregate table",
+          "sourceKey": "material:M07 Satin aggregate table"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fbc3db8b39",
+          "slotName": "Merlot piping",
+          "sourceKey": "material:Merlot piping"
+        },
+        {
+          "defaultMaterialGuid": "01a1f2ee-20e8-77a4-9858-94fc029f9412",
+          "slotName": "Warm lamp lens",
+          "sourceKey": "material:Warm lamp lens"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1f2e3-ee3b-7fd0-99df-25f7bf086b93",
+      "kind": "mesh",
+      "name": "Afterimage Foyer Booth",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:Afterimage Foyer Booth"
+    },
+    {
+      "guid": "01a1f2e3-ee3b-7fd0-99df-25f820f3dbdb",
+      "kind": "mesh",
+      "name": "Afterimage Hall Booth",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:Afterimage Hall Booth"
+    },
+    {
+      "guid": "01a1f2e3-ee3b-7fd0-99df-25f9d8c8c051",
+      "kind": "mesh",
+      "name": "Afterimage VIP Booth",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:Afterimage VIP Booth"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94f5bfdd1613",
+      "kind": "material",
+      "name": "M01 Merlot channel leather",
+      "sourceIndex": 0,
+      "sourceKey": "material:M01 Merlot channel leather"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94f6a6e9937a",
+      "kind": "material",
+      "name": "M02 Amber cast ribbed glass",
+      "sourceIndex": 1,
+      "sourceKey": "material:M02 Amber cast ribbed glass"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94f761b7f7dd",
+      "kind": "material",
+      "name": "M03 Satin champagne metal",
+      "sourceIndex": 2,
+      "sourceKey": "material:M03 Satin champagne metal"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94f85936829f",
+      "kind": "material",
+      "name": "M04 Smoked safety glazing",
+      "sourceIndex": 3,
+      "sourceKey": "material:M04 Smoked safety glazing"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94f96d72ee99",
+      "kind": "material",
+      "name": "Graphite enamel",
+      "sourceIndex": 4,
+      "sourceKey": "material:Graphite enamel"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94fa85b42366",
+      "kind": "material",
+      "name": "M07 Satin aggregate table",
+      "sourceIndex": 5,
+      "sourceKey": "material:M07 Satin aggregate table"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94fbc3db8b39",
+      "kind": "material",
+      "name": "Merlot piping",
+      "sourceIndex": 6,
+      "sourceKey": "material:Merlot piping"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94fc029f9412",
+      "kind": "material",
+      "name": "Warm lamp lens",
+      "sourceIndex": 7,
+      "sourceKey": "material:Warm lamp lens"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94fd822a0ce6",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94fe47f10f71",
+      "kind": "texture",
+      "name": "merlot-normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:merlot-normal"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-94ffbfe9e47a",
+      "kind": "texture",
+      "name": "merlot-color",
+      "sourceIndex": 1,
+      "sourceKey": "texture:merlot-color"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-95008893dd3f",
+      "kind": "texture",
+      "name": "merlot-orm",
+      "sourceIndex": 2,
+      "sourceKey": "texture:merlot-orm"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-950116abad35",
+      "kind": "texture",
+      "name": "amber-emission",
+      "sourceIndex": 3,
+      "sourceKey": "texture:amber-emission"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-9502be53cc76",
+      "kind": "texture",
+      "name": "amber-normal",
+      "sourceIndex": 4,
+      "sourceKey": "texture:amber-normal"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-95036dae6cc8",
+      "kind": "texture",
+      "name": "amber-color",
+      "sourceIndex": 5,
+      "sourceKey": "texture:amber-color"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-950456d8a9c4",
+      "kind": "texture",
+      "name": "amber-orm",
+      "sourceIndex": 6,
+      "sourceKey": "texture:amber-orm"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-9505c72aa8de",
+      "kind": "texture",
+      "name": "bronze-normal",
+      "sourceIndex": 7,
+      "sourceKey": "texture:bronze-normal"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-9506a2fc9950",
+      "kind": "texture",
+      "name": "bronze-color",
+      "sourceIndex": 8,
+      "sourceKey": "texture:bronze-color"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-95077f6905e9",
+      "kind": "texture",
+      "name": "bronze-orm",
+      "sourceIndex": 9,
+      "sourceKey": "texture:bronze-orm"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-9508bd5a698e",
+      "kind": "texture",
+      "name": "stone-normal",
+      "sourceIndex": 10,
+      "sourceKey": "texture:stone-normal"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-9509944a8069",
+      "kind": "texture",
+      "name": "stone-color",
+      "sourceIndex": 11,
+      "sourceKey": "texture:stone-color"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-950a65b9a812",
+      "kind": "texture",
+      "name": "stone-orm",
+      "sourceIndex": 12,
+      "sourceKey": "texture:stone-orm"
+    },
+    {
+      "guid": "01a1f79a-b0ed-7b12-b211-56e46682370b",
+      "kind": "texture",
+      "name": "D189 table lamp local irradiance",
+      "sourceIndex": 13,
+      "sourceKey": "texture:D189 table lamp local irradiance"
+    },
+    {
+      "guid": "01a1f2ee-20e8-77a4-9858-950baae797f1",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

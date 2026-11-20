@@ -1,7 +1,8 @@
-import type {EntityHandle, World} from '@forgeax/engine/ecs';
-import {quat, vec3} from '@forgeax/engine/math';
-import {PointLight} from '@forgeax/engine/render';
-import {Name, Transform} from '@forgeax/engine/scene';
+import type {World} from '@forgeax/engine/ecs';
+import type {AssetRegistry} from '@forgeax/engine/assets-runtime';
+import type {AssetHandle} from '@forgeax/engine/types';
+import {MeshFilter,MeshRenderer} from '@forgeax/engine/render';
+import {Name} from '@forgeax/engine/scene';
 
 const boothLabels = {
   F: '前厅卡座台灯',
@@ -10,54 +11,61 @@ const boothLabels = {
 };
 const boothPattern = /^BOOTH_([FDU])([12EW][1-5])$/;
 const lightPrefix = 'PDR/practical/';
-const backbar = [
-  {id:'BACKBAR_S', label:'吧台背柜南灯', pos:[13.2, 2.36, -7]},
-  {id:'BACKBAR_N', label:'吧台背柜北灯', pos:[13.2, 2.36, -11.6]},
-];
-
 export function practicalLightLabel(name: string) {
   if (!name.startsWith(lightPrefix)) return;
   const fixture = name.slice(lightPrefix.length);
-  const bar = backbar.find(({id}) => id === fixture);
-  if (bar) return {name:bar.label, group:'bar'} as const;
   const match = boothPattern.exec(fixture);
   if (!match) return;
   const floor = match[1] as keyof typeof boothLabels;
   return {name:boothLabels[floor]+' '+floor+match[2], group:floor === 'U' ? 'gallery' : 'booths'} as const;
 }
 
-export function installPracticalLights(world: World) {
-  const booths = Array.from(world.query({read:[Name, Transform]}).unwrap(), row => {
-    const name = row.get(Name).value;
-    const transform = row.get(Transform);
-    return {name, pos:Array.from(transform.pos), quat:Array.from(transform.quat), scale:Array.from(transform.scale)};
-  }).filter(({name}) => boothPattern.test(name));
-  if (booths.length !== 24 || new Set(booths.map(({name}) => name)).size !== 24) {
-    throw new Error('Expected one authored lamp anchor for each of the 24 D122 booths');
-  }
-
-  const lights: EntityHandle[] = [];
-  const spawn = (id: string, pos: number[], intensity: number, range: number) => {
-    lights.push(world.spawn(
-      {component:Name, data:{value:lightPrefix+id}},
-      {component:Transform, data:{pos}},
-      {component:PointLight, data:{intensity, range, decay:2, color:[1, .58, .38]}},
-    ).unwrap());
-  };
-  const dispose = () => { for (const entity of lights) world.despawn(entity).unwrap(); };
-  try {
-    // D122 opal shade centre in booth-local metres, with the emitter 16 mm above its top face.
-    for (const booth of booths) {
-      const [x,y,z] = booth.scale;
-      const offset = quat.transformVec3(vec3.create(), booth.quat, [1.36*x, .724*y, -1.30*z]);
-      spawn(booth.name, Array.from(vec3.add(offset, booth.pos, offset)),
-        booth.name.startsWith('BOOTH_F') ? 3 : 2.5, 1.6);
-    }
-    // The D122 source has two backbar lamp mounts. D108 reassigned their runtime rows to roof strips.
-    for (const {id,pos} of backbar) spawn(id,pos,8,3);
-  } catch (error) {
-    dispose();
-    throw error;
-  }
-  return {dispose};
+export interface TableLightControl {
+  id:string; name:string; group:'gallery'|'booths'; rayTestLight:boolean;
+  setEnabled(next:boolean):void; readEnabled():boolean; intensity():number;
 }
+export function installPracticalLights(world:World, assets:AssetRegistry) {
+  const darkVariants=new Map<AssetHandle<'material'>,AssetHandle<'material'>>();
+  const controls:TableLightControl[]=[];
+  const records:{fixture:string;mesh:number;slot:number;table:number;lens:number;texture:unknown}[]=[];
+  const booths=Array.from(world.query({read:[Name,MeshFilter,MeshRenderer]}).unwrap(),r=>({
+    name:r.get(Name).value,entity:r.entity,mesh:r.get(MeshFilter).assetHandle,materials:Array.from(r.get(MeshRenderer).materials),
+  })).filter(row=>boothPattern.test(row.name));
+  if(booths.length!==21)throw Error('Missing authored table receiver');
+  const dark=(handle:AssetHandle<'material'>)=>{
+    let copy=darkVariants.get(handle);
+    if(copy!==undefined)return copy;
+    copy=assets.copy(handle).unwrap();
+    const data=assets.read(copy).unwrap();
+    assets.update(copy,{values:{...data.values,emissive:[0,0,0],emissiveIntensity:0}}).unwrap();
+    darkVariants.set(handle,copy);
+    return copy;
+  };
+  for(const booth of booths){
+    const slots=assets.read(booth.mesh).unwrap().materialSlots;
+    const pair=['M07 Satin aggregate table','Warm lamp lens'].map(name=>{
+      const slot=slots.findIndex(s=>s.slotName===name);
+      if(slot<0)throw Error('Missing table light material '+name+' on '+booth.name);
+      const on=booth.materials[slot] as AssetHandle<'material'>;
+      return {slot,on,off:dark(on)};
+    });
+    let enabled=true;
+    const setEnabled=(next:boolean)=>{
+      if(next===enabled)return;
+      const materials=Array.from(world.get(booth.entity,MeshRenderer).unwrap().materials);
+      for(const binding of pair)materials[binding.slot]=next?binding.on:binding.off;
+      world.set(booth.entity,MeshRenderer,{materials}).unwrap();
+      enabled=next;
+    };
+    const control={...practicalLightLabel(lightPrefix+booth.name)!,id:lightPrefix+booth.name,rayTestLight:false,
+      readEnabled:()=>enabled,intensity:()=>enabled?(booth.name.startsWith('BOOTH_U')?6:4):0,setEnabled};
+    controls.push(control);
+    const table=assets.read(pair[0].on).unwrap();
+    records.push({fixture:booth.name,mesh:booth.mesh,slot:pair[0].slot,table:pair[0].on,lens:pair[1].on,texture:table.values?.emissiveTexture});
+  }
+  return {controls,read:()=>records.map((row,i)=>({...row,enabled:controls[i].readEnabled()})),dispose:()=>{
+    for(const control of controls)control.setEnabled(true);
+    for(const handle of darkVariants.values())assets.release(handle).unwrap();
+  }};
+}
+

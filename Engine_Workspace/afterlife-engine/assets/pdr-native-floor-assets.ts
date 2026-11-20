@@ -23,7 +23,7 @@ export function nativeFloorAssets(){
   const sources=[{map:nativeFloorInputs,installed:false},{map:installedFloorInputs,installed:true}];
   for(const {map,installed} of sources)for(const [slot,original]of Object.entries(map)){
     const withSampler=(value:MaterialTextureValue)=>({...value,sampler:nativeFloorGuid(installed?detailSampler:nativeSampler)});
-    const inputs:NativeFloorInputs={...original,
+    const inputs:NativeFloorInputs={...original,wearStrength:installed ? 1 : 0,
       baseColorTexture:withSampler(original.baseColorTexture),metallicRoughnessTexture:withSampler(original.metallicRoughnessTexture),
       normalTexture:withSampler(original.normalTexture),occlusionTexture:withSampler(original.occlusionTexture),
       wetMaskTexture:macro(wet),filmNormalTexture:macro(film)};

@@ -1,0 +1,119 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "M14 material swatch"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "D189-Wall-Cassettes.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Plane"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:Plane": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f367-ebd6-790c-bfb3-8c73d6a11ff7",
+          "slotName": "M14 graphite cassette field",
+          "sourceKey": "material:M14 graphite cassette field"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1f367-ebd5-7601-a3ba-ce84aabd88a2",
+      "kind": "mesh",
+      "name": "Plane",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:Plane"
+    },
+    {
+      "guid": "01a1f367-ebd6-790c-bfb3-8c73d6a11ff7",
+      "kind": "material",
+      "name": "M14 graphite cassette field",
+      "sourceIndex": 0,
+      "sourceKey": "material:M14 graphite cassette field"
+    },
+    {
+      "guid": "01a1f367-ebd6-790c-bfb3-8c7468234189",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1f367-ebd6-790c-bfb3-8c755e11086b",
+      "kind": "texture",
+      "name": "graphite-normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:graphite-normal"
+    },
+    {
+      "guid": "01a1f367-ebd6-790c-bfb3-8c76bd39ac16",
+      "kind": "texture",
+      "name": "graphite-color",
+      "sourceIndex": 1,
+      "sourceKey": "texture:graphite-color"
+    },
+    {
+      "guid": "01a1f367-ebd6-790c-bfb3-8c77aa0b82d4",
+      "kind": "texture",
+      "name": "graphite-orm",
+      "sourceIndex": 2,
+      "sourceKey": "texture:graphite-orm"
+    },
+    {
+      "guid": "01a1f367-ebd6-790c-bfb3-8c780afd3227",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

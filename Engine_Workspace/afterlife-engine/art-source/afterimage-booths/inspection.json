@@ -1,0 +1,141 @@
+{
+  "sha256": "5b96f486b1e4e4be4633658982607cd4b094ad7520ec8d91a7e08c2d9579f248",
+  "doubleSided": {
+    "M01 Merlot channel leather": false,
+    "M02 Amber cast ribbed glass": false,
+    "M03 Satin champagne metal": false,
+    "M04 Smoked safety glazing": true,
+    "Graphite enamel": false,
+    "M07 Satin aggregate table": false,
+    "Merlot piping": false,
+    "Warm lamp lens": false
+  },
+  "meshes": [
+    {
+      "name": "Afterimage Foyer Booth",
+      "triangles": 82026,
+      "materials": [
+        "M01 Merlot channel leather",
+        "M02 Amber cast ribbed glass",
+        "M03 Satin champagne metal",
+        "M04 Smoked safety glazing",
+        "Graphite enamel",
+        "M07 Satin aggregate table",
+        "Merlot piping",
+        "Warm lamp lens"
+      ],
+      "minUvDoubleArea": 2.376144720983575e-07,
+      "maxNormalTangentDot": 0.00012666994420307276,
+      "minExportFaceNormalAgreement": 0.2461493811767675,
+      "closedOrientedBackrest": true,
+      "closedOrientedSolids": {
+        "seat": {
+          "signedVolumeM3": 0.3857545430515055,
+          "triangles": 17940
+        },
+        "kick": {
+          "signedVolumeM3": 0.8667819875026925,
+          "triangles": 4284
+        },
+        "outer shell": {
+          "signedVolumeM3": 0.8393396120837822,
+          "triangles": 21350
+        },
+        "backrest": {
+          "signedVolumeM3": 0.5787151644296985,
+          "triangles": 30576
+        },
+        "end lens A": {
+          "signedVolumeM3": 0.021483283565953516,
+          "triangles": 504
+        },
+        "end lens B": {
+          "signedVolumeM3": 0.021483283565953252,
+          "triangles": 504
+        }
+      }
+    },
+    {
+      "name": "Afterimage Hall Booth",
+      "triangles": 56522,
+      "materials": [
+        "M01 Merlot channel leather",
+        "M02 Amber cast ribbed glass",
+        "M03 Satin champagne metal",
+        "Graphite enamel",
+        "M07 Satin aggregate table",
+        "Merlot piping",
+        "Warm lamp lens"
+      ],
+      "minUvDoubleArea": 2.4114967800414888e-05,
+      "maxNormalTangentDot": 0.00011457963703359608,
+      "minExportFaceNormalAgreement": 0.24490745805164998,
+      "closedOrientedBackrest": true,
+      "closedOrientedSolids": {
+        "seat": {
+          "signedVolumeM3": 0.29693113628784185,
+          "triangles": 12220
+        },
+        "kick": {
+          "signedVolumeM3": 0.6622513120181778,
+          "triangles": 2856
+        },
+        "outer shell": {
+          "signedVolumeM3": 0.5732932901637772,
+          "triangles": 14210
+        },
+        "backrest": {
+          "signedVolumeM3": 0.43924309493667096,
+          "triangles": 22932
+        },
+        "end lens A": {
+          "signedVolumeM3": 0.021483283565953516,
+          "triangles": 504
+        }
+      }
+    },
+    {
+      "name": "Afterimage VIP Booth",
+      "triangles": 81402,
+      "materials": [
+        "M01 Merlot channel leather",
+        "M02 Amber cast ribbed glass",
+        "M03 Satin champagne metal",
+        "Graphite enamel",
+        "M07 Satin aggregate table",
+        "Merlot piping",
+        "Warm lamp lens"
+      ],
+      "minUvDoubleArea": 6.37720631857519e-06,
+      "maxNormalTangentDot": 0.0001273814594213718,
+      "minExportFaceNormalAgreement": 0.24487917123101174,
+      "closedOrientedBackrest": true,
+      "closedOrientedSolids": {
+        "seat": {
+          "signedVolumeM3": 0.3544673949473009,
+          "triangles": 17940
+        },
+        "kick": {
+          "signedVolumeM3": 0.7962581931208154,
+          "triangles": 4284
+        },
+        "outer shell": {
+          "signedVolumeM3": 0.8196744583719222,
+          "triangles": 21350
+        },
+        "backrest": {
+          "signedVolumeM3": 0.5618553437641822,
+          "triangles": 29796
+        },
+        "end lens A": {
+          "signedVolumeM3": 0.02148328356595361,
+          "triangles": 504
+        },
+        "end lens B": {
+          "signedVolumeM3": 0.021483283565952273,
+          "triangles": 504
+        }
+      }
+    }
+  ]
+}

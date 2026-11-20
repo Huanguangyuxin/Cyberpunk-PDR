@@ -1,8 +1,13 @@
+import {nativeViewport} from './pdr-native-resolution';
+import {installFixedLighting, fixedLightCapacity, fixedShadowNumbers} from './pdr-local-light-budget';
 import {installWallResponse} from './pdr-wall-response';
 import {nativeFloorAssets,nativeFloorGuid,nativeFloorMaterialKey} from './pdr-native-floor-assets';
 import {installDisplayHierarchy} from './pdr-display-hierarchy';
 import {installElevationAndSoffitLights} from './pdr-elevation-and-soffit-lights';
-import {isVipShell} from './pdr-vip-roof';
+import type {AssetHandle} from '@forgeax/engine/types';
+import {collectorMaterial,installCollector} from './pdr-cobalt-collector';
+import {cobaltWaterMaterial,installCobaltFlow} from './pdr-cobalt-flow';
+import {installFoyerRefit} from './pdr-foyer-refit';
 import {installMirrorBalls} from './pdr-mirror-balls';
 import {heroRefractiveMaterial} from './pdr-hero-refractive-material';
 import {causticTextureAsset,installBarCaustic} from './pdr-bar-caustics';
@@ -13,14 +18,16 @@ import {installCafeChairRepair,installMovingHeads} from './pdr-fixtures-d051';
 import {installPlantRepair} from './pdr-plant-repair';
 import {installGlassGuardTrial} from './pdr-glass-guards';
 import {installOtherScreens} from './pdr-other-screens';
-import {installStageMist} from './pdr-stage-mist';
+import {installDanceFloorMist} from './pdr-dance-floor-mist';
 import {installWetFloor} from './pdr-wet-floor';
 import {installFinishes} from './pdr-installed-finishes';
+import {installHallFitoutClearance} from './pdr-hall-fitout-clearance';
+import {installWallRenewal} from './pdr-wall-renewal';
 import {architecturalFinishGuids,INSTALLED_FINISH_SCENE,INSTALLED_FLOOR_TRIM,type ArchitecturalFinish} from './pdr-installed-finish-ids';
 import {installLiquidMotion} from './pdr-liquid-motion';
-import {installWaterDroplets} from './pdr-water-droplets';
 import {tuneNewLayout} from './pdr-newlayout-lighting';
 import {installPracticalLights} from './pdr-practical-lights';
+import {applyFurnitureClearance} from './pdr-furniture-clearance';
 import {arrangeGroundSeating} from './pdr-ground-seating';
 import {brandAmbient, installForgeAxBrandLighting} from './pdr-forgeax-brand-lighting';
 import {readDrinkOptics} from './pdr-optics-inspection';
@@ -54,15 +61,17 @@ const CAMERA_NAMES = ["CAM01_ENTRANCE", "CAM05_DEEP_REVERSE", "CAM02_BAR", "CAM0
 
 // The imported glTF is already Y-up; apply no additional axis/scale conversion.
 export const scene: Plugin.Object<{ readonly scene: string; readonly carpetScene:string;
-  readonly installedFinishScene:string; readonly floorTrim:string;
+  readonly rearFinishesScene:string; readonly hallFittingsScene:string; readonly installedFinishScene:string; readonly floorTrim:string;
+  readonly wallCassetteMaterial:string;
+  readonly finishSamplers:readonly string[]; readonly vipPortals:string; readonly boothFoyer:string; readonly boothHall:string; readonly boothVip:string;
   readonly mirrorBallMeshes:readonly string[];
   readonly architecturalFinishes:Readonly<Record<ArchitecturalFinish,string>>;
   readonly originalFloor:{readonly standard:readonly string[];readonly planar:readonly string[]};
   readonly installedFloor:{readonly standard:readonly string[];readonly planar:readonly string[]};
   readonly wb018Decor: string; readonly stageSign: string; readonly liquidTemplates: readonly string[];
-  readonly dropletMesh: string; readonly chairMesh: string; readonly headMeshes: readonly string[];
+  readonly chairMesh: string; readonly headMeshes: readonly string[];
   readonly glassMaterial: string; readonly heroGlassMeshes: readonly string[]; readonly liquidMaterials: readonly string[];
-  readonly barCaustic:string; readonly heroRefractiveMaterial:string }> = {
+  readonly collectorMaterial:string; readonly cobaltWater:string; readonly barCaustic:string; readonly heroRefractiveMaterial:string }> = {
   name: 'cyberpunk/newlayout-observer',
   inject: ['world', 'assets', 'gameHost'],
   async apply(ctx, config) {
@@ -139,9 +148,35 @@ const readScaleBounds = (rootNames: readonly string[]) => {
 
     await ctx.effect(async function* () {
       yield () => assets.release(loaded.value).unwrap();
+      // These five glTF libraries have dedicated repeat samplers. Preserve their
+      // addressing and mip chains when increasing detail at grazing angles.
+      for (const guid of config.finishSamplers) {
+        const sampler = (await assets.load(assets.parseGuid(guid), 'sampler')).unwrap();
+        yield () => assets.release(sampler).unwrap();
+        const original = assets.read(sampler).unwrap();
+        const previous = {
+          minFilter:original.minFilter ?? 'nearest', magFilter:original.magFilter ?? 'nearest',
+          mipmapFilter:original.mipmapFilter ?? 'nearest', maxAnisotropy:original.maxAnisotropy ?? 1,
+        };
+        assets.update(sampler, {minFilter:'linear',magFilter:'linear',mipmapFilter:'linear',maxAnisotropy:16}).unwrap();
+        yield () => assets.update(sampler, previous).unwrap();
+      }
       const root = assets.instantiate(loaded.value, world).unwrap();
       // Set authored poses before registering furniture collision and table lamps.
       arrangeGroundSeating(world);
+      yield applyFurnitureClearance(world);
+      const fittingsAsset=(await assets.load(assets.parseGuid(config.hallFittingsScene),'scene')).unwrap();
+      yield ()=>assets.release(fittingsAsset).unwrap();
+      const fittings=assets.instantiate(fittingsAsset,world).unwrap();
+      yield ()=>worldDespawnScene(world,fittings).unwrap();
+      const portalAsset=(await assets.load(assets.parseGuid(config.vipPortals),'scene')).unwrap();
+      yield ()=>assets.release(portalAsset).unwrap();
+      const portals=assets.instantiate(portalAsset,world).unwrap();
+      yield ()=>worldDespawnScene(world,portals).unwrap();
+      const rearAsset = (await assets.load(assets.parseGuid(config.rearFinishesScene), 'scene')).unwrap();
+      yield () => assets.release(rearAsset).unwrap();
+      const rear = assets.instantiate(rearAsset, world).unwrap();
+      yield () => worldDespawnScene(world, rear).unwrap();
       // WB018 selected-object candidate: official asset/GUID import, no full-scene replacement.
       const decorLoaded=(await assets.load(assets.parseGuid(config.wb018Decor),'scene')).unwrap();
       yield ()=>assets.release(decorLoaded).unwrap();
@@ -158,13 +193,16 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       yield ()=>assets.release(carpetLoaded).unwrap();
       const carpetRoot=assets.instantiate(carpetLoaded,world).unwrap();
       yield ()=>worldDespawnScene(world,carpetRoot).unwrap();
-      const roofBands=Array.from(world.query({read:[Name]}).unwrap(),row=>({entity:row.entity,name:row.get(Name).value})).find(row=>row.name==='FIX_ROOF_LIGHT_BANDS')?.entity;
-      if(roofBands===undefined)throw new Error('WB018 expected the existing roof-light-band object');
-      const oldBandVisibility=world.get(roofBands,Visibility);
-      const previousBandState=oldBandVisibility.ok?oldBandVisibility.value.state:VisibilityStateValue.inherited;
-      if(!oldBandVisibility.ok)world.addComponent(roofBands,{component:Visibility,data:{state:VisibilityStateValue.hidden}}).unwrap();
-      else world.set(roofBands,Visibility,{state:VisibilityStateValue.hidden}).unwrap();
-      yield ()=>world.set(roofBands,Visibility,{state:previousBandState}).unwrap();
+      const mountedFixtures = new Map(Array.from(world.query({read:[Name]}).unwrap(),row=>[row.get(Name).value,row.entity] as const));
+      for (const name of ['FIX_ROOF_LIGHT_BANDS','BAR_CANOPY']) {
+        const fixture=mountedFixtures.get(name);
+        if(fixture===undefined)throw new Error('Missing replaced fixture '+name);
+        const prior=world.get(fixture,Visibility);
+        const oldState=prior.ok?prior.value.state:VisibilityStateValue.inherited;
+        if(prior.ok)world.set(fixture,Visibility,{state:VisibilityStateValue.hidden}).unwrap();
+        else world.addComponent(fixture,{component:Visibility,data:{state:VisibilityStateValue.hidden}}).unwrap();
+        yield ()=>world.set(fixture,Visibility,{state:oldState}).unwrap();
+      }
       ctx.gameHost?.setPointerLockAllowed?.(true);
       yield () => ctx.gameHost?.setPointerLockAllowed?.(false);
       yield () => worldDespawnScene(world, root).unwrap();
@@ -189,9 +227,9 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       // Renderer owns cube capture, PMREM, Fresnel and selection; not RT.
       const barDrinkProbe=world.spawn(
         {component:Name,data:{value:'PDR/bar-drinks-local-reflection-D059'}},
-        {component:Transform,data:{pos:[10.4,2.05,-8.95]}},
-        {component:ReflectionProbe,data:{halfExtents:[1.65,1.35,2.5],priority:20,resolution:128,
-          updateIntent:REFLECTION_PROBE_UPDATE_ONCE,intensity:1,boxProjection:false}},
+        {component:Transform,data:{pos:[10.86,2.02,-8.90]}},
+        {component:ReflectionProbe,data:{halfExtents:[3.10,2.42,5.80],priority:20,resolution:128,
+          updateIntent:REFLECTION_PROBE_UPDATE_ONCE,intensity:1.34,boxProjection:true}},
       ).unwrap();
       yield ()=>world.despawn(barDrinkProbe).unwrap();
       const guards=installGlassGuardTrial(world,assets);
@@ -200,7 +238,7 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       yield ()=>chairRepair.dispose();
       const plantRepair=installPlantRepair(world,assets);
       yield ()=>plantRepair.dispose();
-      const otherScreens=installOtherScreens(world,assets);
+      const otherScreens=await installOtherScreens(world,assets,config.boothFoyer,config.boothHall,config.boothVip);
       yield ()=>otherScreens.dispose();
       const imported = Array.from(world.query({ read: [Name, Camera, Transform] }).unwrap(), row => row.entity);
       for(const entity of imported){if(world.get(entity,CameraView).ok)world.set(entity,CameraView,{enabled:false}).unwrap();}
@@ -217,7 +255,6 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         // Existing grade is a preview initial value; D095 sets exposure to 0.56 (slightly toned down from 0.60).
         world.set(entity, Camera, { autoAspect: false, aspect: 16 / 9, tonemap: TONEMAP_ACES_FILMIC, antialias: ANTIALIAS_TAA, exposureMode: 0, exposure: 0.56,
           whitePoint: 4, ...CAMERA_BLOOM }).unwrap();
-        world.addComponent(entity,{component:AmbientOcclusion,data:{...GTAO,algorithm:AMBIENT_OCCLUSION_GTAO}}).unwrap();
         return { entity, name, saved, horizontalFov };
       });
       const cutaway = Array.from(world.query({ read: [Name] }).unwrap(), row => row.entity)
@@ -281,20 +318,23 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         const pose={pos:[...ENTRY.eye],quat:Array.from(quat.fromEuler(quat.create(),pitch,yaw,roll,'YXZ'))};
         world.set(cameras[13].entity,Transform,pose).unwrap();physical?.reset(ENTRY.eye,1.64);
       };
+      const hallCollisionSources=new Map<number,AssetHandle<'mesh'>>();
       const collisionRoster: {name:string;entity:number;mesh:number}[]=[];
-      const collisionPending=new Set(collisionSourceNames.filter(name=>isSolidMesh(name)&&!plantRepair.removedNames.has(name)));
+      const collisionPending=new Set(collisionSourceNames.filter(name=>isSolidMesh(name)&&!/^BOOTH_F2[123]$/.test(name)&&!plantRepair.removedNames.has(name)));
       const collisionExcluded=collisionSourceNames.filter(name=>!collisionPending.has(name));
-      const collisionExpected=collisionPending.size;
+      // These original fittings project beyond the existing pier and stage wall colliders.
+      for (const name of ['Bridge portal pier','Portal lintel','Stage steel uprights','Stage lattice','Stage wing acoustic backing','Folded pewter guest counter','Portrait lounge plinth','Basin coping','Basin middle tread','Basin lower landing']) collisionPending.add(name);
+      let collisionExpected=collisionPending.size;
       const attached=new Set<number>();
       let collisionReady=false;
-      let vipShellsReady=false;
+      let fitoutReady=false;
       world.addSystem(Update,{name:'cyberpunk-attach-loaded-collision',queries:[],fn:()=>{
-        if(collisionReady)return;
+        if(collisionReady||!fitoutReady)return;
         // Imported mesh components/refs become available after instantiate; discover on the live timeline.
         for(const row of Array.from(world.query({read:[Name,MeshFilter,Transform]}).unwrap(),row=>({
           name:row.get(Name).value,entity:row.entity,handle:row.get(MeshFilter).assetHandle}))){
-          const {name,entity,handle}=row;
-          if(isVipShell(name)&&!vipShellsReady)continue;
+          const {name,entity}=row;
+          const handle=hallCollisionSources.get(entity)??row.handle;
           if(attached.has(entity)||!collisionPending.has(name)||!handle||!assets.read(handle).ok)continue;
           world.addComponent(entity,{component:RigidBody,data:{type:RigidBodyTypeValue.static}}).unwrap();
           world.addComponent(entity,{component:Collider,data:{shape:ColliderShapeValue.trimesh,mesh:handle}}).unwrap();
@@ -340,6 +380,10 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         if(m?.channel!==NAV_CHANNEL)return;
         if(m.kind==='render-diagnostic'&&['vip-direct-off','vip-emission-off','wall-specular-off','front-strips-baseline','fog-off','ssr-off','gtao-off','taa-off','bands-off','plaque-baseline'].includes(m.mode))isolationMode=m.mode;
         if(m.kind==='render-diagnostic'&&['bloom-on','bloom-off'].includes(m.mode))bloomOverride=m.mode==='bloom-on';
+        if(m.kind==='startup-occlusion' && m.enabled===true){
+          for(const {entity} of cameras)if(!world.hasComponent(entity,AmbientOcclusion))
+            world.addComponent(entity,{component:AmbientOcclusion,data:{...GTAO,algorithm:AMBIENT_OCCLUSION_GTAO}}).unwrap();
+        }
         if(m.kind==='render-diagnostic'&&['shadow-on','shadow-off'].includes(m.mode))diagnosticShadowState=m.mode==='shadow-on';
         if(m.kind==='render-diagnostic'&&['head-left-lit','head-left-clear','head-right-lit','head-right-clear','head-sweep','head-sweep-no-taa'].includes(m.mode)){headTestMode=m.mode;diagnosticShadowState=!m.mode.endsWith('-clear');}
         if(m.kind==='inspect'&&m.liquidDiagnostics===true)liquidDiagnosticsRequested=true;
@@ -354,18 +398,16 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       yield ()=>port.removeEventListener('message',receiveHud);
       // New-layout lights are authored by the imported R8 scene. No old BS/SF overrides.
       const lighting=tuneNewLayout(world);
-      const stageMist=installStageMist(world,assets);
+      const stageMist=installDanceFloorMist(world,assets);
       yield ()=>stageMist.dispose();
       const cameraEntities=cameras.map(c=>c.entity);
-      const wetFloor=await installWetFloor(world,assets,cameraEntities,config.originalFloor,config.installedFloor,config.floorTrim);
+      const wetFloor=await installWetFloor(world,assets,cameraEntities,config.originalFloor,config.installedFloor,config.floorTrim,()=>ctx.gameHost?.drawingBufferSize?.());
       yield ()=>wetFloor.dispose();
       const liquidMotion=await installLiquidMotion(world,assets,config.liquidTemplates,config.glassMaterial,config.heroGlassMeshes,config.liquidMaterials,config.heroRefractiveMaterial);
       yield ()=>liquidMotion.dispose();
       // Physical caustic cookie is disabled while validating the new layer owner.
       // It requires receiver-only lighting, not self-projection on the liquid.
       readLiquidDiagnostics=liquidMotion.read;
-      const waterDroplets=await installWaterDroplets(world,assets,config.dropletMesh);
-      yield ()=>waterDroplets.dispose();
       const movingHeads=await installMovingHeads(world,assets,config.headMeshes);
       yield ()=>movingHeads.dispose();
       const brandLighting = await installForgeAxBrandLighting(world, assets);
@@ -376,13 +418,29 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       yield ()=>hierarchy.dispose();
       const elevationAndSoffit=installElevationAndSoffitLights(world,assets,brandLighting.materials);
       yield ()=>elevationAndSoffit.dispose();
-      vipShellsReady=true;
-      const practicalLights=installPracticalLights(world);
+      const practicalLights=installPracticalLights(world,assets);
       yield practicalLights.dispose;
       const wallResponse=await installWallResponse(world,assets);
       yield ()=>wallResponse.dispose();
       const finishes=await installFinishes(world,assets,config.installedFinishScene,config.architecturalFinishes);
       yield finishes.dispose;
+      const wallRenewal = await installWallRenewal(world,assets,config.wallCassetteMaterial);
+      yield wallRenewal.dispose;
+      const hallClearance=installHallFitoutClearance(world,assets,hallCollisionSources);
+      yield hallClearance.dispose;
+      const foyerRefit=installFoyerRefit(world,assets);
+      yield foyerRefit.dispose;
+      for(const name of foyerRefit.emptyNodes){
+        if(collisionPending.delete(name)){
+          collisionExcluded.push(name);
+          collisionExpected--;
+        }
+      }
+      const cobaltFlow=await installCobaltFlow(world,assets,config.cobaltWater,config.heroRefractiveMaterial);
+      yield cobaltFlow.dispose;
+      const collector=await installCollector(world,assets,cobaltFlow.collector,config.collectorMaterial);
+      yield collector.dispose;
+      fitoutReady=true;
 
       const carpetNames=Array.from(world.query({read:[Name,MeshFilter]}).unwrap(),r=>r.get(Name).value).filter(n=>n.startsWith('D113_CARPET_')||n.startsWith('D115_CARPET_'));
       const carpetRugs=new Set(carpetNames.map(n=>n.split('/')[0]));
@@ -391,7 +449,14 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       for(const c of cameras)c.saved.pos=Array.from(world.get(c.entity,Transform).unwrap().pos);
       let viewportKey="";
       const readLightRefinement=lighting.read;
-      const readBarLighting=()=>({status:'source-authored new-layout lights, no old bar override'});
+      const readBarLighting=()=>({
+        status:'source-authored new-layout lights, no old bar override',
+        surfaces:finishes.readBarSurfaces(),
+        reflectors:Array.from(world.query({read:[Name,Transform,SpotLight]}).unwrap(),row=>({
+          name:row.get(Name).value,position:row.get(Transform).pos,light:row.get(SpotLight),
+        })).filter(row=>row.name.startsWith('PDR/bar local reflector/')),
+        localProbe:world.get(barDrinkProbe,ReflectionProbe).unwrap(),
+      });
       const setBarLightScale=(_scale:number)=>{throw new Error('Old-layout light override not available');};
       // Engine-specific lens bloom control. Manual exposure and the 32 source light intensities stay unchanged.
       if(validatePostProfile().length)throw new Error('WB017 post profile outside native parameter range');
@@ -403,25 +468,39 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       };
       setArtPost(artPost.bloomIntensity, artPost.bloomThreshold);
       const renderer=ctx.get('renderer',false)??ctx.gameHost?.renderer;
+      const localLights=installFixedLighting(world);
+      yield localLights.restore;
       if(renderer){
         const {profile}=renderer.inspect({fields:['profile']});
-        const result=renderer.setProfile({...profile,renderPath:'auto'});
+        const result=renderer.setProfile({...profile,renderPath:'auto',lightCount:fixedLightCapacity as 32});
         if(!result.ok)throw result.error;
       }
-      const quality=installCameraControls(world,cameraEntities,renderer,wetFloor.setPlanar,()=>stageMist.read().enabled);
+      const quality=installCameraControls(world,cameraEntities,renderer,wetFloor.setPlanar,()=>stageMist.read().enabled,()=>ctx.gameHost?.drawingBufferSize?.());
       yield quality.reset;
       controls=installRenderControls(world,cameraEntities,{
         installedFinishesEnabled:()=>finishes.read().enabled,
-        setInstalledFinishes:(on)=>{finishes.setEnabled(on);wetFloor.setInstalled(on);},
+        setInstalledFinishes:(on)=>{
+          if (!on) {
+            hallClearance.setEnabled(false);
+            wallRenewal.setEnabled(false);
+          }
+          finishes.setEnabled(on);
+          wetFloor.setInstalled(on);
+          if (on) {
+            wallRenewal.setEnabled(true);
+            hallClearance.setEnabled(true);
+          }
+        },
         setSSR:wetFloor.setSSR,setFog:stageMist.setEnabled,fogEnabled:()=>stageMist.read().enabled,
         setFogMotion:stageMist.setAnimate,fogMotion:()=>stageMist.read().animate,
-        setFogLight:stageMist.setLightEnabled,setPracticalEmission:brandLighting.setPracticalEmission,
+        setPracticalEmission:brandLighting.setPracticalEmission,tableLights:practicalLights.controls,
       },quality);
       if(requestedControls)publishControls();
       enterEntrance();
       world.addSystem(Update, {
         name: 'cyberpunk-pdr-v2-observer', queries: [],
         fn: () => {
+          wetFloor.syncSSR();
           if(isolationMode&&!isolationApplied){
             if(isolationMode==='vip-direct-off')brandLighting.muteVipLights();
             if(isolationMode==='vip-emission-off')brandLighting.muteVipEmission();
@@ -455,17 +534,20 @@ const readScaleBounds = (rootNames: readonly string[]) => {
           if(overlapOrbit){const t=world.getResource(Time).elapsed,eye=[10.22+.12*Math.sin(t*.55),1.38+.025*Math.sin(t*.23),-9.45+.10*Math.cos(t*.55)],target=[10.65,1.25,-8.98],d=target.map((v,a)=>v-eye[a]);yaw=Math.atan2(-d[0],-d[2]);pitch=Math.atan2(d[1],Math.hypot(d[0],d[2]));world.set(cameras[0].entity,Transform,{pos:eye,quat:Array.from(quat.fromEuler(quat.create(),pitch,yaw,0,'YXZ'))}).unwrap();}
           if(pendingBookmark){const view=pendingBookmark;pendingBookmark=null;applyBookmark(view);}
           guards.tick();
-          otherScreens.tick();
           movingHeads.tick(diagnosticShadowState!==null&&!headTestMode,headTestMode?(headTestMode.startsWith('head-sweep')?'sweep':headTestMode.startsWith('head-left')?'left':'right'):undefined,entity=>controls?.isMuted(entity)??false);
           mirrorBalls.tick();
           stageMist.tick();
           liquidMotion.tick();
-          waterDroplets.tick();
+          cobaltFlow.tick();
+          collector.tick();
           if (!world.hasResource(INPUT_SNAPSHOT_RESOURCE_KEY)) return;
           const input = world.getResource<InputSnapshot>(INPUT_SNAPSHOT_RESOURCE_KEY);
           const elapsed=world.getResource(Time).elapsed;
           if(elapsed-lastStatusTime>.1){publishHud();lastStatusTime=elapsed;}
           const hotKey = (code:string)=>keyboardAllowed&&(input.keyboard.downCode(code)||input.keyboard.justPressedCode(code));
+          const pump = hotKey('KeyK');
+          if (pump && !keys.get('KeyK')) cobaltFlow.toggleInlet();
+          keys.set('KeyK', pump);
           const disturb=hotKey('KeyJ');if(disturb&&!keys.get('KeyJ'))world.getResource<{disturb:(v:number)=>unknown}>('cyberpunk.liquids').disturb(1.5);keys.set('KeyJ',disturb);
           for(const code of ['KeyW','KeyA','KeyS','KeyD','Space'])if(hotKey(code))lastKey=code.replace('Key','');
           lastPointerLocked=input.mouse.pointerLocked;
@@ -504,13 +586,9 @@ const readScaleBounds = (rootNames: readonly string[]) => {
           const lens = world.get(camera.entity, Camera).unwrap();
           const size = ctx.gameHost?.drawingBufferSize?.();
           // Fit a genuine 16:9 viewport inside any window without stretching.
-          const aspect = size && size.width > 0 && size.height > 0 ? size.width / size.height : 16 / 9;
-          const rect = aspect > 16 / 9 ? [(1-(16/9)/aspect)/2,0,(16/9)/aspect,1] : [0,(1-aspect/(16/9))/2,1,aspect/(16/9)];
-          // D051: publish projection only when its actual owner inputs change.
-          const nextViewportKey=camera.entity+":"+(size?.width??0)+":"+(size?.height??0)+":"+camera.horizontalFov+":"+quality.scale();
+          const nextViewportKey=camera.entity+":"+(size?.width??0)+":"+(size?.height??0)+":"+camera.horizontalFov;
           if(nextViewportKey!==viewportKey){
-            world.set(camera.entity, CameraView, { viewport: rect,
-              resolutionScale: quality.scale() * (size ? Math.min(1,2560/(size.width*rect[2]),1440/(size.height*rect[3])) : 1) }).unwrap();
+            world.set(camera.entity,CameraView,nativeViewport(size?.width??16,size?.height??9)).unwrap();
             world.set(camera.entity, Camera, { autoAspect: false, aspect: 16 / 9,
               fov: 2 * Math.atan(Math.tan(camera.horizontalFov / 2) / (16 / 9)) }).unwrap();
             viewportKey=nextViewportKey;
@@ -554,12 +632,11 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         },
       }).unwrap();
       yield () => world.removeSystem(Update, 'cyberpunk-pdr-v2-observer').unwrap();
-      // Four native shadow tiles are reassigned by the observed room. This
-      // keeps stage sources shadowed without adding lights or atlas memory.
+      // One bar light, one dance-floor light and two moving heads own the four shadow maps.
       const allSpots=Array.from(world.query({read:[Name,SpotLight]}).unwrap(),r=>({entity:r.entity,name:r.get(Name).value}));
       // Exact names come from the live32-light roster, not guessed IDs.
       const pick=(numbers:readonly number[])=>numbers.map(n=>{const l=allSpots.find(r=>Number(r.name.slice(1,3))===n);if(!l)throw Error('D063 shadow Spot missing '+n);return l;});
-      const groups={stage:pick([22,24,25,27]),bar:pick([1,2,13,19]),hall:pick([19,20,22,27]),foyer:pick([12,13,14,19])};
+      const fixedShadowLights=pick(fixedShadowNumbers);
       // A point source inside its own opaque lens/housing must not black out
       // its entire cone. Native caster channels exclude only that lamp's own
       // assembly; it remains visible and casts for every other light.
@@ -574,11 +651,10 @@ const readScaleBounds = (rootNames: readonly string[]) => {
       }
       for(const [entity,channels] of ownMasks){if(world.hasComponent(entity,ShadowParticipation))world.set(entity,ShadowParticipation,{channels}).unwrap();else world.addComponent(entity,{component:ShadowParticipation,data:{channels,cast:true,receive:true}}).unwrap();}
       let shadowRequests:EntityHandle[]=[],shadowZone='',shadowState:boolean|null=null;
-      chooseShadowLights=()=>{const cam=getActiveCamera(world),gt=cam?world.get(cam.entity as EntityHandle,GlobalTransform):null;
-        const p=gt?.ok?gt.value.world:null,x=p?.[12]??0,z=p?.[14]??0;
-        const zone=z<-30?'stage':x>7&&z>-20?'bar':z>-23?'foyer':'hall';
+      chooseShadowLights=()=>{
+        const zone='fixed';
         if(zone===shadowZone&&shadowState===diagnosticShadowState)return;
-        const selected=groups[zone],set=new Set(selected.map(r=>r.entity));
+        const selected=fixedShadowLights,set=new Set(selected.map(r=>r.entity));
         for(const row of allSpots){
           const n=Number(row.name.slice(1,3)),wide=[12,13,14,19,20,21].includes(n);
           // Wide ceiling cones need a world-space bias comparable to a map
@@ -587,7 +663,7 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         }
         shadowRequests=selected.map(r=>r.entity);shadowZone=zone;shadowState=diagnosticShadowState;
       };chooseShadowLights();
-      readRenderDiagnostics=()=>{const h=hierarchy.read();return {observationBookmark:activeObservationBookmark,headTest:headTestMode?{mode:headTestMode,fog:false,bloom:false,onlyLights:['L24_STAGE_HEAD_3','L25_STAGE_HEAD_4'],...movingHeads.read()}:null,shadowMode:headTestMode?'head-interaction-test':diagnosticShadowState===null?'normal':diagnosticShadowState?'frozen-on':'frozen-off',shadowZone,isolationMode,bloom:headTestMode?false:bloomOverride??true,frozenHeadDirections:diagnosticShadowState===null?null:movingHeads.read().fixtures.map(f=>f.direction),sourceHousingLinks:ownMasks.size,shadowLights:shadowRequests.map(e=>({name:world.get(e,Name).unwrap().value,castShadow:world.get(e,SpotLight).unwrap().castShadow,intensity:world.get(e,SpotLight).unwrap().intensity,direction:Array.from(world.get(e,SpotLight).unwrap().direction)})),hierarchy:{objects:h.objects,layers:h.transparentLayers,deduplicatedMeshTemplates:h.deduplicated.length,reducedPrints:h.reducedPrints},carpets:carpetSummary,wallResponse:wallResponse.read(),finishes:finishes.read(),wetFloor:wetFloor.read(),ceilingBands:brandLighting.read(),vipRoof:elevationAndSoffit.read().vipRoof,vipBalls:mirrorBalls.readVip(),stageMirrorBall:mirrorBalls.readStage(),stageCues:movingHeads.readCues(),plants:plantRepair.read(),stageLed:'ForgeAX official plaque / native emissive + Bloom; old8cd bounce slots31/32 now matched VIP1 ceiling emitters'};};
+      readRenderDiagnostics=()=>{const h=hierarchy.read();return {observationBookmark:activeObservationBookmark,headTest:headTestMode?{mode:headTestMode,fog:false,bloom:false,onlyLights:['L24_STAGE_HEAD_3','L25_STAGE_HEAD_4'],...movingHeads.read()}:null,shadowMode:headTestMode?'head-interaction-test':diagnosticShadowState===null?'normal':diagnosticShadowState?'frozen-on':'frozen-off',shadowZone,isolationMode,bloom:headTestMode?false:bloomOverride??true,frozenHeadDirections:diagnosticShadowState===null?null:movingHeads.read().fixtures.map(f=>f.direction),sourceHousingLinks:ownMasks.size,shadowLights:shadowRequests.map(e=>({name:world.get(e,Name).unwrap().value,castShadow:world.get(e,SpotLight).unwrap().castShadow,intensity:world.get(e,SpotLight).unwrap().intensity,direction:Array.from(world.get(e,SpotLight).unwrap().direction)})),hierarchy:{objects:h.objects,layers:h.transparentLayers,deduplicatedMeshTemplates:h.deduplicated.length,reducedPrints:h.reducedPrints},carpets:carpetSummary,wallResponse:wallResponse.read(),finishes:finishes.read(),wallRenewal:wallRenewal.read(),hallClearance:hallClearance.read(),foyerRefit:foyerRefit.removed,wetFloor:wetFloor.read(),ceilingBands:brandLighting.read(),vipRoof:elevationAndSoffit.read().vipRoof,vipBalls:mirrorBalls.readVip(),stageMirrorBall:mirrorBalls.readStage(),stageCues:movingHeads.readCues(),plants:plantRepair.read(),stageLed:'ForgeAX official plaque / native emissive + Bloom; old8cd bounce slots31/32 now matched VIP1 ceiling emitters'};};
       const measurementNames = [...collisionSourceNames];
       world.insertResource('cyberpunk.scale.calibration', {
         inspectAsset: (eye:readonly number[],target:readonly number[]) => {
@@ -619,6 +695,10 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         readAllBounds: () => JSON.parse(JSON.stringify(readScaleBounds(Array.from(world.query({read: [Name]}).unwrap(), row => world.get(row.entity, Name).unwrap().value)))),
         setBarLightScale: (scale: number) => setBarLightScale(scale),
         readBarLighting: () => readBarLighting(),
+        readCobaltFlow: () => ({...cobaltFlow.read(world.getResource(Time).elapsed),collector:collector.read()}),
+        setCobaltLayerVisible: (which:'cover'|'water',visible:boolean) => cobaltFlow.setLayerVisible(which,visible),
+        setCobaltInlet: (open:boolean) => cobaltFlow.setInlet(open),
+        setCobaltFlowPhase: (seconds:number|null) => cobaltFlow.setPhase(seconds),
         readLightRefinement: () => readLightRefinement(),
         tuneLight: (name:string,data:any) => lighting.set(name,data),
         setEnvironment: (intensity:number) => {world.set(inspectionLight,Skylight,{intensity}).unwrap();return intensity;},
@@ -639,7 +719,7 @@ const readScaleBounds = (rootNames: readonly string[]) => {
         readDrinkOptics: () => readDrinkOptics(world,assets),
         setPost: (intensity: number, threshold: number) => setArtPost(intensity, threshold),
         readFault: () => ({status: 'old fault fixture removed with old layout'}),
-        readLighting: () => ({ shadowRequests: shadowRequests.map(e => ({name: world.get(e, Name).unwrap().value, light: JSON.parse(JSON.stringify(world.get(e, SpotLight).unwrap()))})),
+        readLighting: () => ({ localLights:{...localLights.read(),profile:renderer?.inspect({fields:['profile']}).profile?.lightCount,tables:practicalLights.read()}, shadowRequests: shadowRequests.map(e => ({name: world.get(e, Name).unwrap().value, light: JSON.parse(JSON.stringify(world.get(e, SpotLight).unwrap()))})),
           inspectionFill, ambientIrradiance: inspectionFill ? inspectionIrradiance : artAmbient, hasHDR: false, hasReflectionProbe: true }),
         readBounds: () => JSON.parse(JSON.stringify(readScaleBounds(measurementNames))),
         readProbes: () => Array.from(world.query({read:[Name, MeshFilter, GlobalTransform]}).unwrap(), row => {
@@ -684,6 +764,8 @@ export default definePack({
   packageId: definePackageId('61898430-9733-4d13-820b-2c3599a8cab6'),
   build: () => ok({
     ...nativeFloorAssets(),
+    'material/cobalt-water':cobaltWaterMaterial(),
+    'material/cobalt-collector':collectorMaterial(),
     'material/drink-shell-d052': drinkShellMaterial(),
     'texture/bar-caustic-d061':causticTextureAsset(),
     'material/hero-refractive-019':heroRefractiveMaterial(),
@@ -691,12 +773,28 @@ export default definePack({
     'plugin/hud': {kind:'plugin',module:{specifier:'./pdr-navigation-hud.ts',export:'default'},config:{hud:{$asset:'01cf39db-5c41-4350-ba15-165fa6f1705e'}}},
     'plugin/scene': { kind: 'plugin', module: { specifier: './pdr-newlayout.pack.ts', export: 'scene' },
       config: {
-        installedFinishScene: {$asset:INSTALLED_FINISH_SCENE}, floorTrim: {$asset:INSTALLED_FLOOR_TRIM},
+        collectorMaterial: {$asset:nativeFloorGuid('material/cobalt-collector')},
+        cobaltWater: {$asset:nativeFloorGuid('material/cobalt-water')},
+        wallCassetteMaterial: {$asset:'01a1f367-ebd6-790c-bfb3-8c73d6a11ff7'},
+        finishSamplers: [
+          {$asset:'01a1f367-ebd6-790c-bfb3-8c780afd3227'}, // D189-Wall-Cassettes
+          {$asset:'01a1f2e9-bfb6-74b1-bdd7-e5fe2c99d754'}, // D189-Rear-Finishes
+          {$asset:'01a1f2e9-c89e-79d5-aab1-95024f8254d1'}, // D189-Hall-Fittings
+          {$asset:'01a1e111-cbad-7225-8995-f9acd6cb3bf1'}, // PDR-D181-Wall-Finishes
+          {$asset:'01a1e0f1-0b81-7437-aab4-5bdd2bc84fe7'}, // PDR-D180-Installed-Finishes
+          {$asset:'01a1e1aa-9c13-78a7-bb8e-26220ccb2b02'}, // PDR-D186-Floor-Detail
+        ],
+        rearFinishesScene: {$asset:'01a1f1e6-7408-7160-9905-6beed420cf57'},
+        vipPortals: {$asset:'01a1f2e6-b2e8-7deb-909c-34bae56cb4dd'},
+        boothFoyer: {$asset:'01a1f2e3-ee3b-7fd0-99df-25f7bf086b93'},
+        boothHall: {$asset:'01a1f2e3-ee3b-7fd0-99df-25f820f3dbdb'},
+        boothVip: {$asset:'01a1f2e3-ee3b-7fd0-99df-25f9d8c8c051'},
+        hallFittingsScene: {$asset:'01a1eef9-abd7-7b12-8e6a-22ab8af23940'}, installedFinishScene: {$asset:INSTALLED_FINISH_SCENE}, floorTrim: {$asset:INSTALLED_FLOOR_TRIM},
         mirrorBallMeshes:[{$asset:'01a1e1f9-4c7e-7345-a5b5-9c5d8f1d8101'},{$asset:'01a1e1f9-4c7e-7345-a5b5-9c5e91ee3b34'}],
         architecturalFinishes: Object.fromEntries(Object.entries(architecturalFinishGuids).map(([finish,guid])=>[finish,{$asset:guid}])),
         originalFloor:{standard:floorRefs(false,false),planar:floorRefs(false,true)},
         installedFloor:{standard:floorRefs(true,false),planar:floorRefs(true,true)},
         carpetScene: {$asset:'01a1bf45-9bff-7c0d-8252-4118f704fe14'},
-        scene: { $asset: '01a18cc0-f159-7553-a50c-527de6f6d645' }, wb018Decor: {$asset:'01a19ac5-5ad3-745b-a280-3f341ab888de'}, stageSign: {$asset:'01a19fd2-3fe1-706c-8d9f-456c597a27b3'}, liquidTemplates: [{$asset:'01a19004-fd33-7799-af85-7f526edf0b11'},{$asset:'01a19004-fd34-74bc-a0d4-c9ef090e01ff'},{$asset:'01a19004-fd34-74bc-a0d4-c9f0e787a828'},{$asset:'01a19004-fd34-74bc-a0d4-c9f116fd16e7'},{$asset:'01a19004-fd34-74bc-a0d4-c9f2485cabaf'}], dropletMesh:{$asset:'01a19004-fd34-74bc-a0d4-c9f3e3b1b075'}, glassMaterial:{$asset:GLASS_GUID}, liquidMaterials:liquidOpticalKeys.map(key=>({$asset:liquidOpticalGuid(key)})), barCaustic:{$asset:liquidOpticalGuid('texture/bar-caustic-d061')},heroRefractiveMaterial:{$asset:liquidOpticalGuid('material/hero-refractive-019')}, heroGlassMeshes:[{$asset:'01a19072-2965-797d-9284-3beb445d93b5'},{$asset:'01a19072-2965-797d-9284-3bedd366bfa0'},{$asset:'01a19072-2965-797d-9284-3beae95930bc'},{$asset:'01a19072-2965-797d-9284-3bec88871603'},{$asset:'01a19072-2965-797d-9284-3bee013ae40b'}], chairMesh:{$asset:'01a19043-06fe-7abd-bee2-3bbc7a1d954a'}, headMeshes:[{$asset:'01a19043-06fe-7abd-bee2-3bbe2acfb9a9'},{$asset:'01a19043-06fe-7abd-bee2-3bbf12acefd4'},{$asset:'01a19043-06fe-7abd-bee2-3bbdc32f9c5c'}] } },
+        scene: { $asset: '01a18cc0-f159-7553-a50c-527de6f6d645' }, wb018Decor: {$asset:'01a19ac5-5ad3-745b-a280-3f341ab888de'}, stageSign: {$asset:'01a19fd2-3fe1-706c-8d9f-456c597a27b3'}, liquidTemplates: [{$asset:'01a19004-fd33-7799-af85-7f526edf0b11'},{$asset:'01a19004-fd34-74bc-a0d4-c9ef090e01ff'},{$asset:'01a19004-fd34-74bc-a0d4-c9f0e787a828'},{$asset:'01a19004-fd34-74bc-a0d4-c9f116fd16e7'},{$asset:'01a19004-fd34-74bc-a0d4-c9f2485cabaf'}], glassMaterial:{$asset:GLASS_GUID}, liquidMaterials:liquidOpticalKeys.map(key=>({$asset:liquidOpticalGuid(key)})), barCaustic:{$asset:liquidOpticalGuid('texture/bar-caustic-d061')},heroRefractiveMaterial:{$asset:liquidOpticalGuid('material/hero-refractive-019')}, heroGlassMeshes:[{$asset:'01a19072-2965-797d-9284-3beb445d93b5'},{$asset:'01a19072-2965-797d-9284-3bedd366bfa0'},{$asset:'01a19072-2965-797d-9284-3beae95930bc'},{$asset:'01a19072-2965-797d-9284-3bec88871603'},{$asset:'01a19072-2965-797d-9284-3bee013ae40b'}], chairMesh:{$asset:'01a19043-06fe-7abd-bee2-3bbc7a1d954a'}, headMeshes:[{$asset:'01a19043-06fe-7abd-bee2-3bbe2acfb9a9'},{$asset:'01a19043-06fe-7abd-bee2-3bbf12acefd4'},{$asset:'01a19043-06fe-7abd-bee2-3bbdc32f9c5c'}] } },
   }),
 });

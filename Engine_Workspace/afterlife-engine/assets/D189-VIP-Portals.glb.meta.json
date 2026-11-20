@@ -1,0 +1,645 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "Door lining",
+        "Glazed skirting courses",
+        "Header diffuser",
+        "Header returns",
+        "Inside door head",
+        "Inside door lens",
+        "Jamb bead",
+        "Jamb skirting",
+        "Perforated bronze lintels"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "D189-VIP-Portals.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Door lining"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Glazed skirting courses"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Header diffuser"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Header returns"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Inside door head"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Inside door lens"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Jamb bead"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Jamb skirting"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Perforated bronze lintels"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:Door lining": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b59abfc425",
+          "slotName": "M11 graphite cassette",
+          "sourceKey": "material:M11 graphite cassette"
+        }
+      ]
+    },
+    "mesh:Glazed skirting courses": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b64eb3925c",
+          "slotName": "Garnet glaze",
+          "sourceKey": "material:Garnet glaze"
+        }
+      ]
+    },
+    "mesh:Header diffuser": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b7a0e31e6e",
+          "slotName": "VIP honey diffuser",
+          "sourceKey": "material:VIP honey diffuser"
+        }
+      ]
+    },
+    "mesh:Header returns": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b59abfc425",
+          "slotName": "M11 graphite cassette",
+          "sourceKey": "material:M11 graphite cassette"
+        }
+      ]
+    },
+    "mesh:Inside door head": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b59abfc425",
+          "slotName": "M11 graphite cassette",
+          "sourceKey": "material:M11 graphite cassette"
+        }
+      ]
+    },
+    "mesh:Inside door lens": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b7a0e31e6e",
+          "slotName": "VIP honey diffuser",
+          "sourceKey": "material:VIP honey diffuser"
+        }
+      ]
+    },
+    "mesh:Jamb bead": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b80b3c008f",
+          "slotName": "Brushed champagne frame",
+          "sourceKey": "material:Brushed champagne frame"
+        }
+      ]
+    },
+    "mesh:Jamb skirting": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b9d2137b44",
+          "slotName": "Gasket",
+          "sourceKey": "material:Gasket"
+        }
+      ]
+    },
+    "mesh:Perforated bronze lintels": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e6-b2e8-7deb-909c-34b80b3c008f",
+          "slotName": "Brushed champagne frame",
+          "sourceKey": "material:Brushed champagne frame"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34acf76cd3fc",
+      "kind": "mesh",
+      "name": "Door lining",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:Door lining"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34ad7e1dad93",
+      "kind": "mesh",
+      "name": "Glazed skirting courses",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:Glazed skirting courses"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34ae5db64e03",
+      "kind": "mesh",
+      "name": "Header diffuser",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:Header diffuser"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34af579b9bab",
+      "kind": "mesh",
+      "name": "Header returns",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:Header returns"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b086fbcd94",
+      "kind": "mesh",
+      "name": "Inside door head",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:Inside door head"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b162853015",
+      "kind": "mesh",
+      "name": "Inside door lens",
+      "sourceIndex": 5,
+      "sourceKey": "mesh:Inside door lens"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b21d2f03b8",
+      "kind": "mesh",
+      "name": "Jamb bead",
+      "sourceIndex": 6,
+      "sourceKey": "mesh:Jamb bead"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b364ddbb21",
+      "kind": "mesh",
+      "name": "Jamb skirting",
+      "sourceIndex": 7,
+      "sourceKey": "mesh:Jamb skirting"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b4ecc4ce29",
+      "kind": "mesh",
+      "name": "Perforated bronze lintels",
+      "sourceIndex": 8,
+      "sourceKey": "mesh:Perforated bronze lintels"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b59abfc425",
+      "kind": "material",
+      "name": "M11 graphite cassette",
+      "sourceIndex": 0,
+      "sourceKey": "material:M11 graphite cassette"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b64eb3925c",
+      "kind": "material",
+      "name": "Garnet glaze",
+      "sourceIndex": 1,
+      "sourceKey": "material:Garnet glaze"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b7a0e31e6e",
+      "kind": "material",
+      "name": "VIP honey diffuser",
+      "sourceIndex": 2,
+      "sourceKey": "material:VIP honey diffuser"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b80b3c008f",
+      "kind": "material",
+      "name": "Brushed champagne frame",
+      "sourceIndex": 3,
+      "sourceKey": "material:Brushed champagne frame"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34b9d2137b44",
+      "kind": "material",
+      "name": "Gasket",
+      "sourceIndex": 4,
+      "sourceKey": "material:Gasket"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34bae56cb4dd",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34bb5e309d5f",
+      "kind": "texture",
+      "name": "graphite-normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:graphite-normal"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34bc8b0d2e97",
+      "kind": "texture",
+      "name": "graphite-color",
+      "sourceIndex": 1,
+      "sourceKey": "texture:graphite-color"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34bd3a93da57",
+      "kind": "texture",
+      "name": "graphite-orm",
+      "sourceIndex": 2,
+      "sourceKey": "texture:graphite-orm"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34be1f253d25",
+      "kind": "texture",
+      "name": "garnet-normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:garnet-normal"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34bf91011c98",
+      "kind": "texture",
+      "name": "garnet-color",
+      "sourceIndex": 4,
+      "sourceKey": "texture:garnet-color"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34c03f233df0",
+      "kind": "texture",
+      "name": "garnet-orm",
+      "sourceIndex": 5,
+      "sourceKey": "texture:garnet-orm"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34c1347139f5",
+      "kind": "texture",
+      "name": "champagne-normal",
+      "sourceIndex": 6,
+      "sourceKey": "texture:champagne-normal"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34c2f0c31aea",
+      "kind": "texture",
+      "name": "champagne-color",
+      "sourceIndex": 7,
+      "sourceKey": "texture:champagne-color"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34c3bf82a55f",
+      "kind": "texture",
+      "name": "champagne-orm",
+      "sourceIndex": 8,
+      "sourceKey": "texture:champagne-orm"
+    },
+    {
+      "guid": "01a1f2e6-b2e8-7deb-909c-34c4e6c4a857",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

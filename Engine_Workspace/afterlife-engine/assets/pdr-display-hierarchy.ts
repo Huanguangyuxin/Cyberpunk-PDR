@@ -210,6 +210,30 @@ function aabbContainedIn(inner: TriRecord, outer: TriRecord, margin = 0.003): bo
   );
 }
 
+// A narrow quad's two triangles have identical bounds but cover different
+// halves. Project onto the most stable coordinate plane and test all three
+// vertices against the covering triangle before retiring any surface.
+function triangleCovers(outer: TriRecord, inner: TriRecord, p: Float32Array): boolean {
+  const absX = Math.abs(outer.nx), absY = Math.abs(outer.ny), absZ = Math.abs(outer.nz);
+  const dropped = absX >= absY && absX >= absZ ? 0 : absY >= absZ ? 1 : 2;
+  const u = (dropped + 1) % 3, v = (dropped + 2) % 3;
+  const face = [outer.i0 * 3, outer.i1 * 3, outer.i2 * 3];
+  const points = [inner.i0 * 3, inner.i1 * 3, inner.i2 * 3];
+  const winding = Math.sign((p[face[1]+u]-p[face[0]+u])*(p[face[2]+v]-p[face[0]+v]) -
+    (p[face[1]+v]-p[face[0]+v])*(p[face[2]+u]-p[face[0]+u]));
+  if (!winding) return false;
+  for (let i = 0; i < 3; i++) {
+    const a = face[i], b = face[(i+1)%3];
+    const ex = p[b+u]-p[a+u], ey = p[b+v]-p[a+v];
+    const tolerance = .00001 * Math.hypot(ex, ey);
+    for (const q of points) {
+      const side = ex*(p[q+v]-p[a+v]) - ey*(p[q+u]-p[a+u]);
+      if (winding * side < -tolerance) return false;
+    }
+  }
+  return true;
+}
+
 export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
   const saved: {entity: EntityHandle; layer?: number; mesh: AssetHandle<'mesh'>; materials: number[]}[] = [];
   const created: AssetHandle<'mesh' | 'material'>[] = [];
@@ -265,6 +289,12 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
     const read = assets.read(handle);
     if (!read.ok || read.value.kind !== 'mesh') continue;
     const mesh = read.value as MeshAsset;
+    // These imported, watertight seats are the production mesh and collider.
+    // The historical R8 triangle removal below only describes the earlier meshes.
+    if (mesh.materialSlots.some(slot => slot.slotName === 'M01 Merlot channel leather')) continue;
+    // Neighbouring facets on bottle labels and closures can be less than 2 mm apart.
+    // The architectural overlap tolerance would discard intentional segments of these curves.
+    if (name.startsWith('DRINK_') && /_(LABEL|CAP|CORK)$/.test(name)) continue;
 
     if (!liquid && !glass && !name.startsWith('CALIB') && !name.startsWith('PDR/') && !name.startsWith('DECOR_PLANT_')) {
       const isGroundBooth = /^BOOTH_(?:DE|DW|F)\d+$/.test(name);
@@ -1174,10 +1204,10 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                   const planeDist = Math.abs(ta.d - tb.d);
                   if (planeDist > 0.0006) continue;
                   const cDist = Math.hypot(ta.cx - tb.cx, ta.cy - tb.cy, ta.cz - tb.cz);
-                  if (cDist < 0.008 && aabbContainedIn(tb, ta, 0.002)) {
+                  if (cDist < 0.008 && aabbContainedIn(tb, ta, 0.002) && triangleCovers(ta, tb, p)) {
                     tb.removed = true;
                     removedCount++;
-                  } else if (cDist < 0.008 && aabbContainedIn(ta, tb, 0.002)) {
+                  } else if (cDist < 0.008 && aabbContainedIn(ta, tb, 0.002) && triangleCovers(tb, ta, p)) {
                     ta.removed = true;
                     removedCount++;
                     break;
@@ -1203,7 +1233,7 @@ export function installDisplayHierarchy(world: World, assets: AssetRegistry) {
                 if (dot < 0.996) continue;
                 const planeDist = Math.abs(high.d - low.d);
                 if (planeDist > 0.0012) continue;
-                if (aabbContainedIn(low, high, 0.004)) {
+                if (aabbContainedIn(low, high, 0.004) && triangleCovers(high, low, p)) {
                   low.removed = true;
                   removedCount++;
                 }

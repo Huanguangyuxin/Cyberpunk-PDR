@@ -1,10 +1,12 @@
 import type {World} from '@forgeax/engine/ecs';
-import {Name, Transform} from '@forgeax/engine/scene';
+import {Name, Transform, worldDespawnScene} from '@forgeax/engine/scene';
+
+import contactSpec from './pdr-furniture-clearance.json';
 
 // Ground booth meshes share a pivot 1.30 m off the centre of the seat bay.
 const boothCentreOffset = 1.30;
-const foyerWallCentres = [-2.45, -5.45, -9.70];
-const foyerIslandCentres = [-2.62, -5.61, -9.57];
+const foyerWallCentres = contactSpec.foyer.centres;
+const foyerPlatformRise = .14;
 const hallCentres = [-23.45, -26.45, -30.35, -33.35, -37.20];
 
 export function arrangeGroundSeating(world: World) {
@@ -16,34 +18,50 @@ export function arrangeGroundSeating(world: World) {
     return entity;
   };
 
-  const placeBooth = (id: string, x: number, centreZ: number, mirrored: boolean, turn: boolean) => {
+  const placeBooth = (id: string, x: number, centreZ: number, mirrored: boolean) => {
     const z = centreZ + (mirrored ? -boothCentreOffset : boothCentreOffset);
     const attachments = [`BOOTH_${id}`, `DRINK_BOOTH_${id}_COUPE`, `DRINK_BOOTH_${id}_TUMBLER`];
     const origin = Array.from(world.get(entityFor(attachments[0]), Transform).unwrap().pos);
-    const direction = turn ? -1 : 1;
     // The drinks are separate scene roots. Their child glass, liquid and ice follow them.
     for (const name of attachments) {
       const entity = entityFor(name);
       const pose = world.get(entity, Transform).unwrap();
       const offsetX = pose.pos[0] - origin[0];
       const offsetZ = pose.pos[2] - origin[2];
-      const pos = [x + offsetX * direction, pose.pos[1], z + offsetZ * direction];
-      if (turn) {
-        const [qx, qy, qz, qw] = pose.quat;
-        // Left-multiply the authored rotation by a half turn about world Y.
-        world.set(entity, Transform, {pos, quat:[qz, qw, -qx, -qy]}).unwrap();
-      } else {
-        world.set(entity, Transform, {pos}).unwrap();
-      }
+      const tableShift = id.startsWith('F') && name.startsWith('DRINK_') ? contactSpec.foyer.tableShift : 0;
+      const pos = [x + offsetX + tableShift, pose.pos[1] + (id.startsWith('F') ? foyerPlatformRise : 0), z + offsetZ];
+      world.set(entity, Transform, {pos}).unwrap();
     }
   };
 
   for (const [index, centreZ] of foyerWallCentres.entries()) {
-    placeBooth(`F1${index + 1}`, -13.7, centreZ, false, false);
-    placeBooth(`F2${index + 1}`, -7.60, foyerIslandCentres[index], true, true);
+    placeBooth(`F1${index + 1}`, -13.7, centreZ, false);
   }
   for (const [index, centreZ] of hallCentres.entries()) {
-    placeBooth(`DW${index + 1}`, -13.7, centreZ, false, false);
-    placeBooth(`DE${index + 1}`, 13.7, centreZ, true, false);
+    placeBooth(`DW${index + 1}`, -13.7, centreZ, false);
+    placeBooth(`DE${index + 1}`, 13.7, centreZ, true);
+  }
+  // Drinks are independent roots. Remove each setting before its lamps and colliders register.
+  for (const [name, entity] of objects) {
+    if (/^(?:BOOTH_F2[123]|DRINK_BOOTH_F2[123]_(?:COUPE|TUMBLER)|HTABLE_[EW]\d|FURN_AISLE_SCREENS|DRINK_HTABLE_[EW]\d_COUPE)$/.test(name)) {
+      worldDespawnScene(world, entity).unwrap();
+    }
+  }
+
+  // Move each complete table setting before registering collisions and chair repair.
+  // E1/W1 are the near-stage social islands; the other tables sit in side bays.
+  const tables = [
+    ['E1',5.8,-23.30], ['W1',-5.8,-23.30],
+    ['E2',9.2,-32.5], ['W2',-9.2,-30.85],
+    ['E3',8.95,-36.65], ['W3',-8.95,-36.05],
+  ] as const;
+  for (const [id,x,z] of tables) {
+    const name = 'RTABLE_'+id;
+    const origin = Array.from(world.get(entityFor(name),Transform).unwrap().pos);
+    for (const [key,entity] of objects) {
+      if (key!==name && !key.startsWith(name+'_CHAIR_') && key!=='DRINK_'+name+'_TUMBLER') continue;
+      const pos = world.get(entity,Transform).unwrap().pos;
+      world.set(entity,Transform,{pos:[pos[0]+x-origin[0],pos[1],pos[2]+z-origin[2]]}).unwrap();
+    }
   }
 }

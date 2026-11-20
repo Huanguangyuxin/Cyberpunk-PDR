@@ -67,6 +67,7 @@ export interface RenderControlStatus {
   giTestLightsOn: boolean;
   unavailable: Partial<Record<RenderSwitch | AntialiasMode,string>>;
   renderScale: number;
+  pixels?: {viewWidth:number;viewHeight:number;internalWidth:number;internalHeight:number;source:"attachment"|"view"|"camera";maxDimension:number;separateEyes:boolean};
   tonemap: Tonemap;
   camera: Record<CameraControl, number>;
   fogQuality: 'low' | 'high';

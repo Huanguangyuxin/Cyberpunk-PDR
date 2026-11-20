@@ -1,0 +1,11 @@
+{
+  "nativeSlots":32,
+  "shadowNumbers":[2,19,24,25],
+  "merges":[
+    {"owner":2,"members":[1],"position":[11.58,2.68,-7.80],"intensity":67,"range":5.6,"outerConeDeg":64,"innerConeDeg":38},
+    {"owner":4,"members":["Niche cross wash 1","Niche cross wash 2"],"intensity":42,"range":3.4},
+    {"owner":5,"members":["Niche cross wash 3","Niche cross wash 4"],"intensity":45,"range":3.4},
+    {"owner":8,"members":[9],"position":[-8,9.237,-10.5],"intensity":425,"height":17.5},
+    {"owner":13,"members":[10,12,14],"position":[-0.3,8.588,-8.5],"direction":[0,-1,-0.06],"intensity":1280,"range":24,"innerConeDeg":58,"outerConeDeg":80}
+  ]
+}

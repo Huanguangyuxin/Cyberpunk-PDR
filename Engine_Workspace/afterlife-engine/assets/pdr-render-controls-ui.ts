@@ -1,3 +1,4 @@
+import {boundedDisplayPixels} from './pdr-native-resolution';
 import {
   ANTIALIAS_MODES, CAMERA_CONTROLS, LIGHT_GROUPS, RENDER_CONTROL_CHANNEL, RENDER_SWITCHES, TONEMAPS,
   type AntialiasMode, type CameraControl, type RenderCommand, type RenderControlStatus, type RenderSwitch, type Tonemap,
@@ -12,7 +13,7 @@ export function bindRenderControls(root: ShadowRoot, port: MessagePort) {
   const part = <T extends HTMLElement>(name: string) => panel.querySelector<T>(`[data-ui-part="${name}"]`)!;
   const status = part('render-status');
   const antialias = part<HTMLSelectElement>('antialias');
-  const scale = part<HTMLSelectElement>('resolution');
+  const pixelReadout=part<HTMLOutputElement>('render-pixels');
   const tonemap = part<HTMLSelectElement>('tonemap');
   const fogQuality = part<HTMLSelectElement>('fog-quality');
   const rayStatus = part('ray-status');
@@ -67,7 +68,6 @@ export function bindRenderControls(root: ShadowRoot, port: MessagePort) {
   }
   const onAntialias = () => send({action: 'antialias', mode: antialias.value as AntialiasMode});
   antialias.addEventListener('change', onAntialias);
-  scale.addEventListener('change',()=>send({action:'scale',value:Number(scale.value)}));
   tonemap.addEventListener('change',()=>send({action:'tonemap',mode:tonemap.value as Tonemap}));
   fogQuality.addEventListener('change',()=>send({action:'fog-quality',mode:fogQuality.value==='low'?'low':'high'}));
   part('restore-render').append(button('恢复画质默认', () => send({action: 'restore-render'})));
@@ -128,7 +128,22 @@ export function bindRenderControls(root: ShadowRoot, port: MessagePort) {
       input.title = state.unavailable[id]??'';
       input.parentElement!.title=input.title;
     }
-    scale.value=String(state.renderScale);tonemap.value=state.tonemap;fogQuality.value=state.fogQuality;
+    const canvas=document.querySelector('canvas#app');
+    const view=state.pixels;
+    if(canvas instanceof HTMLCanvasElement && view){
+      const bounds=canvas.getBoundingClientRect(),dpr=document.defaultView?.devicePixelRatio??1;
+      const css={width:canvas.clientWidth,height:canvas.clientHeight};
+      const goal=boundedDisplayPixels(css,dpr,view.maxDimension||Infinity);
+      const width=Math.min(goal.width,Math.round(goal.height*16/9));
+      const height=Math.min(goal.height,Math.round(goal.width*9/16));
+      const matches=!view.separateEyes && Math.abs(view.internalWidth-width)<=1 && Math.abs(view.internalHeight-height)<=1;
+      const reason=view.separateEyes?'双眼分屏':matches?(view.source==='camera'?'画布像素已对齐':'原生像素已对齐'):'当前像素与显示目标不一致';
+      const label={attachment:'GPU 目标',view:'视图输出',camera:'相机请求'}[view.source];
+      const limited=view.maxDimension>0 && Math.max(css.width,css.height)*dpr>view.maxDimension;
+      pixelReadout.textContent=`显示 ${Math.round(bounds.width)}×${Math.round(bounds.height)} CSS · DPR ${dpr} · 目标 ${width}×${height} · ${label} ${view.internalWidth}×${view.internalHeight} · ${reason}${limited?'（GPU 纹理边长上限 '+view.maxDimension+'）':''}`;
+      pixelReadout.dataset.pixelReport=JSON.stringify({css,dpr,goal,actual:view,aligned:matches});
+    }else{pixelReadout.textContent='等待渲染尺寸';}
+    tonemap.value=state.tonemap;fogQuality.value=state.fogQuality;
     for(const [id,{input,output}] of sliders){
       if(root.activeElement===input&&input.matches(':active'))continue;
       input.value=String(state.camera[id]);output.value=input.value;

@@ -8,8 +8,7 @@
         "D050_LIQ_CLEAR",
         "D050_LIQ_COUPE",
         "D050_LIQ_RED",
-        "D050_LIQ_TUMBLER",
-        "D050_WATER_DROP"
+        "D050_LIQ_TUMBLER"
       ],
       "unsupportedExtensions": []
     }
@@ -218,46 +217,6 @@
       },
       "semantic": "mesh-material-slot-defaults",
       "sourceKey": "mesh:D050_LIQ_TUMBLER"
-    },
-    {
-      "payloadSchema": {
-        "additionalProperties": true,
-        "properties": {
-          "materialSlotDefaultOverrides": {
-            "additionalProperties": {
-              "nullable": true,
-              "type": "string"
-            },
-            "type": "object"
-          },
-          "materialSlots": {
-            "items": {
-              "additionalProperties": true,
-              "properties": {
-                "defaultMaterialGuid": {
-                  "type": "string"
-                },
-                "slotName": {
-                  "minLength": 1,
-                  "type": "string"
-                },
-                "sourceKey": {
-                  "minLength": 1,
-                  "type": "string"
-                }
-              },
-              "required": [
-                "slotName"
-              ],
-              "type": "object"
-            },
-            "type": "array"
-          }
-        },
-        "type": "object"
-      },
-      "semantic": "mesh-material-slot-defaults",
-      "sourceKey": "mesh:D050_WATER_DROP"
     }
   ],
   "sourceOverrides": {
@@ -305,15 +264,6 @@
           "sourceKey": "material:D050_SOURCE_TUMBLER"
         }
       ]
-    },
-    "mesh:D050_WATER_DROP": {
-      "materialSlots": [
-        {
-          "defaultMaterialGuid": "01a19004-fd34-74bc-a0d4-c9f9a6875966",
-          "slotName": "D050_WATER",
-          "sourceKey": "material:D050_WATER"
-        }
-      ]
     }
   },
   "subAssets": [
@@ -353,13 +303,6 @@
       "sourceKey": "mesh:D050_LIQ_TUMBLER"
     },
     {
-      "guid": "01a19004-fd34-74bc-a0d4-c9f3e3b1b075",
-      "kind": "mesh",
-      "name": "D050_WATER_DROP",
-      "sourceIndex": 5,
-      "sourceKey": "mesh:D050_WATER_DROP"
-    },
-    {
       "guid": "01a19004-fd34-74bc-a0d4-c9f4564edd55",
       "kind": "material",
       "name": "D050_SOURCE_AMBER",
@@ -393,13 +336,6 @@
       "name": "D050_SOURCE_TUMBLER",
       "sourceIndex": 4,
       "sourceKey": "material:D050_SOURCE_TUMBLER"
-    },
-    {
-      "guid": "01a19004-fd34-74bc-a0d4-c9f9a6875966",
-      "kind": "material",
-      "name": "D050_WATER",
-      "sourceIndex": 5,
-      "sourceKey": "material:D050_WATER"
     },
     {
       "guid": "01a19004-fd34-74bc-a0d4-c9fad6794590",

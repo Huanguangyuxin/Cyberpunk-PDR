@@ -1,0 +1,64 @@
+{
+  "pose": {
+    "STAGE_MOVING_HEAD_1": [
+      -0.23,
+      1,
+      1
+    ],
+    "STAGE_MOVING_HEAD_2": [
+      -0.23,
+      1,
+      1
+    ],
+    "STAGE_MOVING_HEAD_5": [
+      -0.23,
+      1,
+      1
+    ],
+    "STAGE_MOVING_HEAD_6": [
+      -0.23,
+      1,
+      1
+    ],
+    "L22_STAGE_HEAD_1": [
+      -0.23,
+      1,
+      1
+    ],
+    "L27_STAGE_HEAD_6": [
+      -0.23,
+      1,
+      1
+    ]
+  },
+  "suspension": {
+    "fixtureX": [
+      -5,
+      -3,
+      3,
+      5
+    ],
+    "inset": 0.102,
+    "z": -39.6,
+    "parts": [
+      {
+        "name": "drop",
+        "size": [
+          0.025,
+          0.23,
+          0.045
+        ],
+        "y": 5.03
+      },
+      {
+        "name": "bridge",
+        "size": [
+          0.055,
+          0.034,
+          0.356
+        ],
+        "y": 5.145
+      }
+    ]
+  }
+}

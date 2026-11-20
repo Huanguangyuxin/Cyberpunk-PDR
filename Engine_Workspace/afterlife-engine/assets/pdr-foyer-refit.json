@@ -1,0 +1,27 @@
+{
+  "retire": [
+    {"object":"STAIR_E","slot":"WB015_M_CHROME"},
+    {"object":"SIGN_LIPS_01","slot":"*"},
+    {"object":"STAIR_W","slot":"WB015_M_CHROME"},
+    {"object":"DECOR_COMPOSED_WALLS","slot":"M_STENCIL","min":[-1.6,3.13,-0.05],"max":[1.6,3.57,0.05]},
+    {"object":"DECOR_COMPOSED_WALLS","slot":"*","min":[13.60,2.15,-15.65],"max":[14.12,6.46,-3.85]},
+    {"object":"DECOR_BIG_POSTERS_PANELS","slot":"*","min":[13.60,2.15,-15.65],"max":[14.12,6.46,-3.85]},
+    {"object":"DECOR_POSTERS","slot":"*","min":[13.60,2.15,-15.65],"max":[14.12,6.46,-3.85]},
+    {"object":"DECOR_WALL_HISTORY_RACEWAYS","slot":"*","min":[13.60,2.15,-15.65],"max":[14.12,6.46,-3.85]},
+    {"object":"BAR_COUNTER_L","slot":"D109_CUSTOMER_COUNTER"},
+    {"object":"BAR_COUNTER_L","slot":"M_OPAL_PINK"},
+    {"object":"BAR_COUNTER_L","slot":"M_CHROME"},
+    {"object":"BAR_COUNTER_L","slot":"M_STEEL_BLACK","min":[10,1.044,-15],"max":[13.3,1.11,-3.9]},
+    {"object":"BAR_BACK_BAR","slot":"M_STEP_LED","min":[13.34,1.1,-14],"max":[13.43,2.2,-5]},
+    {"object":"BAR_BACK_BAR","slot":"M_OPAL_PINK_DIM"}
+  ],
+  "moves": {
+    "BAR_POS_AND_MATS":[0,0.007,0],
+    "BAR_STOOL_01":[-0.18,0,0],
+    "BAR_STOOL_02":[-0.18,0,0],
+    "BAR_STOOL_03":[-0.18,0,0],
+    "BAR_STOOL_04":[-0.18,0,0],
+    "BAR_STOOL_05":[-0.18,0,0],
+    "BAR_STOOL_06":[-0.18,0,0]
+  }
+}

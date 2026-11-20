@@ -21,6 +21,7 @@ export interface NativeFloorInputs {
   readonly roughnessChannel?: number;
   readonly normalScale: readonly [number, number];
   readonly occlusionStrength?: number;
+  readonly wearStrength?: number;
   readonly wetStrength?: number;
   readonly wetMaskChannel?: number;
   readonly wetRoughnessMin?: number;
@@ -69,6 +70,7 @@ export function nativeFloorMaterial(input: NativeFloorInputs, planarReflection =
       { name: 'occlusionTexture', type: 'texture' },
       { name: 'wetMaskTexture', type: 'texture' },
       { name: 'filmNormalTexture', type: 'texture' },
+      { name: 'wearStrength', type: 'f32', default: 0 },
       { name: 'wetStrength', type: 'f32', default: 1 },
       { name: 'wetMaskChannel', type: 'f32', default: 0 },
       { name: 'wetRoughnessMin', type: 'f32', default: 0.09 },
@@ -88,6 +90,7 @@ export function nativeFloorMaterial(input: NativeFloorInputs, planarReflection =
       occlusionTexture: input.occlusionTexture,
       wetMaskTexture: input.wetMaskTexture,
       filmNormalTexture: input.filmNormalTexture,
+      wearStrength: input.wearStrength ?? 0,
       wetStrength: input.wetStrength ?? 1, wetMaskChannel: input.wetMaskChannel ?? 0,
       wetRoughnessMin: input.wetRoughnessMin ?? .09, wetRoughnessMax: input.wetRoughnessMax ?? .115,
       groutProtectStart: 0.62, groutProtectEnd: 0.74, filmNormalScale: [1/64, 1/64],

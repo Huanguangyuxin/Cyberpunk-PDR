@@ -8,10 +8,17 @@ export const BODY = Object.freeze({height:1.75, radius:.28, halfHeight:.595, ski
   eyeHeight:1.64, step:.20, snap:.25, speed:1.4, runSpeed:2.8, jumpSpeed:4.2, gravity:9.81});
 export const centerAboveFeet = BODY.height/2 + BODY.skin;
 
+// Original imported meshes retained for authored switch states or fixture anchoring.
+// Their obsolete projections must not create static bodies in front of the installed finishes.
+const retiredColliderMeshes = new Set([
+  'FIX_ROOF_LIGHT_BANDS', 'FIX_SOFFIT_PENDANTS', 'BAR_CANOPY',
+  'STAGE_MOVING_HEAD_3', 'STAGE_MOVING_HEAD_4', 'ARCH_FLOOR_INLAY',
+]);
+
 // Keep actual solid geometry, including stair treads/railings and every furniture part.
 // Calibration overlays, projected laser rays, water and printed decals are not solids.
 export function isSolidMesh(name:string): boolean {
-  return !name.startsWith('CALIB/') && !name.includes('SIMULATED_RAY') &&
+  return !retiredColliderMeshes.has(name) && !name.startsWith('CALIB/') && !name.includes('SIMULATED_RAY') &&
     name !== 'WATER_SURFACE' && !name.includes('_BTL_LIQ_') && !name.startsWith('GRAPHIC_') &&
     !/POSTER_(OVERLAYER|REMNANT|TAPE)|_PRINT_FACE|DECAL/i.test(name);
 }

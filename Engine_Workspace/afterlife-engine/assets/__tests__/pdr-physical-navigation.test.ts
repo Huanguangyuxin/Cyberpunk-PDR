@@ -17,7 +17,8 @@ describe('physical inspection input and collision policy',()=>{
   it('keeps real walls, railings, stair treads, all furniture while excluding non-solid overlays',()=>{
     for(const n of ['WALL_EAST','STAIR_MAIN_MEZZ/flight_1_lower_east/tread-01',
       'STAIR_MAIN_MEZZ/handrail','BAR-S01/seat','SOC-C01-1/leg','WATER_INNER_CURB'])expect(isSolidMesh(n)).toBe(true);
-    for(const n of ['CALIB/CUBE_1M','LASER-01/SIMULATED_RAY_08','WATER_SURFACE','V4_BACKBAR_BTL_LIQ_01','GRAPHIC_STAGE_WALLPAPER/print'])expect(isSolidMesh(n)).toBe(false);
+    for(const n of ['CALIB/CUBE_1M','LASER-01/SIMULATED_RAY_08','WATER_SURFACE','V4_BACKBAR_BTL_LIQ_01','GRAPHIC_STAGE_WALLPAPER/print','FIX_ROOF_LIGHT_BANDS','FIX_SOFFIT_PENDANTS','BAR_CANOPY',
+      'STAGE_MOVING_HEAD_3','STAGE_MOVING_HEAD_4','ARCH_FLOOR_INLAY'])expect(isSolidMesh(n)).toBe(false);
     expect(2*(BODY.radius+BODY.halfHeight)).toBeCloseTo(1.75);
     expect(BODY.step).toBeGreaterThan(.1625);expect(BODY.step).toBeLessThan(.30);
   });

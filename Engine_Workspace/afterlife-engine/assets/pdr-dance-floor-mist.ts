@@ -5,7 +5,7 @@ import {Time,type World} from '@forgeax/engine/ecs';
 import type {AssetRegistry} from '@forgeax/engine/assets-runtime';
 import {Name} from '@forgeax/engine/scene';
 import {SpotLight,VolumetricFog,VolumetricFogSamplingValue} from '@forgeax/engine/render';
-import {eased,unit,publicAirMask} from './pdr-atmosphere-domain';
+import {eased,unit} from './pdr-atmosphere-domain';
 const W=32,H=22,D=48;
 const zones=[
  {name:'L20_CEIL_L_05',min:[-9.5,-.45,-44.4],max:[1.2,4.45,-14],part:0},
@@ -29,40 +29,6 @@ const fields=zones.map(zone=>{
 });
 export function danceFloorDensity(t:number,k:number,flowSpeed=1,background=.008,cloudGain=.85,a=new Uint8Array(W*H*D)){
  const field=fields[k],T=t*flowSpeed;
- a.fill(0);
- // 1. Accumulate the two side-nozzle spray plumes directly into this same ceiling-lit volume
- const count=22,lifetime=5.6,spacing=lifetime/count;
- for(const s of [-1,1]){
-  for(let p=0;p<count;p++){
-   const age=((T+(s<0?0:.28)-p*spacing)%lifetime+lifetime)%lifetime;
-   const u=age/lifetime,phase=p*2.399+s*1.3;
-   // Puffs emerge from the two side nozzles (x = +-4.3, y = 0.62, z = -38.0),
-   // billow gently to ~1.75m, then settle and drift wide across the stage front and dance floor (x -> +-0.4m, z -> -26.5m).
-   const px=s*(4.3-3.9*Math.pow(u,.82))+.55*Math.sin(u*4.6+phase)*u;
-   const py=.58+2.45*u*Math.pow(1-u,1.20)-.20*u*u+.12*Math.cos(u*5.0+phase);
-   const pz=-38+11.2*Math.pow(u,.88)+.45*Math.sin(u*3.6+phase)*u;
-   const r=.42+2.45*Math.pow(u,1.02);
-   const rx=r*(1.35+.65*u),ry=r*(.75-.28*u),rz=r*(1.25+.55*u);
-   const env=Math.min(1,u/.12)*Math.pow(1-u,1.85);
-   const strength=.95*env/(1+.85*u);
-   const zone=zones[k];
-   const ax=Math.max(0,Math.floor((px-2.2*rx-zone.min[0])/(zone.max[0]-zone.min[0])*W));
-   const bx=Math.min(W-1,Math.ceil((px+2.2*rx-zone.min[0])/(zone.max[0]-zone.min[0])*W));
-   if(ax>bx)continue;
-   const ay=Math.max(0,Math.floor((py-2.2*ry-zone.min[1])/(zone.max[1]-zone.min[1])*H));
-   const by=Math.min(H-1,Math.ceil((py+2.2*ry-zone.min[1])/(zone.max[1]-zone.min[1])*H));
-   const az=Math.max(0,Math.floor((pz-2.2*rz-zone.min[2])/(zone.max[2]-zone.min[2])*D));
-   const bz=Math.min(D-1,Math.ceil((pz+2.2*rz-zone.min[2])/(zone.max[2]-zone.min[2])*D));
-   for(let z=az;z<=bz;z++)for(let y=ay;y<=by;y++)for(let x=ax;x<=bx;x++){
-    const i=x+W*(y+H*z),j=i*4,X=field[j],Y=field[j+1],Z=field[j+2];
-    const dx=(X-px)/rx,dy=(Y-py)/ry,dz=(Z-pz)/rz;
-    const roll=.24*Math.sin(dx*2.1+phase+age*1.5)*Math.cos(dz*1.8-age*1.3);
-    const val=strength*Math.exp(-1.25*(dx*dx+(dy+roll)*(dy+roll)+dz*dz));
-    a[i]=Math.min(255,a[i]+Math.round(255*val));
-   }
-  }
- }
- // 2. Blend the nozzle puffs with the continuous 3D advected room mist field so they are one single optical medium
  for(let i=0;i<a.length;i++){
   const j=i*4,X=field[j],Y=field[j+1],Z=field[j+2],mask=field[j+3];if(mask===0){a[i]=0;continue;}
   const u=X-.68*T+1.4*Math.sin(.31*Z-.24*T)+.65*Math.sin(.6*Y+.24*Z+.31*T);
@@ -70,14 +36,13 @@ export function danceFloorDensity(t:number,k:number,flowSpeed=1,background=.008,
   const w=Y-.24*T+.8*Math.sin(.57*X+.22*Z-.46*T);
   const broad=noise3(u*.48,w*.48,v*.48),fine=noise3(u*1.05+13,w*1.05-7,v*1.05+3);
   const cloud=eased(.40,.70,.77*broad+.23*fine),filament=eased(.36,.58,broad)*eased(.46,.68,fine);
-  const puff=(a[i]/255)*(.58+.42*cloud);
   const floorStream=(1-eased(.20,2.50,Y))*eased(-41.5,-37.5,Z)*(1-eased(-31.0,-16.0,Z))*(.30+.70*cloud);
   const roomMist=background+cloudGain*(.86*cloud*cloud+.14*filament)+.32*floorStream;
-  a[i]=Math.round(255*unit((roomMist+puff)*mask));
+  a[i]=Math.round(255*unit(roomMist*mask));
  }return a;
 }
 export function installDanceFloorMist(world:World,assets:AssetRegistry){
- const defaults={flowSpeed:1.05,background:.008,cloudGain:.82,extinction:.0052};
+ const defaults={flowSpeed:1.05,background:.008,cloudGain:.62,extinction:.0022};
  const tuning={...defaults};
  // The volume samples the same broad downlights that light the floor and
  // structure. The room wash owns their intensity; the fog never retunes it.

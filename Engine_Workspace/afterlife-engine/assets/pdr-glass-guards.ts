@@ -1,29 +1,65 @@
-/** D037 temporary glass on R8 guard fill surfaces; physical solid panels remain a DCC deliverable. */
-import type {World,EntityHandle} from '@forgeax/engine/ecs';
+import type {World, EntityHandle} from '@forgeax/engine/ecs';
 import type {AssetRegistry} from '@forgeax/engine/assets-runtime';
-import type {MeshAsset} from '@forgeax/engine/types';
 import {Name} from '@forgeax/engine/scene';
-import {Materials,MeshFilter,MeshRenderer} from '@forgeax/engine/render';
-const FILL_SLOTS:Record<string,number>={STAIR_E:4,STAIR_W:4,RAIL_GAL_E:2,RAIL_GAL_W:2,RAIL_DECK_SOUTH:2,RAIL_BRIDGE_NORTH:2};
-const SOLID_GLASS_SLOTS:Record<string,number>={STAIR_E_GLASS:0,STAIR_W_GLASS:0};
-export function installGlassGuardTrial(world:World,assets:AssetRegistry){
- const glass=assets.create(Materials.standard({baseColor:[1,1,1,1],metallic:0,roughness:.065,transmission:.96,ior:1.5,thickness:.01,
-  attenuationColor:[.92,.97,1],attenuationDistance:4,renderState:{cullMode:'back'}})).unwrap();
- const stairGlass=assets.create(Materials.standard({baseColor:[.90,.95,1,1],metallic:0,roughness:.06,transmission:.94,ior:1.5,thickness:.006,
-  attenuationColor:[.88,.95,1],attenuationDistance:2.5,renderState:{cullMode:'none'}})).unwrap();
- const saved:{entity:EntityHandle;name:string;materials:number[]}[]=[];
- let ready=false,pending=Object.keys(FILL_SLOTS);
- const tick=()=>{
-  if(ready)return;
-  const rows=Array.from(world.query({read:[Name,MeshFilter,MeshRenderer]}).unwrap(),r=>({entity:r.entity,name:r.get(Name).value,mesh:r.get(MeshFilter).assetHandle,materials:Array.from(r.get(MeshRenderer).materials)})).filter(r=>FILL_SLOTS[r.name]!==undefined||SOLID_GLASS_SLOTS[r.name]!==undefined);
-  const subjects=rows.flatMap(r=>{const read=assets.read(r.mesh);if(!read.ok||read.value.kind!=='mesh')return [];const mesh=read.value as MeshAsset;
-   if(SOLID_GLASS_SLOTS[r.name]!==undefined){const s=SOLID_GLASS_SLOTS[r.name];return [{...r,slots:mesh.materialSlots.map((_,i)=>Number(r.materials[i]??0)),slot:s,mat:stairGlass}];}
-   const slot=FILL_SLOTS[r.name];
-   const legacy=mesh.materialSlots[slot]?.slotName==='M_LATTICE_STEEL';
-   // Zero is the public MeshRenderer sentinel: inherit the Mesh default by GUID/handle.
-   return [{...r,slots:mesh.materialSlots.map((_,i)=>Number(r.materials[i]??0)),slot:legacy?slot:-1,mat:glass}];});
-  pending=Object.keys(FILL_SLOTS).filter(n=>!subjects.some(r=>r.name===n));if(pending.length)return;
-  for(const r of subjects){if(r.slot<0)continue;saved.push({entity:r.entity,name:r.name,materials:r.materials});r.slots[r.slot]=r.mat;world.set(r.entity,MeshRenderer,{materials:r.slots}).unwrap();}ready=true;
- };
- return {tick,read:()=>({status:'D048 WorkBuddy solid glass stays source-native; optical override only for a surviving legacy lattice slot',ready,pending,expected:6,adopted:saved.map(r=>({name:r.name,slot:FILL_SLOTS[r.name]??SOLID_GLASS_SLOTS[r.name]})),glassHandle:glass,values:assets.read(glass).unwrap(),collision:'current imported solid geometry retained'}),dispose:()=>{for(const r of saved){if(world.hasComponent(r.entity,MeshRenderer))world.set(r.entity,MeshRenderer,{materials:r.materials}).unwrap();}assets.release(glass).unwrap();assets.release(stairGlass).unwrap();}};
+import {Materials, MeshFilter, MeshRenderer} from '@forgeax/engine/render';
+
+import {drinkShellMaterial} from './pdr-drink-shell-material';
+
+const legacyFill: Record<string, number> = {
+  STAIR_E:4, STAIR_W:4, RAIL_GAL_E:2, RAIL_GAL_W:2, RAIL_DECK_SOUTH:2, RAIL_BRIDGE_NORTH:2,
+};
+
+export function installGlassGuardTrial(world: World, assets: AssetRegistry) {
+  // Distances are metres. Laminated rails have a light green interlayer.
+  // Smoked door glass absorbs more light over the same optical path.
+  function pane(roughness:number, thickness:number, absorption:[number,number,number], distance:number) {
+    return assets.create(Materials.standard({
+      baseColor:[1,1,1,1], metallic:0, specular:1, roughness, ior:1.52, transmission:1,
+      thickness, attenuationColor:absorption, attenuationDistance:distance,
+      renderState:{cullMode:'back'},
+    })).unwrap();
+  }
+  const rail = pane(.085,.012,[.60,.82,.74],.020);
+  const door = pane(.12,.010,[.45,.63,.60],.013);
+  // The flat gallery panes have actual 10 mm bodies. Render one Fresnel interface
+  // onto the real hall backdrop. Refraction here can expose the screen capture fallback.
+  const observationWindow=assets.create(drinkShellMaterial()).unwrap();
+  const saved:{entity:EntityHandle;name:string;materials:number[]}[]=[];
+  let ready=false;
+  let pending=Object.keys(legacyFill);
+  function tick() {
+    if (ready) return;
+    const rows=Array.from(world.query({read:[Name,MeshFilter,MeshRenderer]}).unwrap(), row=>({
+      entity:row.entity, name:row.get(Name).value, mesh:assets.read(row.get(MeshFilter).assetHandle),
+      materials:Array.from(row.get(MeshRenderer).materials),
+    }));
+    pending=Object.keys(legacyFill).filter(name=>!rows.some(row=>row.name===name && row.mesh.ok));
+    if (pending.length) return;
+    for (const row of rows) {
+      if (!row.mesh.ok || row.mesh.value.kind!=='mesh') continue;
+      let changed=false;
+      const materials=row.mesh.value.materialSlots.map((slot,index)=>{
+        const name=slot.slotName.replace(/^WB015_/,'');
+        if (name==='M_GLASS_DOOR') {
+          changed=true;
+          return /^VIP_[EW][12]_SHELL$/.test(row.name) ? observationWindow : door;
+        }
+        if (name==='M_GLASS_GUARD' || (name==='M_LATTICE_STEEL' && legacyFill[row.name]===index)) {
+          changed=true; return rail;
+        }
+        return row.materials[index] ?? 0;
+      });
+      if (!changed) continue;
+      saved.push({entity:row.entity,name:row.name,materials:row.materials});
+      world.set(row.entity,MeshRenderer,{materials}).unwrap();
+    }
+    ready=true;
+  }
+  return {tick,read:()=>({ready,pending,adopted:saved.map(row=>row.name),glassHandle:rail,values:assets.read(rail).unwrap()}),
+    dispose:()=>{
+      for(const row of saved) if(world.hasComponent(row.entity,MeshRenderer)) world.set(row.entity,MeshRenderer,{materials:row.materials}).unwrap();
+      assets.release(rail).unwrap();
+      assets.release(door).unwrap();
+      assets.release(observationWindow).unwrap();
+    }};
 }

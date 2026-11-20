@@ -35,6 +35,17 @@ const hud:Plugin.Object<{hud:string}>={name:'cyberpunk/navigation-hud',inject:['
       if(liquidReadout){liquidReadout.id='pdr-liquid-diagnostics';liquidReadout.style.cssText='position:fixed;bottom:18px;left:18px;max-width:90vw;white-space:pre-wrap;font:11px monospace;color:#fff;background:#10131de8;padding:8px;pointer-events:none';ui.host.shadowRoot!.append(liquidReadout);}
 
       const bookmark=requestedView&&Object.hasOwn(OBSERVATION_BOOKMARKS,requestedView)?requestedView:null;
+      const query=new URLSearchParams(window.location.search);
+      let unavailableNormals=false;
+      if(query.get('forgeax-startup-retry')==='1'){
+        try {
+          const scope=new URL('./',document.baseURI).href;
+          const failure=window.sessionStorage.getItem('forgeax.startup/afterlife-engine/'+scope+'/failure')??'';
+          unavailableNormals=failure.includes('coverage-incomplete') && failure.includes('standard-surface-normal-v1');
+        } catch { /* Browsers may disable session storage. */ }
+      }
+      const startWithOcclusion=query.get('ao')!=='off' && renderDebug!=='gtao-off' && !unavailableNormals;
+      let occlusionSent=false;
       let bookmarkSent=false,renderDiagnosticSent=false;
       const part=(name:string)=>ui.host.shadowRoot!.querySelector<HTMLElement>(`[data-ui-part="${name}"]`)!;
       const keyboard=part('keyboard'),look=part('look'),collision=part('collision');
@@ -50,6 +61,7 @@ const hud:Plugin.Object<{hud:string}>={name:'cyberpunk/navigation-hud',inject:['
       };
       const receive=(event:MessageEvent)=>{if(event.data?.channel!==NAV_CHANNEL||event.data.kind!=='status')return;
         status=event.data as NavigationStatus;lastSeen=Date.now();render();
+        if(!occlusionSent){occlusionSent=true;port.postMessage({channel:NAV_CHANNEL,kind:'startup-occlusion',enabled:startWithOcclusion});}
         if(!renderDiagnosticSent&&['vip-direct-off','vip-emission-off','wall-specular-off','front-strips-baseline','head-left-lit','head-left-clear','head-right-lit','head-right-clear','head-sweep','head-sweep-no-taa','shadow-on','shadow-off','bloom-on','bloom-off','fog-off','ssr-off','gtao-off','taa-off','bands-off','plaque-baseline'].includes(renderDebug??'')){renderDiagnosticSent=true;port.postMessage({channel:NAV_CHANNEL,kind:'render-diagnostic',mode:renderDebug});}
         if(bookmark&&!bookmarkSent){bookmarkSent=true;port.postMessage({channel:NAV_CHANNEL,kind:'bookmark',view:bookmark});}
       };

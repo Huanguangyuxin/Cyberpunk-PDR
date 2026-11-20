@@ -1,0 +1,109 @@
+{
+  "hidden": [
+    "Stair warm nosing diffuser"
+  ],
+  "remove": {
+    "BAR_WORK_SURFACE": [
+      "M_STEEL_BLACK"
+    ],
+    "STAIR_E_GLASS": [
+      "WB015_M_GLASS_GUARD"
+    ],
+    "STAIR_W_GLASS": [
+      "WB015_M_GLASS_GUARD"
+    ],
+    "VIP_E1_SHELL": [
+      "WB015_M_FRAME_PINK"
+    ],
+    "VIP_E2_SHELL": [
+      "WB015_M_FRAME_PINK"
+    ],
+    "VIP_W1_SHELL": [
+      "WB015_M_FRAME_PINK"
+    ],
+    "VIP_W2_SHELL": [
+      "WB015_M_FRAME_PINK"
+    ],
+    "STAGE_PLATFORM_DJ": [
+      "M_BIG_POSTER",
+      "M_OPAL_PINK"
+    ]
+  },
+  "zones": [
+    {
+      "owner": "BAR_WORK_SURFACE",
+      "slot": "M_CHROME",
+      "bounds": [
+        11.62,
+        0.61,
+        -13.61,
+        11.64,
+        0.63,
+        -5.04
+      ]
+    },
+    {
+      "owner": "STAGE_PLATFORM_DJ",
+      "slot": "M_STEP_LED",
+      "bounds": [
+        -1.202,
+        1.389,
+        -41.202,
+        1.202,
+        1.407,
+        -41.178
+      ]
+    }
+  ],
+  "fits": {
+    "M05 drilled garnet stair infill": {
+      "axis": 0,
+      "mirror": true,
+      "old": [
+        12.614,
+        12.621
+      ],
+      "next": [
+        12.645,
+        12.655
+      ]
+    },
+    "Gallery grazer valance": {
+      "axis": 0,
+      "mirror": true,
+      "old": [
+        9.875,
+        10.365
+      ],
+      "next": [
+        9.875,
+        10.417
+      ]
+    },
+    "DJ cast amber fascia": {
+      "axis": 2,
+      "mirror": false,
+      "old": [
+        -41.1915,
+        -41.1745
+      ],
+      "next": [
+        -41.201,
+        -41.1745
+      ]
+    }
+  },
+  "pivot": {
+    "dimensions": [
+      0.082,
+      0.054,
+      0.082
+    ],
+    "x": [
+      -2.2,
+      2.2
+    ],
+    "y": 5.155,
+    "z": -39.6
+  }
+}

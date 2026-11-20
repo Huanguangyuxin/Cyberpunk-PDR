@@ -1,0 +1,270 @@
+{
+  "frontX": 11.82,
+  "risePerMetre": 0.04,
+  "canopyParts": [
+    "Perforated canopy blades",
+    "Canopy folded hems",
+    "Canopy standoff brackets",
+    "Canopy internal diffusers",
+    "Zoned amber canopy backing"
+  ],
+  "finishes": {
+    "Folded pewter guest counter": {
+      "slot": "Rear counter-silver",
+      "baseColor": [
+        1.02,
+        1.03,
+        1.035,
+        1
+      ],
+      "roughness": 1.2,
+      "metallic": 0.99,
+      "normalScale": [
+        0.34,
+        0.34
+      ]
+    },
+    "Wrapped pewter counter ends": {
+      "slot": "Rear counter-silver",
+      "baseColor": [
+        0.54,
+        0.435,
+        0.353,
+        1
+      ],
+      "roughness": 1.47,
+      "metallic": 0.89,
+      "normalScale": [
+        0.23,
+        0.23
+      ]
+    },
+    "Cabinet upper glazing bead": {
+      "slot": "Rear counter-silver",
+      "baseColor": [
+        0.85,
+        0.89,
+        0.93,
+        1
+      ],
+      "roughness": 0.76,
+      "metallic": 0.98,
+      "normalScale": [
+        0.46,
+        0.46
+      ]
+    },
+    "Bar copper plinth": {
+      "slot": "Rear copper",
+      "baseColor": [
+        1.11,
+        1.035,
+        0.94,
+        1
+      ],
+      "roughness": 1.08,
+      "metallic": 0.94,
+      "normalScale": [
+        0.72,
+        0.72
+      ]
+    },
+    "Perforated canopy blades": {
+      "slot": "Rear canopy-bronze",
+      "baseColor": [
+        0.87,
+        0.9,
+        0.93,
+        1
+      ],
+      "roughness": 1.1,
+      "metallic": 0.98,
+      "normalScale": [
+        0.72,
+        0.72
+      ]
+    },
+    "Canopy folded hems": {
+      "slot": "Rear canopy-bronze",
+      "baseColor": [
+        1.12,
+        1.07,
+        1.02,
+        1
+      ],
+      "roughness": 0.71,
+      "metallic": 1,
+      "normalScale": [
+        0.48,
+        0.48
+      ]
+    },
+    "Canopy standoff brackets": {
+      "slot": "Rear steel",
+      "baseColor": [
+        1.56,
+        1.365,
+        1.118,
+        1
+      ],
+      "roughness": 0.88,
+      "metallic": 0.81
+    },
+    "Zoned amber canopy backing": {
+      "slot": "Amber reflector behind the perforations",
+      "baseColor": [
+        0.65,
+        0.34,
+        0.13,
+        1
+      ],
+      "metallic": 0.1,
+      "roughness": 0.61,
+      "emissive": [
+        1,
+        0.53,
+        0.18
+      ],
+      "emissiveIntensity": 8.5
+    },
+    "Shelf recessed amber reflectors": {
+      "slot": "Shelf amber brushed reflector",
+      "baseColor": [
+        0.052,
+        0.041,
+        0.026,
+        1
+      ],
+      "metallic": 0.19,
+      "roughness": 0.84,
+      "emissive": [
+        1,
+        0.74,
+        0.47
+      ],
+      "emissiveIntensity": 0.84,
+      "specular": 0.17
+    },
+    "Cobalt kiln cast modules": {
+      "slot": "Rear cobalt",
+      "baseColor": [
+        0.77,
+        0.88,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 1.87,
+      "specular": 0.2,
+      "normalScale": [
+        0.23,
+        0.23
+      ]
+    },
+    "Prep end satin apron": {
+      "slot": "Rear counter-silver",
+      "baseColor": [
+        0.54,
+        0.435,
+        0.353,
+        1
+      ],
+      "roughness": 1.47,
+      "metallic": 0.89,
+      "normalScale": [
+        0.23,
+        0.23
+      ]
+    }
+  },
+  "spots": [
+    {
+      "name": "Niche cross wash 1",
+      "pos": [
+        12.91,
+        2.22,
+        -5.79
+      ],
+      "target": [
+        13.72,
+        1.14,
+        -6.5
+      ],
+      "color": [
+        1,
+        0.74,
+        0.52
+      ],
+      "intensity": 38,
+      "range": 2.2,
+      "inner": 16,
+      "outer": 41
+    },
+    {
+      "name": "Niche cross wash 2",
+      "pos": [
+        12.91,
+        2.22,
+        -7.57
+      ],
+      "target": [
+        13.72,
+        1.27,
+        -8.280000000000001
+      ],
+      "color": [
+        1,
+        0.74,
+        0.52
+      ],
+      "intensity": 32,
+      "range": 2.2,
+      "inner": 16,
+      "outer": 41
+    },
+    {
+      "name": "Niche cross wash 3",
+      "pos": [
+        12.91,
+        2.22,
+        -9.36
+      ],
+      "target": [
+        13.72,
+        1.24,
+        -10.07
+      ],
+      "color": [
+        1,
+        0.74,
+        0.52
+      ],
+      "intensity": 36,
+      "range": 2.2,
+      "inner": 16,
+      "outer": 41
+    },
+    {
+      "name": "Niche cross wash 4",
+      "pos": [
+        12.91,
+        2.22,
+        -11.16
+      ],
+      "target": [
+        13.72,
+        1.16,
+        -11.870000000000001
+      ],
+      "color": [
+        1,
+        0.74,
+        0.52
+      ],
+      "intensity": 40,
+      "range": 2.2,
+      "inner": 16,
+      "outer": 41
+    }
+  ]
+}

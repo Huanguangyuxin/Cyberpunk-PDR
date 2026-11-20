@@ -1,3 +1,4 @@
+import {allowsNativeSsr,type ViewSize} from './pdr-native-resolution';
 import {SSR} from './pdr-post-profile-wb017';
 import {retilePbr} from './pdr-native-floor-material';
 /** D047: a thin wet dielectric surface on the real floor, not a water plane or reflection image.
@@ -34,7 +35,7 @@ function installedWetness(x:number,z:number){
 }
 interface FloorSet {readonly standard:readonly string[]; readonly planar:readonly string[]}
 export async function installWetFloor(world:World,assets:AssetRegistry,cameras:readonly EntityHandle[],
- original:FloorSet, installed:FloorSet, trimGuid:string){
+ original:FloorSet, installed:FloorSet, trimGuid:string, drawingBuffer:()=>ViewSize|undefined){
  if([original.standard,original.planar,installed.standard,installed.planar].some(set=>set.length!==2))throw new Error('Floor finishes require two cooked materials per render path');
  const textures:AssetHandle<'texture'>[]=[],materials:AssetHandle<'material'>[]=[],meshes:AssetHandle<'mesh'>[]=[];
  const retained:(AssetHandle<'texture'>|AssetHandle<'material'>)[]=[];
@@ -50,7 +51,10 @@ export async function installWetFloor(world:World,assets:AssetRegistry,cameras:r
   const w=wetnessAt(X,Z),localWet=installedWetness(X,Z);
   if(w>.3)wetPixels++;
   if(localWet>.3)installedWetPixels++;
-  macroPixels.set([Math.round(w*255),Math.round(noise(X*1.7+7,Z*1.7)*255),Math.round(localWet*255),255],i*4);
+  // A follows the two entrance traffic lanes and the dance-floor perimeter in metres.
+  const laneDistance=Math.min(Math.abs(Math.abs(X)-2.2),Math.abs(Math.abs(X)-5.8));
+  const travel=(1-smooth(.24,1.05,laneDistance))*smooth(-43,-37,Z)*smooth(0,2,-Z);
+  macroPixels.set([Math.round(w*255),Math.round(noise(X*1.7+7,Z*1.7)*255),Math.round(localWet*255),Math.round(travel*255)],i*4);
   const eps=.025,nx=-(filmHeight(X+eps,Z)-filmHeight(X-eps,Z))/(2*eps),nz=-(filmHeight(X,Z+eps)-filmHeight(X,Z-eps))/(2*eps);
   const ny=Math.sqrt(Math.max(.001,1-nx*nx-nz*nz));
   // Encode slopes at64x; the cooked Surface scale restores physical amplitude.
@@ -69,7 +73,9 @@ export async function installWetFloor(world:World,assets:AssetRegistry,cameras:r
   retained.push(cooked);
   const handle=assets.copy(cooked).unwrap(),source=assets.read(handle).unwrap();
   materials.push(handle);
-  assets.update(handle,{values:{...source.values,wetMaskTexture:bind(maskTexture),filmNormalTexture:bind(filmTexture)}}).unwrap();
+  const hallPaving=guid===installed.standard[0]||guid===installed.planar[0];
+  const finish=hallPaving?{baseColor:[.38,.36,.37,1],roughness:.86,specular:.48}:undefined;
+  assets.update(handle,{values:{...source.values,...finish,wetMaskTexture:bind(maskTexture),filmNormalTexture:bind(filmTexture)}}).unwrap();
   materialCache.set(guid,handle);
   return handle;
  };
@@ -142,11 +148,24 @@ export async function installWetFloor(world:World,assets:AssetRegistry,cameras:r
   world.set(row.entity,MeshFilter,{assetHandle:mesh}).unwrap();
  }
  const probe=world.spawn({component:Name,data:{value:'PDR/wet-floor-deep-hall-reflection-fallback'}},{component:Transform,data:{pos:[0,2.5,-32]}},{component:ReflectionProbe,data:{halfExtents:[9,3.5,11],resolution:128,updateIntent:REFLECTION_PROBE_UPDATE_ONCE,intensity:.75,boxProjection:true}}).unwrap();
- const setSSR=(on:boolean)=>{ssr=on;for(const item of baseSsr){if(on){if(world.hasComponent(item.entity,ScreenSpaceReflection))world.set(item.entity,ScreenSpaceReflection,{...SSR}).unwrap();else world.addComponent(item.entity,{component:ScreenSpaceReflection,data:{...SSR}}).unwrap();}else if(world.hasComponent(item.entity,ScreenSpaceReflection))world.removeComponent(item.entity,ScreenSpaceReflection).unwrap();}return ssr;};
+ let ssrApplied:boolean|undefined;
+ const syncSSR=()=>{
+  const on=ssr&&allowsNativeSsr(drawingBuffer());
+  if(on===ssrApplied)return on;
+  for(const {entity} of baseSsr){
+   const has=world.hasComponent(entity,ScreenSpaceReflection);
+   if(on&&!has)world.addComponent(entity,{component:ScreenSpaceReflection,data:{...SSR}}).unwrap();
+   if(!on&&has)world.removeComponent(entity,ScreenSpaceReflection).unwrap();
+  }
+  ssrApplied=on;
+  return on;
+ };
+ const setSSR=(on:boolean)=>{ssr=on;return syncSSR();};
+
  const apply=()=>{for(const s of saved){
   const mesh=wet?s.wetMesh:s.mesh;
   if(world.get(s.entity,MeshFilter).unwrap().assetHandle!==mesh)world.set(s.entity,MeshFilter,{assetHandle:mesh}).unwrap();
-  const materials=wet?(installedEnabled?s.installed:s.original)[planar?1:0]:s.materials;
+  const materials=wet?(installedEnabled?s.installed:s.original)[planar && s.name==='ARCH_DANCE_FLOOR' ? 1 : 0]:s.materials;
   world.set(s.entity,MeshRenderer,{materials}).unwrap();
  }};
  const setWet=(on:boolean)=>{wet=on;apply();return wet;};
@@ -154,7 +173,7 @@ export async function installWetFloor(world:World,assets:AssetRegistry,cameras:r
  const setInstalled=(on:boolean)=>{installedEnabled=on;apply();};
  apply();
  const read=()=>({
-  enabled:wet,installed:installedEnabled,ssrRequested:ssr,planar,
+  enabled:wet,installed:installedEnabled,ssrRequested:ssr,ssrActive:ssrApplied,planar,
   assemblies:saved.map(s=>({name:s.name,sourceMesh:s.mesh,wetMesh:s.wetMesh,
    activeMaterials:Array.from(world.get(s.entity,MeshRenderer).unwrap().materials)})),
   nativeDetailSampling:installedEnabled?'D186 2048 px / 1.2 m with 16× anisotropy':'D112 2.4 m detail on original UV0',
@@ -163,5 +182,5 @@ export async function installWetFloor(world:World,assets:AssetRegistry,cameras:r
   maps:[MAP_W,MAP_H],deepProbe:probe,
  });
  setSSR(true);world.insertResource('cyberpunk.wetFloor',{read,setWet,setSSR});
- return {read,setWet,setSSR,setPlanar,setInstalled,dispose:()=>{if(disposed)return;disposed=true;setWet(false);for(const item of baseSsr){if(item.before.ok)world.set(item.entity,ScreenSpaceReflection,item.before.value).unwrap();else if(world.hasComponent(item.entity,ScreenSpaceReflection))world.removeComponent(item.entity,ScreenSpaceReflection).unwrap();}world.removeResource('cyberpunk.wetFloor');world.despawn(probe).unwrap();for(const h of meshes)assets.release(h).unwrap();for(const h of materials)assets.release(h).unwrap();for(const h of textures)assets.release(h).unwrap();assets.release(sampler).unwrap();for(const h of retained)assets.release(h).unwrap();}};
+ return {read,setWet,setSSR,syncSSR,setPlanar,setInstalled,dispose:()=>{if(disposed)return;disposed=true;setWet(false);for(const item of baseSsr){if(item.before.ok)world.set(item.entity,ScreenSpaceReflection,item.before.value).unwrap();else if(world.hasComponent(item.entity,ScreenSpaceReflection))world.removeComponent(item.entity,ScreenSpaceReflection).unwrap();}world.removeResource('cyberpunk.wetFloor');world.despawn(probe).unwrap();for(const h of meshes)assets.release(h).unwrap();for(const h of materials)assets.release(h).unwrap();for(const h of textures)assets.release(h).unwrap();assets.release(sampler).unwrap();for(const h of retained)assets.release(h).unwrap();}};
 }

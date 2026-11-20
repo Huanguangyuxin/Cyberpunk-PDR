@@ -9,7 +9,8 @@ import { GTAO } from './pdr-post-profile-wb017';
 import {CAMERA_CONTROLS, TONEMAPS, RENDER_SWITCHES, type AntialiasMode, type CameraControl,
   type LightGroup, type Tonemap, type RenderControlStatus, type RenderSwitch} from './pdr-render-controls-protocol';
 import {aaModes, type installCameraControls} from './pdr-camera-controls';
-import {practicalLightLabel} from './pdr-practical-lights';
+import {isMergedLight} from './pdr-local-light-budget';
+import {practicalLightLabel,type TableLightControl} from './pdr-practical-lights';
 import {mirrorBallLightLabel} from './pdr-mirror-balls';
 
 const intensityComponents = [PointLight, RectAreaLight, SpotLight, DirectionalLight, ReflectionProbe, Skylight] as const;
@@ -31,13 +32,13 @@ const environmentNames: Record<string, string> = {
 };
 
 interface Owners {
+  tableLights:TableLightControl[];
   installedFinishesEnabled(): boolean;
   setInstalledFinishes(enabled: boolean): void;
   fogEnabled(): boolean;
   setFog(enabled: boolean): void;
   fogMotion(): boolean;
   setFogMotion(enabled: boolean):void;
-  setFogLight(entity: EntityHandle, enabled: boolean): void;
   setSSR(enabled: boolean): unknown;
   setPracticalEmission(enabled: boolean): void;
 }
@@ -93,7 +94,6 @@ export function installRenderControls(world: World, cameras: EntityHandle[], own
         }
         world.set(entity, intensityField, {intensity: enabled ? savedIntensity : 0}).unwrap();
         if (isSky) world.set(entity, Skylight, {ambientIrradiance: enabled ? savedAmbient : [0, 0, 0]}).unwrap();
-        if (component === SpotLight) owners.setFogLight(entity, enabled);
       };
       return {
         id: component.name + '/' + entity, name: mirrorBall?.name ?? practical?.name ?? environmentNames[name] ?? name, group, rayTestLight,
@@ -101,6 +101,8 @@ export function installRenderControls(world: World, cameras: EntityHandle[], own
       };
     }),
   );
+  for(let i=lights.length-1;i>=0;i--)if(isMergedLight(lights[i].name))lights.splice(i,1);
+  lights.push(...owners.tableLights);
   let practicalsEnabled = true;
   lights.push({
     id: 'practicals', name: '建筑灯带、灯罩与舞台招牌', group: 'practicals', rayTestLight: false,

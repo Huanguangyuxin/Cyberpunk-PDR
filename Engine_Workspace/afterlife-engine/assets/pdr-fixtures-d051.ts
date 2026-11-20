@@ -7,9 +7,9 @@ import type {AssetHandle,MeshAsset} from '@forgeax/engine/types';
 import {quat} from '@forgeax/engine/math';
 
 const stageCues = [
-  {name:'cyan-magenta', colors:[[.07,.72,1],[1,.07,.36]]},
+  {name:'ice-red', colors:[[.055,.32,1],[1,.075,.025]]},
   {name:'blue-amber', colors:[[.08,.18,1],[1,.42,.047]]},
-  {name:'violet-teal', colors:[[.59,.10,1],[.035,.92,.50]]},
+  {name:'steel-coral', colors:[[.16,.50,1],[1,.15,.075]]},
 ] as const;
 const cueSeconds = 5.4;
 export async function loadFixtureMeshes(assets:AssetRegistry,guids:readonly string[]){
@@ -76,12 +76,13 @@ export async function installMovingHeads(world:World,assets:AssetRegistry,guids:
   const blend=fade*fade*(3-2*fade);
   cue={name:test||freeze?'fixed':current.name,blend:test||freeze?0:blend};
   for(const light of stageLights){
+   if (/^L(?:23|26)_/.test(light.name)) continue; // Dedicated warm grazers on the nickel wings.
    const a=current.colors[light.lane], b=next.colors[light.lane];
    const color=test||freeze?light.color:a.map((value,i)=>value+(b[i]-value)*blend);
    world.set(light.entity,SpotLight,{color}).unwrap();
   }
   for(let k=0;k<fixtures.length;k++){
-   const f=fixtures[k],phase=t*(k===0?.45:.36)+k*2.1,target=test?[(k===0?-1:1)*2.5+(test==='left'?-.65:test==='right'?.65:.9*Math.sin(t*.6+k)),.45,-39.35]:freeze?[(k===0?-1:1)*2.5,.45,-39.35]:[4.2*Math.sin(phase),.35,-38.8+3.8*Math.sin(phase*.78+k)],d=target.map((v,a)=>v-f.pos[a]),len=Math.hypot(...d),direction=d.map(v=>v/len),yaw=Math.atan2(-d[0],-d[2]),pitch=Math.atan2(d[1],Math.hypot(d[0],d[2]));
+   const f=fixtures[k],phase=t*(k===0?.45:.36)+k*2.1,target=test?[(k===0?-1:1)*2.5+(test==='left'?-.65:test==='right'?.65:.9*Math.sin(t*.6+k)),.45,-39.35]:freeze?[(k===0?-1:1)*2.5,.45,-39.35]:[(k===0?-1:1)*(3.2+1.65*Math.sin(phase)),.35,-38.8+2.3*Math.sin(phase*.78+k)],d=target.map((v,a)=>v-f.pos[a]),len=Math.hypot(...d),direction=d.map(v=>v/len),yaw=Math.atan2(-d[0],-d[2]),pitch=Math.atan2(d[1],Math.hypot(d[0],d[2]));
    // Keep the moving shafts saturated through the stage mist.
    const pulse=test||freeze?3600:1900+500*Math.sin(t*7.2+k*1.9);
    // Optical source is just outside the measured local -Z lens at0.197m.

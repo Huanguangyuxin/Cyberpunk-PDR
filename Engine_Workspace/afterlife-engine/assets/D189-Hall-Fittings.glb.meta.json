@@ -1,0 +1,3727 @@
+{
+  "importSettings": {
+    "defaultSceneIndex": 0,
+    "diagnostics": {
+      "matrixTrsCoexistNodes": [],
+      "nodeNames": [
+        "Basin coping",
+        "Basin lower landing",
+        "Basin middle tread",
+        "Bridge portal pier",
+        "Cassette diamond welts",
+        "Coping metal nosing",
+        "DJ cast amber fascia",
+        "DJ end trim",
+        "DJ fascia reveal",
+        "End paving joint bed",
+        "End running bond",
+        "Fan blade footlight glass",
+        "Fan blade uplight housing",
+        "Folded gallery beam jackets",
+        "Gallery end mullion",
+        "Gallery fascia panel",
+        "Gallery grazer diffuser",
+        "Gallery grazer valance",
+        "Gallery honed walkway flags",
+        "Gallery inspection pulls",
+        "Gallery quilt welt",
+        "Gallery rail edge spline",
+        "Gallery removable rail edge panels",
+        "Gallery return light",
+        "Gallery sill access panels",
+        "Gallery sill caps",
+        "Gallery sill corner studs",
+        "Gallery sill reveals",
+        "Hall inset service covers",
+        "Hall nickel movement joints",
+        "Hall pressed dado returns",
+        "Hall recessed plate fixings",
+        "Hall service cover flutes",
+        "Hall sidewall wainscot",
+        "Hall staggered mineral flags",
+        "Ledge cantilever bracket",
+        "Low recessed step markers",
+        "M05 drilled garnet stair infill",
+        "M10 cobalt glass contour",
+        "Middle metal nosing",
+        "Paver joint bed",
+        "Portal illuminated reveal",
+        "Portal lintel",
+        "Portal lintel reveal",
+        "Raised chequer lugs",
+        "Running bond side paving",
+        "Sapphire slit opal strip",
+        "Sapphire slit recess",
+        "Sidewall acoustic cassettes",
+        "Sidewall metal reveals",
+        "Sidewall warm reveal",
+        "Stage lattice",
+        "Stage nickel fan blades",
+        "Stage steel uprights",
+        "Stage wing acoustic backing",
+        "Stair warm nosing diffuser",
+        "Threshold fasteners",
+        "Threshold milled edge",
+        "Threshold stainless pan",
+        "Upper nickel standing ledge"
+      ],
+      "unsupportedExtensions": []
+    }
+  },
+  "importer": "gltf",
+  "kind": "external-asset-package",
+  "schemaVersion": 1,
+  "source": "D189-Hall-Fittings.glb",
+  "sourceOverrideDescriptors": [
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Basin coping"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Basin lower landing"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Basin middle tread"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Bridge portal pier"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Cassette diamond welts"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Coping metal nosing"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:DJ cast amber fascia"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:DJ end trim"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:DJ fascia reveal"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:End paving joint bed"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:End running bond"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Fan blade footlight glass"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Fan blade uplight housing"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Folded gallery beam jackets"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery end mullion"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery fascia panel"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery grazer diffuser"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery grazer valance"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery honed walkway flags"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery inspection pulls"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery quilt welt"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery rail edge spline"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery removable rail edge panels"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery return light"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery sill access panels"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery sill caps"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery sill corner studs"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Gallery sill reveals"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall inset service covers"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall nickel movement joints"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall pressed dado returns"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall recessed plate fixings"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall service cover flutes"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall sidewall wainscot"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Hall staggered mineral flags"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Ledge cantilever bracket"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Low recessed step markers"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:M05 drilled garnet stair infill"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:M10 cobalt glass contour"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Middle metal nosing"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Paver joint bed"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Portal illuminated reveal"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Portal lintel"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Portal lintel reveal"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Raised chequer lugs"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Running bond side paving"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sapphire slit opal strip"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sapphire slit recess"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sidewall acoustic cassettes"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sidewall metal reveals"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Sidewall warm reveal"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Stage lattice"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Stage nickel fan blades"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Stage steel uprights"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Stage wing acoustic backing"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Stair warm nosing diffuser"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Threshold fasteners"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Threshold milled edge"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Threshold stainless pan"
+    },
+    {
+      "payloadSchema": {
+        "additionalProperties": true,
+        "properties": {
+          "materialSlotDefaultOverrides": {
+            "additionalProperties": {
+              "nullable": true,
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "materialSlots": {
+            "items": {
+              "additionalProperties": true,
+              "properties": {
+                "defaultMaterialGuid": {
+                  "type": "string"
+                },
+                "slotName": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sourceKey": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "slotName"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "semantic": "mesh-material-slot-defaults",
+      "sourceKey": "mesh:Upper nickel standing ledge"
+    }
+  ],
+  "sourceOverrides": {
+    "mesh:Basin coping": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e206093352",
+          "slotName": "M09 honed basalt",
+          "sourceKey": "material:M09 honed basalt"
+        }
+      ]
+    },
+    "mesh:Basin lower landing": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e3ed3fa78b",
+          "slotName": "Flamed basalt 1",
+          "sourceKey": "material:Flamed basalt 1"
+        }
+      ]
+    },
+    "mesh:Basin middle tread": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e206093352",
+          "slotName": "M09 honed basalt",
+          "sourceKey": "material:M09 honed basalt"
+        }
+      ]
+    },
+    "mesh:Bridge portal pier": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Cassette diamond welts": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e53aaa9da6",
+          "slotName": "Oxblood welt",
+          "sourceKey": "material:Oxblood welt"
+        }
+      ]
+    },
+    "mesh:Coping metal nosing": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e6289f4d4e",
+          "slotName": "Satin stainless tread",
+          "sourceKey": "material:Satin stainless tread"
+        }
+      ]
+    },
+    "mesh:DJ cast amber fascia": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e7646614c2",
+          "slotName": "M02 veined amber resin diffuser",
+          "sourceKey": "material:M02 veined amber resin diffuser"
+        }
+      ]
+    },
+    "mesh:DJ end trim": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:DJ fascia reveal": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:End paving joint bed": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:End running bond": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e933f53689",
+          "slotName": "M08 fired iron-red clay",
+          "sourceKey": "material:M08 fired iron-red clay"
+        }
+      ]
+    },
+    "mesh:Fan blade footlight glass": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ead7ecc2b4",
+          "slotName": "Warm recessed marker",
+          "sourceKey": "material:Warm recessed marker"
+        }
+      ]
+    },
+    "mesh:Fan blade uplight housing": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Folded gallery beam jackets": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Gallery end mullion": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Gallery fascia panel": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94eb31bf3297",
+          "slotName": "Oxblood acoustic cassette",
+          "sourceKey": "material:Oxblood acoustic cassette"
+        }
+      ]
+    },
+    "mesh:Gallery grazer diffuser": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ece4c6674b",
+          "slotName": "Amber red opal",
+          "sourceKey": "material:Amber red opal"
+        }
+      ]
+    },
+    "mesh:Gallery grazer valance": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Gallery honed walkway flags": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f324-57a0-7a86-935e-cb5ea624ac79",
+          "slotName": "M12 honed graphite aggregate flags",
+          "sourceKey": "material:M12 honed graphite aggregate flags"
+        }
+      ]
+    },
+    "mesh:Gallery inspection pulls": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Gallery quilt welt": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e53aaa9da6",
+          "slotName": "Oxblood welt",
+          "sourceKey": "material:Oxblood welt"
+        }
+      ]
+    },
+    "mesh:Gallery rail edge spline": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Gallery removable rail edge panels": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f324-57a0-7a86-935e-cb5f02e13824",
+          "slotName": "M13 brushed charcoal technical panels",
+          "sourceKey": "material:M13 brushed charcoal technical panels"
+        }
+      ]
+    },
+    "mesh:Gallery return light": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94edffeb800f",
+          "slotName": "Low ice diffuser",
+          "sourceKey": "material:Low ice diffuser"
+        }
+      ]
+    },
+    "mesh:Gallery sill access panels": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f324-57a0-7a86-935e-cb5f02e13824",
+          "slotName": "M13 brushed charcoal technical panels",
+          "sourceKey": "material:M13 brushed charcoal technical panels"
+        }
+      ]
+    },
+    "mesh:Gallery sill caps": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Gallery sill corner studs": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Gallery sill reveals": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Hall inset service covers": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f324-57a0-7a86-935e-cb5f02e13824",
+          "slotName": "M13 brushed charcoal technical panels",
+          "sourceKey": "material:M13 brushed charcoal technical panels"
+        }
+      ]
+    },
+    "mesh:Hall nickel movement joints": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Hall pressed dado returns": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Hall recessed plate fixings": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Hall service cover flutes": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Hall sidewall wainscot": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f324-57a0-7a86-935e-cb5f02e13824",
+          "slotName": "M13 brushed charcoal technical panels",
+          "sourceKey": "material:M13 brushed charcoal technical panels"
+        }
+      ]
+    },
+    "mesh:Hall staggered mineral flags": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f324-57a0-7a86-935e-cb5ea624ac79",
+          "slotName": "M12 honed graphite aggregate flags",
+          "sourceKey": "material:M12 honed graphite aggregate flags"
+        }
+      ]
+    },
+    "mesh:Ledge cantilever bracket": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Low recessed step markers": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ead7ecc2b4",
+          "slotName": "Warm recessed marker",
+          "sourceKey": "material:Warm recessed marker"
+        }
+      ]
+    },
+    "mesh:M05 drilled garnet stair infill": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ee50e5edab",
+          "slotName": "M05 oxblood powder coat",
+          "sourceKey": "material:M05 oxblood powder coat"
+        }
+      ]
+    },
+    "mesh:M10 cobalt glass contour": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94efddec8de6",
+          "slotName": "M10 cobalt etched interlayer",
+          "sourceKey": "material:M10 cobalt etched interlayer"
+        }
+      ]
+    },
+    "mesh:Middle metal nosing": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e6289f4d4e",
+          "slotName": "Satin stainless tread",
+          "sourceKey": "material:Satin stainless tread"
+        }
+      ]
+    },
+    "mesh:Paver joint bed": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Portal illuminated reveal": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ece4c6674b",
+          "slotName": "Amber red opal",
+          "sourceKey": "material:Amber red opal"
+        }
+      ]
+    },
+    "mesh:Portal lintel": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Portal lintel reveal": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ece4c6674b",
+          "slotName": "Amber red opal",
+          "sourceKey": "material:Amber red opal"
+        }
+      ]
+    },
+    "mesh:Raised chequer lugs": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94f0552bcdf6",
+          "slotName": "Burnished steel edge",
+          "sourceKey": "material:Burnished steel edge"
+        }
+      ]
+    },
+    "mesh:Running bond side paving": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e933f53689",
+          "slotName": "M08 fired iron-red clay",
+          "sourceKey": "material:M08 fired iron-red clay"
+        }
+      ]
+    },
+    "mesh:Sapphire slit opal strip": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94efddec8de6",
+          "slotName": "M10 cobalt etched interlayer",
+          "sourceKey": "material:M10 cobalt etched interlayer"
+        }
+      ]
+    },
+    "mesh:Sapphire slit recess": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Sidewall acoustic cassettes": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94eb31bf3297",
+          "slotName": "Oxblood acoustic cassette",
+          "sourceKey": "material:Oxblood acoustic cassette"
+        }
+      ]
+    },
+    "mesh:Sidewall metal reveals": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Sidewall warm reveal": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ece4c6674b",
+          "slotName": "Amber red opal",
+          "sourceKey": "material:Amber red opal"
+        }
+      ]
+    },
+    "mesh:Stage lattice": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Stage nickel fan blades": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    },
+    "mesh:Stage steel uprights": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Stage wing acoustic backing": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94eb31bf3297",
+          "slotName": "Oxblood acoustic cassette",
+          "sourceKey": "material:Oxblood acoustic cassette"
+        }
+      ]
+    },
+    "mesh:Stair warm nosing diffuser": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94ead7ecc2b4",
+          "slotName": "Warm recessed marker",
+          "sourceKey": "material:Warm recessed marker"
+        }
+      ]
+    },
+    "mesh:Threshold fasteners": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+          "slotName": "Blackened structural steel",
+          "sourceKey": "material:Blackened structural steel"
+        }
+      ]
+    },
+    "mesh:Threshold milled edge": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94f0552bcdf6",
+          "slotName": "Burnished steel edge",
+          "sourceKey": "material:Burnished steel edge"
+        }
+      ]
+    },
+    "mesh:Threshold stainless pan": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e6289f4d4e",
+          "slotName": "Satin stainless tread",
+          "sourceKey": "material:Satin stainless tread"
+        }
+      ]
+    },
+    "mesh:Upper nickel standing ledge": {
+      "materialSlots": [
+        {
+          "defaultMaterialGuid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+          "slotName": "M03 satin folded nickel",
+          "sourceKey": "material:M03 satin folded nickel"
+        }
+      ]
+    }
+  },
+  "subAssets": [
+    {
+      "guid": "01a1f2e9-c89d-7398-b18d-c7e7ba1604d1",
+      "kind": "mesh",
+      "name": "Basin coping",
+      "sourceIndex": 0,
+      "sourceKey": "mesh:Basin coping"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94b614935b7a",
+      "kind": "mesh",
+      "name": "Basin lower landing",
+      "sourceIndex": 1,
+      "sourceKey": "mesh:Basin lower landing"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94b7859ac7f8",
+      "kind": "mesh",
+      "name": "Basin middle tread",
+      "sourceIndex": 2,
+      "sourceKey": "mesh:Basin middle tread"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94b8e7005a90",
+      "kind": "mesh",
+      "name": "Bridge portal pier",
+      "sourceIndex": 3,
+      "sourceKey": "mesh:Bridge portal pier"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94b9d0867275",
+      "kind": "mesh",
+      "name": "Cassette diamond welts",
+      "sourceIndex": 4,
+      "sourceKey": "mesh:Cassette diamond welts"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ba5cef1568",
+      "kind": "mesh",
+      "name": "Coping metal nosing",
+      "sourceIndex": 5,
+      "sourceKey": "mesh:Coping metal nosing"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94bb2233ba08",
+      "kind": "mesh",
+      "name": "DJ cast amber fascia",
+      "sourceIndex": 6,
+      "sourceKey": "mesh:DJ cast amber fascia"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94bcda5a7953",
+      "kind": "mesh",
+      "name": "DJ end trim",
+      "sourceIndex": 7,
+      "sourceKey": "mesh:DJ end trim"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94bd531fdda5",
+      "kind": "mesh",
+      "name": "DJ fascia reveal",
+      "sourceIndex": 8,
+      "sourceKey": "mesh:DJ fascia reveal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94be09bbc3ba",
+      "kind": "mesh",
+      "name": "End paving joint bed",
+      "sourceIndex": 9,
+      "sourceKey": "mesh:End paving joint bed"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94bfd8bc7863",
+      "kind": "mesh",
+      "name": "End running bond",
+      "sourceIndex": 10,
+      "sourceKey": "mesh:End running bond"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c009346178",
+      "kind": "mesh",
+      "name": "Fan blade footlight glass",
+      "sourceIndex": 11,
+      "sourceKey": "mesh:Fan blade footlight glass"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c16a9e12ab",
+      "kind": "mesh",
+      "name": "Fan blade uplight housing",
+      "sourceIndex": 12,
+      "sourceKey": "mesh:Fan blade uplight housing"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c24d566294",
+      "kind": "mesh",
+      "name": "Folded gallery beam jackets",
+      "sourceIndex": 13,
+      "sourceKey": "mesh:Folded gallery beam jackets"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c332345e4b",
+      "kind": "mesh",
+      "name": "Gallery end mullion",
+      "sourceIndex": 14,
+      "sourceKey": "mesh:Gallery end mullion"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c484347409",
+      "kind": "mesh",
+      "name": "Gallery fascia panel",
+      "sourceIndex": 15,
+      "sourceKey": "mesh:Gallery fascia panel"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c571bb7822",
+      "kind": "mesh",
+      "name": "Gallery grazer diffuser",
+      "sourceIndex": 16,
+      "sourceKey": "mesh:Gallery grazer diffuser"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c6d12b42c8",
+      "kind": "mesh",
+      "name": "Gallery grazer valance",
+      "sourceIndex": 17,
+      "sourceKey": "mesh:Gallery grazer valance"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb2931f33e57",
+      "kind": "mesh",
+      "name": "Gallery honed walkway flags",
+      "sourceIndex": 18,
+      "sourceKey": "mesh:Gallery honed walkway flags"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb2a4b35dbfd",
+      "kind": "mesh",
+      "name": "Gallery inspection pulls",
+      "sourceIndex": 19,
+      "sourceKey": "mesh:Gallery inspection pulls"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c7c1a554b1",
+      "kind": "mesh",
+      "name": "Gallery quilt welt",
+      "sourceIndex": 20,
+      "sourceKey": "mesh:Gallery quilt welt"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb2c2e98e6ea",
+      "kind": "mesh",
+      "name": "Gallery rail edge spline",
+      "sourceIndex": 21,
+      "sourceKey": "mesh:Gallery rail edge spline"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb2d997c95f4",
+      "kind": "mesh",
+      "name": "Gallery removable rail edge panels",
+      "sourceIndex": 22,
+      "sourceKey": "mesh:Gallery removable rail edge panels"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c875c093b2",
+      "kind": "mesh",
+      "name": "Gallery return light",
+      "sourceIndex": 23,
+      "sourceKey": "mesh:Gallery return light"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb2f59be5d64",
+      "kind": "mesh",
+      "name": "Gallery sill access panels",
+      "sourceIndex": 24,
+      "sourceKey": "mesh:Gallery sill access panels"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb30cba5973b",
+      "kind": "mesh",
+      "name": "Gallery sill caps",
+      "sourceIndex": 25,
+      "sourceKey": "mesh:Gallery sill caps"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb3161fbf706",
+      "kind": "mesh",
+      "name": "Gallery sill corner studs",
+      "sourceIndex": 26,
+      "sourceKey": "mesh:Gallery sill corner studs"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb32a53dc382",
+      "kind": "mesh",
+      "name": "Gallery sill reveals",
+      "sourceIndex": 27,
+      "sourceKey": "mesh:Gallery sill reveals"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb33f75a478e",
+      "kind": "mesh",
+      "name": "Hall inset service covers",
+      "sourceIndex": 28,
+      "sourceKey": "mesh:Hall inset service covers"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb34bf3809d0",
+      "kind": "mesh",
+      "name": "Hall nickel movement joints",
+      "sourceIndex": 29,
+      "sourceKey": "mesh:Hall nickel movement joints"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb35878dd746",
+      "kind": "mesh",
+      "name": "Hall pressed dado returns",
+      "sourceIndex": 30,
+      "sourceKey": "mesh:Hall pressed dado returns"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb363cfa4f12",
+      "kind": "mesh",
+      "name": "Hall recessed plate fixings",
+      "sourceIndex": 31,
+      "sourceKey": "mesh:Hall recessed plate fixings"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb375f2e8a15",
+      "kind": "mesh",
+      "name": "Hall service cover flutes",
+      "sourceIndex": 32,
+      "sourceKey": "mesh:Hall service cover flutes"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb385b355754",
+      "kind": "mesh",
+      "name": "Hall sidewall wainscot",
+      "sourceIndex": 33,
+      "sourceKey": "mesh:Hall sidewall wainscot"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb39ca39b5d5",
+      "kind": "mesh",
+      "name": "Hall staggered mineral flags",
+      "sourceIndex": 34,
+      "sourceKey": "mesh:Hall staggered mineral flags"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94c9120984e4",
+      "kind": "mesh",
+      "name": "Ledge cantilever bracket",
+      "sourceIndex": 35,
+      "sourceKey": "mesh:Ledge cantilever bracket"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ca00a29b75",
+      "kind": "mesh",
+      "name": "Low recessed step markers",
+      "sourceIndex": 36,
+      "sourceKey": "mesh:Low recessed step markers"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94cb4b1f43c3",
+      "kind": "mesh",
+      "name": "M05 drilled garnet stair infill",
+      "sourceIndex": 37,
+      "sourceKey": "mesh:M05 drilled garnet stair infill"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94cc0cff0395",
+      "kind": "mesh",
+      "name": "M10 cobalt glass contour",
+      "sourceIndex": 38,
+      "sourceKey": "mesh:M10 cobalt glass contour"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94cd9cdfd88a",
+      "kind": "mesh",
+      "name": "Middle metal nosing",
+      "sourceIndex": 39,
+      "sourceKey": "mesh:Middle metal nosing"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ce1c5ea837",
+      "kind": "mesh",
+      "name": "Paver joint bed",
+      "sourceIndex": 40,
+      "sourceKey": "mesh:Paver joint bed"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94cfca36d757",
+      "kind": "mesh",
+      "name": "Portal illuminated reveal",
+      "sourceIndex": 41,
+      "sourceKey": "mesh:Portal illuminated reveal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d0576640d0",
+      "kind": "mesh",
+      "name": "Portal lintel",
+      "sourceIndex": 42,
+      "sourceKey": "mesh:Portal lintel"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d1487e4481",
+      "kind": "mesh",
+      "name": "Portal lintel reveal",
+      "sourceIndex": 43,
+      "sourceKey": "mesh:Portal lintel reveal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d2b7e909ea",
+      "kind": "mesh",
+      "name": "Raised chequer lugs",
+      "sourceIndex": 44,
+      "sourceKey": "mesh:Raised chequer lugs"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d3f8072c9e",
+      "kind": "mesh",
+      "name": "Running bond side paving",
+      "sourceIndex": 45,
+      "sourceKey": "mesh:Running bond side paving"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d4b7f26d59",
+      "kind": "mesh",
+      "name": "Sapphire slit opal strip",
+      "sourceIndex": 46,
+      "sourceKey": "mesh:Sapphire slit opal strip"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d56b14df77",
+      "kind": "mesh",
+      "name": "Sapphire slit recess",
+      "sourceIndex": 47,
+      "sourceKey": "mesh:Sapphire slit recess"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d6060079c2",
+      "kind": "mesh",
+      "name": "Sidewall acoustic cassettes",
+      "sourceIndex": 48,
+      "sourceKey": "mesh:Sidewall acoustic cassettes"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d7fc0680d4",
+      "kind": "mesh",
+      "name": "Sidewall metal reveals",
+      "sourceIndex": 49,
+      "sourceKey": "mesh:Sidewall metal reveals"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d8b287a418",
+      "kind": "mesh",
+      "name": "Sidewall warm reveal",
+      "sourceIndex": 50,
+      "sourceKey": "mesh:Sidewall warm reveal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94d93884255c",
+      "kind": "mesh",
+      "name": "Stage lattice",
+      "sourceIndex": 51,
+      "sourceKey": "mesh:Stage lattice"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94da2bb25081",
+      "kind": "mesh",
+      "name": "Stage nickel fan blades",
+      "sourceIndex": 52,
+      "sourceKey": "mesh:Stage nickel fan blades"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94db0575a8cc",
+      "kind": "mesh",
+      "name": "Stage steel uprights",
+      "sourceIndex": 53,
+      "sourceKey": "mesh:Stage steel uprights"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94dcc19b5a81",
+      "kind": "mesh",
+      "name": "Stage wing acoustic backing",
+      "sourceIndex": 54,
+      "sourceKey": "mesh:Stage wing acoustic backing"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94dd65618723",
+      "kind": "mesh",
+      "name": "Stair warm nosing diffuser",
+      "sourceIndex": 55,
+      "sourceKey": "mesh:Stair warm nosing diffuser"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94de6ae951b0",
+      "kind": "mesh",
+      "name": "Threshold fasteners",
+      "sourceIndex": 56,
+      "sourceKey": "mesh:Threshold fasteners"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94df1b0546bf",
+      "kind": "mesh",
+      "name": "Threshold milled edge",
+      "sourceIndex": 57,
+      "sourceKey": "mesh:Threshold milled edge"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e0067f7d52",
+      "kind": "mesh",
+      "name": "Threshold stainless pan",
+      "sourceIndex": 58,
+      "sourceKey": "mesh:Threshold stainless pan"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e140886844",
+      "kind": "mesh",
+      "name": "Upper nickel standing ledge",
+      "sourceIndex": 59,
+      "sourceKey": "mesh:Upper nickel standing ledge"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e206093352",
+      "kind": "material",
+      "name": "M09 honed basalt",
+      "sourceIndex": 0,
+      "sourceKey": "material:M09 honed basalt"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e3ed3fa78b",
+      "kind": "material",
+      "name": "Flamed basalt 1",
+      "sourceIndex": 1,
+      "sourceKey": "material:Flamed basalt 1"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+      "kind": "material",
+      "name": "Blackened structural steel",
+      "sourceIndex": 2,
+      "sourceKey": "material:Blackened structural steel"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e53aaa9da6",
+      "kind": "material",
+      "name": "Oxblood welt",
+      "sourceIndex": 3,
+      "sourceKey": "material:Oxblood welt"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e6289f4d4e",
+      "kind": "material",
+      "name": "Satin stainless tread",
+      "sourceIndex": 4,
+      "sourceKey": "material:Satin stainless tread"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e7646614c2",
+      "kind": "material",
+      "name": "M02 veined amber resin diffuser",
+      "sourceIndex": 5,
+      "sourceKey": "material:M02 veined amber resin diffuser"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+      "kind": "material",
+      "name": "M03 satin folded nickel",
+      "sourceIndex": 6,
+      "sourceKey": "material:M03 satin folded nickel"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e933f53689",
+      "kind": "material",
+      "name": "M08 fired iron-red clay",
+      "sourceIndex": 7,
+      "sourceKey": "material:M08 fired iron-red clay"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ead7ecc2b4",
+      "kind": "material",
+      "name": "Warm recessed marker",
+      "sourceIndex": 8,
+      "sourceKey": "material:Warm recessed marker"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94eb31bf3297",
+      "kind": "material",
+      "name": "Oxblood acoustic cassette",
+      "sourceIndex": 9,
+      "sourceKey": "material:Oxblood acoustic cassette"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ece4c6674b",
+      "kind": "material",
+      "name": "Amber red opal",
+      "sourceIndex": 10,
+      "sourceKey": "material:Amber red opal"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb5ea624ac79",
+      "kind": "material",
+      "name": "M12 honed graphite aggregate flags",
+      "sourceIndex": 11,
+      "sourceKey": "material:M12 honed graphite aggregate flags"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb5f02e13824",
+      "kind": "material",
+      "name": "M13 brushed charcoal technical panels",
+      "sourceIndex": 12,
+      "sourceKey": "material:M13 brushed charcoal technical panels"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94edffeb800f",
+      "kind": "material",
+      "name": "Low ice diffuser",
+      "sourceIndex": 13,
+      "sourceKey": "material:Low ice diffuser"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ee50e5edab",
+      "kind": "material",
+      "name": "M05 oxblood powder coat",
+      "sourceIndex": 14,
+      "sourceKey": "material:M05 oxblood powder coat"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94efddec8de6",
+      "kind": "material",
+      "name": "M10 cobalt etched interlayer",
+      "sourceIndex": 15,
+      "sourceKey": "material:M10 cobalt etched interlayer"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f0552bcdf6",
+      "kind": "material",
+      "name": "Burnished steel edge",
+      "sourceIndex": 16,
+      "sourceKey": "material:Burnished steel edge"
+    },
+    {
+      "guid": "01a1eef9-abd7-7b12-8e6a-22ab8af23940",
+      "kind": "scene",
+      "name": "Scene",
+      "sourceIndex": 0,
+      "sourceKey": "scene:Scene"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f2d9977fea",
+      "kind": "texture",
+      "name": "basalt-normal",
+      "sourceIndex": 0,
+      "sourceKey": "texture:basalt-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f3563f6151",
+      "kind": "texture",
+      "name": "basalt-color",
+      "sourceIndex": 1,
+      "sourceKey": "texture:basalt-color"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f45908fd1a",
+      "kind": "texture",
+      "name": "basalt-orm",
+      "sourceIndex": 2,
+      "sourceKey": "texture:basalt-orm"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f56a6e015c",
+      "kind": "texture",
+      "name": "concrete-normal",
+      "sourceIndex": 3,
+      "sourceKey": "texture:concrete-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f6e4d413d4",
+      "kind": "texture",
+      "name": "metal-normal",
+      "sourceIndex": 4,
+      "sourceKey": "texture:metal-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f76cd1a469",
+      "kind": "texture",
+      "name": "amber-color",
+      "sourceIndex": 5,
+      "sourceKey": "texture:amber-color"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f88987209e",
+      "kind": "texture",
+      "name": "amber-normal",
+      "sourceIndex": 6,
+      "sourceKey": "texture:amber-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94f936bc2282",
+      "kind": "texture",
+      "name": "amber-orm",
+      "sourceIndex": 7,
+      "sourceKey": "texture:amber-orm"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94fa3363c1a2",
+      "kind": "texture",
+      "name": "nickel-normal",
+      "sourceIndex": 8,
+      "sourceKey": "texture:nickel-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94fba0434e86",
+      "kind": "texture",
+      "name": "nickel-color",
+      "sourceIndex": 9,
+      "sourceKey": "texture:nickel-color"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94fcdb3692fe",
+      "kind": "texture",
+      "name": "nickel-orm",
+      "sourceIndex": 10,
+      "sourceKey": "texture:nickel-orm"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94fd8c8f772d",
+      "kind": "texture",
+      "name": "garnet-normal",
+      "sourceIndex": 11,
+      "sourceKey": "texture:garnet-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94fe9119e041",
+      "kind": "texture",
+      "name": "garnet-color",
+      "sourceIndex": 12,
+      "sourceKey": "texture:garnet-color"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-94ff2ec6f0f1",
+      "kind": "texture",
+      "name": "garnet-orm",
+      "sourceIndex": 13,
+      "sourceKey": "texture:garnet-orm"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-9500b43a804f",
+      "kind": "texture",
+      "name": "leather-normal",
+      "sourceIndex": 14,
+      "sourceKey": "texture:leather-normal"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb74eb155915",
+      "kind": "texture",
+      "name": "mineral-normal",
+      "sourceIndex": 15,
+      "sourceKey": "texture:mineral-normal"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb751ac1312f",
+      "kind": "texture",
+      "name": "mineral-color",
+      "sourceIndex": 16,
+      "sourceKey": "texture:mineral-color"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb76fab7ab24",
+      "kind": "texture",
+      "name": "mineral-orm",
+      "sourceIndex": 17,
+      "sourceKey": "texture:mineral-orm"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb77fbbc31ea",
+      "kind": "texture",
+      "name": "gunmetal-normal",
+      "sourceIndex": 18,
+      "sourceKey": "texture:gunmetal-normal"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb785063fde0",
+      "kind": "texture",
+      "name": "gunmetal-color",
+      "sourceIndex": 19,
+      "sourceKey": "texture:gunmetal-color"
+    },
+    {
+      "guid": "01a1f324-57a0-7a86-935e-cb793a4f9a9e",
+      "kind": "texture",
+      "name": "gunmetal-orm",
+      "sourceIndex": 20,
+      "sourceKey": "texture:gunmetal-orm"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-9501b839ada8",
+      "kind": "texture",
+      "name": "enamel-normal",
+      "sourceIndex": 21,
+      "sourceKey": "texture:enamel-normal"
+    },
+    {
+      "guid": "01a1f2e9-c89e-79d5-aab1-95024f8254d1",
+      "kind": "sampler",
+      "sourceIndex": 0,
+      "sourceKey": "sampler"
+    }
+  ]
+}

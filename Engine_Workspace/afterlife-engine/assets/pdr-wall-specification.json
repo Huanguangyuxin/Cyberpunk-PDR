@@ -1,0 +1,165 @@
+{
+  "materials": {
+    "cassette": {
+      "name": "M14 graphite cassette field",
+      "guid": "01a1f367-ebd6-790c-bfb3-8c73d6a11ff7",
+      "metres": [
+        2.7,
+        1.65
+      ]
+    },
+    "graphite": {
+      "name": "M13 brushed charcoal technical panels",
+      "guid": "01a1f324-57a0-7a86-935e-cb5f02e13824",
+      "metres": [
+        1.47,
+        1.47
+      ]
+    },
+    "nickel": {
+      "name": "M03 satin folded nickel",
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e880850638",
+      "metres": [
+        0.5,
+        0.5
+      ]
+    },
+    "black": {
+      "name": "Blackened structural steel",
+      "guid": "01a1f2e9-c89e-79d5-aab1-94e42c26e3ce",
+      "metres": [
+        0.5,
+        0.5
+      ]
+    },
+    "oxblood": {
+      "name": "Oxblood acoustic cassette",
+      "guid": "01a1f2e9-c89e-79d5-aab1-94eb31bf3297",
+      "metres": [
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "owners": {
+    "ARCH_WALL_SOUTH": {
+      "WB015_M_WALL_NAVY": "cassette"
+    },
+    "ARCH_WALLS_WEN": {
+      "WB015_M_WALL_NAVY": "cassette"
+    },
+    "ARCH_UPPER_DECK": {
+      "WB015_M_WALL_NAVY": "graphite"
+    },
+    "ARCH_COLUMNS": {
+      "M_STEEL_NAVY": "graphite",
+      "M_STEEL_BLACK": "black"
+    },
+    "ARCH_PYLONS": {
+      "M_WALL_NAVY": "graphite",
+      "M_STEEL_BLACK": "black"
+    },
+    "ARCH_COLUMNS_WB015": {
+      "WB015_M_STEEL_EDGE": "nickel",
+      "WB015_M_STEEL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black"
+    },
+    "ARCH_DECK_BEAMS_FASCIA": {
+      "WB015_M_STEEL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black"
+    },
+    "ARCH_SKIRTING": {
+      "M_STEEL_BLACK": "graphite"
+    },
+    "STAIR_E": {
+      "D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black"
+    },
+    "STAIR_W": {
+      "D109_STAIR_COATED_STEEL__WB015_M_WALL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black"
+    },
+    "VIP_E1_SHELL": {
+      "WB015_M_WALL_NAVY": "cassette",
+      "WB015_M_STEEL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black",
+      "WB015_M_STEEL_EDGE": "nickel",
+      "WB015_M_PLINTH_PINK": "graphite",
+      "WB015_M_FRAME_PINK": "nickel",
+      "WB015_M_LEATHER_WINE": "oxblood"
+    },
+    "VIP_E2_SHELL": {
+      "WB015_M_WALL_NAVY": "cassette",
+      "WB015_M_STEEL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black",
+      "WB015_M_STEEL_EDGE": "nickel",
+      "WB015_M_PLINTH_PINK": "graphite",
+      "WB015_M_FRAME_PINK": "nickel",
+      "WB015_M_LEATHER_WINE": "oxblood"
+    },
+    "VIP_W1_SHELL": {
+      "WB015_M_WALL_NAVY": "cassette",
+      "WB015_M_STEEL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black",
+      "WB015_M_STEEL_EDGE": "nickel",
+      "WB015_M_PLINTH_PINK": "graphite",
+      "WB015_M_FRAME_PINK": "nickel",
+      "WB015_M_LEATHER_WINE": "oxblood"
+    },
+    "VIP_W2_SHELL": {
+      "WB015_M_WALL_NAVY": "cassette",
+      "WB015_M_STEEL_NAVY": "graphite",
+      "WB015_M_STEEL_BLACK": "black",
+      "WB015_M_STEEL_EDGE": "nickel",
+      "WB015_M_PLINTH_PINK": "graphite",
+      "WB015_M_FRAME_PINK": "nickel",
+      "WB015_M_LEATHER_WINE": "oxblood"
+    },
+    "D180_Acoustic_Stage": {
+      "D180_W1b_BlackAnodizedPerf": "graphite",
+      "D180_T1_DarkBrushedSteel": "nickel",
+      "D180_W1_GraphiteAcousticRib": "cassette"
+    },
+    "D180_Acoustic_Hall_E": {
+      "D180_W1b_BlackAnodizedPerf": "graphite",
+      "D180_T1_DarkBrushedSteel": "nickel",
+      "D180_W1_GraphiteAcousticRib": "cassette"
+    },
+    "D180_Acoustic_Hall_W": {
+      "D180_W1b_BlackAnodizedPerf": "graphite",
+      "D180_T1_DarkBrushedSteel": "nickel",
+      "D180_W1_GraphiteAcousticRib": "cassette"
+    },
+    "D180_Glazed_Backbar": {
+      "D180_W2_TealBlackGlazedTile": "cassette",
+      "D180_T1_DarkBrushedSteel": "graphite"
+    },
+    "D180_Glazed_Entrance": {
+      "D180_W2_TealBlackGlazedTile": "cassette",
+      "D180_T1_DarkBrushedSteel": "graphite"
+    },
+    "D180_Ornament_VIP_E1": {
+      "D180_T1_DarkBrushedSteel": "graphite"
+    },
+    "D180_Ornament_VIP_E2": {
+      "D180_T1_DarkBrushedSteel": "graphite"
+    },
+    "D180_Ornament_VIP_W1": {
+      "D180_T1_DarkBrushedSteel": "graphite"
+    },
+    "D180_Ornament_VIP_W2": {
+      "D180_T1_DarkBrushedSteel": "graphite"
+    },
+    "STAGE_PLATFORM_DJ": {
+      "M_STEEL_NAVY": "graphite",
+      "M_STEEL_BLACK": "black"
+    },
+    "WB018_STAGE_FLANK_PANELS": {
+      "M_STEEL_EDGE": "nickel",
+      "M_STEEL_BLACK": "graphite"
+    },
+    "WB018_CEIL_BAND_FRONT": {
+      "M18_BULKHEAD_DARK": "graphite"
+    }
+  }
+}
